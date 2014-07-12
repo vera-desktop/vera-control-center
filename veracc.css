@@ -1,0 +1,9 @@
+.veracc-home {
+	background-color: @base;
+}
+
+/*
+GtkIconView.cell.veracc-section:selected {
+	background-color: transparent;
+}
+*/
