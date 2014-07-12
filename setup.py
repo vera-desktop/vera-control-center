@@ -1,4 +1,4 @@
-#!/usr/bin/python3.4
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
 # vera-control-center - Vera Control Center
@@ -46,10 +46,8 @@ def get_module_files():
 
 data_files = get_module_files()
 data_files += [
-	("/usr/share/vera-control-center", ["controlcenterui.glade"]),	
+	(data_path, ["controlcenterui.glade"]),	
 ]
-
-print(data_files)
 
 setup(
 	name='vera-control-center',
@@ -57,7 +55,7 @@ setup(
 	description='Simple, fast and modular control center for the Vera Desktop Environment',
 	author='Eugenio Paolantonio',
 	author_email='me@medesimo.eu',
-	url='https://github.com/semplice/alan2',
+	url='https://github.com/vera-desktop/vera-control-center',
 	scripts=['vera-control-center.py'],
 	packages=[
 		'veracc',
