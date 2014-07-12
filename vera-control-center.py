@@ -115,6 +115,9 @@ class ControlCenter:
 		"""
 		
 		for module in os.listdir(MODULES_DIR):
+			if module in ("__pycache__", "__init__.py"):
+				continue
+			
 			print("Detected %s" % module)
 			
 			mod = veracc.module.VeraCCModule(module, os.path.join(MODULES_DIR, module))
