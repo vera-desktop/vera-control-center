@@ -40,6 +40,15 @@ MODULES_PREFIX = "modules"
 
 SECTIONS = ("Personal", "System")
 
+# While the following is not ideal, is currently needed to make sure
+# we are actually on the main vera-control-center directory.
+# The main executable (this) and all modules do not use absolute paths
+# to load the glade UI files, so we need to be on the main directory
+# otherwise they will crash.
+# This should be probably addressed directly in quickstart.builder but,
+# for now, this chdir call will do the job.
+os.chdir(os.path.dirname(__file__))
+
 #@quickstart.style.custom_css("./veracc.css")
 @quickstart.builder.from_file("./controlcenterui.glade")
 class ControlCenter:
