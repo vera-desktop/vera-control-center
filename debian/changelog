@@ -1,3 +1,10 @@
+vera-control-center (0.21-1) devel; urgency=medium
+
+  * vera-control-center.py: obtain the correct path when
+    we are executed from a link.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 13 Jul 2014 13:42:32 +0200
+
 vera-control-center (0.20-1) devel; urgency=low
 
   * Initial release
