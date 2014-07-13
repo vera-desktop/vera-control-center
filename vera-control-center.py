@@ -35,7 +35,13 @@ import quickstart
 
 import subprocess
 
-MODULES_DIR = os.path.join(os.path.dirname(__file__), "modules/")
+if os.path.islink(__file__):
+	# If we are a link, everything is a WTF...
+	VERACC_DIR = os.path.dirname(os.path.normpath(os.path.join(os.path.dirname(__file__), os.readlink(__file__))))
+else:
+	VERACC_DIR = os.path.dirname(__file__)
+
+MODULES_DIR = os.path.join(VERACC_DIR, "modules/")
 MODULES_PREFIX = "modules"
 
 SECTIONS = ("Personal", "System")
@@ -47,7 +53,7 @@ SECTIONS = ("Personal", "System")
 # otherwise they will crash.
 # This should be probably addressed directly in quickstart.builder but,
 # for now, this chdir call will do the job.
-os.chdir(os.path.dirname(__file__))
+os.chdir(VERACC_DIR)
 
 #@quickstart.style.custom_css("./veracc.css")
 @quickstart.builder.from_file("./controlcenterui.glade")
