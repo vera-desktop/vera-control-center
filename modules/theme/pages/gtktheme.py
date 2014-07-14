@@ -41,7 +41,7 @@ class GtkThemeFrame(CommonFrame):
 		
 		for directory in self.SEARCH_PATH:
 			if not os.path.exists(directory):
-				return
+				continue
 			
 			for theme in os.listdir(directory):
 				
@@ -142,7 +142,7 @@ class IconThemeFrame(CommonFrame):
 		
 		for directory in self.SEARCH_PATH:
 			if not os.path.exists(directory):
-				return
+				continue
 			
 			for theme in os.listdir(directory):
 				
@@ -234,7 +234,7 @@ class CursorThemeFrame(CommonFrame):
 		
 		for directory in self.SEARCH_PATH:
 			if not os.path.exists(directory):
-				return
+				continue
 			
 			for theme in os.listdir(directory):
 				
