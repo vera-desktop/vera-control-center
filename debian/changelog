@@ -1,3 +1,10 @@
+vera-control-center (0.23-1) devel; urgency=medium
+
+  * theme: added font page.
+  * theme: remove the 'Other' page.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 01 Aug 2014 23:14:50 +0200
+
 vera-control-center (0.22-1) devel; urgency=medium
 
   * theme/gtktheme: ensure we do not exit if a directory
