@@ -26,6 +26,7 @@ from veracc.utils import Settings
 
 from .pages.gtktheme import GtkTheme
 from .pages.paranoid import Paranoid
+from .pages.font import Fonts
 
 class Scene(quickstart.scenes.BaseScene):
 	""" Theme preferences. """
@@ -54,8 +55,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Gtk theme page
 		self.stack.add_titled(GtkTheme(self.settings), "gtktheme", "Theme")
 		self.stack.add_titled(Paranoid(self.settings), "paranoid", "Effects")
-		self.stack.add_titled(Gtk.Fixed(), "font", "Font")
-		self.stack.add_titled(Gtk.Fixed(), "other", "Other")
+		self.stack.add_titled(Fonts(self.settings), "font", "Fonts")
 		
 		self.scene_container.add(self.container)
 		self.scene_container.show_all()

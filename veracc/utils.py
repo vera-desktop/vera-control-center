@@ -19,7 +19,7 @@
 #    Eugenio "g7" Paolantonio <me@medesimo.eu>
 #
 
-from gi.repository import Gio
+from gi.repository import Gio, GLib
 
 class Settings(Gio.Settings):
 	"""
@@ -62,7 +62,9 @@ class Settings(Gio.Settings):
 				return
 			
 			self._ignore_prop_changed = True
+			
 			widget.set_property(prop, key_to_prop(self[key]))
+			
 			self._ignore_prop_changed = False
 
 		def prop_changed(widget, param):
@@ -72,7 +74,22 @@ class Settings(Gio.Settings):
 				return
 			
 			self._ignore_key_changed = True
-			self[key] = prop_to_key(widget.get_property(prop))
+			
+			try:
+				self[key] = prop_to_key(widget.get_property(prop))
+			except NotImplementedError:
+				#
+				# Force storage of ranges, without checking.
+				# Unfortunately if the key value != type or enum,
+				# Gio.Settings' __setitem__ will raise NotImplementedError.
+				# As our input is usually checked, we can safely force
+				# the storage of the property.
+				#
+				range_ = self.get_range(key)
+				type_ = range_.get_child_value(0).get_string()
+				if type_ == "range":
+					self.set_value(key, GLib.Variant('i', widget.get_property(prop)))
+			
 			self._ignore_key_changed = False
 
 		self.connect('changed::' + key, key_changed)
