@@ -25,291 +25,8 @@ from veracc.widgets.CommonFrame import CommonFrame
 
 from veracc.utils import Settings
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 import quickstart
-
-class GtkThemeFrame(CommonFrame):
-	"""
-	This is the Frame with controls to change the GTK+ theme.
-	"""
-
-	SEARCH_PATH = ("/usr/share/themes", os.path.expanduser("~/.themes"))
-
-	@property
-	def available_themes(self):
-		""" Returns the available themes, searching in SEARCH_PATH. """
-		
-		themes = []
-		
-		for directory in self.SEARCH_PATH:
-			if not os.path.exists(directory):
-				return
-			
-			for theme in os.listdir(directory):
-				
-				path = os.path.join(directory, theme)
-				
-				if theme not in themes and (
-					os.path.isdir(path) and os.path.exists(os.path.join(path, "gtk-3.0"))
-				):
-					themes.append(theme)
-		
-		themes.sort()
-		return themes
-
-	@quickstart.threads.on_idle
-	def populate_themes(self):
-		""" Populates the theme list. """
-		
-		self.themes = {}
-		
-		count = -1
-		for theme in self.available_themes:
-			count += 1
-			
-			self.combobox.append_text(theme)
-			
-			# Add to self.themes
-			self.themes[theme] = count
-		
-		# Bind
-		self.settings.bind_with_convert(
-			"theme-name",
-			self.combobox,
-			"active",
-			lambda x: self.themes[x] if x in self.themes else -1,
-			lambda x: self.combobox.get_active_text()
-		)
-		
-	
-	def __init__(self, settings):
-		"""
-		Initializes the frame.
-		"""
-		
-		super().__init__(name="Widgets")
-		
-		# Settings
-		self.settings = settings
-		
-		# Container
-		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-		
-		# Combobox
-		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Theme")
-		self.combobox_label.set_alignment(0, 0.50)
-		
-		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
-		self.combobox_container.pack_start(self.combobox, False, False, 0)
-		
-		# Populate it and bind
-		self.populate_themes()
-		
-		# Images in buttons
-		self.button_images = Gtk.CheckButton("Show images in buttons")
-		self.settings.bind(
-			"button-images",
-			self.button_images,
-			"active"
-		)
-		
-		# Images in menus
-		self.menu_images = Gtk.CheckButton("Show images in menus")
-		self.settings.bind(
-			"menu-images",
-			self.menu_images,
-			"active"
-		)
-		
-		self.main_container.pack_start(self.combobox_container, False, False, 0)
-		self.main_container.pack_start(self.button_images, False, False, 2)
-		self.main_container.pack_start(self.menu_images, False, False, 2)
-		
-		self.get_alignment().add(self.main_container)
-
-class IconThemeFrame(CommonFrame):
-	"""
-	This is the Frame with controls to change the Icon Theme.
-	"""
-
-	SEARCH_PATH = ("/usr/share/icons", os.path.expanduser("~/.icons"))
-
-	@property
-	def available_themes(self):
-		""" Returns the available themes, searching in SEARCH_PATH. """
-		
-		themes = []
-		
-		for directory in self.SEARCH_PATH:
-			if not os.path.exists(directory):
-				return
-			
-			for theme in os.listdir(directory):
-				
-				path = os.path.join(directory, theme)
-				
-				if theme not in themes and (
-					os.path.isdir(path)
-					and os.path.exists(os.path.join(path, "index.theme"))
-					and not os.path.exists(os.path.join(path, "cursor.theme"))
-				):
-					themes.append(theme)
-		
-		themes.sort()
-		return themes
-
-	@quickstart.threads.on_idle
-	def populate_themes(self):
-		""" Populates the theme list. """
-		
-		self.themes = {}
-		
-		count = -1
-		for theme in self.available_themes:
-			count += 1
-			
-			self.combobox.append_text(theme)
-			
-			# Add to self.themes
-			self.themes[theme] = count
-		
-		# Bind
-		self.settings.bind_with_convert(
-			"icon-theme-name",
-			self.combobox,
-			"active",
-			lambda x: self.themes[x] if x in self.themes else -1,
-			lambda x: self.combobox.get_active_text()
-		)
-		
-	
-	def __init__(self, settings):
-		"""
-		Initializes the frame.
-		"""
-		
-		super().__init__(name="Icons")
-		
-		# Settings
-		self.settings = settings
-		
-		# Container
-		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-		
-		# Combobox
-		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Icon theme")
-		self.combobox_label.set_alignment(0, 0.50)
-		
-		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
-		self.combobox_container.pack_start(self.combobox, False, False, 0)
-		
-		# Preview
-		self.preview_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.preview_container.set_halign(Gtk.Align.CENTER)
-		for icon in ("folder", "desktop", "image", "application-x-executable"):
-			self.preview_container.pack_start(Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.DIALOG), False, False, 5)
-		
-		# Populate it and bind
-		self.populate_themes()
-				
-		self.main_container.pack_start(self.combobox_container, False, False, 0)
-		self.main_container.pack_start(self.preview_container, False, False, 15)
-		
-		self.get_alignment().add(self.main_container)
-
-class CursorThemeFrame(CommonFrame):
-	"""
-	This is the Frame with controls to change the Cursor Theme.
-	"""
-
-	SEARCH_PATH = ("/usr/share/icons", os.path.expanduser("~/.icons"))
-
-	@property
-	def available_themes(self):
-		""" Returns the available themes, searching in SEARCH_PATH. """
-		
-		themes = []
-		
-		for directory in self.SEARCH_PATH:
-			if not os.path.exists(directory):
-				return
-			
-			for theme in os.listdir(directory):
-				
-				path = os.path.join(directory, theme)
-				
-				if theme not in themes and (
-					os.path.isdir(path)
-					and os.path.exists(os.path.join(path, "cursor.theme"))
-				):
-					themes.append(theme)
-		
-		themes.sort()
-		return themes
-
-	@quickstart.threads.on_idle
-	def populate_themes(self):
-		""" Populates the theme list. """
-		
-		self.themes = {}
-		
-		count = -1
-		for theme in self.available_themes:
-			count += 1
-			
-			self.combobox.append_text(theme)
-			
-			# Add to self.themes
-			self.themes[theme] = count
-		
-		# Bind
-		self.settings.bind_with_convert(
-			"cursor-theme-name",
-			self.combobox,
-			"active",
-			lambda x: self.themes[x] if x in self.themes else -1,
-			lambda x: self.combobox.get_active_text()
-		)
-		
-	
-	def __init__(self, settings):
-		"""
-		Initializes the frame.
-		"""
-		
-		super().__init__(name="Cursor")
-		
-		# Settings
-		self.settings = settings
-		
-		# Container
-		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-		
-		# Combobox
-		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Cursor theme")
-		self.combobox_label.set_alignment(0, 0.50)
-		
-		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
-		self.combobox_container.pack_start(self.combobox, False, False, 0)
-		
-		# Warning
-		self.warning = Gtk.Label()
-		self.warning.set_markup("<i>If you change the cursor theme you need to logout to apply the changes.</i>")
-		self.warning.set_line_wrap(True)
-		
-		# Populate it and bind
-		self.populate_themes()
-				
-		self.main_container.pack_start(self.combobox_container, False, False, 0)
-		self.main_container.pack_start(self.warning, False, False, 15)
-		
-		self.get_alignment().add(self.main_container)
 
 class DesktopEffectsFrame(CommonFrame):
 	"""
@@ -355,18 +72,6 @@ class ShadowFrame(CommonFrame):
 	"""
 	The Shadows Frame
 	"""
-	
-	def on_shadows_changed(self, widget):
-		"""
-		Fired when the window_shadows checkbutton has been clicked.
-		"""
-		
-		if widget.get_active():
-			# Enable other options
-			self.panel_shadows.set_sensitive(True)
-		else:
-			# Disable other options
-			self.panel_shadows.set_sensitive(False)
 	
 	def update_shadow_color(self, settings, color):
 		"""
@@ -452,8 +157,13 @@ class ShadowFrame(CommonFrame):
 		self.main_container.pack_start(self.shadow_color_container, True, True, 2)
 		
 		# Ensure we enable options only if shadows are enabled
-		self.window_shadows.connect("toggled", self.on_shadows_changed)
-		self.on_shadows_changed(self.window_shadows)
+		for widget in (self.panel_shadows, self.shadow_color_container):
+			self.window_shadows.bind_property(
+				"active",
+				widget,
+				"sensitive",
+				GObject.BindingFlags.SYNC_CREATE
+			)
 		
 		self.get_alignment().add(self.main_container)
 
@@ -528,9 +238,13 @@ class FadingFrame(CommonFrame):
 		self.main_container.pack_start(self.fading, True, True, 2)
 		self.main_container.pack_start(self.fading_openclose, True, True, 2)
 		
-		# Ensure we enable options only if shadows are enabled
-		self.fading.connect("toggled", self.on_fading_changed)
-		self.on_fading_changed(self.fading)
+		# Ensure we enable options only if fading is enabled
+		self.fading.bind_property(
+			"active",
+			self.fading_openclose,
+			"sensitive",
+			GObject.BindingFlags.SYNC_CREATE
+		)
 		
 		self.get_alignment().add(self.main_container)
 
@@ -678,10 +392,24 @@ class Paranoid(Gtk.Box):
 		# Also connect to the compton settings
 		comptonsettings = Settings("org.semplicelinux.vera.compton")
 		
-		self.pack_start(DesktopEffectsFrame(gtksettings, comptonsettings), False, False, 2)
-		self.pack_start(ShadowFrame(gtksettings, comptonsettings), False, False, 2)
-		self.pack_start(FadingFrame(gtksettings, comptonsettings), False, False, 2)
-		self.pack_start(TransparencyFrame(gtksettings, comptonsettings), False, False, 2)
+		desktop_effects_frame = DesktopEffectsFrame(gtksettings, comptonsettings)
+		shadow_frame = ShadowFrame(gtksettings, comptonsettings)
+		fading_frame = FadingFrame(gtksettings, comptonsettings)
+		transparency_frame = TransparencyFrame(gtksettings, comptonsettings)
+		
+		self.pack_start(desktop_effects_frame, False, False, 2)
+		self.pack_start(shadow_frame, False, False, 2)
+		self.pack_start(fading_frame, False, False, 2)
+		self.pack_start(transparency_frame, False, False, 2)
+		
+		# Bind compton_enable to the sensitiveness of the compton related frames
+		for frame in (shadow_frame, fading_frame, transparency_frame):
+			desktop_effects_frame.compton_enabled.bind_property(
+				"active",
+				frame,
+				"sensitive",
+				GObject.BindingFlags.SYNC_CREATE
+			)
 		
 		#self.pack_start(GtkThemeFrame(settings), False, False, 2)
 		#self.pack_start(IconThemeFrame(settings), False, False, 2)
