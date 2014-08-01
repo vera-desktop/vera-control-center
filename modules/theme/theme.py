@@ -56,7 +56,6 @@ class Scene(quickstart.scenes.BaseScene):
 		self.stack.add_titled(GtkTheme(self.settings), "gtktheme", "Theme")
 		self.stack.add_titled(Paranoid(self.settings), "paranoid", "Effects")
 		self.stack.add_titled(Fonts(self.settings), "font", "Fonts")
-		self.stack.add_titled(Gtk.Fixed(), "other", "Other")
 		
 		self.scene_container.add(self.container)
 		self.scene_container.show_all()
