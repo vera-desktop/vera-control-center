@@ -23,7 +23,9 @@ import os
 
 from veracc.widgets.CommonFrame import CommonFrame
 
-from gi.repository import Gtk
+from veracc.utils import Settings
+
+from gi.repository import Gtk, Gdk
 import quickstart
 
 class GtkThemeFrame(CommonFrame):
@@ -78,7 +80,16 @@ class GtkThemeFrame(CommonFrame):
 			lambda x: self.themes[x] if x in self.themes else -1,
 			lambda x: self.combobox.get_active_text()
 		)
+	
+	def new_rgba_from_string(self, string):
+		"""
+		Given a string, return a parsed Gdk.RGBA.
+		"""
 		
+		rgba = Gdk.RGBA()
+		rgba.parse(string)
+		
+		return rgba
 	
 	def __init__(self, settings):
 		"""
@@ -89,6 +100,7 @@ class GtkThemeFrame(CommonFrame):
 		
 		# Settings
 		self.settings = settings
+		self.desktopsettings = Settings("org.semplicelinux.vera.desktop")
 		
 		# Container
 		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -121,9 +133,55 @@ class GtkThemeFrame(CommonFrame):
 			"active"
 		)
 		
+		# Vera color
+		self.vera_color_enabled = Gtk.CheckButton("Use custom color for selected items (when supported)")
+		self.desktopsettings.bind(
+			"vera-color-enabled",
+			self.vera_color_enabled,
+			"active"
+		)
+		
+		# Vera color selection
+		self.vera_color_selection = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+		self.vera_color_selection.set_margin_start(20)
+		self.vera_color_enabled.bind_property(
+			"active",
+			self.vera_color_selection,
+			"sensitive"
+		)
+		self.vera_color_from_wallpaper = Gtk.RadioButton.new_with_label_from_widget(None, "Pick color from the current wallpaper")
+		self.vera_color_manual_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.vera_color_manual_color = Gtk.ColorButton()
+		self.desktopsettings.bind_with_convert(
+			"vera-color",
+			self.vera_color_manual_color,
+			"rgba",
+			lambda x: self.new_rgba_from_string(x),
+			lambda x: x.to_string()
+		)
+		self.vera_color_manual_color.set_sensitive(True)
+		self.vera_color_manual = Gtk.RadioButton.new_with_label_from_widget(self.vera_color_from_wallpaper, "Use this color")
+		self.vera_color_manual.bind_property(
+			"active",
+			self.vera_color_manual_color,
+			"sensitive"
+		)
+		self.desktopsettings.bind(
+			"vera-color-lock",
+			self.vera_color_manual,
+			"active"
+		)
+		self.vera_color_manual_container.pack_start(self.vera_color_manual, True, True, 0)
+		self.vera_color_manual_container.pack_start(self.vera_color_manual_color, False, False, 0)
+		
+		self.vera_color_selection.pack_start(self.vera_color_from_wallpaper, False, False, 0)
+		self.vera_color_selection.pack_start(self.vera_color_manual_container, False, False, 2)
+		
 		self.main_container.pack_start(self.combobox_container, False, False, 0)
 		self.main_container.pack_start(self.button_images, False, False, 2)
 		self.main_container.pack_start(self.menu_images, False, False, 2)
+		self.main_container.pack_start(self.vera_color_enabled, False, False, 2)
+		self.main_container.pack_start(self.vera_color_selection, False, False, 2)
 		
 		self.get_alignment().add(self.main_container)
 
