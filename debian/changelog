@@ -1,3 +1,11 @@
+vera-control-center (0.24-1) devel; urgency=medium
+
+  * modules/desktop: some experiments.
+  * modules/theme: added support for 'vera-color',
+    'vera-color-lock' and 'vera-color-enable'.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 17 Aug 2014 00:57:10 +0200
+
 vera-control-center (0.23-1) devel; urgency=medium
 
   * theme: added font page.
