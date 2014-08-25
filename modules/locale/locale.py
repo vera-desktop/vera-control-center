@@ -190,8 +190,6 @@ class Scene(quickstart.scenes.BaseScene):
 		self.type_column = Gtk.TreeViewColumn("Type", type_renderer, text=2)
 		self.objects.locale_view.append_column(self.type_column)
 
-		self.Locale = Locale()
-
 		# Populate the locale list
 		GObject.idle_add(self.build_locale_list)
 	

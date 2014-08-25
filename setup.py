@@ -69,6 +69,8 @@ setup(
 		'modules.networkmanager',
 		'modules.desktop',
 		'modules.about',
+		'modules.locale',
+		'modules.keyboard',
 	],
 	data_files=data_files,
 	requires=[
