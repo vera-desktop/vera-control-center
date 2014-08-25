@@ -22,6 +22,8 @@
 import os
 import quickstart
 
+import subprocess
+
 from veracc.widgets.UnlockBar import UnlockBar, ActionResponse
 
 from keeptalking2.Keyboard import Keyboard
@@ -39,6 +41,22 @@ class Scene(quickstart.scenes.BaseScene):
 		"cursor-changed": ("layout_view", "variant_view"),
 	}
 	
+	def setxkbmap(self):
+		"""
+		Invokes setxkbmap and sets the currently selected layout, variant
+		and model.
+		"""
+		
+		subprocess.call(
+			[
+				"setxkbmap",
+				self.Keyboard.default_layout,
+				self.Keyboard.default_variant if self.Keyboard.default_variant else "",
+				"-model" if self.Keyboard.default_model else "",
+				self.Keyboard.default_model if self.Keyboard.default_model else ""
+			]
+		)
+	
 	def on_model_combo_changed(self, combobox):
 		"""
 		Fired when the user changes the keyboard model.
@@ -53,6 +71,8 @@ class Scene(quickstart.scenes.BaseScene):
 		try:
 			self.Keyboard.set(model=selected)
 			self.default_model = itr
+			
+			self.setxkbmap()
 		except:
 			self.objects.model_combo.set_active_iter(self.default_model)
 	
@@ -77,6 +97,8 @@ class Scene(quickstart.scenes.BaseScene):
 		try:
 			self.Keyboard.set(variant=selected)
 			self.default_variant = itr
+
+			self.setxkbmap()
 		except:
 			sel.select_iter(self.default_variant)		
 	
@@ -102,6 +124,8 @@ class Scene(quickstart.scenes.BaseScene):
 		try:
 			self.Keyboard.set(layout=selected, variant='')
 			self.default = itr
+			
+			self.setxkbmap()
 		except:
 			sel.select_iter(self.default)
 
