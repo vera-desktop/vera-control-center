@@ -2,7 +2,12 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkImage" id="image2">
+  <object class="GtkImage" id="apply_hostname_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">object-select-symbolic</property>
+  </object>
+  <object class="GtkImage" id="edit_hostname_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">edit-symbolic</property>
@@ -51,7 +56,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label1">
+                      <object class="GtkLabel" id="distro">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Semplice 7</property>
@@ -143,11 +148,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label4">
+                      <object class="GtkLabel" id="memory">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
-                        <property name="label" translatable="yes">7,7 GiB</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -155,11 +159,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label8">
+                      <object class="GtkLabel" id="machine">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
-                        <property name="label" translatable="yes">64-bit</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -167,11 +170,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label6">
+                      <object class="GtkLabel" id="cpu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
-                        <property name="label" translatable="yes">Intel® Core™ i7-3610QM CPU @ 2.30 GHz x 8</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -184,11 +186,10 @@
                         <property name="can_focus">False</property>
                         <property name="spacing">7</property>
                         <child>
-                          <object class="GtkLabel" id="label9">
+                          <object class="GtkLabel" id="hostname">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">meddle</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -197,17 +198,28 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="button1">
-                            <property name="visible">True</property>
+                          <object class="GtkEntry" id="new_hostname">
                             <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">image2</property>
-                            <property name="always_show_image">True</property>
+                            <property name="no_show_all">True</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="change_hostname">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">edit_hostname_image</property>
+                            <property name="always_show_image">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </object>
@@ -251,7 +263,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button2">
+                  <object class="GtkButton" id="check_updates">
                     <property name="label" translatable="yes">Check for updates</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>

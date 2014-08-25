@@ -51,7 +51,7 @@ data_files += [
 
 setup(
 	name='vera-control-center',
-	version='0.24',
+	version='0.26',
 	description='Simple, fast and modular control center for the Vera Desktop Environment',
 	author='Eugenio Paolantonio',
 	author_email='me@medesimo.eu',
@@ -69,6 +69,8 @@ setup(
 		'modules.networkmanager',
 		'modules.desktop',
 		'modules.about',
+		'modules.locale',
+		'modules.keyboard',
 	],
 	data_files=data_files,
 	requires=[
@@ -78,7 +80,8 @@ setup(
 		'gi.repository.GObject',
 		'gi.repository.GLib',
 		'gi.repository.GdkPixbuf',
-		'gi.repository.Polkit'
+		'gi.repository.Polkit',
+		'keeptalking2',
 		'quickstart',
 		'collections.OrderedDict',
 		'subproces',

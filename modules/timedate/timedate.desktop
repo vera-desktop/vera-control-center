@@ -5,4 +5,4 @@ Comment=Configures the time and the date
 Comment[it]=Configura l'ora e la data
 Icon=preferences-system-time
 Keywords=Time;Date
-X-VeraCC-Section=Administration
+X-VeraCC-Section=System
