@@ -19,9 +19,11 @@
 #    Eugenio "g7" Paolantonio <me@medesimo.eu>
 #
 
-from gi.repository import GLib, Gtk, Gdk, Gio
+from gi.repository import GLib, Gtk, Gdk, Gio, GObject
 
 from veracc.widgets.UnlockBar import UnlockBar, ActionResponse
+
+from keeptalking2.TimeZone import TimeZone
 
 import quickstart
 import datetime, time
@@ -36,19 +38,86 @@ BUS_NAME = "org.freedesktop.timedate1"
 # This should be classified as FIXME, it really needs a better handling
 # if the toolkit will allow us to do something.
 
+# FIXME: Focus on select_timezone_dialog
+
 @quickstart.builder.from_file("./modules/timedate/timedate.glade")
 class Scene(quickstart.scenes.BaseScene):
 	"""
-	Desktop preferences.
+	Time & Date settings.
 	"""
 	
 	events = {
+		"realize": ("select_timezone_dialog",),
 		"button-press-event" : ("main",),
-		"clicked" : ("time_button", ),
+		"clicked" : ("time_button", "location_button", "apply_timezone"),
 		"toggled" : ("calendar_button", "ntp_enabled"),
 		"value-changed" : ("hours_adjustment", "minutes_adjustment", "seconds_adjustment"),
 		"output" : ("hours", "minutes", "seconds")
 	}
+	
+	@quickstart.threads.on_idle
+	def build_timezone_list(self):
+		"""
+		Builds the timezone list.
+		"""
+		
+		self.objects.timezones.clear()
+		
+		for item, key in self.TimeZone.supported.items():
+			for zone in key:
+				zone1 = "%s/%s" % (item, zone)
+				itr = self.objects.timezones.append([zone1, zone])
+				
+				# Save the iter if it's the default
+				if zone1 == self.TimeZone.default:
+					# save the iter! ;)
+					self.default = itr
+		
+		if self.default:
+			sel = self.objects.timezone_treeview.get_selection()
+			sel.select_iter(self.default)
+			
+			GObject.idle_add(self.objects.timezone_treeview.scroll_to_cell, sel.get_selected_rows()[1][0])
+		
+		GObject.idle_add(self.objects.timezone_treeview.grab_focus)
+	
+	def on_apply_timezone_clicked(self, button):
+		"""
+		Fired when the apply_timezone button has been clicked.
+		"""
+		
+		GObject.idle_add(self.objects.select_timezone_dialog.hide)
+		
+		# Get selected
+		sel = self.objects.timezone_treeview.get_selection()
+		if not sel: return
+		
+		model, itr = sel.get_selected()
+		if not itr: return
+		
+		selected = self.objects.timezones.get_value(itr, 0)
+		if selected == self.objects.location_button.get_label(): return # Ugly!
+		
+		try:
+			self.TimeDate.SetTimezone(
+				'(sb)',
+				selected,
+				True
+			)
+			
+			self.default = itr
+			self.current_datetime = datetime.datetime.now()
+		except:
+			sel.select_iter(self.default)
+		
+		self.objects.location_button.set_label(self.objects.timezones.get_value(self.default, 0))
+	
+	def on_select_timezone_dialog_realize(self, widget):
+		"""
+		Fired when the select_timezone_dialog is going to be shown.
+		"""
+		
+		self.build_timezone_list()
 	
 	def on_main_button_press_event(self, eventbox, event):
 		"""
@@ -59,6 +128,7 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		if self.objects.time_modify.props.visible and event.type == Gdk.EventType.BUTTON_PRESS:
+			self.refresh_infos()
 			self.objects.time_modify.hide()
 			self.objects.time_button.show()
 	
@@ -119,7 +189,13 @@ class Scene(quickstart.scenes.BaseScene):
 		if self.seconds_input:
 			self.current_datetime = self.current_datetime.replace(second=int(adjustment.get_value()))
 			self.set_time()
-			
+	
+	def on_location_button_clicked(self, button):
+		"""
+		Fired when the location_button has been clicked.
+		"""
+
+		GObject.idle_add(self.objects.select_timezone_dialog.present)		
 	
 	def on_time_button_clicked(self, button):
 		"""
@@ -255,6 +331,10 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.scene_container = self.objects.main
 		
+		self.default = None
+		
+		self.TimeZone = TimeZone()
+		
 		# Create unlockbar
 		self.unlockbar = UnlockBar("org.freedesktop.timedate1.set-time")
 		self.unlockbar.connect("locked", self.on_locked)
@@ -284,6 +364,16 @@ class Scene(quickstart.scenes.BaseScene):
 		) # Really we should create a new proxy to get the properties?!
 		
 		#self.refresh_infos()
+		
+		# Set-up select timezone dialog
+		self.objects.timezone_treeview.append_column(
+			Gtk.TreeViewColumn(
+				"Timezone",
+				Gtk.CellRendererText(),
+				text=0
+			)
+		)
+		self.objects.timezones.set_sort_column_id(0, Gtk.SortType.ASCENDING)
 		
 		# Create calendar popover
 		self.calendar = Gtk.Calendar()
@@ -324,6 +414,9 @@ class Scene(quickstart.scenes.BaseScene):
 		# NTP
 		ntp = bool(self.TimeDateProperties.Get('(ss)', BUS_NAME, 'NTP'))
 		self.objects.ntp_enabled.set_active(ntp)
+		
+		# Timezone
+		self.objects.location_button.set_label(self.TimeDateProperties.Get('(ss)', BUS_NAME, 'Timezone'))
 		
 		self.label_timeout = GLib.timeout_add_seconds(1, self.update_time)
 	

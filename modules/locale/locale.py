@@ -88,7 +88,7 @@ class Scene(quickstart.scenes.BaseScene):
 				return
 			
 			self.objects.savespace_enable.set_active(False)
-			self.objects.savespace_window.hide()
+			self.objects.savespace_warning.hide()
 		
 		GObject.idle_add(self.objects.region_spinner.show)
 		GObject.idle_add(self.scene_container.set_sensitive, False)
