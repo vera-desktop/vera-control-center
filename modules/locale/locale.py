@@ -81,8 +81,8 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		if self.objects.savespace_enable.get_active():
 			# Display warning
-			if self.objects.savespace_window.run() == Gtk.ResponseType.NO:
-				self.objects.savespace_window.hide()
+			if self.objects.savespace_warning.run() == Gtk.ResponseType.NO:
+				self.objects.savespace_warning.hide()
 				
 				sel.select_iter(self.default)
 				return
