@@ -1,3 +1,12 @@
+vera-control-center (0.26-1) devel; urgency=medium
+
+  * about: made it actually work :)
+  * Added locale module.
+  * Added keyboard module.
+  * timedate: added Location support.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Mon, 25 Aug 2014 22:39:01 +0200
+
 vera-control-center (0.24-1) devel; urgency=medium
 
   * modules/desktop: some experiments.
