@@ -1,5 +1,10 @@
-.veracc-home {
-	background-color: @base;
+.button.no-borders {
+	background-color: transparent;
+	border: transparent;
+}
+
+.button.no-borders:active {
+	color: @button_active_text;
 }
 
 /*

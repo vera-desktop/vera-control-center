@@ -55,7 +55,7 @@ SECTIONS = ("Personal", "System")
 # for now, this chdir call will do the job.
 os.chdir(VERACC_DIR)
 
-#@quickstart.style.custom_css("./veracc.css")
+@quickstart.style.custom_css("./veracc.css")
 @quickstart.builder.from_file("./controlcenterui.glade")
 class ControlCenter:
 	""" Main Interface """

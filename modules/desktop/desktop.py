@@ -21,39 +21,58 @@
 
 import os
 import quickstart
+import imghdr
 
-from gi.repository import GdkPixbuf
+from gi.repository import GdkPixbuf, GObject
+
+from veracc.utils import Settings
 
 @quickstart.builder.from_file("./modules/desktop/desktop.glade")
 class Scene(quickstart.scenes.BaseScene):
 	""" Desktop preferences. """
 	
 	events = {
-	
+		"item-activated": ("wallpapers",),
 	}
 	
-	@quickstart.threads.on_idle
+	def on_wallpapers_item_activated(self, widget, path):
+		"""
+		Fired when the user changes the wallpaper.
+		"""
+		
+		print(widget, path)
+		
+		itr = self.objects.wallpaper_list.get_iter(path)
+		
+		self.settings.set_strv("image-path", [self.objects.wallpaper_list.get_value(itr, 0)])
+	
+	@quickstart.threads.thread
 	def populate_wallpapers(self):
 		"""
 		Populates the wallpaper_list.
 		"""
 		
-		for wall in os.listdir("/home/g7/Scaricati"):
-			if wall.endswith(".jpg"):
-				try:
-					self.objects.wallpaper_list.append(
-						(
-							wall,
-							GdkPixbuf.Pixbuf.new_from_file_at_scale(
-								os.path.join("/home/g7/Scaricati", wall),
-								150,
-								200,
-								True
+		for directory in self.settings.get_strv("background-search-paths"):
+			for root, dirs, files in os.walk(directory):
+				for wall in files:
+					path = os.path.join(root, wall)
+					print(path)
+					if imghdr.what(path):
+						try:
+							self.objects.wallpaper_list.append(
+								(
+									path,
+									GdkPixbuf.Pixbuf.new_from_file_at_scale(
+										path,
+										150,
+										200,
+										True
+									)
+								)
 							)
-						)
-					)
-				except:
-					continue
+						except:
+							pass
+		
 		
 		self.objects.wallpapers.show_all()
 	
@@ -63,7 +82,9 @@ class Scene(quickstart.scenes.BaseScene):
 		self.scene_container = self.objects.main
 		
 		self.objects.wallpapers.set_pixbuf_column(1)
-				
+		
+		self.settings = Settings("org.semplicelinux.vera.desktop")
+		
 		self.objects.main.show_all()
 	
 	def on_scene_called(self):

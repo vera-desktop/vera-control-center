@@ -6,6 +6,14 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkListStore" id="wallpaper_list">
+    <columns>
+      <!-- column-name path -->
+      <column type="gchararray"/>
+      <!-- column-name thumbnail -->
+      <column type="GdkPixbuf"/>
+    </columns>
+  </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
     <child>
@@ -21,6 +29,7 @@
           <object class="GtkScrolledWindow" id="scrolledwindow1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkViewport" id="viewport1">
@@ -30,13 +39,15 @@
                   <object class="GtkIconView" id="wallpapers">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="margin">6</property>
+                    <property name="margin">0</property>
                     <property name="hadjustment">adjustment1</property>
-                    <property name="item_orientation">horizontal</property>
                     <property name="model">wallpaper_list</property>
-                    <property name="columns">0</property>
-                    <property name="item_width">200</property>
+                    <property name="columns">4</property>
+                    <property name="row_spacing">5</property>
+                    <property name="column_spacing">5</property>
                     <property name="tooltip_column">0</property>
+                    <property name="item_padding">4</property>
+                    <property name="activate_on_single_click">True</property>
                   </object>
                 </child>
               </object>
@@ -129,13 +140,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="wallpaper_list">
-    <columns>
-      <!-- column-name path -->
-      <column type="gchararray"/>
-      <!-- column-name thumbnail -->
-      <column type="GdkPixbuf"/>
-    </columns>
   </object>
 </interface>
