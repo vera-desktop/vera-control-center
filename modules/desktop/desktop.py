@@ -46,33 +46,50 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.settings.set_strv("image-path", [self.objects.wallpaper_list.get_value(itr, 0)])
 	
+	def add_wallpaper_to_list(self, path):
+		"""
+		Appends the given wallpaper to the list.
+		"""
+
+		if imghdr.what(path):
+			try:
+				self.objects.wallpaper_list.append(
+					(
+						path,
+						GdkPixbuf.Pixbuf.new_from_file_at_scale(
+							path,
+							150,
+							200,
+							True
+						)
+					)
+				)
+			except:
+				pass		
+	
 	@quickstart.threads.thread
 	def populate_wallpapers(self):
 		"""
 		Populates the wallpaper_list.
 		"""
 		
+		excluded = self.settings.get_strv("background-exclude")
+		include = self.settings.get_strv("background-include")
+		
 		for directory in self.settings.get_strv("background-search-paths"):
 			for root, dirs, files in os.walk(directory):
 				for wall in files:
 					path = os.path.join(root, wall)
-					print(path)
-					if imghdr.what(path):
-						try:
-							self.objects.wallpaper_list.append(
-								(
-									path,
-									GdkPixbuf.Pixbuf.new_from_file_at_scale(
-										path,
-										150,
-										200,
-										True
-									)
-								)
-							)
-						except:
-							pass
+					if not os.path.exists(path) or path in excluded: continue
+										
+					self.add_wallpaper_to_list(path)
 		
+		# Add to the Included wallpapers
+		for wallpaper in include:
+			if not os.path.exists(path):
+				continue
+			
+			self.add_wallpaper_to_list(path)
 		
 		self.objects.wallpapers.show_all()
 	
