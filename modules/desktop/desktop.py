@@ -23,7 +23,7 @@ import os
 import quickstart
 import imghdr
 
-from gi.repository import GdkPixbuf, GObject, Gdk
+from gi.repository import GdkPixbuf, GObject, Gtk, Gdk
 
 from veracc.utils import Settings
 
@@ -35,6 +35,9 @@ class Scene(quickstart.scenes.BaseScene):
 	
 	events = {
 		"item-activated": ("wallpapers",),
+		"response": ("add_background_window",),
+		"update_preview" : ("add_background_window",),
+		"toggled": ("select_entire_directories",),
 		"clicked": (
 			"add_background",
 			"remove_background"
@@ -74,6 +77,100 @@ class Scene(quickstart.scenes.BaseScene):
 			# The wallpaper is not in our list, so we need to add it now...
 			self.add_wallpaper_to_list(path)
 			return self.set_selection(path) # Restart
+	
+	def on_select_entire_directories_toggled(self, checkbutton):
+		"""
+		Fired when the user presses the "Select entire directories"
+		CheckButton in the FileChooser.
+		"""
+		
+		self.objects.add_background_window.set_action(
+			Gtk.FileChooserAction.OPEN if not checkbutton.get_active() else Gtk.FileChooserAction.SELECT_FOLDER
+		)
+	
+	def on_add_background_window_update_preview(self, window):
+		"""
+		Fired when the preview of the window should be updated.
+		"""
+		
+		filename = window.get_preview_filename()
+		if not os.path.isfile(filename):
+			window.set_preview_widget_active(False)
+			return
+		else:
+			window.set_preview_widget_active(True)
+		
+		try:
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+				window.get_preview_filename(),
+				150,
+				200,
+				True
+			)
+			self.objects.preview.set_from_pixbuf(pixbuf)
+		except:
+			window.set_preview_widget_active(False)
+	
+	def on_add_background_window_response(self, window, response_id):
+		"""
+		Fired when the user presses an action button in the FileChooser
+		shown when adding a new wallpaper/directory.
+		"""
+		
+		if response_id == Gtk.ResponseType.ACCEPT:
+			# Add background
+			_queue_repopulation = False
+			for wall in window.get_filenames():
+				if window.get_action() == Gtk.FileChooserAction.OPEN:
+					# Single files, no directories, so append to "include"
+					
+					if wall in self.wallpapers:
+						# Already there!
+						continue
+					
+					include = self.settings.get_strv("background-include")
+					exclude = self.settings.get_strv("background-exclude")
+					
+					if wall in exclude:
+						# Already excluded, so we can simply remove it
+						# from the list
+						exclude.remove(wall)
+					else:
+						# Not excluded, append to the include list
+						include.append(wall)
+					
+					self.add_wallpaper_to_list(wall)
+
+					self.settings.set_strv("background-include", include)
+					self.settings.set_strv("background-exclude", exclude)
+				else:
+					# Entire directories, append them to the search path
+					
+					background_search_paths = self.settings.get_strv("background-search-paths")
+					
+					if wall in background_search_paths:
+						# Already there!
+						continue
+					
+					background_search_paths.append(wall)
+					
+					self.settings.set_strv("background-search-paths", background_search_paths)
+					
+					# Queue
+					_queue_repopulation = True
+			
+			if _queue_repopulation:
+				# Repopulate
+				self.populate_wallpapers()
+		
+		window.hide()
+	
+	def on_add_background_clicked(self, button):
+		"""
+		Fired when the add background button has been clicked.
+		"""
+		
+		self.objects.add_background_window.run()
 
 	def on_remove_background_clicked(self, button):
 		"""
@@ -109,6 +206,7 @@ class Scene(quickstart.scenes.BaseScene):
 			self.objects.wallpapers.emit("item_activated", path)
 		
 		self.objects.wallpaper_list.remove(itr)
+		del self.wallpapers[wall]
 	
 	def on_wallpapers_item_activated(self, widget, path):
 		"""
@@ -195,6 +293,18 @@ class Scene(quickstart.scenes.BaseScene):
 			lambda x: self.new_rgba_from_string(x),
 			lambda x: x.to_string()
 		)
+		
+		# Prepare the "Add background" dialog...
+		self.objects.add_background_window.add_buttons(
+			"Cancel",
+			Gtk.ResponseType.CANCEL,
+			"Open",
+			Gtk.ResponseType.ACCEPT
+		)
+		self.objects.all_files.set_name("All Files")
+		self.objects.image_filter.set_name("Images")
+		self.objects.add_background_window.add_filter(self.objects.image_filter)
+		self.objects.add_background_window.add_filter(self.objects.all_files)
 		
 		self.objects.main.show_all()
 	
