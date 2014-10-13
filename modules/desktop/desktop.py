@@ -33,7 +33,57 @@ class Scene(quickstart.scenes.BaseScene):
 	
 	events = {
 		"item-activated": ("wallpapers",),
+		"clicked": (
+			"add_background",
+			"remove_background"
+		)
 	}
+	
+	_wallpaper_on_start = None
+	
+	def get_selection(self):
+		"""
+		Returns the TreeIter of the current selection.
+		"""
+		
+		item = self.objects.wallpapers.get_selected_items()[0]
+		
+		return self.objects.wallpaper_list.get_iter(item)
+	
+	def on_remove_background_clicked(self, button):
+		"""
+		Fired when the remove background button has been clicked.
+		"""
+		
+		itr = self.get_selection()
+		wall = self.objects.wallpaper_list.get_value(itr, 0)
+		
+		# If wallpaper is in background-include, remove from there.
+		# Otherwise, add an exclusion rule
+		include = self.settings.get_strv("background-include")
+		if wall in include:
+			include.remove(wall)
+			self.settings.set_strv("background-include", include)
+		else:
+			exclude = self.settings.get_strv("background-exclude")
+			exclude.append(wall)
+			self.settings.set_strv("background-exclude", exclude)
+		
+		new = self.objects.wallpaper_list.iter_next(itr)
+		if not new:
+			# Unable to set next (probably this was the last iter), so
+			# use the previous
+			new =  self.objects.wallpaper_list.iter_previous(itr)
+			
+			# If new == None (again), probably this was the only one wallpaper.
+			# We can't do anything, so we'll leave an inconsistent state
+		
+		if new:
+			path = self.objects.wallpaper_list.get_path(new)
+			self.objects.wallpapers.select_path(path)
+			self.objects.wallpapers.emit("item_activated", path)
+		
+		self.objects.wallpaper_list.remove(itr)
 	
 	def on_wallpapers_item_activated(self, widget, path):
 		"""
@@ -53,7 +103,7 @@ class Scene(quickstart.scenes.BaseScene):
 
 		if imghdr.what(path):
 			try:
-				self.objects.wallpaper_list.append(
+				itr = self.objects.wallpaper_list.append(
 					(
 						path,
 						GdkPixbuf.Pixbuf.new_from_file_at_scale(
@@ -64,6 +114,10 @@ class Scene(quickstart.scenes.BaseScene):
 						)
 					)
 				)
+				
+				if path == self._wallpaper_on_start[0]:
+					# Current wallpaper, ensure we select it
+					self.objects.wallpapers.select_path(self.objects.wallpaper_list.get_path(itr))
 			except:
 				pass		
 	
@@ -72,6 +126,9 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Populates the wallpaper_list.
 		"""
+		
+		# Clear things up
+		self.objects.wallpaper_list.clear()
 		
 		excluded = self.settings.get_strv("background-exclude")
 		include = self.settings.get_strv("background-include")
@@ -91,7 +148,7 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			self.add_wallpaper_to_list(path)
 		
-		self.objects.wallpapers.show_all()
+		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
@@ -108,5 +165,10 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Show the scene!
 		"""
+		
+		self._wallpaper_on_start = self.settings.get_strv("image-path")
+		
+		# Ensure the user doesn't change wallpaper while we are builing the list
+		GObject.idle_add(self.objects.wallpapers.set_sensitive, False)
 		
 		self.populate_wallpapers()
