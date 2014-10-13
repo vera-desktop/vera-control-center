@@ -39,8 +39,8 @@ class Scene(quickstart.scenes.BaseScene):
 		)
 	}
 	
-	_wallpaper_on_start = None
-	
+	wallpapers = {}
+		
 	def get_selection(self):
 		"""
 		Returns the TreeIter of the current selection.
@@ -49,7 +49,20 @@ class Scene(quickstart.scenes.BaseScene):
 		item = self.objects.wallpapers.get_selected_items()[0]
 		
 		return self.objects.wallpaper_list.get_iter(item)
-	
+
+	def set_selection(self, path):
+		"""
+		Sets the selected wallpaper given its path (not TreePath, the path
+		of the wallpaper).
+		"""
+		
+		if path in self.wallpapers:
+			self.objects.wallpapers.select_path(self.objects.wallpaper_list.get_path(self.wallpapers[path]))
+		else:
+			# The wallpaper is not in our list, so we need to add it now...
+			self.add_wallpaper_to_list(path)
+			return self.set_selection(path) # Restart
+
 	def on_remove_background_clicked(self, button):
 		"""
 		Fired when the remove background button has been clicked.
@@ -115,9 +128,7 @@ class Scene(quickstart.scenes.BaseScene):
 					)
 				)
 				
-				if path == self._wallpaper_on_start[0]:
-					# Current wallpaper, ensure we select it
-					self.objects.wallpapers.select_path(self.objects.wallpaper_list.get_path(itr))
+				self.wallpapers[path] = itr
 			except:
 				pass		
 	
@@ -128,6 +139,7 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		# Clear things up
+		self.wallpapers = {}
 		self.objects.wallpaper_list.clear()
 		
 		excluded = self.settings.get_strv("background-exclude")
@@ -148,6 +160,7 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			self.add_wallpaper_to_list(path)
 		
+		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
 	def prepare_scene(self):
@@ -165,9 +178,7 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Show the scene!
 		"""
-		
-		self._wallpaper_on_start = self.settings.get_strv("image-path")
-		
+				
 		# Ensure the user doesn't change wallpaper while we are builing the list
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, False)
 		
