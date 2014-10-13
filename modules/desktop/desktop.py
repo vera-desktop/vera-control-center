@@ -23,7 +23,7 @@ import os
 import quickstart
 import imghdr
 
-from gi.repository import GdkPixbuf, GObject
+from gi.repository import GdkPixbuf, GObject, Gdk
 
 from veracc.utils import Settings
 
@@ -42,7 +42,17 @@ class Scene(quickstart.scenes.BaseScene):
 	}
 	
 	wallpapers = {}
+
+	def new_rgba_from_string(self, string):
+		"""
+		Given a string, return a parsed Gdk.RGBA.
+		"""
+
+		rgba = Gdk.RGBA()
+		rgba.parse(string)
 		
+		return rgba
+
 	def get_selection(self):
 		"""
 		Returns the TreeIter of the current selection.
@@ -173,7 +183,18 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.wallpapers.set_pixbuf_column(1)
 		
 		self.settings = Settings("org.semplicelinux.vera.desktop")
+		
+		# Current wallpaper
 		self.settings.connect("changed::image-path", lambda x,y: self.set_selection(self.settings.get_strv("image-path")[0]))
+		
+		# Background color
+		self.settings.bind_with_convert(
+			"background-color",
+			self.objects.background_color,
+			"rgba",
+			lambda x: self.new_rgba_from_string(x),
+			lambda x: x.to_string()
+		)
 		
 		self.objects.main.show_all()
 	
