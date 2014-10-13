@@ -41,7 +41,7 @@ class Scene(quickstart.scenes.BaseScene):
 		"clicked": (
 			"add_background",
 			"remove_background"
-		)
+		),
 	}
 	
 	wallpapers = {}
@@ -292,6 +292,16 @@ class Scene(quickstart.scenes.BaseScene):
 			"rgba",
 			lambda x: self.new_rgba_from_string(x),
 			lambda x: x.to_string()
+		)
+		
+		# Background mode
+		renderer = Gtk.CellRendererText()
+		self.objects.background_mode.pack_start(renderer, True)
+		self.objects.background_mode.add_attribute(renderer, "text", 0)
+		self.settings.bind(
+			"background-mode",
+			self.objects.background_mode,
+			"active_id"
 		)
 		
 		# Prepare the "Add background" dialog...
