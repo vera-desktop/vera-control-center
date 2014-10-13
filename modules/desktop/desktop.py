@@ -27,6 +27,8 @@ from gi.repository import GdkPixbuf, GObject
 
 from veracc.utils import Settings
 
+# FIXME: Multimonitor support
+
 @quickstart.builder.from_file("./modules/desktop/desktop.glade")
 class Scene(quickstart.scenes.BaseScene):
 	""" Desktop preferences. """
@@ -171,6 +173,7 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.wallpapers.set_pixbuf_column(1)
 		
 		self.settings = Settings("org.semplicelinux.vera.desktop")
+		self.settings.connect("changed::image-path", lambda x,y: self.set_selection(self.settings.get_strv("image-path")[0]))
 		
 		self.objects.main.show_all()
 	
