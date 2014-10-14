@@ -24,6 +24,7 @@ from gi.repository import Gio
 import subprocess
 
 import re
+import os
 
 import quickstart
 import platform
@@ -98,7 +99,39 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.change_hostname.set_image(self.objects.edit_hostname_image)
 		
 		self.on_edit_mode = False
-			
+	
+	@quickstart.threads.on_idle
+	def update_codename(self):
+		"""
+		Updates the shown codename.
+		"""
+		
+		if not os.path.exists("/etc/os-release"):
+			return
+		
+		with open("/etc/os-release", "r") as f:
+			for line in f:
+				line = line.strip().split("=")
+				if line[0] == "NAME" and line[1].replace("\"","") != "Semplice":
+					# As we will read the PRETTY_NAME, we can't expect
+					# every distributor to write the full codename as we
+					# do, so it's better not obtain it at all
+					break
+				elif line[0] == "PRETTY_NAME":
+					try:
+						# The following is pretty ugly but does the job
+						# well.
+						# We are splitting the PRETTY_NAME and then join
+						# only from the third item in the newly created
+						# list (and so ideally we have the full codename)
+						name = " ".join(line[1].replace("\"","").split(" ")[2:]).replace("(","").replace(")","")
+						self.objects.codename.set_text(name)
+					except:
+						# No worries
+						pass
+					finally:
+						break
+						
 	
 	@quickstart.threads.on_idle
 	def update_mem_info(self):
@@ -173,6 +206,7 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		distro, version, codename = platform.linux_distribution()
 		self.objects.distro.set_text("%s %s" % (distro, version))
+		self.update_codename()
 		
 		self.objects.hostname.set_text(self.get_hostname())
 		self.update_mem_info()

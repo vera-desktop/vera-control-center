@@ -42,11 +42,11 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">10</property>
                     <child>
                       <object class="GtkImage" id="image1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="margin_bottom">10</property>
                         <property name="pixbuf">./semplicelogo.png</property>
                       </object>
                       <packing>
@@ -59,7 +59,8 @@
                       <object class="GtkLabel" id="distro">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Semplice 7</property>
+                        <property name="margin_bottom">2</property>
+                        <property name="label" translatable="yes">Semplice</property>
                         <attributes>
                           <attribute name="font-desc" value="&lt;Inserire il valore&gt; 18"/>
                           <attribute name="weight" value="light"/>
@@ -69,6 +70,21 @@
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="codename">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <attributes>
+                          <attribute name="font-desc" value="&lt;Inserire il valore&gt; 10"/>
+                          <attribute name="weight" value="light"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
