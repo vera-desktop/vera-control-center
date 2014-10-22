@@ -22,6 +22,7 @@
 import os
 import quickstart
 import imghdr
+import configparser
 
 from gi.repository import GdkPixbuf, GObject, Gtk, Gdk
 
@@ -35,16 +36,19 @@ class Scene(quickstart.scenes.BaseScene):
 	
 	events = {
 		"item-activated": ("wallpapers",),
-		"response": ("add_background_window",),
+		"response": ("add_background_window", "about_background_dialog"),
 		"update_preview" : ("add_background_window",),
 		"toggled": ("select_entire_directories",),
 		"clicked": (
 			"add_background",
-			"remove_background"
+			"remove_background",
+			"about_button"
 		),
 	}
 	
 	wallpapers = {}
+	
+	infos = configparser.ConfigParser()
 
 	def new_rgba_from_string(self, string):
 		"""
@@ -73,6 +77,12 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		if path in self.wallpapers:
 			self.objects.wallpapers.select_path(self.objects.wallpaper_list.get_path(self.wallpapers[path]))
+
+			# Show/Hide the About button
+			if os.path.basename(self.objects.wallpaper_list.get_value(self.get_selection(), 0)) in self.infos:
+				GObject.idle_add(self.objects.about_button.show)
+			else:
+				GObject.idle_add(self.objects.about_button.hide)
 		else:
 			# The wallpaper is not in our list, so we need to add it now...
 			self.add_wallpaper_to_list(path)
@@ -165,6 +175,51 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		window.hide()
 	
+	def on_about_background_dialog_response(self, window, response_id):
+		"""
+		Fired when the user closes the about background dialog.
+		"""
+		
+		window.hide()
+	
+	def on_about_button_clicked(self, button):
+		"""
+		Fired when the about button has been clicked.
+		"""
+		
+		# Populate
+		itr = self.get_selection()
+		wall = os.path.basename(self.objects.wallpaper_list.get_value(itr, 0))
+		
+		self.objects.name.set_label(
+			self.infos[wall]["Name"] if "Name" in self.infos[wall] else ""
+		)
+		self.objects.description.set_label(
+			self.infos[wall]["Description"] if "Description" in self.infos[wall] else ""
+		)
+		self.objects.author.set_label(
+			self.infos[wall]["Author"] if "Author" in self.infos[wall] else ""
+		)
+		self.objects.license.set_label(
+			self.infos[wall]["License"] if "License" in self.infos[wall] else ""
+		)
+		
+		if "LicenseLink" in self.infos[wall]:
+			self.objects.license.set_sensitive(True)
+			self.objects.license.set_uri(self.infos[wall]["LicenseLink"])
+		else:
+			self.objects.license.set_sensitive(False)
+			self.objects.license.set_uri("")
+		
+		if "Link" in self.infos[wall]:
+			self.objects.name.set_sensitive(True)
+			self.objects.name.set_uri(self.infos[wall]["Link"])
+		else:
+			self.objects.name.set_sensitive(False)
+			self.objects.name.set_uri("")
+		
+		self.objects.about_background_dialog.run()
+	
 	def on_add_background_clicked(self, button):
 		"""
 		Fired when the add background button has been clicked.
@@ -212,12 +267,16 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Fired when the user changes the wallpaper.
 		"""
-		
-		print(widget, path)
-		
+				
 		itr = self.objects.wallpaper_list.get_iter(path)
+		wall = self.objects.wallpaper_list.get_value(itr, 0)
+		# Show/Hide the About button
+		if os.path.basename(wall) in self.infos:
+			GObject.idle_add(self.objects.about_button.show)
+		else:
+			GObject.idle_add(self.objects.about_button.hide)
 		
-		self.settings.set_strv("image-path", [self.objects.wallpaper_list.get_value(itr, 0)])
+		self.settings.set_strv("image-path", [wall])
 	
 	def add_wallpaper_to_list(self, path):
 		"""
@@ -242,6 +301,17 @@ class Scene(quickstart.scenes.BaseScene):
 			except:
 				pass		
 	
+	def load_wallpaperpack(self, path):
+		"""
+		Loads the given wallpaperpack.
+		"""
+		
+		try:
+			self.infos.read(path)
+		except:
+			# FIXME: Implement true logging
+			print("Unable to load wallpaperpack %s" % path)
+	
 	@quickstart.threads.thread
 	def populate_wallpapers(self):
 		"""
@@ -260,7 +330,12 @@ class Scene(quickstart.scenes.BaseScene):
 				for wall in files:
 					path = os.path.join(root, wall)
 					if not os.path.exists(path) or path in excluded: continue
-										
+					
+					# .wallpaperpack file?
+					if wall.endswith(".wallpaperpack"):
+						# Load it
+						self.load_wallpaperpack(path)
+					
 					self.add_wallpaper_to_list(path)
 		
 		# Add to the Included wallpapers
@@ -315,6 +390,12 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.image_filter.set_name("Images")
 		self.objects.add_background_window.add_filter(self.objects.image_filter)
 		self.objects.add_background_window.add_filter(self.objects.all_files)
+		
+		# Prepare the "About background" dialog...
+		self.objects.about_background_dialog.add_buttons(
+			"Close",
+			Gtk.ResponseType.CLOSE
+		)
 		
 		self.objects.main.show_all()
 	
