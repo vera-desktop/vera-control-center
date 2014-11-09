@@ -1,3 +1,25 @@
+vera-control-center (0.27-1) devel; urgency=medium
+
+  * Added shortcuts module.
+  * desktop: added preliminary wallpaper change support.
+  * desktop: added included and excluded wallpapers support.
+  * desktop: made the bottom bar a toolbar,added Add/Remove backgrounds
+    button, made the Remove backgrounds button work.
+  * desktop: if the current wallpaper is not in the list (outside search paths/include),
+    include it anyway.
+  * desktop: react on the image-path setting key changed signal
+  * desktop: bind the color chooser with the background-color key in Settings.
+  * desktop: added 'Add background' FileChooserDialog.
+  * desktop: bind background-mode setting to UI
+  * about: get and show the distribution full codename.
+  * desktop: added wallpaperpacks support.
+  * vera-control-center.py: change window details when loading modules
+  * desktop: added support for background randomization.
+  * theme: gtktheme: use SYNC_CREATE flag when binding properties
+  * theme: paranoid: shadow color bugfix
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 09 Nov 2014 13:48:17 +0100
+
 vera-control-center (0.26-2) devel; urgency=medium
 
   * debian/control: depend on python3-keeptalking2.
