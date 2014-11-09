@@ -15,7 +15,10 @@ export DH_OPTIONS
 LOCALES_DIR = $(CURDIR)/debian/tmp/usr/share/locale
 
 %:
-	dh $@ --with python3 --buildsystem=pybuild --no-guessing-deps
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_python3:
+	dh_python3 --no-guessing-deps
 
 override_dh_auto_install:
 	python3 setup.py install --root=debian/vera-control-center --install-layout=deb --install-scripts=/usr/share/vera-control-center --install-lib=/usr/share/vera-control-center
