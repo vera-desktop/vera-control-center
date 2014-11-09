@@ -25,7 +25,7 @@ from veracc.widgets.CommonFrame import CommonFrame
 
 from veracc.utils import Settings
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 import quickstart
 
 class GtkThemeFrame(CommonFrame):
@@ -147,7 +147,8 @@ class GtkThemeFrame(CommonFrame):
 		self.vera_color_enabled.bind_property(
 			"active",
 			self.vera_color_selection,
-			"sensitive"
+			"sensitive",
+			GObject.BindingFlags.SYNC_CREATE
 		)
 		self.vera_color_from_wallpaper = Gtk.RadioButton.new_with_label_from_widget(None, "Pick color from the current wallpaper")
 		self.vera_color_manual_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -164,7 +165,8 @@ class GtkThemeFrame(CommonFrame):
 		self.vera_color_manual.bind_property(
 			"active",
 			self.vera_color_manual_color,
-			"sensitive"
+			"sensitive",
+			GObject.BindingFlags.SYNC_CREATE
 		)
 		self.desktopsettings.bind(
 			"vera-color-lock",
