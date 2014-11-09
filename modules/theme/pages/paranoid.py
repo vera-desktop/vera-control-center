@@ -80,14 +80,17 @@ class ShadowFrame(CommonFrame):
 		
 		if self.updating_shadows: return
 		
+		rgba = self.shadow_color_button.get_rgba()
 		value = settings.get_double(color)
 		
 		if color == "shadow-red":
-			self.shadow_color_rgba.red = value
+			rgba.red = value
 		elif color == "shadow-blue":
-			self.shadow_color_rgba.blue = value
+			rgba.blue = value
 		elif color == "shadow-green":
-			self.shadow_color_rgba.green = value
+			rgba.green = value
+		
+		self.shadow_color_button.set_rgba(rgba)
 	
 	def store_shadow_color(self, button):
 		"""
@@ -96,9 +99,11 @@ class ShadowFrame(CommonFrame):
 		
 		self.updating_shadows = True
 		
-		self.comptonsettings.set_double("shadow-red", self.shadow_color_rgba.red)
-		self.comptonsettings.set_double("shadow-blue", self.shadow_color_rgba.blue)
-		self.comptonsettings.set_double("shadow-green", self.shadow_color_rgba.green)
+		rgba = button.get_rgba()
+		
+		self.comptonsettings.set_double("shadow-red", rgba.red)
+		self.comptonsettings.set_double("shadow-blue", rgba.blue)
+		self.comptonsettings.set_double("shadow-green", rgba.green)
 		
 		self.updating_shadows = False
 	
@@ -138,11 +143,10 @@ class ShadowFrame(CommonFrame):
 		)
 		
 		# Shadow color
-		self.shadow_color_rgba = Gdk.RGBA()
 		self.shadow_color_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 		self.shadow_color_label = Gtk.Label("Shadow color")
 		self.shadow_color_label.set_alignment(0, 0.50)
-		self.shadow_color_button = Gtk.ColorButton.new_with_rgba(self.shadow_color_rgba)
+		self.shadow_color_button = Gtk.ColorButton()
 		self.shadow_color_container.pack_start(self.shadow_color_label, True, True, 0)
 		self.shadow_color_container.pack_start(self.shadow_color_button, False, False, 0)
 		
@@ -151,6 +155,10 @@ class ShadowFrame(CommonFrame):
 		self.comptonsettings.connect("changed::shadow-red", self.update_shadow_color)
 		self.comptonsettings.connect("changed::shadow-blue", self.update_shadow_color)
 		self.comptonsettings.connect("changed::shadow-green", self.update_shadow_color)
+		
+		# Update shadow color manually
+		for color in ("shadow-red", "shadow-blue", "shadow-green"):
+			self.update_shadow_color(comptonsettings, color)
 		
 		self.main_container.pack_start(self.window_shadows, True, True, 2)
 		self.main_container.pack_start(self.panel_shadows, True, True, 2)

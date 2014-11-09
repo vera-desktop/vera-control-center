@@ -392,6 +392,11 @@ class Scene(quickstart.scenes.BaseScene):
 		# Set mask on the main eventbox
 		self.objects.main.set_events(Gdk.EventMask.BUTTON_PRESS_MASK)
 		
+		# Styling
+		self.objects.time_button.get_style_context().add_class("no-borders")
+		self.objects.location_button.get_style_context().add_class("no-borders")
+		self.objects.calendar_button.get_style_context().add_class("no-borders")
+		
 	
 	def on_scene_called(self):
 		"""

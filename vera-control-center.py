@@ -55,7 +55,7 @@ SECTIONS = ("Personal", "System")
 # for now, this chdir call will do the job.
 os.chdir(VERACC_DIR)
 
-#@quickstart.style.custom_css("./veracc.css")
+@quickstart.style.custom_css("./veracc.css")
 @quickstart.builder.from_file("./controlcenterui.glade")
 class ControlCenter:
 	""" Main Interface """
@@ -78,11 +78,31 @@ class ControlCenter:
 	# This is the VBox where all SectionFrames are packed...
 	section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 	
+	def reset_window_details(self):
+		"""
+		Resets the window details.
+		"""
+		
+		self.objects.main.set_title("Settings")
+		self.objects.main.set_icon_name("preferences-system")
+	
+	def change_window_details(self, liststore, giter):
+		"""
+		Changes the details of the window using the
+		informations of the given iter.
+		"""
+		
+		self.objects.main.set_title(liststore.get_value(giter, 1))
+		self.objects.main.set_icon_name(liststore.get_value(giter, 6))
+	
 	def on_back_button_clicked(self, button):
 		""" Called when the back button has been clicked. """
 		
 		if self.scene_manager.can_close():
 			self.scene_manager.load("home")
+			
+			# Reset details
+			self.reset_window_details()
 			
 			# Hide the back button
 			self.objects.back_button.hide()
@@ -123,6 +143,9 @@ class ControlCenter:
 			# Load.
 			# path[3] is the module name.
 			self.scene_manager.load(store.get_value(giter, 3))
+
+			# Change details
+			self.change_window_details(store, giter)
 			
 	def detect_modules(self):
 		"""

@@ -51,7 +51,7 @@ data_files += [
 
 setup(
 	name='vera-control-center',
-	version='0.26',
+	version='0.27',
 	description='Simple, fast and modular control center for the Vera Desktop Environment',
 	author='Eugenio Paolantonio',
 	author_email='me@medesimo.eu',
