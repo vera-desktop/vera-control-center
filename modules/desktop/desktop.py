@@ -379,6 +379,29 @@ class Scene(quickstart.scenes.BaseScene):
 			"active_id"
 		)
 		
+		# Background random enabled?
+		self.settings.bind(
+			"background-random-enabled",
+			self.objects.background_random_enabled,
+			"active"
+		)
+		
+		# Background random timeout
+		self.settings.bind(
+			"background-random-timeout",
+			self.objects.background_random_timeout,
+			"value"
+		)
+		
+		# Ensure the random timeout spinbutton is insensitive if
+		# the checkbutton is not active
+		self.objects.background_random_enabled.bind_property(
+			"active",
+			self.objects.background_random_timeout_spin,
+			"sensitive",
+			GObject.BindingFlags.SYNC_CREATE
+		)
+		
 		# Prepare the "Add background" dialog...
 		self.objects.add_background_window.add_buttons(
 			"Cancel",

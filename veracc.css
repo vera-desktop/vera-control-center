@@ -3,8 +3,8 @@
 	border: transparent;
 }
 
-.button.no-borders:active {
-	color: @button_active_text;
+.button.no-borders:hover {
+	color: @vera-color;
 }
 
 /*
