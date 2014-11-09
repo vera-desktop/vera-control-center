@@ -1,3 +1,9 @@
+vera-control-center (0.27-3) devel; urgency=medium
+
+  * debian/rules: actually do correctly what has been done in the previous commit.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 09 Nov 2014 15:16:01 +0100
+
 vera-control-center (0.27-2) devel; urgency=medium
 
   * debian/rules: do not guess dependencies from the egg file
