@@ -57,11 +57,16 @@ class DesktopEffectsFrame(CommonFrame):
 		
 		# Window effects
 		self.compton_enabled = Gtk.CheckButton("Enable window effects")
-		self.comptonsettings.bind(
-			"enable-visual-effects",
-			self.compton_enabled,
-			"active"
-		)
+		if os.path.exists("/usr/bin/compton"):
+			# Bind property only if we are sure compton is present
+			self.comptonsettings.bind(
+				"enable-visual-effects",
+				self.compton_enabled,
+				"active"
+			)
+		else:
+			# Remove sensitiveness from the checkbutton
+			self.compton_enabled.set_sensitive(False)
 		
 		self.main_container.pack_start(self.animations, True, True, 2)
 		self.main_container.pack_start(self.compton_enabled, True, True, 2)
