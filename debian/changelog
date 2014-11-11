@@ -1,3 +1,12 @@
+vera-control-center (0.28-1) devel; urgency=medium
+
+  * theme/paranoid: disable the "Enable window effects" checkbutton
+    if compton is not installed
+  * setup.py: ship the shortcuts module.
+  * shortcuts: hide for now the 'Desktop' frame.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Tue, 11 Nov 2014 10:34:30 +0100
+
 vera-control-center (0.27-3) devel; urgency=medium
 
   * debian/rules: actually do correctly what has been done in the previous commit.
