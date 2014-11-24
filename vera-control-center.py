@@ -99,7 +99,7 @@ class ControlCenter:
 	def on_back_button_clicked(self, button):
 		""" Called when the back button has been clicked. """
 		
-		if self.scene_manager.can_close():
+		if self.scene_manager.current_scene != "home" and self.scene_manager.can_close():
 			self.scene_manager.load("home")
 			
 			# Reset details
@@ -112,6 +112,8 @@ class ControlCenter:
 		"""
 		Fired when the searchbox has been changed.
 		"""
+		
+		self.objects.back_button.emit("clicked")
 		
 		for section in self.section_box.get_children():
 			section.search(box.get_text().lower())
