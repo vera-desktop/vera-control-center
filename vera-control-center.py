@@ -222,7 +222,10 @@ class ControlCenter:
 		# Finally, show the window
 		self.objects.main.show_all()
 
-		# ...and hide the back button
+		# ...hide the back button
 		self.objects.back_button.hide()
+		
+		# ...and focus the searchbox!
+		self.objects.searchbox.grab_focus()
 
 quickstart.common.quickstart(ControlCenter)
