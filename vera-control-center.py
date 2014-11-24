@@ -44,7 +44,7 @@ else:
 MODULES_DIR = os.path.join(VERACC_DIR, "modules/")
 MODULES_PREFIX = "modules"
 
-SECTIONS = ("Personal", "System")
+SECTIONS = ("Personal", "System", "Network", "Hardware")
 
 # While the following is not ideal, is currently needed to make sure
 # we are actually on the main vera-control-center directory.
@@ -167,7 +167,7 @@ class ControlCenter:
 			if module in ("__pycache__", "__init__.py"):
 				continue
 			
-			print("Detected %s" % module)
+			#print("Detected %s" % module)
 			
 			mod = veracc.module.VeraCCModule(module, os.path.join(MODULES_DIR, module))
 			
@@ -180,7 +180,14 @@ class ControlCenter:
 				self.scenes[module] = "%s.%s.%s" % (MODULES_PREFIX, module, module)
 		
 		# Create SectionFrames and populate them
-		for section, lst in self.modules.items():
+		custom_sections = [ x for x in self.modules.keys() if x not in SECTIONS ]	
+		for section in list(SECTIONS) + custom_sections:
+			
+			if not section in self.modules:
+				continue
+			
+			lst = self.modules[section]
+			
 			sf = SectionFrame(section)
 			sf.populate(lst)
 			
