@@ -35,6 +35,8 @@ class SectionFrame(CommonFrame):
 	the revelant VeraCCmodules.
 	"""
 	
+	FILTER = ""
+	
 	def obtain_icon(self, icon):
 		"""
 		Returns a Pixbuf with the loaded icon.
@@ -61,15 +63,48 @@ class SectionFrame(CommonFrame):
 			
 			iter_ = self.liststore.iter_next(iter_)
 	
+	def search(self, keyword):
+		"""
+		Sets self.FILTER to keyword and then triggers a refilter.
+		"""
+		
+		self.FILTER = keyword
+		self.filter.refilter()
+	
+	def on_refilter(self, model, iter_, data):
+		"""
+		Returns True if the iter should be visible given the current
+		keyword, False if not.
+		"""
+		
+		name = self.liststore[iter_][1].lower()
+		keywords = self.liststore[iter_][7]
+		
+		if not self.FILTER or name.startswith(self.FILTER):
+			return True
+		else:
+			# Our last try is with the keywords
+			for key in keywords:
+				if key.startswith(self.FILTER):
+					return True
+			
+			return False
+	
 	def __init__(self, name):
 		"""
 		Initializes the object.
 		"""
 		
 		super().__init__(name)
-		
+				
 		self.label = Gtk.Label()
-		self.liststore = Gtk.ListStore(Pixbuf, str, str, str, str, bool, str)
+		self.liststore = Gtk.ListStore(Pixbuf, str, str, str, str, bool, str, object)
+		
+		# Whaaaat? filter_new() to instantiate the object?
+		# This is documented *NOWHERE*!!
+		self.filter = Gtk.TreeModelFilter.filter_new(self.liststore, None)
+		self.filter.set_visible_func(self.on_refilter)
+		
 		self.iconview = Gtk.IconView()
 		
 		"""
@@ -87,7 +122,7 @@ class SectionFrame(CommonFrame):
 		self.iconview.set_item_width(70)
 		self.iconview.set_spacing(5)
 		self.iconview.set_margin(2)
-		self.iconview.set_model(self.liststore)
+		self.iconview.set_model(self.filter)
 		self.iconview.set_pixbuf_column(0)
 		self.iconview.set_text_column(1)
 		self.iconview.set_tooltip_column(2)
@@ -115,6 +150,7 @@ class SectionFrame(CommonFrame):
 					module.module_name,
 					module.module_path,
 					module.module_is_external,
-					module.launcher_icon
+					module.launcher_icon,
+					module.launcher_keywords
 				)
 			)

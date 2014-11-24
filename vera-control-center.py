@@ -67,6 +67,7 @@ class ControlCenter:
 	events = {
 		"destroy": ("main",),
 		"clicked": ("back_button",),
+		"search-changed" : ("searchbox",),
 	}
 	
 	# Modules (ordered)dict
@@ -106,7 +107,15 @@ class ControlCenter:
 			
 			# Hide the back button
 			self.objects.back_button.hide()
+	
+	def on_searchbox_search_changed(self, box):
+		"""
+		Fired when the searchbox has been changed.
+		"""
 		
+		for section in self.section_box.get_children():
+			section.search(box.get_text().lower())
+	
 	def on_main_destroy(self, window):
 		""" Called when destroying window. """
 		

@@ -60,6 +60,9 @@ class VeraCCModule:
 		# Section
 		self.launcher_section = self.module_launcher.get("X-VeraCC-Section")
 		
+		# Keywords
+		self.launcher_keywords = [x.lower() for x in self.module_launcher.getKeywords()]
+		
 		# External?
 		_exec = self.module_launcher.getExec()
 		if _exec:
