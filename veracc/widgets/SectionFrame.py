@@ -99,6 +99,7 @@ class SectionFrame(CommonFrame):
 				
 		self.label = Gtk.Label()
 		self.liststore = Gtk.ListStore(Pixbuf, str, str, str, str, bool, str, object)
+		self.liststore.set_sort_column_id(1, Gtk.SortType.ASCENDING)
 		
 		# Whaaaat? filter_new() to instantiate the object?
 		# This is documented *NOWHERE*!!
