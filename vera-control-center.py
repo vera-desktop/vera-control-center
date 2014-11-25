@@ -44,7 +44,7 @@ else:
 MODULES_DIR = os.path.join(VERACC_DIR, "modules/")
 MODULES_PREFIX = "modules"
 
-SECTIONS = ("Personal", "System")
+SECTIONS = ("Personal", "System", "Network", "Hardware")
 
 # While the following is not ideal, is currently needed to make sure
 # we are actually on the main vera-control-center directory.
@@ -67,6 +67,7 @@ class ControlCenter:
 	events = {
 		"destroy": ("main",),
 		"clicked": ("back_button",),
+		"search-changed" : ("searchbox",),
 	}
 	
 	# Modules (ordered)dict
@@ -98,7 +99,7 @@ class ControlCenter:
 	def on_back_button_clicked(self, button):
 		""" Called when the back button has been clicked. """
 		
-		if self.scene_manager.can_close():
+		if self.scene_manager.current_scene != "home" and self.scene_manager.can_close():
 			self.scene_manager.load("home")
 			
 			# Reset details
@@ -106,7 +107,17 @@ class ControlCenter:
 			
 			# Hide the back button
 			self.objects.back_button.hide()
+	
+	def on_searchbox_search_changed(self, box):
+		"""
+		Fired when the searchbox has been changed.
+		"""
 		
+		self.objects.back_button.emit("clicked")
+		
+		for section in self.section_box.get_children():
+			section.search(box.get_text().lower())
+	
 	def on_main_destroy(self, window):
 		""" Called when destroying window. """
 		
@@ -156,7 +167,7 @@ class ControlCenter:
 			if module in ("__pycache__", "__init__.py"):
 				continue
 			
-			print("Detected %s" % module)
+			#print("Detected %s" % module)
 			
 			mod = veracc.module.VeraCCModule(module, os.path.join(MODULES_DIR, module))
 			
@@ -169,7 +180,14 @@ class ControlCenter:
 				self.scenes[module] = "%s.%s.%s" % (MODULES_PREFIX, module, module)
 		
 		# Create SectionFrames and populate them
-		for section, lst in self.modules.items():
+		custom_sections = [ x for x in self.modules.keys() if x not in SECTIONS ]	
+		for section in list(SECTIONS) + custom_sections:
+			
+			if not section in self.modules:
+				continue
+			
+			lst = self.modules[section]
+			
 			sf = SectionFrame(section)
 			sf.populate(lst)
 			
@@ -211,7 +229,10 @@ class ControlCenter:
 		# Finally, show the window
 		self.objects.main.show_all()
 
-		# ...and hide the back button
+		# ...hide the back button
 		self.objects.back_button.hide()
+		
+		# ...and focus the searchbox!
+		self.objects.searchbox.grab_focus()
 
 quickstart.common.quickstart(ControlCenter)
