@@ -1,3 +1,14 @@
+vera-control-center (0.29-1) devel; urgency=medium
+
+  * Implement module search.
+  * Make the SceneManager go back when searching from a loaded module.
+  * Focus the searchbox on launch.
+  * Enforce the section order.
+  * Added panel (tint2) configuration module.
+  * SectionFrame: Sort modules by name.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Tue, 25 Nov 2014 15:53:14 +0100
+
 vera-control-center (0.28-1) devel; urgency=medium
 
   * theme/paranoid: disable the "Enable window effects" checkbutton
