@@ -65,6 +65,7 @@ setup(
 		'modules.timedate',
 		'modules.theme',
 		'modules.theme.pages',
+		'modules.tint2',
 		'modules.power',
 		'modules.networkmanager',
 		'modules.desktop',
