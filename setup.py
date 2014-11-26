@@ -46,12 +46,12 @@ def get_module_files():
 
 data_files = get_module_files()
 data_files += [
-	(data_path, ["controlcenterui.glade"]),	
+	(data_path, ["controlcenterui.glade", "veracc.css"]),	
 ]
 
 setup(
 	name='vera-control-center',
-	version='0.29',
+	version='0.30',
 	description='Simple, fast and modular control center for the Vera Desktop Environment',
 	author='Eugenio Paolantonio',
 	author_email='me@medesimo.eu',
