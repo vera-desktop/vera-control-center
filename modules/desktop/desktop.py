@@ -421,11 +421,6 @@ class Scene(quickstart.scenes.BaseScene):
 		)
 		
 		self.objects.main.show_all()
-	
-	def on_scene_called(self):
-		"""
-		Show the scene!
-		"""
 				
 		# Ensure the user doesn't change wallpaper while we are builing the list
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, False)
