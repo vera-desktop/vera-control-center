@@ -70,6 +70,7 @@ setup(
 		'modules.networkmanager',
 		'modules.desktop',
 		'modules.about',
+		'modules.autostart',
 		'modules.locale',
 		'modules.keyboard',
 		'modules.shortcuts',

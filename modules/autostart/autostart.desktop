@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Autostart
+Name[it]=Avvio automatico
+Comment=Manage the applications to autostart
+Comment[it]=Gestisci le applicazioni da avviare automaticamente
+Icon=preferences-system-session
+Keywords=Autostart;Session
+Keywords[it]=Avvio Automatico;Sessione
+X-VeraCC-Section=Personal
