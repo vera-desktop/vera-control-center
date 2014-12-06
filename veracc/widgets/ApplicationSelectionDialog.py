@@ -118,6 +118,25 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 
 		#GObject.idle_add(self.objects["add_launcher"].show_all)
 	
+	def handle_delete_event(self, window, hey):
+		"""
+		Usually when clicking the X button on the window title, the 'delete-event'
+		signal is fired and the dialog destroyed.
+		We do not want that, as we need to create a new dialog and repopulate
+		it with every application.
+		This may be un-noticeable on newer machines, but defintely it is on
+		older ones.
+		
+		Our policy for the ApplicationSelectionDialog is to destroy it only
+		when returning to the main menu (just a destroy() in on_scene_asked_to_close is enough).
+		Otherwise, we'll just hide the dialog (via this method connected to
+		the 'delete-event' signal).
+		"""
+		
+		self.hide()
+		return False
+			
+	
 	def __init__(self):
 		"""
 		Initialization.
@@ -139,8 +158,10 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		box.set_margin_right(5)
 		
 		# Buttons
-		self.add_button("_Cancel", Gtk.ResponseType.CANCEL)
-		self.add_button("_Select", Gtk.ResponseType.OK)
+		self.add_buttons(
+			"_Cancel", Gtk.ResponseType.CANCEL,
+			"_Select", Gtk.ResponseType.OK
+		)
 		
 		# Treeview
 		self.scrolledwindow = Gtk.ScrolledWindow()
@@ -158,6 +179,9 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		# Add the widgets to the main dialog
 		self.scrolledwindow.add_with_viewport(self.treeview)
 		box.pack_start(self.scrolledwindow, True, True, 0)
+		
+		# Handle delete event
+		self.connect("delete-event", self.handle_delete_event)
 		
 		box.show_all()
 	
