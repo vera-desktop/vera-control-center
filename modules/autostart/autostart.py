@@ -223,6 +223,14 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			# Connect response signal
 			self.application_selection_dialog.connect("response", self.on_application_selection_dialog_response)
+
+			# Bind sensitiveness of the parent with the visibility of the new window
+			self.application_selection_dialog.bind_property(
+				"visible",
+				self.objects.main,
+				"sensitive",
+				GObject.BindingFlags.INVERT_BOOLEAN
+			)
 		
 		self.application_selection_dialog.show()
 	
