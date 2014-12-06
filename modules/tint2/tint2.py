@@ -47,21 +47,15 @@ class Scene(quickstart.scenes.BaseScene):
 		"destroy" : (
 			"main",
 		),
-		"delete-event" : (
-			"add_launcher",
-		),
 		"toggled" : (
 			"enabled_checkbox",
 		),
 		"clicked" : (
 			"add_button",
 			"remove_button",
-			"launcher_ok_button",
-			"launcher_cancel_button",
 		),
 		"cursor-changed" : (
 			"enabled_treeview",
-			"launcher_add_treeview",
 		)
 	}
 
@@ -161,8 +155,9 @@ class Scene(quickstart.scenes.BaseScene):
 			os.system("compton -b")
 		
 		# Destroy application_selection_dialog
-		self.application_selection_dialog.destroy()
-		self.application_selection_dialog = None
+		if self.application_selection_dialog:
+			self.application_selection_dialog.destroy()
+			self.application_selection_dialog = None
 		
 		return True
 	
@@ -170,12 +165,6 @@ class Scene(quickstart.scenes.BaseScene):
 		""" Fired when the main window should be destroyed. """
 		
 		Gtk.main_quit()
-	
-	def on_add_launcher_delete_event(self, window, etc):
-		""" Fired when the add launcher window should be destroyed. """
-		
-		window.hide()
-		return True
 	
 	def on_enabled_checkbox_toggled(self, checkbox):
 		""" Fired when the enabled checkbox has been toggled. """
