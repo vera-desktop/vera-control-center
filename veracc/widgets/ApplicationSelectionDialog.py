@@ -49,6 +49,22 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 	The ApplicationSelectionDialog is a dialog that lets the user choose
 	an application.
 	"""
+	
+	def get_selection(self):
+		"""
+		Returns a tuple with informations of the current selected item.
+		
+		(name, desktop_file_path, icon)
+		"""
+		
+		try:
+			selection = self.treeview.get_selection()
+			model, treeiter = selection.get_selected()
+			
+			return model[treeiter][0], model[treeiter][1], model[treeiter][2]
+		except:
+			return None
+		
 
 	def menu_iterate(self, directory, menu_iter=None, create_menu_iter=False, skip=None):
 		""" Iterates through the menu entries and adds them to the launcher_add_treeview. """
@@ -118,10 +134,10 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 
 		#GObject.idle_add(self.objects["add_launcher"].show_all)
 	
-	def handle_delete_event(self, window, hey):
+	def handle_delete_event(self, window, event_type):
 		"""
 		Usually when clicking the X button on the window title, the 'delete-event'
-		signal is fired and the dialog destroyed.
+		signal is fired and the dialog is destroyed.
 		We do not want that, as we need to create a new dialog and repopulate
 		it with every application.
 		This may be un-noticeable on newer machines, but defintely it is on
@@ -132,7 +148,7 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		Otherwise, we'll just hide the dialog (via this method connected to
 		the 'delete-event' signal).
 		"""
-		
+				
 		self.hide()
 		return False
 			

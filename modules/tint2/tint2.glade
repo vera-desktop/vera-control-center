@@ -11,7 +11,7 @@
     <property name="window_position">center</property>
     <property name="default_width">320</property>
     <property name="default_height">260</property>
-    <property name="icon_name">gnome-panel-launcher</property>
+    <property name="icon_name">panel</property>
     <property name="type_hint">dialog</property>
     <property name="urgency_hint">True</property>
     <child internal-child="vbox">

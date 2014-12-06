@@ -29,6 +29,8 @@
 
 import os
 
+import shutil
+
 import quickstart
 
 from gi.repository import Gtk, Gdk, GObject
@@ -36,6 +38,8 @@ from gi.repository import Gtk, Gdk, GObject
 from xdg.DesktopEntry import DesktopEntry
 
 from veracc.utils import Settings
+
+from veracc.widgets.ApplicationSelectionDialog import ApplicationSelectionDialog
 
 # Search path for the applications.
 #
@@ -157,9 +161,70 @@ class Scene(quickstart.scenes.BaseScene):
 	"""
 	
 	events = {
-	
+		"clicked": ("add_new",)
 	}
 	
+	application_selection_dialog = None
+	
+	desktop_list = []
+	
+	def on_application_selection_dialog_response(self, dialog, response_id):
+		"""
+		Fired when the user triggered a response on the application_selection_dialog.
+		"""
+		
+		# Hide
+		dialog.hide()
+
+		if response_id == Gtk.ResponseType.CANCEL:
+			return
+		
+		# Get selection
+		desktop_file = dialog.get_selection()[1]
+		desktop_basename = os.path.basename(desktop_file)
+		
+		if os.path.basename(desktop_file) in self.desktop_list:
+			# Already in list, bye
+			return
+		
+		# Copy the desktop file and prepend a new row.
+		# FIXME: currently applications with KDE in "OnlyShowIn" will get
+		# regularly added, but they won't be autostarted by vera and they
+		# will not show again on this module.
+		#
+		# This can be resolved once vera supports a "force-list", see
+		# https://github.com/vera-desktop/vera/issues/2
+		entry = DesktopEntry(desktop_file)
+		
+		row = ApplicationRow(desktop_basename, entry)
+		
+		# Connect the changed signal
+		row.connect("changed", self.on_row_changed)
+		
+		# Prepend the row
+		self.objects.list.prepend(row)
+		
+		self.desktop_list.append(desktop_basename)
+		
+		# Finally copy the desktop file to ~/.config/autostart
+		shutil.copy2(
+			desktop_file,
+			os.path.join(os.path.expanduser("~/.config/autostart"), desktop_basename)
+		)
+	
+	def on_add_new_clicked(self, button):
+		"""
+		Fired when the add new button has been clicked.
+		"""
+		
+		if not self.application_selection_dialog:
+			self.application_selection_dialog = ApplicationSelectionDialog()
+			self.application_selection_dialog.build_application_list()
+			
+			# Connect response signal
+			self.application_selection_dialog.connect("response", self.on_application_selection_dialog_response)
+		
+		self.application_selection_dialog.run()
 	
 	def on_row_changed(self, row, application, enabled):
 		"""
@@ -191,7 +256,7 @@ class Scene(quickstart.scenes.BaseScene):
 				# Add the application, if we can
 				try:
 					entry = DesktopEntry(os.path.join(path, application))
-					if not "KDE" in entry.getOnlyShowIn():
+					if not "KDE" in entry.getOnlyShowIn() and not application in self.desktop_list:
 						
 						# While excluding only KDE is not ideal, we do so
 						# to have consistency with vera's AutostartManager.
@@ -206,6 +271,8 @@ class Scene(quickstart.scenes.BaseScene):
 							row,
 							-1
 						)
+						
+						self.desktop_list.append(application)
 				except:
 					print("Unable to show informations for %s." % application)
 	
@@ -217,4 +284,15 @@ class Scene(quickstart.scenes.BaseScene):
 		self.scene_container = self.objects.main
 		
 		self.add_applications()
+	
+	def on_scene_asked_to_close(self):
+		"""
+		Cleanup
+		"""
+		
+		if self.application_selection_dialog:
+			self.application_selection_dialog.destroy()
+			self.application_selection_dialog = None
+		
+		return True
 		
