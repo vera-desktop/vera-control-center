@@ -1,3 +1,14 @@
+vera-control-center (0.31-1) devel; urgency=medium
+
+  * about: launch synaptic via the synaptic-pkexec wrapper.
+  * Added 'autostart' module.
+  * Added ApplicationSelectionDialog, a dialog that lets the user choose an application from the ones installed. This is based on tint2 module's own dialog and it will replace it at some point.
+  * desktop: do not re-populate wallpapers when switching to the module scene after its load.
+  * tint2: switch to the ApplicationSelectionDialog.
+  * tint2: cleanup
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sat, 06 Dec 2014 13:24:06 +0100
+
 vera-control-center (0.30-1) devel; urgency=medium
 
   * setup.py: ship veracc.css.
