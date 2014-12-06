@@ -214,7 +214,17 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		self.treeview.connect(
 			"cursor-changed",
 			lambda x: self.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(
-				(x.get_selection().count_selected_rows() > 0)
+				(
+					# Nothing selected, no sensitiveness
+					
+					x.get_selection().count_selected_rows() > 0
+				) and not (
+					# Categories may be selected in the treeview, but they
+					# should not trigger the sensitiveness of the button
+					# to True
+					
+					self.launcher_add_model[x.get_selection().get_selected()[1]][1] == None
+				)
 			)
 		)
 
