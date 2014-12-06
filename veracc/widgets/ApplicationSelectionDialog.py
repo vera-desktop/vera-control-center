@@ -186,6 +186,14 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		self.treeview.set_headers_visible(False)
 		self.treeview.set_search_column(0)
 		self.treeview.set_enable_search(True)
+		
+		# Show the "Select" button only when something has been selected
+		self.treeview.connect(
+			"cursor-changed",
+			lambda x: self.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(
+				(x.get_selection().count_selected_rows() > 0)
+			)
+		)
 
 		# Create store
 		self.launcher_add_model = Gtk.TreeStore(str, str, Gio.Icon)
