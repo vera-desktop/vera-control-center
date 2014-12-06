@@ -77,8 +77,7 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		subprocess.Popen(
 			[
-				"pkexec",
-				"synaptic",
+				"synaptic-pkexec",
 				"--dist-upgrade-mode",
 				"--update-at-startup",
 				"--hide-main-window"

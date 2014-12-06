@@ -24,11 +24,13 @@ import quickstart
 import os
 import xdg.DesktopEntry
 
+from veracc.widgets.ApplicationSelectionDialog import ApplicationSelectionDialog
+
 CONFIG = os.path.expanduser("~/.config/tint2/secondary_config")
 
-tr = quickstart.translations.Translation("tint2-panel-config")
-tr.install()
-tr.bind_also_locale()
+#tr = quickstart.translations.Translation("tint2-panel-config")
+#tr.install()
+#tr.bind_also_locale()
 
 position_dict = {
 	"top" : 0,
@@ -36,34 +38,14 @@ position_dict = {
 	"bottom" : 2
 }
 
-class DirectoryIterate:
-	def __init__(self, obj):
-		self.obj = obj.iter()
-	
-	def __iter__(self):
-		return self
-	
-	def __next__(self):
-		nxt = self.obj.next()
-		
-		if nxt == GMenu.TreeItemType.INVALID:
-			raise StopIteration
-		elif nxt == GMenu.TreeItemType.DIRECTORY:
-			return self.obj.get_directory(), GMenu.TreeItemType.DIRECTORY
-		elif nxt == GMenu.TreeItemType.ENTRY:
-			return self.obj.get_entry(), GMenu.TreeItemType.ENTRY
-
 @quickstart.builder.from_file("./modules/tint2/tint2.glade")
 class Scene(quickstart.scenes.BaseScene):
 	
-	tree = None
+	application_selection_dialog = None
 	
 	events = {
 		"destroy" : (
 			"main",
-		),
-		"delete-event" : (
-			"add_launcher",
 		),
 		"toggled" : (
 			"enabled_checkbox",
@@ -71,47 +53,11 @@ class Scene(quickstart.scenes.BaseScene):
 		"clicked" : (
 			"add_button",
 			"remove_button",
-			"launcher_ok_button",
-			"launcher_cancel_button",
 		),
 		"cursor-changed" : (
 			"enabled_treeview",
-			"launcher_add_treeview",
 		)
 	}
-
-	def menu_iterate(self, directory, menu_iter=None, create_menu_iter=False, skip=None):
-		""" Iterates through the menu entries and adds them to the launcher_add_treeview. """
-
-		if not directory: return
-		if not skip: skip = ()
-		
-		if create_menu_iter:
-			menu_iter = self.launcher_add_model.append(None, (directory.get_name(), None, directory.get_icon()))
-		
-		for child, typ in DirectoryIterate(directory):
-			if typ == GMenu.TreeItemType.DIRECTORY:
-				# Directory
-
-				if not child or child.get_menu_id() in skip:
-					continue
-
-				_menu_iter = self.launcher_add_model.append(menu_iter, (child.get_name(), None, child.get_icon()))
-				self.menu_iterate(child, _menu_iter, skip=skip)
-			elif typ == GMenu.TreeItemType.ENTRY:
-				# Entry
-
-				info = child.get_app_info()
-				#print info.get_icon()
-				
-				self.launcher_add_model.append(
-					menu_iter,
-					(
-						info.get_name(),
-						child.get_desktop_file_path(),
-						info.get_icon()
-					)
-				)
 
 	def on_enabled_treeview_cursor_changed(self, treeview):
 		""" Fired when the user changed something on the enabled_treeview. """
@@ -119,69 +65,25 @@ class Scene(quickstart.scenes.BaseScene):
 		# Enable remove button
 		GObject.idle_add(self.objects["remove_button"].set_sensitive, True)
 
-	def on_launcher_add_treeview_cursor_changed(self, treeview):
-		""" Fired when the user changed something on the launcher_add_treeview. """
-		
-		# Get selection
-		selection = self.objects["launcher_add_treeview"].get_selection()
-		model, treeiter = selection.get_selected()
-		
-		if not treeiter or model[treeiter][1] == None:
-			# no .desktop, this is a Category.
-			GObject.idle_add(self.objects["launcher_ok_button"].set_sensitive, False)
-		else:
-			# Application.
-			GObject.idle_add(self.objects["launcher_ok_button"].set_sensitive, True)
-	
-	@quickstart.threads.thread
-	def build_application_list(self):
-		""" Builds the application list. """
-		
-		self.tree = GMenu.Tree.new("semplice-applications.menu", GMenu.TreeFlags.SORT_DISPLAY_NAME)
-		self.tree.load_sync()
-				
-		# Create store
-		self.launcher_add_model = Gtk.TreeStore(str, str, Gio.Icon)
-		# And link the TreeView to it...
-		self.objects["launcher_add_treeview"].set_model(self.launcher_add_model)
-
-		# Column
-		column = Gtk.TreeViewColumn("Everything")
-		
-		# Icon
-		cell_icon = Gtk.CellRendererPixbuf()
-		column.pack_start(cell_icon, False)
-		column.add_attribute(cell_icon, "gicon", 2)
-
-		# Text
-		cell_text = Gtk.CellRendererText()
-		column.pack_start(cell_text, False)
-		column.add_attribute(cell_text, "text", 0)
-		
-		# Append
-		self.objects["launcher_add_treeview"].append_column(column)		
-		
-		GObject.idle_add(self.menu_iterate, self.tree.get_root_directory(), None, False, ("Preferences", "Administration"))		
-		GObject.idle_add(self.menu_iterate, self.tree.get_directory_from_path("/System/Preferences"), None, True)
-		GObject.idle_add(self.menu_iterate, self.tree.get_directory_from_path("/System/Administration"), None, True)
-		
-		GObject.idle_add(self.objects["launcher_add_treeview"].expand_all)
-		
-		# First start, disable OK button.
-		GObject.idle_add(self.objects["launcher_ok_button"].set_sensitive, False)
-
-		GObject.idle_add(self.objects["add_launcher"].show_all)
-
-
 	def on_add_button_clicked(self, button):
 		""" Fired when the Add launcher button has been clicked. """
+				
+		if not self.application_selection_dialog:
+			self.application_selection_dialog = ApplicationSelectionDialog()
+			self.application_selection_dialog.build_application_list()
+			
+			# Connect response signal
+			self.application_selection_dialog.connect("response", self.on_application_selection_dialog_response)
+			
+			# Bind sensitiveness of the parent with the visibility of the new window
+			self.application_selection_dialog.bind_property(
+				"visible",
+				self.objects["main"],
+				"sensitive",
+				GObject.BindingFlags.INVERT_BOOLEAN
+			)
 		
-		GObject.idle_add(self.objects["main"].set_sensitive, False)
-		
-		if not self.tree:
-			GObject.idle_add(self.build_application_list)
-		else:
-			GObject.idle_add(self.objects["add_launcher"].show_all)
+		self.application_selection_dialog.show()
 		
 	
 	def on_remove_button_clicked(self, button):
@@ -196,25 +98,20 @@ class Scene(quickstart.scenes.BaseScene):
 		# Disable remove button if we should
 		if len(model) == 0: GObject.idle_add(self.objects["remove_button"].set_sensitive, False)
 	
-	def on_launcher_ok_button_clicked(self, button):
-		""" Fired when the OK button in the add_launcher window has been clicked. """
+	def on_application_selection_dialog_response(self, dialog, response_id):
+		"""
+		Fired when the user triggered a response on the application_selection_dialog.
+		"""
 		
-		self.objects["add_launcher"].hide()
+		# Hide
+		dialog.hide()
 		
-		# Get selection
-		selection = self.objects["launcher_add_treeview"].get_selection()
-		model, treeiter = selection.get_selected()
+		if response_id == Gtk.ResponseType.CANCEL:
+			return
 		
-		self.enabled_model.append((model[treeiter][0], model[treeiter][1], model[treeiter][2]))
+		# Get and add selection
+		self.enabled_model.append(dialog.get_selection())
 
-		GObject.idle_add(self.objects["main"].set_sensitive, True)
-	
-	def on_launcher_cancel_button_clicked(self, button):
-		""" Fired when the Cancel button in the add_launcher window has been clicked. """
-		
-		self.objects["add_launcher"].hide()
-
-		GObject.idle_add(self.objects["main"].set_sensitive, True)
 	
 	def on_scene_asked_to_close(self):
 		""" Fired when the back button has been pressed """
@@ -257,18 +154,17 @@ class Scene(quickstart.scenes.BaseScene):
 			os.system("pkill compton")
 			os.system("compton -b")
 		
+		# Destroy application_selection_dialog
+		if self.application_selection_dialog:
+			self.application_selection_dialog.destroy()
+			self.application_selection_dialog = None
+		
 		return True
 	
 	def on_main_destroy(self, window):
 		""" Fired when the main window should be destroyed. """
 		
 		Gtk.main_quit()
-	
-	def on_add_launcher_delete_event(self, window, etc):
-		""" Fired when the add launcher window should be destroyed. """
-		
-		window.hide()
-		return True
 	
 	def on_enabled_checkbox_toggled(self, checkbox):
 		""" Fired when the enabled checkbox has been toggled. """
@@ -370,7 +266,7 @@ class Scene(quickstart.scenes.BaseScene):
 			self.objects["add_button"].set_sensitive(False)
 
 		# First start, disable remove button.
-		if len(self.enabled_model) == 0: GObject.idle_add(self.objects["remove_button"].set_sensitive, False)
+		GObject.idle_add(self.objects["remove_button"].set_sensitive, False)
 	
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
