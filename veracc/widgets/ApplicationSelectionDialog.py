@@ -151,7 +151,30 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 				
 		self.hide()
 		return False
-			
+	
+	def show(self):
+		"""
+		Overrides stock show() to do some cleanup before showing the
+		dialog to the user.
+		"""
+		
+		# Default response
+		self.set_default_response(Gtk.ResponseType.OK)
+		
+		# Unselect all
+		self.treeview.get_selection().unselect_all()
+		# Emit cursor-changed on the treeview so that we'll disable the Select button
+		self.treeview.emit("cursor-changed")
+		
+		# Scroll to top
+		self.scrolledwindow.get_vadjustment().set_value(0.0)
+		
+		# Grab focus on the treeview
+		self.treeview.grab_focus()
+				
+		# Finally show
+		return super().show()
+
 	
 	def __init__(self):
 		"""

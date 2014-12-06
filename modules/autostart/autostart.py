@@ -224,7 +224,7 @@ class Scene(quickstart.scenes.BaseScene):
 			# Connect response signal
 			self.application_selection_dialog.connect("response", self.on_application_selection_dialog_response)
 		
-		self.application_selection_dialog.run()
+		self.application_selection_dialog.show()
 	
 	def on_row_changed(self, row, application, enabled):
 		"""
