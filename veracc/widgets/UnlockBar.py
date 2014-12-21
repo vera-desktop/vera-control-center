@@ -44,12 +44,42 @@ class UnlockBar(Gtk.InfoBar):
 		"unlocked" : (GObject.SIGNAL_RUN_FIRST, None, ())
 	}
 	
+	__gproperties__ = {
+		"lock" : (
+			GObject.TYPE_BOOLEAN,
+			"Locked",
+			"True if locked, False if not.",
+			True,
+			GObject.PARAM_READWRITE
+		)
+	}
+	
+	def do_get_property(self, property):
+		"""
+		Returns the value of the specified property
+		"""
+		
+		if property.name == "lock":
+			return True if self.current_state == ActionResponse.LOCK else False
+		else:
+			raise AttributeError("unknown property %s" % property.name)
+	
+	def do_set_property(self, property, value):
+		"""
+		You can't set properties.
+		"""
+		
+		pass
+		#raise Exception("you can't set UnlockBar properties.")
+		
+	
 	def do_locked(self):
 		"""
 		Method handler for the 'locked' signal.
 		"""
 		
 		self.current_state = ActionResponse.LOCK
+		self.props.lock = True # Just to notify
 		self.lock_bar()
 	
 	def do_unlocked(self):
@@ -58,6 +88,7 @@ class UnlockBar(Gtk.InfoBar):
 		"""
 		
 		self.current_state = ActionResponse.UNLOCK
+		self.props.lock = False # Just to notify
 		self.unlock_bar()
 	
 	def __init__(self, action_id, locked_message=None, unlocked_message=None):
