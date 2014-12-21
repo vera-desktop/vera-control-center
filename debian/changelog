@@ -1,3 +1,11 @@
+vera-control-center (0.32-1) devel; urgency=medium
+
+  * widgets/UnlockBar: added 'lock' glib property.
+  * Added 'power' module.
+  * debian/control: depend on vera-power-manager.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 21 Dec 2014 23:15:14 +0100
+
 vera-control-center (0.31-1) devel; urgency=medium
 
   * about: launch synaptic via the synaptic-pkexec wrapper.
