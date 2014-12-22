@@ -1,3 +1,9 @@
+vera-control-center (0.32-2) devel; urgency=medium
+
+  * debian/control: depend on gir1.2-upowerglib-1.0.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Mon, 22 Dec 2014 17:14:59 +0100
+
 vera-control-center (0.32-1) devel; urgency=medium
 
   * widgets/UnlockBar: added 'lock' glib property.
