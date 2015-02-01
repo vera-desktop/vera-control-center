@@ -21,14 +21,22 @@
 
 import os
 import quickstart
-import imghdr
 import configparser
 
-from gi.repository import GdkPixbuf, GObject, Gtk, Gdk
+from gi.repository import GdkPixbuf, GObject, Gio, GLib, Gtk, Gdk
 
 from veracc.utils import Settings
 
 # FIXME: Multimonitor support
+
+SUPPORTED_MIMETYPES = (
+	"image/bmp",
+	"image/gif",
+	"image/jpeg",
+	"image/x-portable-bitmap",
+	"image/png",
+	"image/xbm",
+)
 
 @quickstart.builder.from_file("./modules/desktop/desktop.glade")
 class Scene(quickstart.scenes.BaseScene):
@@ -283,7 +291,10 @@ class Scene(quickstart.scenes.BaseScene):
 		Appends the given wallpaper to the list.
 		"""
 
-		if imghdr.what(path):
+		if Gio.File.new_for_path(path).query_info(
+			Gio.FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+			Gio.FileQueryInfoFlags.NONE
+		).get_content_type() in SUPPORTED_MIMETYPES:
 			try:
 				itr = self.objects.wallpaper_list.append(
 					(
