@@ -23,7 +23,7 @@ import os
 import quickstart
 import configparser
 
-from gi.repository import GdkPixbuf, GObject, Gio, GLib, Gtk, Gdk
+from gi.repository import GdkPixbuf, GObject, Gio, Gtk, Gdk
 
 from veracc.utils import Settings
 
@@ -290,7 +290,7 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Appends the given wallpaper to the list.
 		"""
-
+		
 		if Gio.File.new_for_path(path).query_info(
 			Gio.FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
 			Gio.FileQueryInfoFlags.NONE
@@ -310,7 +310,7 @@ class Scene(quickstart.scenes.BaseScene):
 				
 				self.wallpapers[path] = itr
 			except:
-				pass		
+				pass
 	
 	def load_wallpaperpack(self, path):
 		"""
@@ -351,10 +351,10 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Add to the Included wallpapers
 		for wallpaper in include:
-			if not os.path.exists(path):
+			if not os.path.exists(wallpaper):
 				continue
-			
-			self.add_wallpaper_to_list(path)
+
+			self.add_wallpaper_to_list(wallpaper)
 		
 		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
