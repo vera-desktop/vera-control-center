@@ -145,7 +145,7 @@ class Scene(quickstart.scenes.BaseScene):
 						# Already excluded, so we can simply remove it
 						# from the list
 						exclude.remove(wall)
-					else:
+					elif wall not in include:
 						# Not excluded, append to the include list
 						include.append(wall)
 					
