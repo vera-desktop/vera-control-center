@@ -38,6 +38,48 @@ SUPPORTED_MIMETYPES = (
 	"image/xbm",
 )
 
+class Properties(GObject.GObject):
+	"""
+	This class contains some client-side properties that we'll syncronize
+	with dconf using bind(_with_convert).
+	"""
+	
+	__gproperties__ = {
+		"current-wallpapers" : (
+			GObject.TYPE_STRV,
+			"Current wallpapers",
+			"The currently set wallpapers",
+			GObject.PARAM_READWRITE
+		)
+	}
+	
+	def __init__(self):
+		
+		super().__init__()
+		
+		self.current_wallpapers = []
+
+	def do_get_property(self, property):
+		"""
+		Returns the value of the specified property
+		"""
+		
+		if property.name == "current-wallpapers":
+			return self.current_wallpapers
+		else:
+			raise AttributeError("unknown property %s" % property.name)
+	
+	def do_set_property(self, property, value):
+		"""
+		You can't set properties.
+		"""
+		
+		if property.name == "current-wallpapers":
+			self.current_wallpapers = value
+		else:
+			raise AttributeError("unknown property %s" % property.name)
+	
+
 @quickstart.builder.from_file("./modules/desktop/desktop.glade")
 class Scene(quickstart.scenes.BaseScene):
 	""" Desktop preferences. """
@@ -53,11 +95,13 @@ class Scene(quickstart.scenes.BaseScene):
 			"about_button"
 		),
 	}
-	
+
 	wallpapers = {}
 	
 	infos = configparser.ConfigParser()
-
+	
+	properties = Properties()
+		
 	def new_rgba_from_string(self, string):
 		"""
 		Given a string, return a parsed Gdk.RGBA.
@@ -359,6 +403,13 @@ class Scene(quickstart.scenes.BaseScene):
 		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
+	def on_image_path_changed(self, settings, key):
+		"""
+		Fired when the image-path property in dconf has been changed.
+		"""
+		
+		pass
+	
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
 		
@@ -368,8 +419,23 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.settings = Settings("org.semplicelinux.vera.desktop")
 		
+		# Build monitor list
+		self.monitor_number = Gdk.Screen.get_default().get_n_monitors()
+		
 		# Current wallpaper
+		#self.settings.connect("changed::image-path", self.on_image_path_changed)
+		#for path in self.settings.get_strv("image-path"):
+		#	self.current_wallpapers.append(path)
 		self.settings.connect("changed::image-path", lambda x,y: self.set_selection(self.settings.get_strv("image-path")[0]))
+		
+		self.settings.bind_with_convert(
+			"image-path",
+			self.properties,
+			"current-wallpapers",
+			lambda x: [(x[y] if y < len(x) else "") for y in range(0, self.monitor_number)],
+			lambda x: x
+		)
+		print(self.properties.current_wallpapers)
 		
 		# Background color
 		self.settings.bind_with_convert(
