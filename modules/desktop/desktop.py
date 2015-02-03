@@ -422,6 +422,22 @@ class Scene(quickstart.scenes.BaseScene):
 		# Build monitor list
 		self.monitor_number = Gdk.Screen.get_default().get_n_monitors()
 		
+		# Build monitor chooser
+		self.monitor_model = Gtk.ListStore(int, str)
+		self.objects.monitor_chooser.set_model(self.monitor_model)
+		renderer = Gtk.CellRendererText()
+		self.objects.monitor_chooser.pack_start(renderer, True)
+		self.objects.monitor_chooser.add_attribute(renderer, "text", 1)
+		
+		# Populate monitor model
+		self.monitor_model.insert_with_valuesv(-1, [0, 1], [-1, "All monitors"]) # "All monitors"
+		for monitor in range(0, self.monitor_number):
+			self.monitor_model.insert_with_valuesv(-1, [0, 1], [monitor, "Monitor %d" % (monitor+1)])
+		self.objects.monitor_chooser.set_active(0)
+		
+		# Show it if we should
+		if self.monitor_number > 1: self.objects.monitor_chooser.show()
+		
 		# Current wallpaper
 		#self.settings.connect("changed::image-path", self.on_image_path_changed)
 		#for path in self.settings.get_strv("image-path"):

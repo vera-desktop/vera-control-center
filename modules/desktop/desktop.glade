@@ -361,7 +361,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkComboBox" id="combobox1">
+                  <object class="GtkComboBox" id="monitor_chooser">
                     <property name="can_focus">False</property>
                     <property name="no_show_all">True</property>
                   </object>
