@@ -207,9 +207,12 @@ class Scene(quickstart.scenes.BaseScene):
 		self.desktop_list.append(desktop_basename)
 		
 		# Finally copy the desktop file to ~/.config/autostart
+		directory = os.path.expanduser("~/.config/autostart")
+		if not os.path.exists(directory):
+			os.makedirs(directory)
 		shutil.copy2(
 			desktop_file,
-			os.path.join(os.path.expanduser("~/.config/autostart"), desktop_basename)
+			os.path.join(directory, desktop_basename)
 		)
 	
 	def on_add_new_clicked(self, button):
