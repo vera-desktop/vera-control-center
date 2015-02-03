@@ -461,7 +461,16 @@ class Scene(quickstart.scenes.BaseScene):
 		renderer = Gtk.CellRendererText()
 		self.objects.monitor_chooser.pack_start(renderer, True)
 		self.objects.monitor_chooser.add_attribute(renderer, "text", 0)
-		
+
+		# Current wallpaper		
+		self.settings.bind_with_convert(
+			"image-path",
+			self.properties,
+			"current-wallpapers",
+			lambda x: [(x[y] if y < len(x) else "") for y in range(0, self.monitor_number)],
+			lambda x: x
+		)
+
 		# Populate monitor model
 		self.monitor_model.insert_with_valuesv(-1, [0], ["All monitors"]) # "All monitors"
 		for monitor in range(1, self.monitor_number+1):
@@ -475,17 +484,17 @@ class Scene(quickstart.scenes.BaseScene):
 		)
 		self.properties.connect("notify::current-selected-monitor", self.on_current_selected_monitor_changed)
 		
+		if self.properties.current_wallpapers.count("") == self.monitor_number-1:
+			# Probably we are in an "All monitors" situation
+			# We do not use set_active() to avoid trigger an useless write action
+			# to dconf.
+			self.set_selection(self.properties.current_wallpapers[0])
+		else:
+			# Single monitor, default to Monitor 1
+			self.objects.monitor_chooser.set_active(1)
+		
 		# Show it if we should
 		if self.monitor_number > 1: self.objects.monitor_chooser.show()
-		
-		# Current wallpaper		
-		self.settings.bind_with_convert(
-			"image-path",
-			self.properties,
-			"current-wallpapers",
-			lambda x: [(x[y] if y < len(x) else "") for y in range(0, self.monitor_number)],
-			lambda x: x
-		)
 		
 		# Background color
 		self.settings.bind_with_convert(
