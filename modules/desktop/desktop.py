@@ -44,13 +44,27 @@ class Properties(GObject.GObject):
 	with dconf using bind(_with_convert).
 	"""
 	
+	properties = (
+		"current-wallpapers",
+		"current-selected-monitor"
+	)
+	
 	__gproperties__ = {
 		"current-wallpapers" : (
 			GObject.TYPE_STRV,
 			"Current wallpapers",
 			"The currently set wallpapers",
 			GObject.PARAM_READWRITE
-		)
+		),
+		"current-selected-monitor" : (
+			GObject.TYPE_INT,
+			"Currently selected monitor",
+			"The currently selected monitor",
+			0,  # min
+			100, # max
+			0,  # default
+			GObject.PARAM_READWRITE
+		),
 	}
 	
 	def __init__(self):
@@ -58,14 +72,15 @@ class Properties(GObject.GObject):
 		super().__init__()
 		
 		self.current_wallpapers = []
+		self.current_selected_monitor = 0
 
 	def do_get_property(self, property):
 		"""
 		Returns the value of the specified property
 		"""
 		
-		if property.name == "current-wallpapers":
-			return self.current_wallpapers
+		if property.name in self.properties:
+			return getattr(self, property.name.replace("-","_"))
 		else:
 			raise AttributeError("unknown property %s" % property.name)
 	
@@ -74,8 +89,8 @@ class Properties(GObject.GObject):
 		You can't set properties.
 		"""
 		
-		if property.name == "current-wallpapers":
-			self.current_wallpapers = value
+		if property.name in self.properties:
+			setattr(self, property.name.replace("-","_"), value)
 		else:
 			raise AttributeError("unknown property %s" % property.name)
 	
@@ -403,12 +418,14 @@ class Scene(quickstart.scenes.BaseScene):
 		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
-	def on_image_path_changed(self, settings, key):
+	def on_current_selected_monitor_changed(self, properties, param):
 		"""
-		Fired when the image-path property in dconf has been changed.
+		Fired when the current-selected-monitor property in Properties has been changed.
 		"""
 		
-		pass
+		if self.properties.current_selected_monitor == 0:
+			# All monitors,
+			pass
 	
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
@@ -423,17 +440,24 @@ class Scene(quickstart.scenes.BaseScene):
 		self.monitor_number = Gdk.Screen.get_default().get_n_monitors()
 		
 		# Build monitor chooser
-		self.monitor_model = Gtk.ListStore(int, str)
+		self.monitor_model = Gtk.ListStore(str)
 		self.objects.monitor_chooser.set_model(self.monitor_model)
 		renderer = Gtk.CellRendererText()
 		self.objects.monitor_chooser.pack_start(renderer, True)
-		self.objects.monitor_chooser.add_attribute(renderer, "text", 1)
+		self.objects.monitor_chooser.add_attribute(renderer, "text", 0)
 		
 		# Populate monitor model
-		self.monitor_model.insert_with_valuesv(-1, [0, 1], [-1, "All monitors"]) # "All monitors"
-		for monitor in range(0, self.monitor_number):
-			self.monitor_model.insert_with_valuesv(-1, [0, 1], [monitor, "Monitor %d" % (monitor+1)])
+		self.monitor_model.insert_with_valuesv(-1, [0], ["All monitors"]) # "All monitors"
+		for monitor in range(1, self.monitor_number+1):
+			self.monitor_model.insert_with_valuesv(-1, [0], ["Monitor %d" % (monitor)])
 		self.objects.monitor_chooser.set_active(0)
+		self.objects.monitor_chooser.bind_property(
+			"active",
+			self.properties,
+			"current-selected-monitor",
+			GObject.BindingFlags.SYNC_CREATE
+		)
+		self.properties.connect("notify::current-selected-monitor", self.on_current_selected_monitor_changed)
 		
 		# Show it if we should
 		if self.monitor_number > 1: self.objects.monitor_chooser.show()
