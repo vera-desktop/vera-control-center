@@ -27,8 +27,6 @@ from gi.repository import GdkPixbuf, GObject, Gio, Gtk, Gdk
 
 from veracc.utils import Settings
 
-# FIXME: Multimonitor support
-
 SUPPORTED_MIMETYPES = (
 	"image/bmp",
 	"image/gif",
@@ -343,7 +341,15 @@ class Scene(quickstart.scenes.BaseScene):
 		else:
 			GObject.idle_add(self.objects.about_button.hide)
 		
-		self.settings.set_strv("image-path", [wall])
+		current_wallpapers = self.properties.current_wallpapers
+		if self.properties.current_selected_monitor == 0:
+			# "All monitors", change only the first item in the array
+			current_wallpapers[0] = wall
+		else:
+			# Single monitor, change the relevant item
+			current_wallpapers[self.properties.current_selected_monitor-1] = wall
+		
+		self.properties.set_property("current-wallpapers", current_wallpapers)
 	
 	def add_wallpaper_to_list(self, path):
 		"""
@@ -424,9 +430,19 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		if self.properties.current_selected_monitor == 0:
-			# All monitors,
-			pass
-	
+			# All monitors, use the first wallpaper everywhere
+			self.properties.set_property(
+				"current-wallpapers",
+				[(self.properties.current_wallpapers[x] if x == 0 else "") for x in range(0, self.monitor_number)]
+			)
+			self.set_selection(self.properties.current_wallpapers[0])
+		else:
+			# Single monitor, simply re-set selection
+			self.set_selection(
+				self.properties.current_wallpapers[self.properties.current_selected_monitor-1] if self.properties.current_wallpapers[
+					self.properties.current_selected_monitor-1] != "" else self.properties.current_wallpapers[0]
+			)
+			
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
 		
@@ -462,12 +478,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Show it if we should
 		if self.monitor_number > 1: self.objects.monitor_chooser.show()
 		
-		# Current wallpaper
-		#self.settings.connect("changed::image-path", self.on_image_path_changed)
-		#for path in self.settings.get_strv("image-path"):
-		#	self.current_wallpapers.append(path)
-		self.settings.connect("changed::image-path", lambda x,y: self.set_selection(self.settings.get_strv("image-path")[0]))
-		
+		# Current wallpaper		
 		self.settings.bind_with_convert(
 			"image-path",
 			self.properties,
@@ -475,7 +486,6 @@ class Scene(quickstart.scenes.BaseScene):
 			lambda x: [(x[y] if y < len(x) else "") for y in range(0, self.monitor_number)],
 			lambda x: x
 		)
-		print(self.properties.current_wallpapers)
 		
 		# Background color
 		self.settings.bind_with_convert(
