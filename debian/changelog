@@ -1,3 +1,17 @@
+vera-control-center (0.33-1) devel; urgency=medium
+
+  * desktop: do not add a new wallpaper to the include list if it is already there.
+  * desktop: directly check the wallpapers by mimetypes to have consistency with vera-plugin-desktop.
+  * desktop: fixup include-wallpapers detection
+  * desktop: store the image-path dconf property into new Properties class and bind them together.
+  * desktop: populate and show the monitor chooser if the monitor number > 1
+  * desktop: made the Properties class more automatic, and added new property current-selected-monitor
+  * desktop: preliminary multimonitor support.
+  * desktop: properly set the default monitor_choose item based on current wallpaper configuration.
+  * autostart: create ~/.config/autostart directory if it doesn't exist.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Thu, 05 Feb 2015 18:47:40 +0100
+
 vera-control-center (0.32-2) devel; urgency=medium
 
   * debian/control: depend on gir1.2-upowerglib-1.0.
