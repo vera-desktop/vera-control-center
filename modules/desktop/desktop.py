@@ -21,14 +21,77 @@
 
 import os
 import quickstart
-import imghdr
 import configparser
 
-from gi.repository import GdkPixbuf, GObject, Gtk, Gdk
+from gi.repository import GdkPixbuf, GObject, Gio, Gtk, Gdk
 
 from veracc.utils import Settings
 
-# FIXME: Multimonitor support
+SUPPORTED_MIMETYPES = (
+	"image/bmp",
+	"image/gif",
+	"image/jpeg",
+	"image/x-portable-bitmap",
+	"image/png",
+	"image/xbm",
+)
+
+class Properties(GObject.GObject):
+	"""
+	This class contains some client-side properties that we'll syncronize
+	with dconf using bind(_with_convert).
+	"""
+	
+	properties = (
+		"current-wallpapers",
+		"current-selected-monitor"
+	)
+	
+	__gproperties__ = {
+		"current-wallpapers" : (
+			GObject.TYPE_STRV,
+			"Current wallpapers",
+			"The currently set wallpapers",
+			GObject.PARAM_READWRITE
+		),
+		"current-selected-monitor" : (
+			GObject.TYPE_INT,
+			"Currently selected monitor",
+			"The currently selected monitor",
+			0,  # min
+			100, # max
+			0,  # default
+			GObject.PARAM_READWRITE
+		),
+	}
+	
+	def __init__(self):
+		
+		super().__init__()
+		
+		self.current_wallpapers = []
+		self.current_selected_monitor = 0
+
+	def do_get_property(self, property):
+		"""
+		Returns the value of the specified property
+		"""
+		
+		if property.name in self.properties:
+			return getattr(self, property.name.replace("-","_"))
+		else:
+			raise AttributeError("unknown property %s" % property.name)
+	
+	def do_set_property(self, property, value):
+		"""
+		You can't set properties.
+		"""
+		
+		if property.name in self.properties:
+			setattr(self, property.name.replace("-","_"), value)
+		else:
+			raise AttributeError("unknown property %s" % property.name)
+	
 
 @quickstart.builder.from_file("./modules/desktop/desktop.glade")
 class Scene(quickstart.scenes.BaseScene):
@@ -45,11 +108,13 @@ class Scene(quickstart.scenes.BaseScene):
 			"about_button"
 		),
 	}
-	
+
 	wallpapers = {}
 	
 	infos = configparser.ConfigParser()
-
+	
+	properties = Properties()
+		
 	def new_rgba_from_string(self, string):
 		"""
 		Given a string, return a parsed Gdk.RGBA.
@@ -145,7 +210,7 @@ class Scene(quickstart.scenes.BaseScene):
 						# Already excluded, so we can simply remove it
 						# from the list
 						exclude.remove(wall)
-					else:
+					elif wall not in include:
 						# Not excluded, append to the include list
 						include.append(wall)
 					
@@ -276,14 +341,25 @@ class Scene(quickstart.scenes.BaseScene):
 		else:
 			GObject.idle_add(self.objects.about_button.hide)
 		
-		self.settings.set_strv("image-path", [wall])
+		current_wallpapers = self.properties.current_wallpapers
+		if self.properties.current_selected_monitor == 0:
+			# "All monitors", change only the first item in the array
+			current_wallpapers[0] = wall
+		else:
+			# Single monitor, change the relevant item
+			current_wallpapers[self.properties.current_selected_monitor-1] = wall
+		
+		self.properties.set_property("current-wallpapers", current_wallpapers)
 	
 	def add_wallpaper_to_list(self, path):
 		"""
 		Appends the given wallpaper to the list.
 		"""
-
-		if imghdr.what(path):
+		
+		if Gio.File.new_for_path(path).query_info(
+			Gio.FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+			Gio.FileQueryInfoFlags.NONE
+		).get_content_type() in SUPPORTED_MIMETYPES:
 			try:
 				itr = self.objects.wallpaper_list.append(
 					(
@@ -299,7 +375,7 @@ class Scene(quickstart.scenes.BaseScene):
 				
 				self.wallpapers[path] = itr
 			except:
-				pass		
+				pass
 	
 	def load_wallpaperpack(self, path):
 		"""
@@ -340,14 +416,33 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Add to the Included wallpapers
 		for wallpaper in include:
-			if not os.path.exists(path):
+			if not os.path.exists(wallpaper):
 				continue
-			
-			self.add_wallpaper_to_list(path)
+
+			self.add_wallpaper_to_list(wallpaper)
 		
 		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
+	def on_current_selected_monitor_changed(self, properties, param):
+		"""
+		Fired when the current-selected-monitor property in Properties has been changed.
+		"""
+		
+		if self.properties.current_selected_monitor == 0:
+			# All monitors, use the first wallpaper everywhere
+			self.properties.set_property(
+				"current-wallpapers",
+				[(self.properties.current_wallpapers[x] if x == 0 else "") for x in range(0, self.monitor_number)]
+			)
+			self.set_selection(self.properties.current_wallpapers[0])
+		else:
+			# Single monitor, simply re-set selection
+			self.set_selection(
+				self.properties.current_wallpapers[self.properties.current_selected_monitor-1] if self.properties.current_wallpapers[
+					self.properties.current_selected_monitor-1] != "" else self.properties.current_wallpapers[0]
+			)
+			
 	def prepare_scene(self):
 		""" Called when doing the scene setup. """
 		
@@ -357,8 +452,49 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.settings = Settings("org.semplicelinux.vera.desktop")
 		
-		# Current wallpaper
-		self.settings.connect("changed::image-path", lambda x,y: self.set_selection(self.settings.get_strv("image-path")[0]))
+		# Build monitor list
+		self.monitor_number = Gdk.Screen.get_default().get_n_monitors()
+		
+		# Build monitor chooser
+		self.monitor_model = Gtk.ListStore(str)
+		self.objects.monitor_chooser.set_model(self.monitor_model)
+		renderer = Gtk.CellRendererText()
+		self.objects.monitor_chooser.pack_start(renderer, True)
+		self.objects.monitor_chooser.add_attribute(renderer, "text", 0)
+
+		# Current wallpaper		
+		self.settings.bind_with_convert(
+			"image-path",
+			self.properties,
+			"current-wallpapers",
+			lambda x: [(x[y] if y < len(x) else "") for y in range(0, self.monitor_number)],
+			lambda x: x
+		)
+
+		# Populate monitor model
+		self.monitor_model.insert_with_valuesv(-1, [0], ["All monitors"]) # "All monitors"
+		for monitor in range(1, self.monitor_number+1):
+			self.monitor_model.insert_with_valuesv(-1, [0], ["Monitor %d" % (monitor)])
+		self.objects.monitor_chooser.set_active(0)
+		self.objects.monitor_chooser.bind_property(
+			"active",
+			self.properties,
+			"current-selected-monitor",
+			GObject.BindingFlags.SYNC_CREATE
+		)
+		self.properties.connect("notify::current-selected-monitor", self.on_current_selected_monitor_changed)
+		
+		if self.properties.current_wallpapers.count("") == self.monitor_number-1:
+			# Probably we are in an "All monitors" situation
+			# We do not use set_active() to avoid trigger an useless write action
+			# to dconf.
+			self.set_selection(self.properties.current_wallpapers[0])
+		else:
+			# Single monitor, default to Monitor 1
+			self.objects.monitor_chooser.set_active(1)
+		
+		# Show it if we should
+		if self.monitor_number > 1: self.objects.monitor_chooser.show()
 		
 		# Background color
 		self.settings.bind_with_convert(
