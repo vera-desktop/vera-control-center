@@ -219,6 +219,11 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.scene_container = self.objects.main
 
+	def on_scene_called(self):
+		"""
+		Fired when the scene has been called.
+		"""
+
 		# Enter in the bus
 		self.bus_cancellable = Gio.Cancellable()
 		self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, self.bus_cancellable)
