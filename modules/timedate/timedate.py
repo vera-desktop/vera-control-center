@@ -47,6 +47,7 @@ class Scene(quickstart.scenes.BaseScene):
 	"""
 	
 	events = {
+		"delete-event" : ("select_timezone_dialog",),
 		"realize": ("select_timezone_dialog",),
 		"button-press-event" : ("main",),
 		"clicked" : ("time_button", "location_button", "apply_timezone"),
@@ -119,6 +120,15 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		self.build_timezone_list()
+	
+	def on_select_timezone_dialog_delete_event(self, widget, event):
+		"""
+		Fired when the select_timezone_dialog is going to be destroyed.
+		"""
+		
+		widget.hide()
+		
+		return True # do not destroy
 	
 	def on_main_button_press_event(self, eventbox, event):
 		"""
