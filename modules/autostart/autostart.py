@@ -31,9 +31,11 @@ import os
 
 import shutil
 
+import random
+
 import quickstart
 
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk, Gdk, GObject, Gio
 
 from xdg.DesktopEntry import DesktopEntry
 
@@ -161,12 +163,35 @@ class Scene(quickstart.scenes.BaseScene):
 	"""
 	
 	events = {
-		"clicked": ("add_new",)
+		"response": ("add_new_custom_dialog",), # the application selection dialog is handled manually
+		"delete-event" : ("add_new_custom_dialog",),
+		"changed" : ("custom_name", "custom_command",),
 	}
 	
 	application_selection_dialog = None
 	
 	desktop_list = []
+	
+	def on_custom_entry_changed(self, entry):
+		"""
+		Fired when a custom entry has been changed.
+		This method isn't directly connected to the custom GtkEntries, but it's
+		directly linked to the on_custom_<id>_changed methods that quickstart
+		expects.
+		"""
+		
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(
+			not (
+				(
+					self.objects.custom_name.get_text_length() == 0
+				) or (
+					self.objects.custom_command.get_text_length() == 0
+				)
+			)
+		)
+	
+	on_custom_name_changed = on_custom_entry_changed
+	on_custom_command_changed = on_custom_entry_changed
 	
 	def on_application_selection_dialog_response(self, dialog, response_id):
 		"""
@@ -215,11 +240,11 @@ class Scene(quickstart.scenes.BaseScene):
 			os.path.join(directory, desktop_basename)
 		)
 	
-	def on_add_new_clicked(self, button):
+	def on_add_new_application_activated(self, menuitem, parameter):
 		"""
-		Fired when the add new button has been clicked.
+		Fired when the add new application item has been selected.
 		"""
-		
+
 		if not self.application_selection_dialog:
 			self.application_selection_dialog = ApplicationSelectionDialog()
 			self.application_selection_dialog.build_application_list()
@@ -236,6 +261,80 @@ class Scene(quickstart.scenes.BaseScene):
 			)
 		
 		self.application_selection_dialog.show()
+	
+	def on_add_new_custom_activated(self, menuitem, parameter):
+		"""
+		Fired when the add new custom application item has been selected.
+		"""
+		
+		# Disable the sensitiveness of the Select button
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(False)
+		
+		# Grab focus on the custom_name entry
+		self.objects.custom_name.grab_focus()
+		
+		# Show the add_new_custom dialog
+		self.objects.add_new_custom_dialog.show()
+	
+	def on_add_new_custom_dialog_response(self, dialog, response_id):
+		"""
+		Fired when the user triggered a response on the add_new_custom_dialog.
+		"""
+		
+		if response_id == Gtk.ResponseType.OK:
+			# Obtain a working filename
+			directory = os.path.expanduser("~/.config/autostart")
+			if not os.path.exists(directory):
+				os.makedirs(directory)
+			
+			filename = os.path.join(
+				directory,
+				self.objects.custom_name.get_text().lower().replace(" ","-") + ".custom%s.desktop" %
+					(random.randint(0,1000),)
+			)
+			if os.path.exists(filename):
+				return on_add_new_custom_dialog_response(dialog, response_id)
+			
+			desktop_basename = os.path.basename(filename)
+			
+			entry = DesktopEntry(filename)
+			entry.set("Version", 1.0)
+			entry.set("Name", self.objects.custom_name.get_text())
+			entry.set("Exec", self.objects.custom_command.get_text())
+			entry.set("X-Vera-Autostart-Phase", "Other")
+			entry.write()
+			
+			row = ApplicationRow(desktop_basename, entry)
+			
+			# Connect the changed signal
+			row.connect("changed", self.on_row_changed)
+			
+			# Prepend the row
+			self.objects.list.prepend(row)
+			
+			self.desktop_list.append(desktop_basename)
+		
+		# Hide
+		dialog.hide()
+		
+		# Cleanup
+		self.objects.custom_name.set_text("")
+		self.objects.custom_command.set_text("")
+	
+	def on_add_new_custom_dialog_delete_event(self, dialog, event):
+		"""
+		Fired when the delete-event event of the add_new_custom_dialog is emitted.
+		"""
+		
+		# Hide
+		dialog.hide()
+		
+		# Cleanup
+		self.objects.custom_name.set_text("")
+		self.objects.custom_command.set_text("")
+		
+		# Do not destroy
+		return True
 	
 	def on_row_changed(self, row, application, enabled):
 		"""
@@ -293,6 +392,52 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 				
 		self.scene_container = self.objects.main
+		
+		# Create menu
+		actiongroup = Gio.SimpleActionGroup.new()
+		
+		menu = Gio.Menu()
+		menu.append(
+			"Select...",
+			"add-new.application"
+		)
+		menu.append(
+			"Use a custom command",
+			"add-new.custom"
+		)
+		
+		add_new_application = Gio.SimpleAction.new("application", None)
+		add_new_application.connect("activate", self.on_add_new_application_activated)
+		
+		add_new_custom = Gio.SimpleAction.new("custom", None)
+		add_new_custom.connect("activate", self.on_add_new_custom_activated)
+		
+		actiongroup.add_action(add_new_application)
+		actiongroup.add_action(add_new_custom)
+		
+		# Create popover
+		self.popover = Gtk.Popover.new_from_model(self.objects.add_new, menu)
+		self.popover.set_position(Gtk.PositionType.BOTTOM)
+		self.popover.insert_action_group("add-new", actiongroup)
+
+		self.objects.add_new.set_popover(self.popover)
+		
+		# Set-up the add_new_custom_dialog
+		self.objects.add_new_custom_dialog.add_buttons(
+			"_Cancel", Gtk.ResponseType.CANCEL,
+			"_Select", Gtk.ResponseType.OK
+		)
+
+		# Bind sensitiveness of the parent with the visibility of the new window
+		self.objects.add_new_custom_dialog.bind_property(
+			"visible",
+			self.objects.main,
+			"sensitive",
+			GObject.BindingFlags.INVERT_BOOLEAN
+		)
+
+		# Make the Select button the default
+		self.objects.add_new_custom_dialog.set_default_response(Gtk.ResponseType.OK)
 		
 		self.add_applications()
 	
