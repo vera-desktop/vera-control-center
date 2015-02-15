@@ -47,11 +47,13 @@ class Scene(quickstart.scenes.BaseScene):
 	"""
 	
 	events = {
+		"delete-event" : ("select_timezone_dialog",),
 		"realize": ("select_timezone_dialog",),
 		"button-press-event" : ("main",),
 		"clicked" : ("time_button", "location_button", "apply_timezone"),
 		"toggled" : ("calendar_button", "ntp_enabled"),
 		"value-changed" : ("hours_adjustment", "minutes_adjustment", "seconds_adjustment"),
+		"wrapped" : ("hours",),
 		"output" : ("hours", "minutes", "seconds")
 	}
 	
@@ -119,6 +121,15 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		self.build_timezone_list()
 	
+	def on_select_timezone_dialog_delete_event(self, widget, event):
+		"""
+		Fired when the select_timezone_dialog is going to be destroyed.
+		"""
+		
+		widget.hide()
+		
+		return True # do not destroy
+	
 	def on_main_button_press_event(self, eventbox, event):
 		"""
 		Fired when the user has clicked on the eventbox.
@@ -142,15 +153,30 @@ class Scene(quickstart.scenes.BaseScene):
 		(not connected to anything, due to a current limitation of quickstart
 		we will associate on_*widget*_output to this method later)
 		"""
-				
-		adj = spinbutton.get_adjustment()
-		spinbutton.set_text('{:02d}'.format(int(adj.get_value())))
+		
+		spinbutton.set_text('{:02d}'.format(int(spinbutton.get_adjustment().get_value())))
 		
 		return True
-	
+
 	on_hours_output = on_spinbutton_output
 	on_minutes_output = on_spinbutton_output
 	on_seconds_output = on_spinbutton_output
+	
+	def on_hours_wrapped(self, spinbutton):
+		"""
+		Fired when the hours spinbutton has been wrapped.
+		"""
+				
+		if self.timezone12:
+			if int(spinbutton.get_text()) == 1:
+				# +1
+				self.hour_offset = 0 if self.hour_offset == 12 else 12
+			else:
+				# -1
+				self.hour_offset = 12 if self.hour_offset == 0 else 0
+			
+			# Reset time
+			self.on_hours_adjustment_value_changed(spinbutton.get_adjustment())
 	
 	def set_time(self):
 		"""
@@ -167,7 +193,18 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		if self.hours_input:
-			self.current_datetime = self.current_datetime.replace(hour=int(adjustment.get_value()))
+			value = int(adjustment.get_value())
+			if self.timezone12:
+				value += self.hour_offset
+			
+			self.current_datetime = self.current_datetime.replace(
+				hour=value if not self.timezone12 else (
+					0 if value == 24 else value
+				)
+			)
+			if self.timezone12:
+				self.objects.timezone12_edit.set_text(self.current_datetime.strftime("%p"))
+			
 			self.set_time()
 			
 					
@@ -209,7 +246,15 @@ class Scene(quickstart.scenes.BaseScene):
 				
 		# Load the adjustments with current data
 		time = self.current_datetime.time()
-		self.objects.hours_adjustment.set_value(time.hour)
+		# Handle 12-hour timezones
+		if not self.timezone12:
+			# 24 hour
+			self.objects.hours_adjustment.set_value(time.hour)
+			self.objects.timezone12_edit.hide()
+		else:
+			# 12 hour
+			self.objects.hours_adjustment.set_value(int(time.strftime("%I")))
+			self.objects.timezone12_edit.set_text(self.current_datetime.strftime("%p"))
 		self.objects.minutes_adjustment.set_value(time.minute)
 		self.objects.seconds_adjustment.set_value(time.second)
 	
@@ -334,6 +379,8 @@ class Scene(quickstart.scenes.BaseScene):
 		self.default = None
 		
 		self.TimeZone = TimeZone()
+		self.hour_offset = 0
+		self.timezone12 = None
 		
 		# Create unlockbar
 		self.unlockbar = UnlockBar("org.freedesktop.timedate1.set-time")
@@ -413,6 +460,16 @@ class Scene(quickstart.scenes.BaseScene):
 		self.unlockbar.emit("locked")
 		
 		self.current_datetime = datetime.datetime.now()
+		self.timezone12 = (not self.current_datetime.strftime("%p") == "")
+		adj = self.objects.hours.get_adjustment()
+		if self.timezone12:
+			adj.set_upper(12)
+			adj.set_lower(1)
+		else:
+			adj.set_upper(23)
+			adj.set_lower(0)
+		if self.current_datetime.time().hour > 12: self.hour_offset = 12
+			
 		self.update_date()
 		self.update_time()
 		
