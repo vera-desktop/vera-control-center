@@ -390,7 +390,89 @@ class TransparencyFrame(CommonFrame):
 		
 		self.get_alignment().add(self.main_container)
 
+class AdvancedFrame(CommonFrame):
+	"""
+	The Advanced frame.
+	"""
 
+	def string_to_id(self, model, string):
+		"""
+		Searches for string in the model, and returns its position.
+		"""
+		
+		count = -1
+		
+		for item in model:
+			count += 1
+			if item[0] == string:
+				return count
+		
+		return -1
+	
+	def __init__(self, gtksettings, comptonsettings):
+		"""
+		Initializes the frame.
+		"""
+		
+		super().__init__(name="Advanced")
+		
+		# Settings
+		self.gtksettings = gtksettings
+		self.comptonsettings = comptonsettings
+		
+		# Container
+		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+
+		# Backend
+		self.backend_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.backend_label = Gtk.Label("Backend")
+		self.backend_label.set_alignment(0, 0.50)
+		self.backend_store = Gtk.ListStore(str, str)
+		self.backend_store.append(("glx", "GLX"))
+		self.backend_store.append(("xrender", "XRender"))
+		self.backend_combo = Gtk.ComboBox.new_with_model(self.backend_store)
+		backend_renderer = Gtk.CellRendererText()
+		self.backend_combo.pack_start(backend_renderer, True)
+		self.backend_combo.add_attribute(backend_renderer, "text", 1)
+		self.comptonsettings.bind_with_convert(
+			"backend",
+			self.backend_combo,
+			"active",
+			lambda x: self.string_to_id(self.backend_store, x),
+			lambda x: self.backend_combo.get_model()[self.backend_combo.get_active_iter()][0],
+		)
+		self.backend_container.pack_start(self.backend_label, True, True, 0)
+		self.backend_container.pack_start(self.backend_combo, False, False, 0)
+
+		# VSync
+		self.vsync_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.vsync_label = Gtk.Label("VSync")
+		self.vsync_label.set_alignment(0, 0.50)
+		self.vsync_store = Gtk.ListStore(str, str)
+		self.vsync_store.append(("none", "None"))
+		self.vsync_store.append(("drm", "drm"))
+		self.vsync_store.append(("opengl", "opengl"))
+		self.vsync_store.append(("opengl-oml", "opengl-oml"))
+		self.vsync_store.append(("opengl-swc", "opengl-swc"))
+		self.vsync_store.append(("opengl-mswc", "opengl-mswc"))
+		self.vsync_combo = Gtk.ComboBox.new_with_model(self.vsync_store)
+		vsync_renderer = Gtk.CellRendererText()
+		self.vsync_combo.pack_start(vsync_renderer, True)
+		self.vsync_combo.add_attribute(vsync_renderer, "text", 1)
+		self.comptonsettings.bind_with_convert(
+			"vsync",
+			self.vsync_combo,
+			"active",
+			lambda x: self.string_to_id(self.vsync_store, x),
+			lambda x: self.vsync_combo.get_model()[self.vsync_combo.get_active_iter()][0],
+		)
+		self.vsync_container.pack_start(self.vsync_label, True, True, 0)
+		self.vsync_container.pack_start(self.vsync_combo, False, False, 0)
+		
+		self.main_container.pack_start(self.backend_container, True, True, 2)
+		self.main_container.pack_start(self.vsync_container, True, True, 2)
+
+		self.get_alignment().add(self.main_container)
 		
 class Paranoid(Gtk.Box):
 	""" The 'Effects' page. """
@@ -409,23 +491,21 @@ class Paranoid(Gtk.Box):
 		shadow_frame = ShadowFrame(gtksettings, comptonsettings)
 		fading_frame = FadingFrame(gtksettings, comptonsettings)
 		transparency_frame = TransparencyFrame(gtksettings, comptonsettings)
+		advanced_frame = AdvancedFrame(gtksettings, comptonsettings)
 		
 		self.pack_start(desktop_effects_frame, False, False, 2)
 		self.pack_start(shadow_frame, False, False, 2)
 		self.pack_start(fading_frame, False, False, 2)
 		self.pack_start(transparency_frame, False, False, 2)
+		self.pack_start(advanced_frame, False, False, 2)
 		
 		# Bind compton_enable to the sensitiveness of the compton related frames
-		for frame in (shadow_frame, fading_frame, transparency_frame):
+		for frame in (shadow_frame, fading_frame, transparency_frame, advanced_frame):
 			desktop_effects_frame.compton_enabled.bind_property(
 				"active",
 				frame,
 				"sensitive",
 				GObject.BindingFlags.SYNC_CREATE
 			)
-		
-		#self.pack_start(GtkThemeFrame(settings), False, False, 2)
-		#self.pack_start(IconThemeFrame(settings), False, False, 2)
-		#self.pack_start(CursorThemeFrame(settings), False, False, 2)
 		
 		self.show_all()
