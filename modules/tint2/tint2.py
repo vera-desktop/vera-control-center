@@ -106,7 +106,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Hide
 		dialog.hide()
 		
-		if response_id == Gtk.ResponseType.CANCEL:
+		if response_id in (Gtk.ResponseType.CANCEL, Gtk.ResponseType.DELETE_EVENT):
 			return
 		
 		# Get and add selection

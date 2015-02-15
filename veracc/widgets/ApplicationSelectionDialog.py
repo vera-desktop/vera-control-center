@@ -150,7 +150,7 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		"""
 				
 		self.hide()
-		return False
+		return True
 	
 	def show(self):
 		"""
