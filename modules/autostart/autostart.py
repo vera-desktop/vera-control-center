@@ -326,13 +326,6 @@ class Scene(quickstart.scenes.BaseScene):
 		Fired when the delete-event event of the add_new_custom_dialog is emitted.
 		"""
 		
-		# Hide
-		dialog.hide()
-		
-		# Cleanup
-		self.objects.custom_name.set_text("")
-		self.objects.custom_command.set_text("")
-		
 		# Do not destroy
 		return True
 	
