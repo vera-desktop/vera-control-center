@@ -1,3 +1,16 @@
+vera-control-center (0.34-1) devel; urgency=medium
+
+  * about: reconnect to the Bus at every scene call.
+  * timedate: preliminary 12-hour clock support.
+  * timedate: fix window headers in the select_timezone_dialog.
+  * autostart: support the addition of custom commands.
+  * ApplicationSelectionDialog, autostart, tint2: properly handle the ApplicationSelectionDialog's delete-event.
+  * autostart: remove unneeded clean-up calls from on_add_new_custom_dialog_delete_event().
+  * theme: paranoid: make the backend and vsync settings configurable.
+  * controlcenterui: increase window size to 710x590.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 15 Feb 2015 18:13:37 +0100
+
 vera-control-center (0.33-1) devel; urgency=medium
 
   * desktop: do not add a new wallpaper to the include list if it is already there.
