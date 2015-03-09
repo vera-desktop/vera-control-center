@@ -74,6 +74,7 @@ setup(
 		'modules.locale',
 		'modules.keyboard',
 		'modules.shortcuts',
+		'modules.usersadmin',
 	],
 	data_files=data_files,
 	requires=[
