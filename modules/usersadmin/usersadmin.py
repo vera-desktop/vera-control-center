@@ -44,10 +44,16 @@ class Scene(quickstart.scenes.BaseScene):
 		"clicked": (
 			"change_fullname_button",
 			"change_password_button",
+			"change_groups_button",
 			"delete_user_button",
 		),
 		"response": (
 			"delete_user_dialog",
+			"groups_dialog",
+		),
+		"delete-event": (
+			"delete_user_dialog",
+			"groups_dialog",
 		),
 		"row_selected": ("user_list",),
 	}
@@ -58,6 +64,15 @@ class Scene(quickstart.scenes.BaseScene):
 	current_user_properties = None
 	current_user_box = None
 	caller_user_box = None
+	
+	def handle_delete_events(self, window, event):
+		"""
+		Handles a dialog delete-event.
+		"""
+		
+		return True
+	
+	on_delete_user_dialog_delete_event = on_groups_dialog_delete_event = handle_delete_events
 	
 	def on_locked(self, unlockbar):
 		"""
@@ -155,6 +170,70 @@ class Scene(quickstart.scenes.BaseScene):
 		dialog.hide()
 		return False
 	
+	def on_change_groups_button_clicked(self, dialog):
+		"""
+		Fired when the change groups button has been clicked.
+		"""
+		
+		self.objects.groups_store.clear()
+		
+		# Build group list
+		user_in = self.GroupConfig.GetGroupsForUser('(s)', self.current_user_box._user)
+		for group, name in self.GroupConfig.GetGroups().items():
+			name = name[0]
+			if name in ("sudo",):
+				# Skip
+				continue
+			self.objects.groups_store.insert_with_valuesv(-1, [0, 1, 2], [group, (name in user_in), name])
+		
+		self.objects.groups_dialog.show()
+	
+	def on_groups_dialog_response(self, dialog, response_id):
+		"""
+		Fired when the groups dialog got a response.
+		"""
+		
+		dialog.hide()
+		return False
+	
+	def on_group_enabled_toggle_toggled(self, toggle, path):
+		"""
+		Fired when a toggle in the groups dialog has been... toggled.
+		"""
+		
+		itr = self.objects.groups_store.get_iter(path)
+		
+		# Connect to group object
+		group_properties = Gio.DBusProxy.new_sync(
+			self.bus,
+			0,
+			None,
+			BUS_NAME,
+			"/org/semplicelinux/usersd/group/%s" % self.objects.groups_store.get_value(itr, 0),
+			"org.freedesktop.DBus.Properties",
+			self.bus_cancellable
+		)
+		
+		# Get current group members
+		members = group_properties.Get('(ss)', 'org.semplicelinux.usersd.group', 'Members')
+		
+		if not toggle.get_active():
+			# Add user
+			if not self.current_user_box._user in members: members.append(self.current_user_box._user)
+		else:
+			# Remove user
+			if self.current_user_box._user in members: members.remove(self.current_user_box._user)
+		
+		# Set the new list
+		try:
+			group_properties.Set('(ssas)', 'org.semplicelinux.usersd.group', 'Members', members)
+		except:
+			# Failed/Aborted
+			return
+		
+		# Finally set the enabled boolean in the row
+		self.objects.groups_store.set_value(itr, 1, not toggle.get_active())
+			
 	@quickstart.threads.on_idle
 	def build_user_list(self):
 		"""
@@ -300,6 +379,35 @@ class Scene(quickstart.scenes.BaseScene):
 		)
 		self.objects.delete_user_dialog.get_widget_for_response(Gtk.ResponseType.OK).get_style_context().add_class("destructive-action")
 		
+		# Groups dialog
+		self.objects.groups_dialog.bind_property(
+			"visible",
+			self.objects.main,
+			"sensitive",
+			GObject.BindingFlags.DEFAULT | GObject.BindingFlags.INVERT_BOOLEAN
+		)
+		self.objects.groups_dialog.add_buttons(
+			"Close",
+			Gtk.ResponseType.CLOSE
+		)
+
+		self.group_enabled_toggle = Gtk.CellRendererToggle()
+		self.objects.groups_treeview.append_column(
+			Gtk.TreeViewColumn(
+				"Enabled",
+				self.group_enabled_toggle,
+				active=1
+			)
+		)
+		self.group_enabled_toggle.connect("toggled", self.on_group_enabled_toggle_toggled)
+		self.objects.groups_treeview.append_column(
+			Gtk.TreeViewColumn(
+				"Group description",
+				Gtk.CellRendererText(),
+				text=2
+			)
+		)
+		self.objects.groups_store.set_sort_column_id(0, Gtk.SortType.ASCENDING)
 		
 		self.objects.administrator.connect("notify::active", self.on_administrator_changed)
 	
