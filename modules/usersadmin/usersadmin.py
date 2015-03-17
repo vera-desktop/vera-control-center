@@ -36,6 +36,28 @@ CURRENT_UID = os.getuid()
 
 NO_FULLNAME_STRING = "<i>Click the edit button to set the full name</i>"
 
+# These are the default groups for newly-created users.
+# These groups have been fine-grained for Desktop users and purely on
+# their convenience merits.
+#
+# To ensure better security and control in the future these "Privilegies"
+# will be asked before actually creating the user.
+DEFAULT_GROUPS = [
+	'dialout',
+	'lp',
+	'scanner',
+	'fax',
+	'video',
+	'fuse',
+	'netdev',
+	'dip',
+	'floppy',
+	'cdrom',
+	'tape',
+	'plugdev',
+	'audio'
+]
+
 @quickstart.builder.from_file("./modules/usersadmin/usersadmin.glade")
 class Scene(quickstart.scenes.BaseScene):
 	""" Desktop preferences. """
@@ -278,7 +300,7 @@ class Scene(quickstart.scenes.BaseScene):
 		userbox = row.get_child()
 		
 		if userbox.add_new:
-			return self.UsersConfig.ShowUserCreationUI()
+			return self.UsersConfig.ShowUserCreationUI('(as)', DEFAULT_GROUPS)
 		
 		self.current_user_box = userbox
 		
