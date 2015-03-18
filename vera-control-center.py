@@ -44,7 +44,18 @@ else:
 MODULES_DIR = os.path.join(VERACC_DIR, "modules/")
 MODULES_PREFIX = "modules"
 
-SECTIONS = ("Personal", "System", "Network", "Hardware")
+# Translations
+TRANSLATION = quickstart.translations.Translation("vera-control-center")
+TRANSLATION.load()
+TRANSLATION.install()
+TRANSLATION.bind_also_locale()
+
+SECTIONS = OrderedDict([
+	("Personal", _("Personal")),
+	("System", _("System")),
+	("Network", _("Network")),
+	("Hardware", _("Hardware"))
+])
 
 # While the following is not ideal, is currently needed to make sure
 # we are actually on the main vera-control-center directory.
@@ -84,7 +95,7 @@ class ControlCenter:
 		Resets the window details.
 		"""
 		
-		self.objects.main.set_title("Settings")
+		self.objects.main.set_title(_("Settings"))
 		self.objects.main.set_icon_name("preferences-system")
 	
 	def change_window_details(self, liststore, giter):
@@ -181,14 +192,14 @@ class ControlCenter:
 		
 		# Create SectionFrames and populate them
 		custom_sections = [ x for x in self.modules.keys() if x not in SECTIONS ]	
-		for section in list(SECTIONS) + custom_sections:
+		for section in list(SECTIONS.keys()) + custom_sections:
 			
 			if not section in self.modules:
 				continue
 			
 			lst = self.modules[section]
 			
-			sf = SectionFrame(section)
+			sf = SectionFrame(SECTIONS[section] if section in SECTIONS else section)
 			sf.populate(lst)
 			
 			# Connect the internal iconview to our global handler
