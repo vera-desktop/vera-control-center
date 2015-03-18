@@ -96,7 +96,7 @@ class GtkThemeFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Widgets")
+		super().__init__(name=_("Widgets"))
 		
 		# Settings
 		self.settings = settings
@@ -108,7 +108,7 @@ class GtkThemeFrame(CommonFrame):
 		# Combobox
 		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Theme")
+		self.combobox_label = Gtk.Label(_("Theme"))
 		self.combobox_label.set_alignment(0, 0.50)
 		
 		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
@@ -118,7 +118,7 @@ class GtkThemeFrame(CommonFrame):
 		self.populate_themes()
 		
 		# Images in buttons
-		self.button_images = Gtk.CheckButton("Show images in buttons")
+		self.button_images = Gtk.CheckButton(_("Show images in buttons"))
 		self.settings.bind(
 			"button-images",
 			self.button_images,
@@ -126,7 +126,7 @@ class GtkThemeFrame(CommonFrame):
 		)
 		
 		# Images in menus
-		self.menu_images = Gtk.CheckButton("Show images in menus")
+		self.menu_images = Gtk.CheckButton(_("Show images in menus"))
 		self.settings.bind(
 			"menu-images",
 			self.menu_images,
@@ -134,7 +134,7 @@ class GtkThemeFrame(CommonFrame):
 		)
 		
 		# Vera color
-		self.vera_color_enabled = Gtk.CheckButton("Use custom color for selected items (when supported)")
+		self.vera_color_enabled = Gtk.CheckButton(_("Use custom color for selected items (when supported)"))
 		self.desktopsettings.bind(
 			"vera-color-enabled",
 			self.vera_color_enabled,
@@ -150,7 +150,7 @@ class GtkThemeFrame(CommonFrame):
 			"sensitive",
 			GObject.BindingFlags.SYNC_CREATE
 		)
-		self.vera_color_from_wallpaper = Gtk.RadioButton.new_with_label_from_widget(None, "Pick color from the current wallpaper")
+		self.vera_color_from_wallpaper = Gtk.RadioButton.new_with_label_from_widget(None, _("Pick color from the current wallpaper"))
 		self.vera_color_manual_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 		self.vera_color_manual_color = Gtk.ColorButton()
 		self.desktopsettings.bind_with_convert(
@@ -161,7 +161,7 @@ class GtkThemeFrame(CommonFrame):
 			lambda x: x.to_string()
 		)
 		self.vera_color_manual_color.set_sensitive(True)
-		self.vera_color_manual = Gtk.RadioButton.new_with_label_from_widget(self.vera_color_from_wallpaper, "Use this color")
+		self.vera_color_manual = Gtk.RadioButton.new_with_label_from_widget(self.vera_color_from_wallpaper, _("Use this color"))
 		self.vera_color_manual.bind_property(
 			"active",
 			self.vera_color_manual_color,
@@ -248,7 +248,7 @@ class IconThemeFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Icons")
+		super().__init__(name=_("Icons"))
 		
 		# Settings
 		self.settings = settings
@@ -259,7 +259,7 @@ class IconThemeFrame(CommonFrame):
 		# Combobox
 		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Icon theme")
+		self.combobox_label = Gtk.Label(_("Icon theme"))
 		self.combobox_label.set_alignment(0, 0.50)
 		
 		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
@@ -339,7 +339,7 @@ class CursorThemeFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Cursor")
+		super().__init__(name=_("Cursor"))
 		
 		# Settings
 		self.settings = settings
@@ -350,7 +350,7 @@ class CursorThemeFrame(CommonFrame):
 		# Combobox
 		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 		self.combobox = Gtk.ComboBoxText()
-		self.combobox_label = Gtk.Label("Cursor theme")
+		self.combobox_label = Gtk.Label(_("Cursor theme"))
 		self.combobox_label.set_alignment(0, 0.50)
 		
 		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
@@ -358,7 +358,7 @@ class CursorThemeFrame(CommonFrame):
 		
 		# Warning
 		self.warning = Gtk.Label()
-		self.warning.set_markup("<i>If you change the cursor theme you need to logout to apply the changes.</i>")
+		self.warning.set_markup(_("<i>If you change the cursor theme you need to logout to apply the changes.</i>"))
 		self.warning.set_line_wrap(True)
 		
 		# Populate it and bind
