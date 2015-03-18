@@ -29,14 +29,14 @@ from gi.repository import Gtk, Gio, GObject
 from gi.repository import UPowerGlib as Up
 
 BATTERY_STATE = {
-	Up.DeviceState.UNKNOWN : "Unknown",
-	Up.DeviceState.CHARGING : "Charging",
-	Up.DeviceState.DISCHARGING : "Discharging",
-	Up.DeviceState.EMPTY : "Empty",
-	Up.DeviceState.FULLY_CHARGED : "Fully charged",
-	Up.DeviceState.PENDING_CHARGE : "Pending charge",
-	Up.DeviceState.PENDING_DISCHARGE : "Pending discharge",
-	Up.DeviceState.LAST : "Last"
+	Up.DeviceState.UNKNOWN : _("Unknown"),
+	Up.DeviceState.CHARGING : _("Charging"),
+	Up.DeviceState.DISCHARGING : _("Discharging"),
+	Up.DeviceState.EMPTY : _("Empty"),
+	Up.DeviceState.FULLY_CHARGED : _("Fully charged"),
+	Up.DeviceState.PENDING_CHARGE : _("Pending charge"),
+	Up.DeviceState.PENDING_DISCHARGE : _("Pending discharge"),
+	Up.DeviceState.LAST : _("Last")
 }
 
 BUS_NAME = "org.semplicelinux.vera.powermanager"
