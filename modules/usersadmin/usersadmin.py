@@ -34,7 +34,7 @@ USER_IFACE = "org.semplicelinux.usersd.user"
 
 CURRENT_UID = os.getuid()
 
-NO_FULLNAME_STRING = "<i>Click the edit button to set the full name</i>"
+NO_FULLNAME_STRING = _("<i>Click the edit button to set the full name</i>")
 
 # These are the default groups for newly-created users.
 # These groups have been fine-grained for Desktop users and purely on
@@ -394,9 +394,9 @@ class Scene(quickstart.scenes.BaseScene):
 			GObject.BindingFlags.DEFAULT | GObject.BindingFlags.INVERT_BOOLEAN
 		)
 		self.objects.delete_user_dialog.add_buttons(
-			"Cancel",
+			_("_Cancel"),
 			Gtk.ResponseType.CANCEL,
-			"Delete user",
+			_("_Delete user"),
 			Gtk.ResponseType.OK
 		)
 		self.objects.delete_user_dialog.get_widget_for_response(Gtk.ResponseType.OK).get_style_context().add_class("destructive-action")
@@ -409,7 +409,7 @@ class Scene(quickstart.scenes.BaseScene):
 			GObject.BindingFlags.DEFAULT | GObject.BindingFlags.INVERT_BOOLEAN
 		)
 		self.objects.groups_dialog.add_buttons(
-			"Close",
+			_("_Close"),
 			Gtk.ResponseType.CLOSE
 		)
 
@@ -454,7 +454,6 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		if changed:
 			# Commit changes
-			print("Committing changes")
 			self.SudoGroup.Set('(ssas)', 'org.semplicelinux.usersd.group', 'Members', members)		
 
 	def on_scene_called(self):

@@ -36,7 +36,7 @@ class AddNewBox(Gtk.Box):
 		super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
 		
 		self.icon = Gtk.Image.new_from_icon_name("gtk-add", Gtk.IconSize.DIALOG)
-		self.label = Gtk.Label("Add new user")
+		self.label = Gtk.Label(_("Add a new user"))
 		
 		self.pack_start(self.icon, False, False, 0)
 		self.pack_start(self.label, False, False, 2)
