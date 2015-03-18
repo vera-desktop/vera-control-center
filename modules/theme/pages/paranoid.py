@@ -38,7 +38,7 @@ class DesktopEffectsFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="General")
+		super().__init__(name=_("General"))
 		
 		# Settings
 		self.gtksettings = gtksettings
@@ -48,7 +48,7 @@ class DesktopEffectsFrame(CommonFrame):
 		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 		
 		# Animations
-		self.animations = Gtk.CheckButton("Enable animations in applications")
+		self.animations = Gtk.CheckButton(_("Enable animations in applications"))
 		self.gtksettings.bind(
 			"enable-animations",
 			self.animations,
@@ -56,7 +56,7 @@ class DesktopEffectsFrame(CommonFrame):
 		)
 		
 		# Window effects
-		self.compton_enabled = Gtk.CheckButton("Enable window effects")
+		self.compton_enabled = Gtk.CheckButton(_("Enable window effects"))
 		if os.path.exists("/usr/bin/compton"):
 			# Bind property only if we are sure compton is present
 			self.comptonsettings.bind(
@@ -117,7 +117,7 @@ class ShadowFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Shadows")
+		super().__init__(name=_("Shadows"))
 		
 		# State
 		self.updating_shadows = False
@@ -130,7 +130,7 @@ class ShadowFrame(CommonFrame):
 		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 		
 		# Window shadows
-		self.window_shadows = Gtk.CheckButton("Enable shadows")
+		self.window_shadows = Gtk.CheckButton(_("Enable shadows"))
 		self.comptonsettings.bind(
 			"shadow",
 			self.window_shadows,
@@ -138,7 +138,7 @@ class ShadowFrame(CommonFrame):
 		)
 		
 		# Panel shadows
-		self.panel_shadows = Gtk.CheckButton("Display shadows in the panel")
+		self.panel_shadows = Gtk.CheckButton(_("Display shadows in the panel"))
 		self.comptonsettings.bind_with_convert(
 			"no-dock-shadow",
 			self.panel_shadows,
@@ -149,7 +149,7 @@ class ShadowFrame(CommonFrame):
 		
 		# Shadow color
 		self.shadow_color_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.shadow_color_label = Gtk.Label("Shadow color")
+		self.shadow_color_label = Gtk.Label(_("Shadow color"))
 		self.shadow_color_label.set_alignment(0, 0.50)
 		self.shadow_color_button = Gtk.ColorButton()
 		self.shadow_color_container.pack_start(self.shadow_color_label, True, True, 0)
@@ -218,7 +218,7 @@ class FadingFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Fading")
+		super().__init__(name=_("Fading"))
 		
 		# State
 		self.updating_shadows = False
@@ -231,7 +231,7 @@ class FadingFrame(CommonFrame):
 		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 		
 		# Fading
-		self.fading = Gtk.CheckButton("Enable fading")
+		self.fading = Gtk.CheckButton(_("Enable fading"))
 		self.comptonsettings.bind(
 			"fading",
 			self.fading,
@@ -239,7 +239,7 @@ class FadingFrame(CommonFrame):
 		)
 		
 		# Fade open/close
-		self.fading_openclose = Gtk.CheckButton("Fade windows when they're opening/closing")
+		self.fading_openclose = Gtk.CheckButton(_("Fade windows when they're opening/closing"))
 		self.comptonsettings.bind_with_convert(
 			"no-fading-openclose",
 			self.fading_openclose,
@@ -312,7 +312,7 @@ class TransparencyFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Transparency")
+		super().__init__(name=_("Transparency"))
 		
 		# State
 		self.updating_shadows = False
@@ -326,7 +326,7 @@ class TransparencyFrame(CommonFrame):
 		
 		# Menu opacity
 		self.menu_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.menu_label = Gtk.Label("Menu opacity")
+		self.menu_label = Gtk.Label(_("Menu opacity"))
 		self.menu_label.set_alignment(0, 0.50)
 		self.menu_scale = Gtk.Scale.new_with_range(
 			Gtk.Orientation.HORIZONTAL,
@@ -346,7 +346,7 @@ class TransparencyFrame(CommonFrame):
 
 		# Inactive opacity
 		self.inactive_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.inactive_label = Gtk.Label("Inactive opacity")
+		self.inactive_label = Gtk.Label(_("Inactive opacity"))
 		self.inactive_label.set_alignment(0, 0.50)
 		self.inactive_scale = Gtk.Scale.new_with_range(
 			Gtk.Orientation.HORIZONTAL,
@@ -366,7 +366,7 @@ class TransparencyFrame(CommonFrame):
 
 		# Border opacity
 		self.border_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.border_label = Gtk.Label("Border opacity")
+		self.border_label = Gtk.Label(_("Border opacity"))
 		self.border_label.set_alignment(0, 0.50)
 		self.border_scale = Gtk.Scale.new_with_range(
 			Gtk.Orientation.HORIZONTAL,
@@ -414,7 +414,7 @@ class AdvancedFrame(CommonFrame):
 		Initializes the frame.
 		"""
 		
-		super().__init__(name="Advanced")
+		super().__init__(name=_("Advanced"))
 		
 		# Settings
 		self.gtksettings = gtksettings
@@ -425,7 +425,7 @@ class AdvancedFrame(CommonFrame):
 
 		# Backend
 		self.backend_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.backend_label = Gtk.Label("Backend")
+		self.backend_label = Gtk.Label(_("Backend"))
 		self.backend_label.set_alignment(0, 0.50)
 		self.backend_store = Gtk.ListStore(str, str)
 		self.backend_store.append(("glx", "GLX"))
@@ -449,7 +449,7 @@ class AdvancedFrame(CommonFrame):
 		self.vsync_label = Gtk.Label("VSync")
 		self.vsync_label.set_alignment(0, 0.50)
 		self.vsync_store = Gtk.ListStore(str, str)
-		self.vsync_store.append(("none", "None"))
+		self.vsync_store.append(("none", _("None")))
 		self.vsync_store.append(("drm", "drm"))
 		self.vsync_store.append(("opengl", "opengl"))
 		self.vsync_store.append(("opengl-oml", "opengl-oml"))

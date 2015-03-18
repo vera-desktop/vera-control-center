@@ -50,7 +50,7 @@ class FontsFrame(CommonFrame):
 		Initializes the frame.
 		"""
 				
-		super().__init__(name="Fonts")
+		super().__init__(name=_("Fonts"))
 		
 		# Settings
 		self.settings = settings
@@ -60,7 +60,7 @@ class FontsFrame(CommonFrame):
 		
 		# GTK+ font
 		self.font_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.font_label = Gtk.Label("Font")
+		self.font_label = Gtk.Label(_("Font"))
 		self.font_label.set_alignment(0, 0.50)
 		self.font_chooser = Gtk.FontButton()
 		self.settings.bind(
@@ -72,7 +72,7 @@ class FontsFrame(CommonFrame):
 		self.font_container.pack_start(self.font_chooser, False, False, 0)
 		
 		# Antialiasing
-		self.antialiasing = Gtk.CheckButton("Enable antialiasing")
+		self.antialiasing = Gtk.CheckButton(_("Enable antialiasing"))
 		self.settings.bind_with_convert(
 			"xft-antialias",
 			self.antialiasing,
@@ -82,7 +82,7 @@ class FontsFrame(CommonFrame):
 		)
 		
 		# Hinting
-		self.hinting = Gtk.CheckButton("Enable hinting")
+		self.hinting = Gtk.CheckButton(_("Enable hinting"))
 		self.settings.bind_with_convert(
 			"xft-hinting",
 			self.hinting,
@@ -93,13 +93,13 @@ class FontsFrame(CommonFrame):
 		
 		# Hintstyle
 		self.hint_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.hint_label = Gtk.Label("Hint style")
+		self.hint_label = Gtk.Label(_("Hint style"))
 		self.hint_label.set_alignment(0, 0.50)
 		self.hint_store = Gtk.ListStore(str, str)
-		self.hint_store.append(("hintnone", "None"))
-		self.hint_store.append(("hintslight", "Slight"))
-		self.hint_store.append(("hintmedium", "Medium"))
-		self.hint_store.append(("hintfull", "Full"))
+		self.hint_store.append(("hintnone", _("None")))
+		self.hint_store.append(("hintslight", _("Slight")))
+		self.hint_store.append(("hintmedium", _("Medium")))
+		self.hint_store.append(("hintfull", _("Full")))
 		self.hint_combo = Gtk.ComboBox.new_with_model(self.hint_store)
 		hint_renderer = Gtk.CellRendererText()
 		self.hint_combo.pack_start(hint_renderer, True)
@@ -121,10 +121,10 @@ class FontsFrame(CommonFrame):
 		
 		# Subpixel rendering
 		self.subpixel_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-		self.subpixel_label = Gtk.Label("Subpixel rendering")
+		self.subpixel_label = Gtk.Label(_("Subpixel rendering"))
 		self.subpixel_label.set_alignment(0, 0.50)
 		self.subpixel_store = Gtk.ListStore(str, str)
-		self.subpixel_store.append(("none", "None"))
+		self.subpixel_store.append(("none", _("None")))
 		self.subpixel_store.append(("rgb", "RGB"))
 		self.subpixel_store.append(("bgr", "BGR"))
 		self.subpixel_store.append(("vrgb", "VRGB"))

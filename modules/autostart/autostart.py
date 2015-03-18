@@ -391,11 +391,11 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		menu = Gio.Menu()
 		menu.append(
-			"Select...",
+			_("Select..."),
 			"add-new.application"
 		)
 		menu.append(
-			"Use a custom command",
+			_("Use a custom command"),
 			"add-new.custom"
 		)
 		
@@ -417,8 +417,8 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Set-up the add_new_custom_dialog
 		self.objects.add_new_custom_dialog.add_buttons(
-			"_Cancel", Gtk.ResponseType.CANCEL,
-			"_Select", Gtk.ResponseType.OK
+			_("_Cancel"), Gtk.ResponseType.CANCEL,
+			_("_Select"), Gtk.ResponseType.OK
 		)
 
 		# Bind sensitiveness of the parent with the visibility of the new window
