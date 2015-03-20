@@ -12,15 +12,15 @@
     <data>
       <row>
         <col id="0" translatable="yes">Top</col>
-        <col id="1" translatable="yes">top</col>
+        <col id="1">top</col>
       </row>
       <row>
         <col id="0" translatable="yes">Center</col>
-        <col id="1" translatable="yes">center</col>
+        <col id="1">center</col>
       </row>
       <row>
         <col id="0" translatable="yes">Bottom</col>
-        <col id="1" translatable="yes">bottom</col>
+        <col id="1">bottom</col>
       </row>
     </data>
   </object>

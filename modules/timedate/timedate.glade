@@ -76,7 +76,7 @@
                               <object class="GtkLabel" id="time">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">00:00:00</property>
+                                <property name="label">00:00:00</property>
                                 <attributes>
                                   <attribute name="font-desc" value="&lt;Inserire il valore&gt; 80"/>
                                   <attribute name="weight" value="light"/>
@@ -185,7 +185,7 @@
                               <object class="GtkLabel" id="timezone12_edit">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">AM</property>
+                                <property name="label">AM</property>
                                 <attributes>
                                   <attribute name="font-desc" value="&lt;Inserire il valore&gt; 80"/>
                                   <attribute name="weight" value="light"/>
@@ -206,7 +206,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="location_button">
-                            <property name="label" translatable="yes">Location</property>
+                            <property name="label">Location</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -225,7 +225,7 @@
                         </child>
                         <child>
                           <object class="GtkToggleButton" id="calendar_button">
-                            <property name="label" translatable="yes">01 January 1970</property>
+                            <property name="label">01 January 1970</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>

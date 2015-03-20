@@ -11,27 +11,27 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">ignore</col>
+        <col id="0">ignore</col>
         <col id="1" translatable="yes">Do nothing</col>
       </row>
       <row>
-        <col id="0" translatable="yes">poweroff</col>
+        <col id="0">poweroff</col>
         <col id="1" translatable="yes">Power off</col>
       </row>
       <row>
-        <col id="0" translatable="yes">reboot</col>
+        <col id="0">reboot</col>
         <col id="1" translatable="yes">Reboot</col>
       </row>
       <row>
-        <col id="0" translatable="yes">suspend</col>
+        <col id="0">suspend</col>
         <col id="1" translatable="yes">Suspend</col>
       </row>
       <row>
-        <col id="0" translatable="yes">hibernate</col>
+        <col id="0">hibernate</col>
         <col id="1" translatable="yes">Hibernate</col>
       </row>
       <row>
-        <col id="0" translatable="yes">lock</col>
+        <col id="0">lock</col>
         <col id="1" translatable="yes">Lock screen</col>
       </row>
     </data>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 21:41+0100\n"
+"POT-Creation-Date: 2015-03-19 15:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,51 +302,39 @@ msgstr ""
 msgid "Top"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:2
-msgid "top"
-msgstr ""
-
-#: modules/tint2/tint2.glade.h:3 modules/desktop/desktop.glade.h:14
+#: modules/tint2/tint2.glade.h:2 modules/desktop/desktop.glade.h:14
 msgid "Center"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:4
-msgid "center"
-msgstr ""
-
-#: modules/tint2/tint2.glade.h:5
+#: modules/tint2/tint2.glade.h:3
 msgid "Bottom"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:6
-msgid "bottom"
-msgstr ""
-
-#: modules/tint2/tint2.glade.h:7
+#: modules/tint2/tint2.glade.h:4
 msgid "Panel settings"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:8
+#: modules/tint2/tint2.glade.h:5
 msgid "Enable launchers"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:9
+#: modules/tint2/tint2.glade.h:6
 msgid "<b>Launchers</b>"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:10
+#: modules/tint2/tint2.glade.h:7
 msgid "Use AM/PM format for the clock"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:11
+#: modules/tint2/tint2.glade.h:8
 msgid "Auto-hide panel"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:12
+#: modules/tint2/tint2.glade.h:9
 msgid "Panel position"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:13 modules/desktop/desktop.glade.h:22
+#: modules/tint2/tint2.glade.h:10 modules/desktop/desktop.glade.h:22
 #: modules/locale/locale.glade.h:16
 msgid "<b>Other</b>"
 msgstr ""
@@ -439,11 +427,11 @@ msgstr ""
 msgid "Power Off"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.glade.h:3 modules/power/power.glade.h:6
+#: modules/shortcuts/shortcuts.glade.h:3 modules/power/power.glade.h:3
 msgid "Reboot"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.glade.h:4 modules/power/power.glade.h:8
+#: modules/shortcuts/shortcuts.glade.h:4 modules/power/power.glade.h:4
 msgid "Suspend"
 msgstr ""
 
@@ -455,7 +443,7 @@ msgstr ""
 msgid "Lock"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.glade.h:7 modules/power/power.glade.h:10
+#: modules/shortcuts/shortcuts.glade.h:7 modules/power/power.glade.h:5
 msgid "Hibernate"
 msgstr ""
 
@@ -547,96 +535,56 @@ msgid "<b>Model</b>"
 msgstr ""
 
 #: modules/timedate/timedate.glade.h:1
-msgid "00:00:00"
-msgstr ""
-
-#: modules/timedate/timedate.glade.h:2
 msgid "0"
 msgstr ""
 
-#: modules/timedate/timedate.glade.h:3
+#: modules/timedate/timedate.glade.h:2
 msgid ":"
 msgstr ""
 
-#: modules/timedate/timedate.glade.h:4
-msgid "AM"
-msgstr ""
-
-#: modules/timedate/timedate.glade.h:5
-msgid "Location"
-msgstr ""
-
-#: modules/timedate/timedate.glade.h:6
-msgid "01 January 1970"
-msgstr ""
-
-#: modules/timedate/timedate.glade.h:7
+#: modules/timedate/timedate.glade.h:3
 msgid "Keep syncronized with internet services"
 msgstr ""
 
-#: modules/timedate/timedate.glade.h:8
+#: modules/timedate/timedate.glade.h:4
 msgid "Select a city"
 msgstr ""
 
-#: modules/timedate/timedate.glade.h:9
+#: modules/timedate/timedate.glade.h:5
 msgid "Select"
 msgstr ""
 
 #: modules/power/power.glade.h:1
-msgid "ignore"
-msgstr ""
-
-#: modules/power/power.glade.h:2
 msgid "Do nothing"
 msgstr ""
 
-#: modules/power/power.glade.h:3
-msgid "poweroff"
-msgstr ""
-
-#: modules/power/power.glade.h:4
+#: modules/power/power.glade.h:2
 msgid "Power off"
 msgstr ""
 
-#: modules/power/power.glade.h:5
-msgid "reboot"
-msgstr ""
-
-#: modules/power/power.glade.h:7
-msgid "suspend"
-msgstr ""
-
-#: modules/power/power.glade.h:9
-msgid "hibernate"
-msgstr ""
-
-#: modules/power/power.glade.h:11
-msgid "lock"
-msgstr ""
-
-#: modules/power/power.glade.h:12
+#: modules/power/power.glade.h:6
 msgid "Lock screen"
 msgstr ""
 
-#: modules/power/power.glade.h:13
+#: modules/power/power.glade.h:7
 msgid "<b>Battery</b>"
 msgstr ""
 
-#: modules/power/power.glade.h:14
+#: modules/power/power.glade.h:8
 msgid "When the power button has been pressed"
 msgstr ""
 
-#: modules/power/power.glade.h:15
+#: modules/power/power.glade.h:9
 msgid "When the laptop has been closed"
 msgstr ""
 
-#: modules/power/power.glade.h:16
+#: modules/power/power.glade.h:10
 msgid ""
 "The specified action is triggered only when the device is discharging, and "
 "only if there aren't any external displays connected."
 msgstr ""
 
-#: modules/power/power.glade.h:17
+#: modules/power/power.glade.h:11
 msgid "<b>Buttons</b>"
 msgstr ""
 
