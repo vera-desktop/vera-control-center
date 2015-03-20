@@ -110,17 +110,17 @@ class UnlockBar(Gtk.InfoBar):
 		self.get_content_area().add(self.label)
 		
 		if not locked_message:
-			self.locked_message = "You need additional privilegies to modify these settings."
+			self.locked_message = _("You need additional privileges to modify these settings.")
 		else:
 			self.locked_message = locked_message
 		
 		if not unlocked_message:
-			self.unlocked_message = "Press the <i>Lock</i> button to lock these settings."
+			self.unlocked_message = _("Press the <i>Lock</i> button to lock these settings.")
 		else:
 			self.unlocked_message = unlocked_message
 		
-		self.unlock_button = self.add_button("Unlock", ActionResponse.UNLOCK)
-		self.lock_button = self.add_button("Lock", ActionResponse.LOCK)
+		self.unlock_button = self.add_button(_("_Unlock"), ActionResponse.UNLOCK)
+		self.lock_button = self.add_button(_("_Lock"), ActionResponse.LOCK)
 		
 		# Handle the lock/unlock button
 		self.connect("response", self.on_response)
@@ -216,7 +216,7 @@ class UnlockBar(Gtk.InfoBar):
 		"""
 		
 		# Set text
-		self.label.set_markup("Error checking authorization: %s" % message)
+		self.label.set_markup(_("Error checking authorization: %s") % message)
 		
 		# Set message type (error)
 		self.set_message_type(Gtk.MessageType.ERROR)
