@@ -508,7 +508,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Background mode
 		renderer = Gtk.CellRendererText()
 		self.objects.background_mode.pack_start(renderer, True)
-		self.objects.background_mode.add_attribute(renderer, "text", 0)
+		self.objects.background_mode.add_attribute(renderer, "text", 1)
 		self.settings.bind(
 			"background-mode",
 			self.objects.background_mode,
