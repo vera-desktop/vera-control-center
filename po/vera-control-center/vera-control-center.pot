@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-19 15:27+0100\n"
+"POT-Creation-Date: 2015-03-20 20:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,21 +37,48 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: veracc/widgets/UnlockBar.py:113
+msgid "You need additional privileges to modify these settings."
+msgstr ""
+
+#: veracc/widgets/UnlockBar.py:118
+msgid "Press the <i>Lock</i> button to lock these settings."
+msgstr ""
+
+#: veracc/widgets/UnlockBar.py:122
+msgid "_Unlock"
+msgstr ""
+
+#: veracc/widgets/UnlockBar.py:123
+msgid "_Lock"
+msgstr ""
+
+#: veracc/widgets/UnlockBar.py:219
+#, python-format
+msgid "Error checking authorization: %s"
+msgstr ""
+
+#: veracc/widgets/ApplicationSelectionDialog.py:187
+msgid "Select an application"
+msgstr ""
+
+#: veracc/widgets/ApplicationSelectionDialog.py:201
+#: modules/autostart/autostart.py:420 modules/desktop/desktop.py:543
+#: modules/usersadmin/usersadmin.py:397
+msgid "_Cancel"
+msgstr ""
+
+#: veracc/widgets/ApplicationSelectionDialog.py:202
+#: modules/autostart/autostart.py:421
+msgid "_Select"
+msgstr ""
+
 #: modules/autostart/autostart.py:394
 msgid "Select..."
 msgstr ""
 
 #: modules/autostart/autostart.py:398
 msgid "Use a custom command"
-msgstr ""
-
-#: modules/autostart/autostart.py:420 modules/desktop/desktop.py:543
-#: modules/usersadmin/usersadmin.py:397
-msgid "_Cancel"
-msgstr ""
-
-#: modules/autostart/autostart.py:421
-msgid "_Select"
 msgstr ""
 
 #: modules/desktop/desktop.py:475
@@ -196,7 +223,7 @@ msgstr ""
 msgid "Widgets"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:111
+#: modules/theme/pages/gtktheme.py:111 modules/theme/theme.py:56
 msgid "Theme"
 msgstr ""
 
@@ -242,7 +269,7 @@ msgid ""
 "i>"
 msgstr ""
 
-#: modules/theme/pages/font.py:53
+#: modules/theme/pages/font.py:53 modules/theme/theme.py:58
 msgid "Fonts"
 msgstr ""
 
@@ -276,6 +303,10 @@ msgstr ""
 
 #: modules/theme/pages/font.py:124
 msgid "Subpixel rendering"
+msgstr ""
+
+#: modules/theme/theme.py:57
+msgid "Effects"
 msgstr ""
 
 #: modules/autostart/autostart.glade.h:1
