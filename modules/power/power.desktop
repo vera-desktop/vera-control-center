@@ -1,8 +1,10 @@
 [Desktop Entry]
-Name=Power
-Name[it]=Alimentazione
 Comment=Power settings
-Comment[it]=Impostazioni dell'alimentazione
-Icon=preferences-system-power
 Keywords=Power;Batteries;Battery;
 X-VeraCC-Section=Hardware
+Comment[it]=Impostazioni dell'alimentazione
+Name[it]=Alimentazione
+Keywords[it]=Alimentazione;Batterie;Batteria;
+Name=Power
+Icon=preferences-system-power
+

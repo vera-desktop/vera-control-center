@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=Users & Groups
-Name[it]=Utenti e gruppi
 Comment=Add, edit, remove users and groups
-Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
-Icon=system-config-users
 Keywords=Users;Groups;Face
 X-VeraCC-Section=System
+Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
+Name[it]=Utenti e gruppi
+Name=Users & Groups
+Icon=system-config-users
+

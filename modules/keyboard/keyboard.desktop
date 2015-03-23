@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=Keyboard
-Name[it]=Tastiera
 Comment=Keyboard settings
-Comment[it]=Impostazioni della tastiera
-Icon=preferences-desktop-keyboard
 Keywords=Keyboard
 X-VeraCC-Section=System
+Comment[it]=Impostazioni della tastiera
+Name[it]=Tastiera
+Name=Keyboard
+Icon=preferences-desktop-keyboard
+

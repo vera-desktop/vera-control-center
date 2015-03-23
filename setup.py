@@ -21,7 +21,7 @@
 #
 
 import os
-from distutils.core import setup
+from distutils.core import setup, Command
 from distutils.command.build import build
 from distutils.command.install import install
 
@@ -30,6 +30,95 @@ import shutil
 
 data_path = "/usr/share/vera-control-center"
 l10n_path = "./po"
+
+APP_NAME = "vera-control-center"
+
+class CreatePotTemplate(Command):
+	"""
+	Creates a .pot template.
+	"""
+	
+	description = "creates a .pot localization template from the program sources."
+	user_options = []
+	
+	def initialize_options(self):
+		"""
+		Initialize options
+		"""
+		
+		self.cwd = None
+	
+	def finalize_options(self):
+		"""
+		Finalize options
+		"""
+		
+		self.cwd = os.getcwd()
+	
+	def run(self):
+		"""
+		Does things.
+		"""
+		
+		assert os.getcwd() == self.cwd, "You must be in the package root: %s" % self.cwd
+		
+		py_files = []
+		glade_files = []
+		desktop_files = []
+		
+		for directory, dirnames, filenames in os.walk("."):
+			for file_ in filenames:
+				if file_.endswith(".py"):
+					py_files.append(os.path.join(directory, file_))
+				elif file_.endswith(".glade"):
+					glade_files.append(os.path.join(directory, file_))
+				elif file_.endswith(".desktop"):
+					desktop_files.append(os.path.join(directory, file_))
+					
+		subprocess.call([
+			"xgettext",
+			"--language=Python",
+			"--from-code=utf-8",
+			"--keyword=_",
+			"--output=%s" % os.path.join(self.cwd, l10n_path, APP_NAME, "%s.pot" % APP_NAME),
+		] + py_files)
+		
+		subprocess.call([
+			"xgettext",
+			"--language=Desktop",
+			"--from-code=utf-8",
+			"-j",
+			"--output=%s" % os.path.join(self.cwd, l10n_path, APP_NAME, "%s.pot" % APP_NAME)
+		] + desktop_files)
+		
+		for file_ in glade_files:
+			subprocess.call([
+				"intltool-extract",
+				"--type=gettext/glade",
+				file_
+			])
+			subprocess.call([
+				"xgettext",
+				"--from-code=utf-8",
+				"--language=C",
+				"--keyword=N_",
+				"-j",
+				"--output=%s" % os.path.join(self.cwd, l10n_path, APP_NAME, "%s.pot" % APP_NAME),
+				"-j",
+				file_ + ".h"
+			])
+			os.remove(file_ + ".h")
+		
+#find . -name "*.py" | xgettext --language=Python --keyword=_ --output=po/$APP_NAME/$APP_NAME.pot -f -
+#
+# Find and extract from glade files
+#files=$(find . -name "*.glade")
+#for glade in $files; do
+#	intltool-extract --type=gettext/glade $glade
+#	xgettext --language="C" --keyword=N_ -j --output=po/$APP_NAME/$APP_NAME.pot -j ${glade}.h
+#	rm ${glade}.h
+#done
+
 
 class CustomBuild(build):
 	"""
@@ -115,6 +204,7 @@ data_files += [
 
 setup(
 	cmdclass={
+		"pot": CreatePotTemplate,
 		"build": CustomBuild,
 		"install": CustomInstall
 	},

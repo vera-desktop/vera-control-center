@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=Appearance
-Name[it]=Aspetto
 Comment=Themes.
-Comment[it]=Temi.
-Icon=preferences-desktop-theme
-Keywords=Theme
+Keywords=Tema
 X-VeraCC-Section=Personal
+Comment[it]=Temi.
+Name[it]=Aspetto
+Name=Appearance
+Icon=preferences-desktop-theme
+

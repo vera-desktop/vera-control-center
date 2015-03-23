@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=Region & language
-Name[it]=Regione e lingua
 Comment=Change the default language and region
-Comment[it]=Cambia la lingua e la regione predefinita
-Icon=preferences-desktop-locale
 Keywords=Language
 X-VeraCC-Section=System
+Comment[it]=Cambia la lingua e la regione predefinita
+Name[it]=Regione e lingua
+Name=Region & language
+Icon=preferences-desktop-locale
+
