@@ -168,7 +168,7 @@ class Scene(quickstart.scenes.BaseScene):
 		has been clicked.
 		"""
 		
-		self.current_user.ChangePassword()
+		self.current_user.ChangePassword('(s)', os.environ["DISPLAY"])
 	
 	def on_delete_user_button_clicked(self, button):
 		"""
@@ -300,7 +300,7 @@ class Scene(quickstart.scenes.BaseScene):
 		userbox = row.get_child()
 		
 		if userbox.add_new:
-			return self.UsersConfig.ShowUserCreationUI('(as)', DEFAULT_GROUPS)
+			return self.UsersConfig.ShowUserCreationUI('(sas)', os.environ["DISPLAY"], DEFAULT_GROUPS)
 		
 		self.current_user_box = userbox
 		
