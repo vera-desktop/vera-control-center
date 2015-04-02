@@ -1,3 +1,29 @@
+vera-control-center (0.35-1) unstable; urgency=medium
+
+  * Added usersadmin module.
+  * usersadmin: group support.
+  * usersadmin: hide the autologin bits for now, as they won't get implemented in this cycle.
+  * usersadmin: enable conveniency permissions for newly-created users.
+  * vera-control-center: added translation support.
+  * autostart: added translation support.
+  * desktop: added translation support.
+  * power: added translation support.
+  * theme: added translation support.
+  * usersadmin: added translation support.
+  * Transifex & support scripts for localization
+  * Do not translate strings that aren't meant to be translated.
+  * setup.py: hook localization management in 'build' and 'install'.
+  * ApplicationSelectionDialog: translation support.
+  * UnlockBar: translation support.
+  * desktop: don't try to set translated values for dconf's background-mode.
+  * theme: translate labels on the StackButtons.
+  * More work on translation support
+  * usersadmin: supply DISPLAY when calling usersd's UI bits.
+  * usersadmin: change polkit policy to authenticate to org.semplicelinux.usersd.manage.
+  * debian/control: depend on usersd.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Thu, 02 Apr 2015 15:54:45 +0200
+
 vera-control-center (0.34-1) devel; urgency=medium
 
   * about: reconnect to the Bus at every scene call.
