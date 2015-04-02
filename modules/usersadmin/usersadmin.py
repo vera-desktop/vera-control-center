@@ -370,7 +370,7 @@ class Scene(quickstart.scenes.BaseScene):
 		}
 
 		# Create unlockbar
-		self.unlockbar = UnlockBar("org.semplicelinux.usersd.modify-user")
+		self.unlockbar = UnlockBar("org.semplicelinux.usersd.manage")
 		self.unlockbar.connect("locked", self.on_locked)
 		self.unlockbar.connect("unlocked", self.on_unlocked)
 		self.objects.main.pack_start(self.unlockbar, False, False, 0)
