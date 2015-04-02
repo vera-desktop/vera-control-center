@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-23 12:05+0100\n"
-"PO-Revision-Date: 2015-03-23 11:34+0000\n"
+"POT-Creation-Date: 2015-04-02 15:51+0200\n"
+"PO-Revision-Date: 2015-04-02 13:51+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/vera-control-center/language/bg_BG/)\n"
 "MIME-Version: 1.0\n"
@@ -17,465 +17,521 @@ msgstr ""
 "Language: bg_BG\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: vera-control-center.py:54
+#: vera-control-center.py:54 build/scripts-3.4/vera-control-center.py:54
 msgid "Personal"
 msgstr ""
 
-#: vera-control-center.py:55
+#: vera-control-center.py:55 build/scripts-3.4/vera-control-center.py:55
 msgid "System"
 msgstr ""
 
-#: vera-control-center.py:56
+#: vera-control-center.py:56 build/scripts-3.4/vera-control-center.py:56
 msgid "Network"
 msgstr ""
 
-#: vera-control-center.py:57
+#: vera-control-center.py:57 build/scripts-3.4/vera-control-center.py:57
 msgid "Hardware"
 msgstr ""
 
-#: vera-control-center.py:98 controlcenterui.glade.h:1
+#: vera-control-center.py:98 build/scripts-3.4/vera-control-center.py:98
+#: controlcenterui.glade.h:1
 msgid "Settings"
 msgstr ""
 
-#: veracc/widgets/UnlockBar.py:113
+#: build/lib/veracc/widgets/UnlockBar.py:113 veracc/widgets/UnlockBar.py:113
 msgid "You need additional privileges to modify these settings."
 msgstr ""
 
-#: veracc/widgets/UnlockBar.py:118
+#: build/lib/veracc/widgets/UnlockBar.py:118 veracc/widgets/UnlockBar.py:118
 msgid "Press the <i>Lock</i> button to lock these settings."
 msgstr ""
 
-#: veracc/widgets/UnlockBar.py:122
+#: build/lib/veracc/widgets/UnlockBar.py:122 veracc/widgets/UnlockBar.py:122
 msgid "_Unlock"
 msgstr ""
 
-#: veracc/widgets/UnlockBar.py:123
+#: build/lib/veracc/widgets/UnlockBar.py:123 veracc/widgets/UnlockBar.py:123
 msgid "_Lock"
 msgstr ""
 
-#: veracc/widgets/UnlockBar.py:219
+#: build/lib/veracc/widgets/UnlockBar.py:219 veracc/widgets/UnlockBar.py:219
 #, python-format
 msgid "Error checking authorization: %s"
 msgstr ""
 
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:187
 #: veracc/widgets/ApplicationSelectionDialog.py:187
 msgid "Select an application"
 msgstr ""
 
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:201
+#: build/lib/modules/autostart/autostart.py:420
+#: build/lib/modules/desktop/desktop.py:543
+#: build/lib/modules/usersadmin/usersadmin.py:397
 #: veracc/widgets/ApplicationSelectionDialog.py:201
 #: modules/autostart/autostart.py:420 modules/desktop/desktop.py:543
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr ""
 
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:202
+#: build/lib/modules/autostart/autostart.py:421
 #: veracc/widgets/ApplicationSelectionDialog.py:202
 #: modules/autostart/autostart.py:421
 msgid "_Select"
 msgstr ""
 
+#: build/lib/modules/autostart/autostart.py:394
 #: modules/autostart/autostart.py:394
 msgid "Select..."
 msgstr ""
 
+#: build/lib/modules/autostart/autostart.py:398
 #: modules/autostart/autostart.py:398
 msgid "Use a custom command"
 msgstr ""
 
-#: modules/desktop/desktop.py:475
+#: build/lib/modules/desktop/desktop.py:475 modules/desktop/desktop.py:475
 msgid "All monitors"
 msgstr ""
 
-#: modules/desktop/desktop.py:477
+#: build/lib/modules/desktop/desktop.py:477 modules/desktop/desktop.py:477
 #, python-format
 msgid "Monitor %d"
 msgstr ""
 
-#: modules/desktop/desktop.py:545
+#: build/lib/modules/desktop/desktop.py:545 modules/desktop/desktop.py:545
 msgid "_Open"
 msgstr ""
 
-#: modules/desktop/desktop.py:548
+#: build/lib/modules/desktop/desktop.py:548 modules/desktop/desktop.py:548
 msgid "All Files"
 msgstr ""
 
-#: modules/desktop/desktop.py:549
+#: build/lib/modules/desktop/desktop.py:549 modules/desktop/desktop.py:549
 msgid "Images"
 msgstr ""
 
+#: build/lib/modules/desktop/desktop.py:555
+#: build/lib/modules/usersadmin/usersadmin.py:412
 #: modules/desktop/desktop.py:555 modules/usersadmin/usersadmin.py:412
 msgid "_Close"
 msgstr ""
 
-#: modules/power/power.py:32
+#: build/lib/modules/power/power.py:32 modules/power/power.py:32
 msgid "Unknown"
 msgstr ""
 
-#: modules/power/power.py:33
+#: build/lib/modules/power/power.py:33 modules/power/power.py:33
 msgid "Charging"
 msgstr ""
 
-#: modules/power/power.py:34
+#: build/lib/modules/power/power.py:34 modules/power/power.py:34
 msgid "Discharging"
 msgstr ""
 
-#: modules/power/power.py:35
+#: build/lib/modules/power/power.py:35 modules/power/power.py:35
 msgid "Empty"
 msgstr ""
 
-#: modules/power/power.py:36
+#: build/lib/modules/power/power.py:36 modules/power/power.py:36
 msgid "Fully charged"
 msgstr ""
 
-#: modules/power/power.py:37
+#: build/lib/modules/power/power.py:37 modules/power/power.py:37
 msgid "Pending charge"
 msgstr ""
 
-#: modules/power/power.py:38
+#: build/lib/modules/power/power.py:38 modules/power/power.py:38
 msgid "Pending discharge"
 msgstr ""
 
-#: modules/power/power.py:39
+#: build/lib/modules/power/power.py:39 modules/power/power.py:39
 msgid "Last"
 msgstr ""
 
-#: modules/usersadmin/widgets.py:39
+#: build/lib/modules/usersadmin/widgets.py:39 modules/usersadmin/widgets.py:39
 msgid "Add a new user"
 msgstr ""
 
+#: build/lib/modules/usersadmin/usersadmin.py:37
 #: modules/usersadmin/usersadmin.py:37
 msgid "<i>Click the edit button to set the full name</i>"
 msgstr ""
 
+#: build/lib/modules/usersadmin/usersadmin.py:399
 #: modules/usersadmin/usersadmin.py:399
 msgid "_Delete user"
 msgstr ""
 
-#: modules/theme/theme.py:56 modules/theme/pages/gtktheme.py:111
-#: modules/theme/theme.desktop:8
+#: build/lib/modules/theme/theme.py:56
+#: build/lib/modules/theme/pages/gtktheme.py:111 modules/theme/theme.py:56
+#: modules/theme/pages/gtktheme.py:111
 msgid "Theme"
 msgstr ""
 
-#: modules/theme/theme.py:57
+#: build/lib/modules/theme/theme.py:57 modules/theme/theme.py:57
 msgid "Effects"
 msgstr ""
 
-#: modules/theme/theme.py:58 modules/theme/pages/font.py:53
+#: build/lib/modules/theme/theme.py:58
+#: build/lib/modules/theme/pages/font.py:53 modules/theme/theme.py:58
+#: modules/theme/pages/font.py:53
 msgid "Fonts"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:41
 #: modules/theme/pages/paranoid.py:41
 msgid "General"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:51
 #: modules/theme/pages/paranoid.py:51
 msgid "Enable animations in applications"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:59
 #: modules/theme/pages/paranoid.py:59
 msgid "Enable window effects"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:120
 #: modules/theme/pages/paranoid.py:120
 msgid "Shadows"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:133
 #: modules/theme/pages/paranoid.py:133
 msgid "Enable shadows"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:141
 #: modules/theme/pages/paranoid.py:141
 msgid "Display shadows in the panel"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:152
 #: modules/theme/pages/paranoid.py:152
 msgid "Shadow color"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:221
 #: modules/theme/pages/paranoid.py:221
 msgid "Fading"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:234
 #: modules/theme/pages/paranoid.py:234
 msgid "Enable fading"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:242
 #: modules/theme/pages/paranoid.py:242
 msgid "Fade windows when they're opening/closing"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:315
 #: modules/theme/pages/paranoid.py:315
 msgid "Transparency"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:329
 #: modules/theme/pages/paranoid.py:329
 msgid "Menu opacity"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:349
 #: modules/theme/pages/paranoid.py:349
 msgid "Inactive opacity"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:369
 #: modules/theme/pages/paranoid.py:369
 msgid "Border opacity"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:417
 #: modules/theme/pages/paranoid.py:417
 msgid "Advanced"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:428
 #: modules/theme/pages/paranoid.py:428
 msgid "Backend"
 msgstr ""
 
+#: build/lib/modules/theme/pages/paranoid.py:452
+#: build/lib/modules/theme/pages/font.py:99
+#: build/lib/modules/theme/pages/font.py:127
 #: modules/theme/pages/paranoid.py:452 modules/theme/pages/font.py:99
 #: modules/theme/pages/font.py:127
 msgid "None"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:99
 #: modules/theme/pages/gtktheme.py:99
 msgid "Widgets"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:121
 #: modules/theme/pages/gtktheme.py:121
 msgid "Show images in buttons"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:129
 #: modules/theme/pages/gtktheme.py:129
 msgid "Show images in menus"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:137
 #: modules/theme/pages/gtktheme.py:137
 msgid "Use custom color for selected items (when supported)"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:153
 #: modules/theme/pages/gtktheme.py:153
 msgid "Pick color from the current wallpaper"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:164
 #: modules/theme/pages/gtktheme.py:164
 msgid "Use this color"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:251
 #: modules/theme/pages/gtktheme.py:251
 msgid "Icons"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:262
 #: modules/theme/pages/gtktheme.py:262
 msgid "Icon theme"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:342
 #: modules/theme/pages/gtktheme.py:342
 msgid "Cursor"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:353
 #: modules/theme/pages/gtktheme.py:353
 msgid "Cursor theme"
 msgstr ""
 
+#: build/lib/modules/theme/pages/gtktheme.py:361
 #: modules/theme/pages/gtktheme.py:361
 msgid ""
 "<i>If you change the cursor theme you need to logout to apply the "
 "changes.</i>"
 msgstr ""
 
-#: modules/theme/pages/font.py:63
+#: build/lib/modules/theme/pages/font.py:63 modules/theme/pages/font.py:63
 msgid "Font"
 msgstr ""
 
-#: modules/theme/pages/font.py:75
+#: build/lib/modules/theme/pages/font.py:75 modules/theme/pages/font.py:75
 msgid "Enable antialiasing"
 msgstr ""
 
-#: modules/theme/pages/font.py:85
+#: build/lib/modules/theme/pages/font.py:85 modules/theme/pages/font.py:85
 msgid "Enable hinting"
 msgstr ""
 
-#: modules/theme/pages/font.py:96
+#: build/lib/modules/theme/pages/font.py:96 modules/theme/pages/font.py:96
 msgid "Hint style"
 msgstr ""
 
-#: modules/theme/pages/font.py:100
+#: build/lib/modules/theme/pages/font.py:100 modules/theme/pages/font.py:100
 msgid "Slight"
 msgstr ""
 
-#: modules/theme/pages/font.py:101
+#: build/lib/modules/theme/pages/font.py:101 modules/theme/pages/font.py:101
 msgid "Medium"
 msgstr ""
 
-#: modules/theme/pages/font.py:102
+#: build/lib/modules/theme/pages/font.py:102 modules/theme/pages/font.py:102
 msgid "Full"
 msgstr ""
 
-#: modules/theme/pages/font.py:124
+#: build/lib/modules/theme/pages/font.py:124 modules/theme/pages/font.py:124
 msgid "Subpixel rendering"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:3
-msgid "Autostart"
-msgstr ""
-
-#: modules/autostart/autostart.desktop:5
-msgid "Manage the applications to autostart"
-msgstr ""
-
-#: modules/autostart/autostart.desktop:7
+#: modules/autostart/autostart.desktop:4
 msgid "preferences-system-session"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:8
+#: modules/autostart/autostart.desktop:12
+msgid "Manage the applications to autostart"
+msgstr ""
+
+#: modules/autostart/autostart.desktop:13
 msgid "Autostart;Session"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:3 modules/tint2/tint2.desktop:8
-msgid "Panel"
+#: modules/autostart/autostart.desktop:14
+msgid "Autostart"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:5
-msgid "Configure the Panel"
-msgstr ""
-
-#: modules/tint2/tint2.desktop:9
+#: modules/tint2/tint2.desktop:4
 msgid "panel"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:3 modules/desktop/desktop.desktop:8
-msgid "Desktop"
+#: modules/tint2/tint2.desktop:13 modules/tint2/tint2.desktop:14
+msgid "Panel"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:5
-msgid "Desktop preferences"
+#: modules/tint2/tint2.desktop:16
+msgid "Configure the Panel"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:7
+#: modules/desktop/desktop.desktop:4
 msgid "preferences-desktop-wallpaper"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:3 modules/shortcuts/shortcuts.desktop:5
-msgid "Shortcuts"
+#: modules/desktop/desktop.desktop:13 modules/desktop/desktop.desktop:14
+msgid "Desktop"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:7
+#: modules/desktop/desktop.desktop:16
+msgid "Desktop preferences"
+msgstr ""
+
+#: modules/shortcuts/shortcuts.desktop:4
 msgid "preferences-desktop-keyboard-shortcuts"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:8
+#: modules/shortcuts/shortcuts.desktop:13
 msgid "Shortcuts;"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:3
+#: modules/shortcuts/shortcuts.desktop:14
+#: modules/shortcuts/shortcuts.desktop:16
+msgid "Shortcuts"
+msgstr ""
+
+#: modules/networkmanager/networkmanager.desktop:16
 msgid "Network Connections"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:75
-msgid "Manage and change your network connection settings"
-msgstr ""
-
-#: modules/networkmanager/networkmanager.desktop:146
+#: modules/networkmanager/networkmanager.desktop:31
 msgid "preferences-system-network"
 msgstr ""
 
-#: modules/locale/locale.desktop:3
-msgid "Region & language"
+#: modules/networkmanager/networkmanager.desktop:33
+msgid "Manage and change your network connection settings"
 msgstr ""
 
-#: modules/locale/locale.desktop:5
-msgid "Change the default language and region"
+#: modules/networkmanager/networkmanager.desktop:159
+msgid "Network;Connections;"
 msgstr ""
 
-#: modules/locale/locale.desktop:7
+#: modules/locale/locale.desktop:4
 msgid "preferences-desktop-locale"
 msgstr ""
 
-#: modules/locale/locale.desktop:8
+#: modules/locale/locale.desktop:13
 msgid "Language"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:3 modules/keyboard/keyboard.desktop:8
-msgid "Keyboard"
+#: modules/locale/locale.desktop:14
+msgid "Region & language"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:5
-msgid "Keyboard settings"
+#: modules/locale/locale.desktop:16
+msgid "Change the default language and region"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:7
+#: modules/keyboard/keyboard.desktop:4
 msgid "preferences-desktop-keyboard"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:3
-msgid "Time & Date"
+#: modules/keyboard/keyboard.desktop:13 modules/keyboard/keyboard.desktop:14
+msgid "Keyboard"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:5
-msgid "Configures the time and the date"
+#: modules/keyboard/keyboard.desktop:16
+msgid "Keyboard settings"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:7
+#: modules/timedate/timedate.desktop:4
 msgid "preferences-system-time"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:8
+#: modules/timedate/timedate.desktop:13
 msgid "Time;Date"
 msgstr ""
 
-#: modules/power/power.desktop:3
-msgid "Power"
+#: modules/timedate/timedate.desktop:14
+msgid "Time & Date"
 msgstr ""
 
-#: modules/power/power.desktop:5
-msgid "Power settings"
+#: modules/timedate/timedate.desktop:16
+msgid "Configures the time and the date"
 msgstr ""
 
-#: modules/power/power.desktop:7
+#: modules/power/power.desktop:4
 msgid "preferences-system-power"
 msgstr ""
 
-#: modules/power/power.desktop:8
+#: modules/power/power.desktop:12
+msgid "Power settings"
+msgstr ""
+
+#: modules/power/power.desktop:13
 msgid "Power;Batteries;Battery;"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:3
-msgid "Users & Groups"
+#: modules/power/power.desktop:14
+msgid "Power"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:5
-msgid "Add, edit, remove users and groups"
-msgstr ""
-
-#: modules/usersadmin/usersadmin.desktop:7
+#: modules/usersadmin/usersadmin.desktop:4
 msgid "system-config-users"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:8
+#: modules/usersadmin/usersadmin.desktop:13
 msgid "Users;Groups;Face"
 msgstr ""
 
-#: modules/theme/theme.desktop:3
-msgid "Appearance"
+#: modules/usersadmin/usersadmin.desktop:14
+msgid "Users & Groups"
 msgstr ""
 
-#: modules/theme/theme.desktop:5
-msgid "Themes."
+#: modules/usersadmin/usersadmin.desktop:16
+msgid "Add, edit, remove users and groups"
 msgstr ""
 
-#: modules/theme/theme.desktop:7
+#: modules/theme/theme.desktop:6
 msgid "preferences-desktop-theme"
 msgstr ""
 
-#: modules/about/about.desktop:3
-msgid "Device details"
+#: modules/theme/theme.desktop:7
+msgid "Themes"
 msgstr ""
 
-#: modules/about/about.desktop:5
-msgid "Shows informations on this system"
+#: modules/theme/theme.desktop:10
+msgid "Appearance"
 msgstr ""
 
-#: modules/about/about.desktop:7
+#: modules/theme/theme.desktop:12
+msgid "Themes."
+msgstr ""
+
+#: modules/about/about.desktop:4
 msgid "info"
 msgstr ""
 
-#: modules/about/about.desktop:8
+#: modules/about/about.desktop:13
 msgid "Device;Informations;About"
+msgstr ""
+
+#: modules/about/about.desktop:14
+msgid "Device details"
+msgstr ""
+
+#: modules/about/about.desktop:16
+msgid "Shows informations on this system"
 msgstr ""
 
 #: controlcenterui.glade.h:2

@@ -1,10 +1,16 @@
 [Desktop Entry]
-Comment=Manage the applications to autostart
-Keywords=Autostart;Session
-X-VeraCC-Section=Personal
-Comment[it]=Gestisci le applicazioni da avviare automaticamente
-Name[it]=Avvio automatico
-Keywords[it]=Avvio Automatico;Sessione
 Name=Autostart
+Name[nl_NL]=Automatisch opstarten
+Keywords[nl_NL]=Automatisch opstarten;Sessie
+Name[it]=Avvio automatico
+Keywords=Autostart;Session
+Comment[hu]=Automatikusan induló alkalmazások kezelése
+Name[hu]=Automatikus indítás
+Comment[nl_NL]=De applicaties beheren die automatisch worden opgestart
 Icon=preferences-system-session
+Keywords[hu]=Automatikus indítás;Munkamenet
+X-VeraCC-Section=Personal
+Comment=Manage the applications to autostart
+Comment[it]=Gestisci le applicazioni da avviare automaticamente
+Keywords[it]=Avvio automatico;Sessione
 

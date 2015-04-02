@@ -1,9 +1,16 @@
 [Desktop Entry]
-Comment=Add, edit, remove users and groups
-Keywords=Users;Groups;Face
-X-VeraCC-Section=System
-Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
-Name[it]=Utenti e gruppi
 Name=Users & Groups
+Name[nl_NL]=Gebruikers en groepen
+Keywords[nl_NL]=Gebruikers;Groepen;Gezicht
+Name[it]=Utenti e gruppi
+Keywords=Users;Groups;Face
+Comment[hu]=Felhasználók és csoportok hozzáadása, szerkesztése, eltávolítása
+Name[hu]=Felhasználók és Csoportok
+Comment[nl_NL]=Gebruikers en groepen toevoegen, bewerken en/of verwijderen
 Icon=system-config-users
+Keywords[hu]=Felhasználók;Csoportok;Arckép
+X-VeraCC-Section=System
+Comment=Add, edit, remove users and groups
+Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
+Keywords[it]=Utenti;Gruppi;Face
 

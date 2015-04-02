@@ -1,9 +1,14 @@
 [Desktop Entry]
-Comment=Themes.
-Keywords=Tema
-X-VeraCC-Section=Personal
-Comment[it]=Temi.
-Name[it]=Aspetto
 Name=Appearance
+Name[nl_NL]=Uiterlijk
+Name[it]=Aspetto
+Keywords=Themes
+Comment[hu]=Témák.
+Name[hu]=Megjelenés
 Icon=preferences-desktop-theme
+X-VeraCC-Section=Personal
+Comment[nl_NL]=Thema's
+Keywords[it]=Temi
+Comment[it]=Temi.
+Comment=Themes.
 

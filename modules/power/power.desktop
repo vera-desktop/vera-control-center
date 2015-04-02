@@ -1,10 +1,16 @@
 [Desktop Entry]
-Comment=Power settings
-Keywords=Power;Batteries;Battery;
-X-VeraCC-Section=Hardware
-Comment[it]=Impostazioni dell'alimentazione
-Name[it]=Alimentazione
-Keywords[it]=Alimentazione;Batterie;Batteria;
 Name=Power
+Name[nl_NL]=Energie
+Keywords[nl_NL]=Energie;Accu's;Accu;
+Name[it]=Alimentazione
+Keywords=Power;Batteries;Battery;
+Comment[hu]=Energiagazdálkodási beállítások
+Name[hu]=Energiagazdálkodás
+Comment[nl_NL]=Energie-instellingen
 Icon=preferences-system-power
+Keywords[hu]=Energiagazdálkodás;Telepek;Telep;
+X-VeraCC-Section=Hardware
+Comment=Power settings
+Comment[it]=Impostazioni dell'alimentazione
+Keywords[it]=Alimentazione;Batterie;Batteria;
 
