@@ -1,0 +1,931 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Puskas-Kolozsvari Frederic <pkfric@yahoo.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: vera-control-center\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-02 15:51+0200\n"
+"PO-Revision-Date: 2015-04-02 13:51+0000\n"
+"Last-Translator: g7 <me@medesimo.eu>\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/vera-control-center/language/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: vera-control-center.py:54 build/scripts-3.4/vera-control-center.py:54
+msgid "Personal"
+msgstr "Személyes"
+
+#: vera-control-center.py:55 build/scripts-3.4/vera-control-center.py:55
+msgid "System"
+msgstr "Rendszer"
+
+#: vera-control-center.py:56 build/scripts-3.4/vera-control-center.py:56
+msgid "Network"
+msgstr "Hálózat"
+
+#: vera-control-center.py:57 build/scripts-3.4/vera-control-center.py:57
+msgid "Hardware"
+msgstr "Hardver"
+
+#: vera-control-center.py:98 build/scripts-3.4/vera-control-center.py:98
+#: controlcenterui.glade.h:1
+msgid "Settings"
+msgstr "Beállítások"
+
+#: build/lib/veracc/widgets/UnlockBar.py:113 veracc/widgets/UnlockBar.py:113
+msgid "You need additional privileges to modify these settings."
+msgstr "További jogosultságokra van szükség ezen beállítások módosításához."
+
+#: build/lib/veracc/widgets/UnlockBar.py:118 veracc/widgets/UnlockBar.py:118
+msgid "Press the <i>Lock</i> button to lock these settings."
+msgstr "Nyomd meg a <i>Zárolás</i> gombot ezen beállítások zárolására."
+
+#: build/lib/veracc/widgets/UnlockBar.py:122 veracc/widgets/UnlockBar.py:122
+msgid "_Unlock"
+msgstr "_Feloldás"
+
+#: build/lib/veracc/widgets/UnlockBar.py:123 veracc/widgets/UnlockBar.py:123
+msgid "_Lock"
+msgstr "_Zárolás"
+
+#: build/lib/veracc/widgets/UnlockBar.py:219 veracc/widgets/UnlockBar.py:219
+#, python-format
+msgid "Error checking authorization: %s"
+msgstr "Hibaellenőrzés engedély: %s"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:187
+#: veracc/widgets/ApplicationSelectionDialog.py:187
+msgid "Select an application"
+msgstr "Alkalmazás kiválasztása"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:201
+#: build/lib/modules/autostart/autostart.py:420
+#: build/lib/modules/desktop/desktop.py:543
+#: build/lib/modules/usersadmin/usersadmin.py:397
+#: veracc/widgets/ApplicationSelectionDialog.py:201
+#: modules/autostart/autostart.py:420 modules/desktop/desktop.py:543
+#: modules/usersadmin/usersadmin.py:397
+msgid "_Cancel"
+msgstr "_Mégsem"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:202
+#: build/lib/modules/autostart/autostart.py:421
+#: veracc/widgets/ApplicationSelectionDialog.py:202
+#: modules/autostart/autostart.py:421
+msgid "_Select"
+msgstr "_Kiválsztás"
+
+#: build/lib/modules/autostart/autostart.py:394
+#: modules/autostart/autostart.py:394
+msgid "Select..."
+msgstr "Kiválasztás..."
+
+#: build/lib/modules/autostart/autostart.py:398
+#: modules/autostart/autostart.py:398
+msgid "Use a custom command"
+msgstr "Egyéni parancs használata"
+
+#: build/lib/modules/desktop/desktop.py:475 modules/desktop/desktop.py:475
+msgid "All monitors"
+msgstr "Összes képernyő"
+
+#: build/lib/modules/desktop/desktop.py:477 modules/desktop/desktop.py:477
+#, python-format
+msgid "Monitor %d"
+msgstr "Képenyő %d"
+
+#: build/lib/modules/desktop/desktop.py:545 modules/desktop/desktop.py:545
+msgid "_Open"
+msgstr "_Megnyitás"
+
+#: build/lib/modules/desktop/desktop.py:548 modules/desktop/desktop.py:548
+msgid "All Files"
+msgstr "Összes fájl"
+
+#: build/lib/modules/desktop/desktop.py:549 modules/desktop/desktop.py:549
+msgid "Images"
+msgstr "Képek"
+
+#: build/lib/modules/desktop/desktop.py:555
+#: build/lib/modules/usersadmin/usersadmin.py:412
+#: modules/desktop/desktop.py:555 modules/usersadmin/usersadmin.py:412
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: build/lib/modules/power/power.py:32 modules/power/power.py:32
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: build/lib/modules/power/power.py:33 modules/power/power.py:33
+msgid "Charging"
+msgstr "Töltődik"
+
+#: build/lib/modules/power/power.py:34 modules/power/power.py:34
+msgid "Discharging"
+msgstr "Nem töltődik"
+
+#: build/lib/modules/power/power.py:35 modules/power/power.py:35
+msgid "Empty"
+msgstr "Üres"
+
+#: build/lib/modules/power/power.py:36 modules/power/power.py:36
+msgid "Fully charged"
+msgstr "Teljesen feltöltve"
+
+#: build/lib/modules/power/power.py:37 modules/power/power.py:37
+msgid "Pending charge"
+msgstr "Feltöltés alatt"
+
+#: build/lib/modules/power/power.py:38 modules/power/power.py:38
+msgid "Pending discharge"
+msgstr "Nincs feltöltés alatt"
+
+#: build/lib/modules/power/power.py:39 modules/power/power.py:39
+msgid "Last"
+msgstr "Legutóbbi"
+
+#: build/lib/modules/usersadmin/widgets.py:39 modules/usersadmin/widgets.py:39
+msgid "Add a new user"
+msgstr "Új felhasználó hozzáadása"
+
+#: build/lib/modules/usersadmin/usersadmin.py:37
+#: modules/usersadmin/usersadmin.py:37
+msgid "<i>Click the edit button to set the full name</i>"
+msgstr "<i>Kattintson a szerkesztés gombra a teljes név beállításához</i>"
+
+#: build/lib/modules/usersadmin/usersadmin.py:399
+#: modules/usersadmin/usersadmin.py:399
+msgid "_Delete user"
+msgstr "_Felhasználó törlése"
+
+#: build/lib/modules/theme/theme.py:56
+#: build/lib/modules/theme/pages/gtktheme.py:111 modules/theme/theme.py:56
+#: modules/theme/pages/gtktheme.py:111
+msgid "Theme"
+msgstr "Téma"
+
+#: build/lib/modules/theme/theme.py:57 modules/theme/theme.py:57
+msgid "Effects"
+msgstr "Hatások"
+
+#: build/lib/modules/theme/theme.py:58
+#: build/lib/modules/theme/pages/font.py:53 modules/theme/theme.py:58
+#: modules/theme/pages/font.py:53
+msgid "Fonts"
+msgstr "Fontok"
+
+#: build/lib/modules/theme/pages/paranoid.py:41
+#: modules/theme/pages/paranoid.py:41
+msgid "General"
+msgstr "Általános"
+
+#: build/lib/modules/theme/pages/paranoid.py:51
+#: modules/theme/pages/paranoid.py:51
+msgid "Enable animations in applications"
+msgstr "Animációk engedélyezése az alkalmazásokban"
+
+#: build/lib/modules/theme/pages/paranoid.py:59
+#: modules/theme/pages/paranoid.py:59
+msgid "Enable window effects"
+msgstr "Ablak hatások engedélyezése"
+
+#: build/lib/modules/theme/pages/paranoid.py:120
+#: modules/theme/pages/paranoid.py:120
+msgid "Shadows"
+msgstr "Árnyékok"
+
+#: build/lib/modules/theme/pages/paranoid.py:133
+#: modules/theme/pages/paranoid.py:133
+msgid "Enable shadows"
+msgstr "Árnyékok engedélyezése"
+
+#: build/lib/modules/theme/pages/paranoid.py:141
+#: modules/theme/pages/paranoid.py:141
+msgid "Display shadows in the panel"
+msgstr "Árnyékok megjelenítése a panelen"
+
+#: build/lib/modules/theme/pages/paranoid.py:152
+#: modules/theme/pages/paranoid.py:152
+msgid "Shadow color"
+msgstr "Árnyék színe"
+
+#: build/lib/modules/theme/pages/paranoid.py:221
+#: modules/theme/pages/paranoid.py:221
+msgid "Fading"
+msgstr "Elhalványulás"
+
+#: build/lib/modules/theme/pages/paranoid.py:234
+#: modules/theme/pages/paranoid.py:234
+msgid "Enable fading"
+msgstr "Elhalványulás engedélyezése"
+
+#: build/lib/modules/theme/pages/paranoid.py:242
+#: modules/theme/pages/paranoid.py:242
+msgid "Fade windows when they're opening/closing"
+msgstr "Halványítsa el az ablakokat amikor azok megnyílnak/bezáródnak"
+
+#: build/lib/modules/theme/pages/paranoid.py:315
+#: modules/theme/pages/paranoid.py:315
+msgid "Transparency"
+msgstr "Átlátszóság"
+
+#: build/lib/modules/theme/pages/paranoid.py:329
+#: modules/theme/pages/paranoid.py:329
+msgid "Menu opacity"
+msgstr "Menü homályosság"
+
+#: build/lib/modules/theme/pages/paranoid.py:349
+#: modules/theme/pages/paranoid.py:349
+msgid "Inactive opacity"
+msgstr "Inaktív homályosság"
+
+#: build/lib/modules/theme/pages/paranoid.py:369
+#: modules/theme/pages/paranoid.py:369
+msgid "Border opacity"
+msgstr "Keret homályosság"
+
+#: build/lib/modules/theme/pages/paranoid.py:417
+#: modules/theme/pages/paranoid.py:417
+msgid "Advanced"
+msgstr "Haladó"
+
+#: build/lib/modules/theme/pages/paranoid.py:428
+#: modules/theme/pages/paranoid.py:428
+msgid "Backend"
+msgstr "Háttérrendszer"
+
+#: build/lib/modules/theme/pages/paranoid.py:452
+#: build/lib/modules/theme/pages/font.py:99
+#: build/lib/modules/theme/pages/font.py:127
+#: modules/theme/pages/paranoid.py:452 modules/theme/pages/font.py:99
+#: modules/theme/pages/font.py:127
+msgid "None"
+msgstr "Semmi"
+
+#: build/lib/modules/theme/pages/gtktheme.py:99
+#: modules/theme/pages/gtktheme.py:99
+msgid "Widgets"
+msgstr "Kütyük"
+
+#: build/lib/modules/theme/pages/gtktheme.py:121
+#: modules/theme/pages/gtktheme.py:121
+msgid "Show images in buttons"
+msgstr "Képek megjelenítése a gombokon"
+
+#: build/lib/modules/theme/pages/gtktheme.py:129
+#: modules/theme/pages/gtktheme.py:129
+msgid "Show images in menus"
+msgstr "Képek megjelenítése a menükön"
+
+#: build/lib/modules/theme/pages/gtktheme.py:137
+#: modules/theme/pages/gtktheme.py:137
+msgid "Use custom color for selected items (when supported)"
+msgstr "Egyéni szín használata a kiválasztott elemekhez (ha támogatott)"
+
+#: build/lib/modules/theme/pages/gtktheme.py:153
+#: modules/theme/pages/gtktheme.py:153
+msgid "Pick color from the current wallpaper"
+msgstr "Szín kiválasztása a jelenlegi háttérképről"
+
+#: build/lib/modules/theme/pages/gtktheme.py:164
+#: modules/theme/pages/gtktheme.py:164
+msgid "Use this color"
+msgstr "Használd ezt a színt"
+
+#: build/lib/modules/theme/pages/gtktheme.py:251
+#: modules/theme/pages/gtktheme.py:251
+msgid "Icons"
+msgstr "Ikonok"
+
+#: build/lib/modules/theme/pages/gtktheme.py:262
+#: modules/theme/pages/gtktheme.py:262
+msgid "Icon theme"
+msgstr "Ikon téma"
+
+#: build/lib/modules/theme/pages/gtktheme.py:342
+#: modules/theme/pages/gtktheme.py:342
+msgid "Cursor"
+msgstr "Kurzor"
+
+#: build/lib/modules/theme/pages/gtktheme.py:353
+#: modules/theme/pages/gtktheme.py:353
+msgid "Cursor theme"
+msgstr "Kurzor téma"
+
+#: build/lib/modules/theme/pages/gtktheme.py:361
+#: modules/theme/pages/gtktheme.py:361
+msgid ""
+"<i>If you change the cursor theme you need to logout to apply the "
+"changes.</i>"
+msgstr "<i>Ha megváltoztatja a kurzor témát ki kell jelentkeznie a változtatások alkalmazásához.</i>"
+
+#: build/lib/modules/theme/pages/font.py:63 modules/theme/pages/font.py:63
+msgid "Font"
+msgstr "Betűtípus"
+
+#: build/lib/modules/theme/pages/font.py:75 modules/theme/pages/font.py:75
+msgid "Enable antialiasing"
+msgstr "Élsimítás engedélyezése"
+
+#: build/lib/modules/theme/pages/font.py:85 modules/theme/pages/font.py:85
+msgid "Enable hinting"
+msgstr "Tippek engedélyezése"
+
+#: build/lib/modules/theme/pages/font.py:96 modules/theme/pages/font.py:96
+msgid "Hint style"
+msgstr "Tipp stílusa"
+
+#: build/lib/modules/theme/pages/font.py:100 modules/theme/pages/font.py:100
+msgid "Slight"
+msgstr "Apró"
+
+#: build/lib/modules/theme/pages/font.py:101 modules/theme/pages/font.py:101
+msgid "Medium"
+msgstr "Közepes"
+
+#: build/lib/modules/theme/pages/font.py:102 modules/theme/pages/font.py:102
+msgid "Full"
+msgstr "Teljes"
+
+#: build/lib/modules/theme/pages/font.py:124 modules/theme/pages/font.py:124
+msgid "Subpixel rendering"
+msgstr "Képponton belüli renderelés"
+
+#: modules/autostart/autostart.desktop:4
+msgid "preferences-system-session"
+msgstr "beállítások-rendszer-munkamenet"
+
+#: modules/autostart/autostart.desktop:12
+msgid "Manage the applications to autostart"
+msgstr "Automatikusan induló alkalmazások kezelése"
+
+#: modules/autostart/autostart.desktop:13
+msgid "Autostart;Session"
+msgstr "Automatikus indítás;Munkamenet"
+
+#: modules/autostart/autostart.desktop:14
+msgid "Autostart"
+msgstr "Automatikus indítás"
+
+#: modules/tint2/tint2.desktop:4
+msgid "panel"
+msgstr "panel"
+
+#: modules/tint2/tint2.desktop:13 modules/tint2/tint2.desktop:14
+msgid "Panel"
+msgstr "Panel"
+
+#: modules/tint2/tint2.desktop:16
+msgid "Configure the Panel"
+msgstr "Panel beállítása"
+
+#: modules/desktop/desktop.desktop:4
+msgid "preferences-desktop-wallpaper"
+msgstr "beállítások-asztal-háttér"
+
+#: modules/desktop/desktop.desktop:13 modules/desktop/desktop.desktop:14
+msgid "Desktop"
+msgstr "Asztal"
+
+#: modules/desktop/desktop.desktop:16
+msgid "Desktop preferences"
+msgstr "Asztal beállítások"
+
+#: modules/shortcuts/shortcuts.desktop:4
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr "beállítások-asztal-billentyűzet-hivatkozások"
+
+#: modules/shortcuts/shortcuts.desktop:13
+msgid "Shortcuts;"
+msgstr "Hivatkozások;"
+
+#: modules/shortcuts/shortcuts.desktop:14
+#: modules/shortcuts/shortcuts.desktop:16
+msgid "Shortcuts"
+msgstr "Hivatkozások"
+
+#: modules/networkmanager/networkmanager.desktop:16
+msgid "Network Connections"
+msgstr "Hálózati kapcsolatok"
+
+#: modules/networkmanager/networkmanager.desktop:31
+msgid "preferences-system-network"
+msgstr "beállítások-rendszer-hálózat"
+
+#: modules/networkmanager/networkmanager.desktop:33
+msgid "Manage and change your network connection settings"
+msgstr "A hálózati kapcsolatok kezelése és változtatása"
+
+#: modules/networkmanager/networkmanager.desktop:159
+msgid "Network;Connections;"
+msgstr ""
+
+#: modules/locale/locale.desktop:4
+msgid "preferences-desktop-locale"
+msgstr "beállítások-asztal-lokalizálás"
+
+#: modules/locale/locale.desktop:13
+msgid "Language"
+msgstr "Nyelv"
+
+#: modules/locale/locale.desktop:14
+msgid "Region & language"
+msgstr "Régió és nyelv"
+
+#: modules/locale/locale.desktop:16
+msgid "Change the default language and region"
+msgstr "Az alapértelmezett nyelv és régió megváltoztatása"
+
+#: modules/keyboard/keyboard.desktop:4
+msgid "preferences-desktop-keyboard"
+msgstr "beállítások-asztal-billentyűzet"
+
+#: modules/keyboard/keyboard.desktop:13 modules/keyboard/keyboard.desktop:14
+msgid "Keyboard"
+msgstr "Billentyűzet"
+
+#: modules/keyboard/keyboard.desktop:16
+msgid "Keyboard settings"
+msgstr "Billentyűzet beállítások"
+
+#: modules/timedate/timedate.desktop:4
+msgid "preferences-system-time"
+msgstr "beállítások-rendszer-idő"
+
+#: modules/timedate/timedate.desktop:13
+msgid "Time;Date"
+msgstr "Idő;Dátum"
+
+#: modules/timedate/timedate.desktop:14
+msgid "Time & Date"
+msgstr "Idő és dátum"
+
+#: modules/timedate/timedate.desktop:16
+msgid "Configures the time and the date"
+msgstr "Az idő és a dátum beállítása"
+
+#: modules/power/power.desktop:4
+msgid "preferences-system-power"
+msgstr "beállítások-rendszer-energiagazdálkodás"
+
+#: modules/power/power.desktop:12
+msgid "Power settings"
+msgstr "Energiagazdálkodási beállítások"
+
+#: modules/power/power.desktop:13
+msgid "Power;Batteries;Battery;"
+msgstr "Energiagazdálkodás;Telepek;Telep;"
+
+#: modules/power/power.desktop:14
+msgid "Power"
+msgstr "Energiagazdálkodás"
+
+#: modules/usersadmin/usersadmin.desktop:4
+msgid "system-config-users"
+msgstr "rendszer-beállítás-felhasználók"
+
+#: modules/usersadmin/usersadmin.desktop:13
+msgid "Users;Groups;Face"
+msgstr "Felhasználók;Csoportok;Arckép"
+
+#: modules/usersadmin/usersadmin.desktop:14
+msgid "Users & Groups"
+msgstr "Felhasználók és Csoportok"
+
+#: modules/usersadmin/usersadmin.desktop:16
+msgid "Add, edit, remove users and groups"
+msgstr "Felhasználók és csoportok hozzáadása, szerkesztése, eltávolítása"
+
+#: modules/theme/theme.desktop:6
+msgid "preferences-desktop-theme"
+msgstr "beállítások-asztal-téma"
+
+#: modules/theme/theme.desktop:7
+msgid "Themes"
+msgstr ""
+
+#: modules/theme/theme.desktop:10
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: modules/theme/theme.desktop:12
+msgid "Themes."
+msgstr "Témák."
+
+#: modules/about/about.desktop:4
+msgid "info"
+msgstr "információk"
+
+#: modules/about/about.desktop:13
+msgid "Device;Informations;About"
+msgstr "Eszköz;Információk;Névjegy"
+
+#: modules/about/about.desktop:14
+msgid "Device details"
+msgstr "Eszköz adatai"
+
+#: modules/about/about.desktop:16
+msgid "Shows informations on this system"
+msgstr "Információkat jelenít meg erről a rendszerről"
+
+#: controlcenterui.glade.h:2
+msgid "Search"
+msgstr "Keresés"
+
+#: modules/autostart/autostart.glade.h:1
+msgid "Add a new custom command"
+msgstr "Új egyéni parancs hozzáadása"
+
+#: modules/autostart/autostart.glade.h:2 modules/desktop/desktop.glade.h:2
+msgid "Name"
+msgstr "Név"
+
+#: modules/autostart/autostart.glade.h:3
+msgid "Command"
+msgstr "Parancs"
+
+#: modules/autostart/autostart.glade.h:4
+msgid "<b>Autostart applications</b>"
+msgstr "<b>Automatikusan induló alkalmazások</b>"
+
+#: modules/autostart/autostart.glade.h:5
+msgid "Add new"
+msgstr "Új hozzáadása"
+
+#: modules/tint2/tint2.glade.h:1
+msgid "Top"
+msgstr "Fent"
+
+#: modules/tint2/tint2.glade.h:2 modules/desktop/desktop.glade.h:14
+msgid "Center"
+msgstr "Középen"
+
+#: modules/tint2/tint2.glade.h:3
+msgid "Bottom"
+msgstr "Lent"
+
+#: modules/tint2/tint2.glade.h:4
+msgid "Panel settings"
+msgstr "Panel beállítások"
+
+#: modules/tint2/tint2.glade.h:5
+msgid "Enable launchers"
+msgstr "Indítók engedélyezése"
+
+#: modules/tint2/tint2.glade.h:6
+msgid "<b>Launchers</b>"
+msgstr "<b>Indítók</b>"
+
+#: modules/tint2/tint2.glade.h:7
+msgid "Use AM/PM format for the clock"
+msgstr "AM/PM formátum használata az órához"
+
+#: modules/tint2/tint2.glade.h:8
+msgid "Auto-hide panel"
+msgstr "Panel automatikus elrejtése"
+
+#: modules/tint2/tint2.glade.h:9
+msgid "Panel position"
+msgstr "Panel elhelyezkedés"
+
+#: modules/tint2/tint2.glade.h:10 modules/desktop/desktop.glade.h:22
+#: modules/locale/locale.glade.h:16
+msgid "<b>Other</b>"
+msgstr "<b>Egyéb</b>"
+
+#: modules/desktop/desktop.glade.h:1
+msgid "Background informations"
+msgstr "Háttér információk"
+
+#: modules/desktop/desktop.glade.h:3
+msgid "Description"
+msgstr "Leírás"
+
+#: modules/desktop/desktop.glade.h:4
+msgid "Author"
+msgstr "Szerző"
+
+#: modules/desktop/desktop.glade.h:5
+msgid "License"
+msgstr "Licensz"
+
+#: modules/desktop/desktop.glade.h:6
+msgid "button"
+msgstr "gomb"
+
+#: modules/desktop/desktop.glade.h:7
+msgid "label"
+msgstr "felirat"
+
+#: modules/desktop/desktop.glade.h:8
+msgid "Color"
+msgstr "Szín"
+
+#: modules/desktop/desktop.glade.h:9
+msgid "Tile"
+msgstr "Befedés"
+
+#: modules/desktop/desktop.glade.h:10
+msgid "Stretch"
+msgstr "Nyújtás"
+
+#: modules/desktop/desktop.glade.h:11
+msgid "Screen"
+msgstr "Képernyő"
+
+#: modules/desktop/desktop.glade.h:12
+msgid "Fit"
+msgstr "Illesztés"
+
+#: modules/desktop/desktop.glade.h:13
+msgid "Crop"
+msgstr "Kivágás"
+
+#: modules/desktop/desktop.glade.h:15
+msgid "Select entire directories"
+msgstr "Teljes könyvtárak kiválasztása"
+
+#: modules/desktop/desktop.glade.h:16
+msgid "Add background"
+msgstr "Háttér hozzáadása"
+
+#: modules/desktop/desktop.glade.h:17
+msgid "Remove background"
+msgstr "Háttér eltávolítása"
+
+#: modules/desktop/desktop.glade.h:18
+msgid "Informations on this wallpaper"
+msgstr "Információk erről a háttérképről"
+
+#: modules/desktop/desktop.glade.h:19
+msgid "About this wallpaper"
+msgstr "Háttérkép névjegye"
+
+#: modules/desktop/desktop.glade.h:20
+msgid "Change background every"
+msgstr "Háttérkép megváltoztatása minden"
+
+#: modules/desktop/desktop.glade.h:21
+msgid "minutes"
+msgstr "percek"
+
+#: modules/desktop/desktop.glade.h:23
+msgid "Add a new background"
+msgstr "Új háttérkép hozzáadása"
+
+#: modules/shortcuts/shortcuts.glade.h:1
+msgid "Last action"
+msgstr "Legutóbbi művelet"
+
+#: modules/shortcuts/shortcuts.glade.h:2
+msgid "Power Off"
+msgstr "Kikapcsolás"
+
+#: modules/shortcuts/shortcuts.glade.h:3 modules/power/power.glade.h:3
+msgid "Reboot"
+msgstr "Újraindítás"
+
+#: modules/shortcuts/shortcuts.glade.h:4 modules/power/power.glade.h:4
+msgid "Suspend"
+msgstr "Felfüggesztés"
+
+#: modules/shortcuts/shortcuts.glade.h:5
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+#: modules/shortcuts/shortcuts.glade.h:6
+msgid "Lock"
+msgstr "Lezárás"
+
+#: modules/shortcuts/shortcuts.glade.h:7 modules/power/power.glade.h:5
+msgid "Hibernate"
+msgstr "Hibernálás"
+
+#: modules/shortcuts/shortcuts.glade.h:8
+msgid "Switch user"
+msgstr "Felhasználó váltás"
+
+#: modules/shortcuts/shortcuts.glade.h:9
+msgid "Do not show confirmation window"
+msgstr "Ne jelenítse meg a jóváhagyási ablakot"
+
+#: modules/shortcuts/shortcuts.glade.h:10
+msgid "Execute action after pressing Ctrl+Alt+Space"
+msgstr "A Ctrl+Alt+Space megnyomása után hajtson végre műveletet"
+
+#: modules/shortcuts/shortcuts.glade.h:11
+msgid "Action to execute"
+msgstr "Végrehajtandó művelet"
+
+#: modules/shortcuts/shortcuts.glade.h:12
+msgid "<b>Exit actions</b>"
+msgstr "<b>Kilépési műveletek</b>"
+
+#: modules/shortcuts/shortcuts.glade.h:13
+msgid "Enable launcher"
+msgstr "Indító engedélyezése"
+
+#: modules/shortcuts/shortcuts.glade.h:14
+msgid "<b>Desktop</b>"
+msgstr "<b>Asztal</b>"
+
+#: modules/locale/locale.glade.h:1
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: modules/locale/locale.glade.h:2
+msgid "<big><b>Some translations may haven't be installed!</b></big>"
+msgstr "<big><b>Néhány fordítás lehet, hogy nem telepíthető!</b></big>"
+
+#: modules/locale/locale.glade.h:3
+msgid ""
+"As you have previously used the 'Save space' feature, translations of the newly selected locale may have not been installed.\n"
+"\n"
+"Do you want to continue?"
+msgstr "Mivel korábban használta a \"helymegtakarítás\" funkciót, előfordulhat, hogy az újonnan kiválasztott nyelvhez nincsenek telepítve a fordítások.\n\nFolytatni szeretné?"
+
+#: modules/locale/locale.glade.h:6
+msgid "Question"
+msgstr "Kérdés"
+
+#: modules/locale/locale.glade.h:7
+msgid "<big><b>Remove already installed translations?</b></big>"
+msgstr "<big><b>A már telepített fordítások eltávolítása?</b></big>"
+
+#: modules/locale/locale.glade.h:8
+msgid ""
+"This feature has effect only on the future installed applications.\n"
+"\n"
+"It's possible to remove already installed translations though. This may take some time.\n"
+"\n"
+"Do you want to continue? (If you press <i>No</i>, the savespace feature will not be retroactive)"
+msgstr "Ez a funkció csak a jövőben telepített alkalmazásokra van hatással.\n\nLehetséges, hogy mégis eltávolításra kerüljenek a már telepített fordítások. Ez eltarthat egy ideig.\n\nFolytatni szeretné? (Ha a <i>Nem</i> gombra kattint, a helymegtakarítási funkció nem lesz visszamenőleges hatással)"
+
+#: modules/locale/locale.glade.h:13
+msgid "Display all available locales"
+msgstr "Minden elérhető honosítás megjelenítése"
+
+#: modules/locale/locale.glade.h:14
+msgid "<b>Region and language</b>"
+msgstr "<b>Régió és nyelv</b>"
+
+#: modules/locale/locale.glade.h:15
+msgid "Save space by installing only translations of the selected language"
+msgstr "Helyet takaríthat meg ha csak a kiválasztott nyelv fordításait telepíti"
+
+#: modules/keyboard/keyboard.glade.h:1
+msgid "<b>Layout</b>"
+msgstr "<b>Elrendezés</b>"
+
+#: modules/keyboard/keyboard.glade.h:2
+msgid "<b>Variant</b>"
+msgstr "<b>Változat</b>"
+
+#: modules/keyboard/keyboard.glade.h:3
+msgid "<b>Model</b>"
+msgstr "<b>Típus</b>"
+
+#: modules/timedate/timedate.glade.h:1
+msgid "0"
+msgstr "0"
+
+#: modules/timedate/timedate.glade.h:2
+msgid ":"
+msgstr ":"
+
+#: modules/timedate/timedate.glade.h:3
+msgid "Keep syncronized with internet services"
+msgstr "Tartsa szinkronizálva az Internet szolgáltatásokkal"
+
+#: modules/timedate/timedate.glade.h:4
+msgid "Select a city"
+msgstr "Város kiválasztása"
+
+#: modules/timedate/timedate.glade.h:5
+msgid "Select"
+msgstr "Kiválasztás"
+
+#: modules/power/power.glade.h:1
+msgid "Do nothing"
+msgstr "Ne tegyen semmit"
+
+#: modules/power/power.glade.h:2
+msgid "Power off"
+msgstr "Kikapcsolás"
+
+#: modules/power/power.glade.h:6
+msgid "Lock screen"
+msgstr "Zárolja a képernyőt"
+
+#: modules/power/power.glade.h:7
+msgid "<b>Battery</b>"
+msgstr "<b>Telep</b>"
+
+#: modules/power/power.glade.h:8
+msgid "When the power button has been pressed"
+msgstr "A főkapcsoló gomb megnyomásakor"
+
+#: modules/power/power.glade.h:9
+msgid "When the laptop has been closed"
+msgstr "Amikor a laptop képernyőfödele lecsukódott"
+
+#: modules/power/power.glade.h:10
+msgid ""
+"The specified action is triggered only when the device is discharging, and "
+"only if there aren't any external displays connected."
+msgstr "A megadott művelet csak akkor hajtódik végre amikor a készülék telepe lemerül, és csak akkor, ha nincs külső képernyőhöz csatlakoztatva."
+
+#: modules/power/power.glade.h:11
+msgid "<b>Buttons</b>"
+msgstr "<b>Gombok</b>"
+
+#: modules/usersadmin/usersadmin.glade.h:1
+msgid "Delete user"
+msgstr "Felhasználó törlése"
+
+#: modules/usersadmin/usersadmin.glade.h:2
+msgid "<big><b>Do you really want to continue?</b></big>"
+msgstr "<big><b>Valóban folytatni szeretné?</b></big>"
+
+#: modules/usersadmin/usersadmin.glade.h:3
+msgid "By continuing, the user will be permanently deleted."
+msgstr "Ha folytatja, a felhasználó véglegesen törlődik."
+
+#: modules/usersadmin/usersadmin.glade.h:4
+msgid "Remove also personal files (the \"Home directory\")"
+msgstr "A személyes fájlokat is távolítsa el (a \"Home könyvtár\" tartalmát)"
+
+#: modules/usersadmin/usersadmin.glade.h:5
+msgid "Click to edit the full name"
+msgstr "Kattintson a teljes név szerkesztéséhez"
+
+#: modules/usersadmin/usersadmin.glade.h:6
+msgid "Groups and permissions"
+msgstr "Csoportok és engedélyek"
+
+#: modules/usersadmin/usersadmin.glade.h:7
+msgid "User Name"
+msgstr "Felhasználó Neve"
+
+#: modules/usersadmin/usersadmin.glade.h:8
+msgid "user"
+msgstr "felhasználó"
+
+#: modules/usersadmin/usersadmin.glade.h:9
+msgid "Click to delete this user"
+msgstr "Kattintson a felhasználó törléséhez"
+
+#: modules/usersadmin/usersadmin.glade.h:10
+msgid "Administrator"
+msgstr "Rendszergazda"
+
+#: modules/usersadmin/usersadmin.glade.h:11
+msgid "Password"
+msgstr "Jelszó"
+
+#: modules/usersadmin/usersadmin.glade.h:12
+msgid "Autologin"
+msgstr "Automatikus bejelentkezés"
+
+#: modules/usersadmin/usersadmin.glade.h:13
+msgid "Click to change"
+msgstr "Kattintson a változtatáshoz"
+
+#: modules/usersadmin/usersadmin.glade.h:14
+msgid "Unable to load the user list."
+msgstr "A felhasználói lista nem tölthető be."
+
+#: modules/about/about.glade.h:1
+msgid "Semplice"
+msgstr "Semplice"
+
+#: modules/about/about.glade.h:2
+msgid "Device name"
+msgstr "Eszköz neve"
+
+#: modules/about/about.glade.h:3
+msgid "System memory"
+msgstr "Rendszer memória"
+
+#: modules/about/about.glade.h:4
+msgid "CPU"
+msgstr "Processzor"
+
+#: modules/about/about.glade.h:5
+msgid "Edition"
+msgstr "Kiadás"
+
+#: modules/about/about.glade.h:6
+msgid "Made with ♥ in Italy, enjoyed everywhere."
+msgstr "Készült ♥ Olaszországban, élvezve mindenfelé."
+
+#: modules/about/about.glade.h:7
+msgid "Check for updates"
+msgstr "Frissítések ellenőrzése"

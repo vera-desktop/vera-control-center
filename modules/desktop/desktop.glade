@@ -180,30 +180,39 @@
   </object>
   <object class="GtkListStore" id="background_modes">
     <columns>
+      <!-- column-name Value -->
+      <column type="gchararray"/>
       <!-- column-name Name -->
       <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Color</col>
+        <col id="0">Color</col>
+        <col id="1" translatable="yes">Color</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Tile</col>
+        <col id="0">Tile</col>
+        <col id="1" translatable="yes">Tile</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Stretch</col>
+        <col id="0">Stretch</col>
+        <col id="1" translatable="yes">Stretch</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Screen</col>
+        <col id="0">Screen</col>
+        <col id="1" translatable="yes">Screen</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Fit</col>
+        <col id="0">Fit</col>
+        <col id="1" translatable="yes">Fit</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Crop</col>
+        <col id="0">Crop</col>
+        <col id="1" translatable="yes">Crop</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Center</col>
+        <col id="0">Center</col>
+        <col id="1" translatable="yes">Center</col>
       </row>
     </data>
   </object>

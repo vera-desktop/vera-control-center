@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Device details
+Name[nl_NL]=Apparaatdetails
+Keywords[nl_NL]=Apparaat;Informatie;Over
 Name[it]=Informazioni sul dispositivo
-Comment=Shows informations on this system
-Comment[it]=Visualizza informazioni su questo sistema
-Icon=info
 Keywords=Device;Informations;About
+Comment[hu]=Információkat jelenít meg erről a rendszerről
+Name[hu]=Eszköz adatai
+Comment[nl_NL]=Weergeeft informative over dit systeem
+Icon=info
+Keywords[hu]=Eszköz;Információk;Névjegy
 X-VeraCC-Section=System
+Comment=Shows informations on this system
+Comment[it]=Mostra informazioni su questo sistema
+Keywords[it]=Dispositivo;Informazioni
+

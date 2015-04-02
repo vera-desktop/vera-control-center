@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Time & Date
+Name[nl_NL]=Datum en tijd
+Keywords[nl_NL]=Tijd;Datum
 Name[it]=Ora e data
+Keywords=Time;Date
+Comment[hu]=Az idő és a dátum beállítása
+Name[hu]=Idő és dátum
+Comment[nl_NL]=De datum en tijd instellen
+Icon=preferences-system-time
+Keywords[hu]=Idő;Dátum
+X-VeraCC-Section=System
 Comment=Configures the time and the date
 Comment[it]=Configura l'ora e la data
-Icon=preferences-system-time
-Keywords=Time;Date
-X-VeraCC-Section=System
+Keywords[it]=Ora;Data
+

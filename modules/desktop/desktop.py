@@ -472,9 +472,9 @@ class Scene(quickstart.scenes.BaseScene):
 		)
 
 		# Populate monitor model
-		self.monitor_model.insert_with_valuesv(-1, [0], ["All monitors"]) # "All monitors"
+		self.monitor_model.insert_with_valuesv(-1, [0], [_("All monitors")]) # "All monitors"
 		for monitor in range(1, self.monitor_number+1):
-			self.monitor_model.insert_with_valuesv(-1, [0], ["Monitor %d" % (monitor)])
+			self.monitor_model.insert_with_valuesv(-1, [0], [_("Monitor %d") % (monitor)])
 		self.objects.monitor_chooser.set_active(0)
 		self.objects.monitor_chooser.bind_property(
 			"active",
@@ -508,7 +508,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Background mode
 		renderer = Gtk.CellRendererText()
 		self.objects.background_mode.pack_start(renderer, True)
-		self.objects.background_mode.add_attribute(renderer, "text", 0)
+		self.objects.background_mode.add_attribute(renderer, "text", 1)
 		self.settings.bind(
 			"background-mode",
 			self.objects.background_mode,
@@ -540,19 +540,19 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Prepare the "Add background" dialog...
 		self.objects.add_background_window.add_buttons(
-			"Cancel",
+			_("_Cancel"),
 			Gtk.ResponseType.CANCEL,
-			"Open",
+			_("_Open"),
 			Gtk.ResponseType.ACCEPT
 		)
-		self.objects.all_files.set_name("All Files")
-		self.objects.image_filter.set_name("Images")
+		self.objects.all_files.set_name(_("All Files"))
+		self.objects.image_filter.set_name(_("Images"))
 		self.objects.add_background_window.add_filter(self.objects.image_filter)
 		self.objects.add_background_window.add_filter(self.objects.all_files)
 		
 		# Prepare the "About background" dialog...
 		self.objects.about_background_dialog.add_buttons(
-			"Close",
+			_("_Close"),
 			Gtk.ResponseType.CLOSE
 		)
 		

@@ -1,0 +1,931 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Heimen Stoffels <vistausss@outlook.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: vera-control-center\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-02 15:51+0200\n"
+"PO-Revision-Date: 2015-04-02 13:51+0000\n"
+"Last-Translator: g7 <me@medesimo.eu>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/vera-control-center/language/nl_NL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: vera-control-center.py:54 build/scripts-3.4/vera-control-center.py:54
+msgid "Personal"
+msgstr "Persoonlijk"
+
+#: vera-control-center.py:55 build/scripts-3.4/vera-control-center.py:55
+msgid "System"
+msgstr "Systeem"
+
+#: vera-control-center.py:56 build/scripts-3.4/vera-control-center.py:56
+msgid "Network"
+msgstr "Netwerk"
+
+#: vera-control-center.py:57 build/scripts-3.4/vera-control-center.py:57
+msgid "Hardware"
+msgstr "Hardware"
+
+#: vera-control-center.py:98 build/scripts-3.4/vera-control-center.py:98
+#: controlcenterui.glade.h:1
+msgid "Settings"
+msgstr "Instellingen"
+
+#: build/lib/veracc/widgets/UnlockBar.py:113 veracc/widgets/UnlockBar.py:113
+msgid "You need additional privileges to modify these settings."
+msgstr "U heeft extra bevoegdheden nodig om deze instellingen te mogen wijzigen."
+
+#: build/lib/veracc/widgets/UnlockBar.py:118 veracc/widgets/UnlockBar.py:118
+msgid "Press the <i>Lock</i> button to lock these settings."
+msgstr "Klik op de <I>Vergrendelen</I>-knop om deze instellingen te vergrendelen."
+
+#: build/lib/veracc/widgets/UnlockBar.py:122 veracc/widgets/UnlockBar.py:122
+msgid "_Unlock"
+msgstr "_Ontgrendelen"
+
+#: build/lib/veracc/widgets/UnlockBar.py:123 veracc/widgets/UnlockBar.py:123
+msgid "_Lock"
+msgstr "_Vergrendelen"
+
+#: build/lib/veracc/widgets/UnlockBar.py:219 veracc/widgets/UnlockBar.py:219
+#, python-format
+msgid "Error checking authorization: %s"
+msgstr "Er is een fout opgetreden bij het controleren van de authorisatie: %s"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:187
+#: veracc/widgets/ApplicationSelectionDialog.py:187
+msgid "Select an application"
+msgstr "Selecteer een applicatie"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:201
+#: build/lib/modules/autostart/autostart.py:420
+#: build/lib/modules/desktop/desktop.py:543
+#: build/lib/modules/usersadmin/usersadmin.py:397
+#: veracc/widgets/ApplicationSelectionDialog.py:201
+#: modules/autostart/autostart.py:420 modules/desktop/desktop.py:543
+#: modules/usersadmin/usersadmin.py:397
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: build/lib/veracc/widgets/ApplicationSelectionDialog.py:202
+#: build/lib/modules/autostart/autostart.py:421
+#: veracc/widgets/ApplicationSelectionDialog.py:202
+#: modules/autostart/autostart.py:421
+msgid "_Select"
+msgstr "_Selecteren"
+
+#: build/lib/modules/autostart/autostart.py:394
+#: modules/autostart/autostart.py:394
+msgid "Select..."
+msgstr "Selecteren..."
+
+#: build/lib/modules/autostart/autostart.py:398
+#: modules/autostart/autostart.py:398
+msgid "Use a custom command"
+msgstr "Een aangepast commando gebruiken"
+
+#: build/lib/modules/desktop/desktop.py:475 modules/desktop/desktop.py:475
+msgid "All monitors"
+msgstr "Alle beeldschermen"
+
+#: build/lib/modules/desktop/desktop.py:477 modules/desktop/desktop.py:477
+#, python-format
+msgid "Monitor %d"
+msgstr "Beeldscherm %d"
+
+#: build/lib/modules/desktop/desktop.py:545 modules/desktop/desktop.py:545
+msgid "_Open"
+msgstr "_Openen"
+
+#: build/lib/modules/desktop/desktop.py:548 modules/desktop/desktop.py:548
+msgid "All Files"
+msgstr "Alle bestanden"
+
+#: build/lib/modules/desktop/desktop.py:549 modules/desktop/desktop.py:549
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: build/lib/modules/desktop/desktop.py:555
+#: build/lib/modules/usersadmin/usersadmin.py:412
+#: modules/desktop/desktop.py:555 modules/usersadmin/usersadmin.py:412
+msgid "_Close"
+msgstr "_Sluiten"
+
+#: build/lib/modules/power/power.py:32 modules/power/power.py:32
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: build/lib/modules/power/power.py:33 modules/power/power.py:33
+msgid "Charging"
+msgstr "Bezig met opladen"
+
+#: build/lib/modules/power/power.py:34 modules/power/power.py:34
+msgid "Discharging"
+msgstr "Bezig met ontladen"
+
+#: build/lib/modules/power/power.py:35 modules/power/power.py:35
+msgid "Empty"
+msgstr "Leeg"
+
+#: build/lib/modules/power/power.py:36 modules/power/power.py:36
+msgid "Fully charged"
+msgstr "Volledig opgeladen"
+
+#: build/lib/modules/power/power.py:37 modules/power/power.py:37
+msgid "Pending charge"
+msgstr "Bezig met verwerken van laden"
+
+#: build/lib/modules/power/power.py:38 modules/power/power.py:38
+msgid "Pending discharge"
+msgstr "Bezig met verwerken van ontladen"
+
+#: build/lib/modules/power/power.py:39 modules/power/power.py:39
+msgid "Last"
+msgstr "Laatst"
+
+#: build/lib/modules/usersadmin/widgets.py:39 modules/usersadmin/widgets.py:39
+msgid "Add a new user"
+msgstr "Een nieuwe gebruiker toevoegen"
+
+#: build/lib/modules/usersadmin/usersadmin.py:37
+#: modules/usersadmin/usersadmin.py:37
+msgid "<i>Click the edit button to set the full name</i>"
+msgstr "<I>Klik op de bewerken-knop om de volledige naam in te stellen</I>"
+
+#: build/lib/modules/usersadmin/usersadmin.py:399
+#: modules/usersadmin/usersadmin.py:399
+msgid "_Delete user"
+msgstr "Gebruiker _verwijderen"
+
+#: build/lib/modules/theme/theme.py:56
+#: build/lib/modules/theme/pages/gtktheme.py:111 modules/theme/theme.py:56
+#: modules/theme/pages/gtktheme.py:111
+msgid "Theme"
+msgstr "Thema"
+
+#: build/lib/modules/theme/theme.py:57 modules/theme/theme.py:57
+msgid "Effects"
+msgstr "Effecten"
+
+#: build/lib/modules/theme/theme.py:58
+#: build/lib/modules/theme/pages/font.py:53 modules/theme/theme.py:58
+#: modules/theme/pages/font.py:53
+msgid "Fonts"
+msgstr "Lettertypen"
+
+#: build/lib/modules/theme/pages/paranoid.py:41
+#: modules/theme/pages/paranoid.py:41
+msgid "General"
+msgstr "Algemeen"
+
+#: build/lib/modules/theme/pages/paranoid.py:51
+#: modules/theme/pages/paranoid.py:51
+msgid "Enable animations in applications"
+msgstr "Animaties in applicaties inschakelen"
+
+#: build/lib/modules/theme/pages/paranoid.py:59
+#: modules/theme/pages/paranoid.py:59
+msgid "Enable window effects"
+msgstr "Venstereffecten inschakelen"
+
+#: build/lib/modules/theme/pages/paranoid.py:120
+#: modules/theme/pages/paranoid.py:120
+msgid "Shadows"
+msgstr "Schaduwen"
+
+#: build/lib/modules/theme/pages/paranoid.py:133
+#: modules/theme/pages/paranoid.py:133
+msgid "Enable shadows"
+msgstr "Schaduwen inschakelen"
+
+#: build/lib/modules/theme/pages/paranoid.py:141
+#: modules/theme/pages/paranoid.py:141
+msgid "Display shadows in the panel"
+msgstr "Schaduwen op het paneel weergeven"
+
+#: build/lib/modules/theme/pages/paranoid.py:152
+#: modules/theme/pages/paranoid.py:152
+msgid "Shadow color"
+msgstr "Schaduwkleur"
+
+#: build/lib/modules/theme/pages/paranoid.py:221
+#: modules/theme/pages/paranoid.py:221
+msgid "Fading"
+msgstr "Vervaging"
+
+#: build/lib/modules/theme/pages/paranoid.py:234
+#: modules/theme/pages/paranoid.py:234
+msgid "Enable fading"
+msgstr "Vervaging inschakelen"
+
+#: build/lib/modules/theme/pages/paranoid.py:242
+#: modules/theme/pages/paranoid.py:242
+msgid "Fade windows when they're opening/closing"
+msgstr "Vensters vervagen tijdens het openen/sluiten"
+
+#: build/lib/modules/theme/pages/paranoid.py:315
+#: modules/theme/pages/paranoid.py:315
+msgid "Transparency"
+msgstr "Doorzichtigheid"
+
+#: build/lib/modules/theme/pages/paranoid.py:329
+#: modules/theme/pages/paranoid.py:329
+msgid "Menu opacity"
+msgstr "Menudoorzichtigheid"
+
+#: build/lib/modules/theme/pages/paranoid.py:349
+#: modules/theme/pages/paranoid.py:349
+msgid "Inactive opacity"
+msgstr "Inactieve doorzichtigheid"
+
+#: build/lib/modules/theme/pages/paranoid.py:369
+#: modules/theme/pages/paranoid.py:369
+msgid "Border opacity"
+msgstr "Randdoorzichtigheid"
+
+#: build/lib/modules/theme/pages/paranoid.py:417
+#: modules/theme/pages/paranoid.py:417
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: build/lib/modules/theme/pages/paranoid.py:428
+#: modules/theme/pages/paranoid.py:428
+msgid "Backend"
+msgstr "Backend"
+
+#: build/lib/modules/theme/pages/paranoid.py:452
+#: build/lib/modules/theme/pages/font.py:99
+#: build/lib/modules/theme/pages/font.py:127
+#: modules/theme/pages/paranoid.py:452 modules/theme/pages/font.py:99
+#: modules/theme/pages/font.py:127
+msgid "None"
+msgstr "Geen"
+
+#: build/lib/modules/theme/pages/gtktheme.py:99
+#: modules/theme/pages/gtktheme.py:99
+msgid "Widgets"
+msgstr "Widgets"
+
+#: build/lib/modules/theme/pages/gtktheme.py:121
+#: modules/theme/pages/gtktheme.py:121
+msgid "Show images in buttons"
+msgstr "Afbeeldingen weergeven op knoppen"
+
+#: build/lib/modules/theme/pages/gtktheme.py:129
+#: modules/theme/pages/gtktheme.py:129
+msgid "Show images in menus"
+msgstr "Afbeeldingen weergeven in menu's"
+
+#: build/lib/modules/theme/pages/gtktheme.py:137
+#: modules/theme/pages/gtktheme.py:137
+msgid "Use custom color for selected items (when supported)"
+msgstr "Een aangepaste kleur gebruiken voor geselecteerde items (indien ondersteund)"
+
+#: build/lib/modules/theme/pages/gtktheme.py:153
+#: modules/theme/pages/gtktheme.py:153
+msgid "Pick color from the current wallpaper"
+msgstr "Kies de kleur vanuit de huidige bureaubladachtergrond"
+
+#: build/lib/modules/theme/pages/gtktheme.py:164
+#: modules/theme/pages/gtktheme.py:164
+msgid "Use this color"
+msgstr "Deze kleur gebruiken"
+
+#: build/lib/modules/theme/pages/gtktheme.py:251
+#: modules/theme/pages/gtktheme.py:251
+msgid "Icons"
+msgstr "Pictogrammen"
+
+#: build/lib/modules/theme/pages/gtktheme.py:262
+#: modules/theme/pages/gtktheme.py:262
+msgid "Icon theme"
+msgstr "Pictogramthema"
+
+#: build/lib/modules/theme/pages/gtktheme.py:342
+#: modules/theme/pages/gtktheme.py:342
+msgid "Cursor"
+msgstr "Cursor"
+
+#: build/lib/modules/theme/pages/gtktheme.py:353
+#: modules/theme/pages/gtktheme.py:353
+msgid "Cursor theme"
+msgstr "Cursorthema"
+
+#: build/lib/modules/theme/pages/gtktheme.py:361
+#: modules/theme/pages/gtktheme.py:361
+msgid ""
+"<i>If you change the cursor theme you need to logout to apply the "
+"changes.</i>"
+msgstr "<I>Als u het cursorthema wijzigt moet u afmelden en weer aanmelden om de wijzigingen toe te passen.</I>"
+
+#: build/lib/modules/theme/pages/font.py:63 modules/theme/pages/font.py:63
+msgid "Font"
+msgstr "Lettertype"
+
+#: build/lib/modules/theme/pages/font.py:75 modules/theme/pages/font.py:75
+msgid "Enable antialiasing"
+msgstr "Anti-kartelvorming inschakelen"
+
+#: build/lib/modules/theme/pages/font.py:85 modules/theme/pages/font.py:85
+msgid "Enable hinting"
+msgstr "Subpixelweergave inschakelen"
+
+#: build/lib/modules/theme/pages/font.py:96 modules/theme/pages/font.py:96
+msgid "Hint style"
+msgstr "Stijl van subpixelweergave"
+
+#: build/lib/modules/theme/pages/font.py:100 modules/theme/pages/font.py:100
+msgid "Slight"
+msgstr "Licht"
+
+#: build/lib/modules/theme/pages/font.py:101 modules/theme/pages/font.py:101
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: build/lib/modules/theme/pages/font.py:102 modules/theme/pages/font.py:102
+msgid "Full"
+msgstr "Volledig"
+
+#: build/lib/modules/theme/pages/font.py:124 modules/theme/pages/font.py:124
+msgid "Subpixel rendering"
+msgstr "Subpixelweergave"
+
+#: modules/autostart/autostart.desktop:4
+msgid "preferences-system-session"
+msgstr "preferences-system-session"
+
+#: modules/autostart/autostart.desktop:12
+msgid "Manage the applications to autostart"
+msgstr "De applicaties beheren die automatisch worden opgestart"
+
+#: modules/autostart/autostart.desktop:13
+msgid "Autostart;Session"
+msgstr "Automatisch opstarten;Sessie"
+
+#: modules/autostart/autostart.desktop:14
+msgid "Autostart"
+msgstr "Automatisch opstarten"
+
+#: modules/tint2/tint2.desktop:4
+msgid "panel"
+msgstr "paneel"
+
+#: modules/tint2/tint2.desktop:13 modules/tint2/tint2.desktop:14
+msgid "Panel"
+msgstr "Paneel"
+
+#: modules/tint2/tint2.desktop:16
+msgid "Configure the Panel"
+msgstr "Het paneel instellen"
+
+#: modules/desktop/desktop.desktop:4
+msgid "preferences-desktop-wallpaper"
+msgstr "preferences-desktop-wallpaper"
+
+#: modules/desktop/desktop.desktop:13 modules/desktop/desktop.desktop:14
+msgid "Desktop"
+msgstr "Bureaublad"
+
+#: modules/desktop/desktop.desktop:16
+msgid "Desktop preferences"
+msgstr "Bureaubladvoorkeuren"
+
+#: modules/shortcuts/shortcuts.desktop:4
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr "preferences-desktop-keyboard-shortcuts"
+
+#: modules/shortcuts/shortcuts.desktop:13
+msgid "Shortcuts;"
+msgstr "Sneltoetsen;"
+
+#: modules/shortcuts/shortcuts.desktop:14
+#: modules/shortcuts/shortcuts.desktop:16
+msgid "Shortcuts"
+msgstr "Sneltoetsen"
+
+#: modules/networkmanager/networkmanager.desktop:16
+msgid "Network Connections"
+msgstr "Netwerkverbindingen"
+
+#: modules/networkmanager/networkmanager.desktop:31
+msgid "preferences-system-network"
+msgstr "preferences-system-network"
+
+#: modules/networkmanager/networkmanager.desktop:33
+msgid "Manage and change your network connection settings"
+msgstr "Uw netwerkverbindingsinstellingen beheren en wijzigen"
+
+#: modules/networkmanager/networkmanager.desktop:159
+msgid "Network;Connections;"
+msgstr ""
+
+#: modules/locale/locale.desktop:4
+msgid "preferences-desktop-locale"
+msgstr "preferences-desktop-locale"
+
+#: modules/locale/locale.desktop:13
+msgid "Language"
+msgstr "Taal"
+
+#: modules/locale/locale.desktop:14
+msgid "Region & language"
+msgstr "Regio en taal"
+
+#: modules/locale/locale.desktop:16
+msgid "Change the default language and region"
+msgstr "De standaard taal en -regio wijzigen"
+
+#: modules/keyboard/keyboard.desktop:4
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: modules/keyboard/keyboard.desktop:13 modules/keyboard/keyboard.desktop:14
+msgid "Keyboard"
+msgstr "Toetsenbord"
+
+#: modules/keyboard/keyboard.desktop:16
+msgid "Keyboard settings"
+msgstr "Toetsenbordinstellingen"
+
+#: modules/timedate/timedate.desktop:4
+msgid "preferences-system-time"
+msgstr "preferences-system-time"
+
+#: modules/timedate/timedate.desktop:13
+msgid "Time;Date"
+msgstr "Tijd;Datum"
+
+#: modules/timedate/timedate.desktop:14
+msgid "Time & Date"
+msgstr "Datum en tijd"
+
+#: modules/timedate/timedate.desktop:16
+msgid "Configures the time and the date"
+msgstr "De datum en tijd instellen"
+
+#: modules/power/power.desktop:4
+msgid "preferences-system-power"
+msgstr "preferences-system-power"
+
+#: modules/power/power.desktop:12
+msgid "Power settings"
+msgstr "Energie-instellingen"
+
+#: modules/power/power.desktop:13
+msgid "Power;Batteries;Battery;"
+msgstr "Energie;Accu's;Accu;"
+
+#: modules/power/power.desktop:14
+msgid "Power"
+msgstr "Energie"
+
+#: modules/usersadmin/usersadmin.desktop:4
+msgid "system-config-users"
+msgstr "system-config-users"
+
+#: modules/usersadmin/usersadmin.desktop:13
+msgid "Users;Groups;Face"
+msgstr "Gebruikers;Groepen;Gezicht"
+
+#: modules/usersadmin/usersadmin.desktop:14
+msgid "Users & Groups"
+msgstr "Gebruikers en groepen"
+
+#: modules/usersadmin/usersadmin.desktop:16
+msgid "Add, edit, remove users and groups"
+msgstr "Gebruikers en groepen toevoegen, bewerken en/of verwijderen"
+
+#: modules/theme/theme.desktop:6
+msgid "preferences-desktop-theme"
+msgstr "preferences-desktop-theme"
+
+#: modules/theme/theme.desktop:7
+msgid "Themes"
+msgstr ""
+
+#: modules/theme/theme.desktop:10
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+#: modules/theme/theme.desktop:12
+msgid "Themes."
+msgstr "Thema's"
+
+#: modules/about/about.desktop:4
+msgid "info"
+msgstr "informatie"
+
+#: modules/about/about.desktop:13
+msgid "Device;Informations;About"
+msgstr "Apparaat;Informatie;Over"
+
+#: modules/about/about.desktop:14
+msgid "Device details"
+msgstr "Apparaatdetails"
+
+#: modules/about/about.desktop:16
+msgid "Shows informations on this system"
+msgstr "Weergeeft informative over dit systeem"
+
+#: controlcenterui.glade.h:2
+msgid "Search"
+msgstr "Zoeken"
+
+#: modules/autostart/autostart.glade.h:1
+msgid "Add a new custom command"
+msgstr "Een nieuw aangepast commando toevoegen"
+
+#: modules/autostart/autostart.glade.h:2 modules/desktop/desktop.glade.h:2
+msgid "Name"
+msgstr "Naam"
+
+#: modules/autostart/autostart.glade.h:3
+msgid "Command"
+msgstr "Commando"
+
+#: modules/autostart/autostart.glade.h:4
+msgid "<b>Autostart applications</b>"
+msgstr "<b>Applicaties automatisch opstarten</b>"
+
+#: modules/autostart/autostart.glade.h:5
+msgid "Add new"
+msgstr "Nieuwe toevoegen"
+
+#: modules/tint2/tint2.glade.h:1
+msgid "Top"
+msgstr "Bovenkant"
+
+#: modules/tint2/tint2.glade.h:2 modules/desktop/desktop.glade.h:14
+msgid "Center"
+msgstr "Midden"
+
+#: modules/tint2/tint2.glade.h:3
+msgid "Bottom"
+msgstr "Onderkant"
+
+#: modules/tint2/tint2.glade.h:4
+msgid "Panel settings"
+msgstr "Paneelinstellingen"
+
+#: modules/tint2/tint2.glade.h:5
+msgid "Enable launchers"
+msgstr "Starters inschakelen"
+
+#: modules/tint2/tint2.glade.h:6
+msgid "<b>Launchers</b>"
+msgstr "<b>Starters</b>"
+
+#: modules/tint2/tint2.glade.h:7
+msgid "Use AM/PM format for the clock"
+msgstr "AM/PM-tijdsopmaak gebruiken voor de klok"
+
+#: modules/tint2/tint2.glade.h:8
+msgid "Auto-hide panel"
+msgstr "Paneel automatisch verbergen"
+
+#: modules/tint2/tint2.glade.h:9
+msgid "Panel position"
+msgstr "Positie van paneel"
+
+#: modules/tint2/tint2.glade.h:10 modules/desktop/desktop.glade.h:22
+#: modules/locale/locale.glade.h:16
+msgid "<b>Other</b>"
+msgstr "<b>Overig</b>"
+
+#: modules/desktop/desktop.glade.h:1
+msgid "Background informations"
+msgstr "Achtergrondinformatie"
+
+#: modules/desktop/desktop.glade.h:3
+msgid "Description"
+msgstr "Beschrijving"
+
+#: modules/desktop/desktop.glade.h:4
+msgid "Author"
+msgstr "Auteur"
+
+#: modules/desktop/desktop.glade.h:5
+msgid "License"
+msgstr "Licentie"
+
+#: modules/desktop/desktop.glade.h:6
+msgid "button"
+msgstr "knop"
+
+#: modules/desktop/desktop.glade.h:7
+msgid "label"
+msgstr "label"
+
+#: modules/desktop/desktop.glade.h:8
+msgid "Color"
+msgstr "Kleur"
+
+#: modules/desktop/desktop.glade.h:9
+msgid "Tile"
+msgstr "Tegels"
+
+#: modules/desktop/desktop.glade.h:10
+msgid "Stretch"
+msgstr "Uitrekken"
+
+#: modules/desktop/desktop.glade.h:11
+msgid "Screen"
+msgstr "Scherm"
+
+#: modules/desktop/desktop.glade.h:12
+msgid "Fit"
+msgstr "Passend"
+
+#: modules/desktop/desktop.glade.h:13
+msgid "Crop"
+msgstr "Bijsnijden"
+
+#: modules/desktop/desktop.glade.h:15
+msgid "Select entire directories"
+msgstr "Selecteer helemappen"
+
+#: modules/desktop/desktop.glade.h:16
+msgid "Add background"
+msgstr "Achtergrond toevoegen"
+
+#: modules/desktop/desktop.glade.h:17
+msgid "Remove background"
+msgstr "Achtergrond verwijderen"
+
+#: modules/desktop/desktop.glade.h:18
+msgid "Informations on this wallpaper"
+msgstr "Informatie over deze achtergrond"
+
+#: modules/desktop/desktop.glade.h:19
+msgid "About this wallpaper"
+msgstr "Over deze achtergrond"
+
+#: modules/desktop/desktop.glade.h:20
+msgid "Change background every"
+msgstr "Wijzig achtergrond elke"
+
+#: modules/desktop/desktop.glade.h:21
+msgid "minutes"
+msgstr "minuten"
+
+#: modules/desktop/desktop.glade.h:23
+msgid "Add a new background"
+msgstr "Een nieuwe achtergrond toevoegen"
+
+#: modules/shortcuts/shortcuts.glade.h:1
+msgid "Last action"
+msgstr "Laatste actie"
+
+#: modules/shortcuts/shortcuts.glade.h:2
+msgid "Power Off"
+msgstr "Uitschakelen"
+
+#: modules/shortcuts/shortcuts.glade.h:3 modules/power/power.glade.h:3
+msgid "Reboot"
+msgstr "Herstarten"
+
+#: modules/shortcuts/shortcuts.glade.h:4 modules/power/power.glade.h:4
+msgid "Suspend"
+msgstr "Pauzestand"
+
+#: modules/shortcuts/shortcuts.glade.h:5
+msgid "Logout"
+msgstr "Afmelden"
+
+#: modules/shortcuts/shortcuts.glade.h:6
+msgid "Lock"
+msgstr "Vergrendelen"
+
+#: modules/shortcuts/shortcuts.glade.h:7 modules/power/power.glade.h:5
+msgid "Hibernate"
+msgstr "Slaapstand"
+
+#: modules/shortcuts/shortcuts.glade.h:8
+msgid "Switch user"
+msgstr "Gebruiker wisselen"
+
+#: modules/shortcuts/shortcuts.glade.h:9
+msgid "Do not show confirmation window"
+msgstr "Bevestigingsvenster niet weergeven"
+
+#: modules/shortcuts/shortcuts.glade.h:10
+msgid "Execute action after pressing Ctrl+Alt+Space"
+msgstr "Actie uitvoeren na het indrukken van Ctrl+Alt+Space"
+
+#: modules/shortcuts/shortcuts.glade.h:11
+msgid "Action to execute"
+msgstr "Actie die moet worden uitgevoerd"
+
+#: modules/shortcuts/shortcuts.glade.h:12
+msgid "<b>Exit actions</b>"
+msgstr "<b>Afsluitacties</n>"
+
+#: modules/shortcuts/shortcuts.glade.h:13
+msgid "Enable launcher"
+msgstr "Starter inschakelen"
+
+#: modules/shortcuts/shortcuts.glade.h:14
+msgid "<b>Desktop</b>"
+msgstr "<b>Bureaublad</b>"
+
+#: modules/locale/locale.glade.h:1
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: modules/locale/locale.glade.h:2
+msgid "<big><b>Some translations may haven't be installed!</b></big>"
+msgstr "<big><b>Enkele vertalingen zijn mogelijk niet geïnstalleerd!</b></big>"
+
+#: modules/locale/locale.glade.h:3
+msgid ""
+"As you have previously used the 'Save space' feature, translations of the newly selected locale may have not been installed.\n"
+"\n"
+"Do you want to continue?"
+msgstr "Omdat u eerder de 'Ruimte besparen'-mogelijkheid hebt gebruikt zijn de vertalingen van de nieuw geselecteerde taal mogelijk niet geïnstalleerd.\n\nWilt u doorgaan?"
+
+#: modules/locale/locale.glade.h:6
+msgid "Question"
+msgstr "Vraag"
+
+#: modules/locale/locale.glade.h:7
+msgid "<big><b>Remove already installed translations?</b></big>"
+msgstr "<big><b>Wilt u de reeds geïnstalleerde vertalingen verwijderen?</b></big>"
+
+#: modules/locale/locale.glade.h:8
+msgid ""
+"This feature has effect only on the future installed applications.\n"
+"\n"
+"It's possible to remove already installed translations though. This may take some time.\n"
+"\n"
+"Do you want to continue? (If you press <i>No</i>, the savespace feature will not be retroactive)"
+msgstr "Deze mogelijkheid heft alleen effect op toekomstig geïnstalleerde applicaties.\n\nMaar het is mogelijk om huidig geïnstalleerde vertalingen te verwijderen. Dit kan enige tijd duren.\n\nWilt u doorgaan? (Als u op <i>Nee</I> zal de ruimtebesparings-mogelijkheid niet retroactief zijn)"
+
+#: modules/locale/locale.glade.h:13
+msgid "Display all available locales"
+msgstr "Alle beschikbare talen weergeven"
+
+#: modules/locale/locale.glade.h:14
+msgid "<b>Region and language</b>"
+msgstr "<b>Regio en taal</b>"
+
+#: modules/locale/locale.glade.h:15
+msgid "Save space by installing only translations of the selected language"
+msgstr "Ruimte besparen door alleen de vertaling van de geselecteerde taal te installeren"
+
+#: modules/keyboard/keyboard.glade.h:1
+msgid "<b>Layout</b>"
+msgstr "<b>Layout</b>"
+
+#: modules/keyboard/keyboard.glade.h:2
+msgid "<b>Variant</b>"
+msgstr "<b>Variant</b>"
+
+#: modules/keyboard/keyboard.glade.h:3
+msgid "<b>Model</b>"
+msgstr "<b>Model</b>"
+
+#: modules/timedate/timedate.glade.h:1
+msgid "0"
+msgstr "0"
+
+#: modules/timedate/timedate.glade.h:2
+msgid ":"
+msgstr ":"
+
+#: modules/timedate/timedate.glade.h:3
+msgid "Keep syncronized with internet services"
+msgstr "Synchroon houden met internetdiensten"
+
+#: modules/timedate/timedate.glade.h:4
+msgid "Select a city"
+msgstr "Selecteer een stad"
+
+#: modules/timedate/timedate.glade.h:5
+msgid "Select"
+msgstr "Selecteren"
+
+#: modules/power/power.glade.h:1
+msgid "Do nothing"
+msgstr "Niets doen"
+
+#: modules/power/power.glade.h:2
+msgid "Power off"
+msgstr "Uitschakelen"
+
+#: modules/power/power.glade.h:6
+msgid "Lock screen"
+msgstr "Scherm vergrendelen"
+
+#: modules/power/power.glade.h:7
+msgid "<b>Battery</b>"
+msgstr "<b>Accu</b>"
+
+#: modules/power/power.glade.h:8
+msgid "When the power button has been pressed"
+msgstr "Wanneer de aan-/uitknop is ingedrukt"
+
+#: modules/power/power.glade.h:9
+msgid "When the laptop has been closed"
+msgstr "Wanneer de laptop is dichtgeklapt"
+
+#: modules/power/power.glade.h:10
+msgid ""
+"The specified action is triggered only when the device is discharging, and "
+"only if there aren't any external displays connected."
+msgstr "De opgegeven actie wordt alleen uitgevoerd wanneer het apparaat aan het ontladen is en er geen externe schermen zijn aangesloten."
+
+#: modules/power/power.glade.h:11
+msgid "<b>Buttons</b>"
+msgstr "<b>Knoppen</b>"
+
+#: modules/usersadmin/usersadmin.glade.h:1
+msgid "Delete user"
+msgstr "Gebruiker verwijderen"
+
+#: modules/usersadmin/usersadmin.glade.h:2
+msgid "<big><b>Do you really want to continue?</b></big>"
+msgstr "<big><b>Weet u zeker dat u door wilt gaan?</b></big>"
+
+#: modules/usersadmin/usersadmin.glade.h:3
+msgid "By continuing, the user will be permanently deleted."
+msgstr "Als u doorgaat zal de gebruiker permanent worden verwijderd."
+
+#: modules/usersadmin/usersadmin.glade.h:4
+msgid "Remove also personal files (the \"Home directory\")"
+msgstr "Ook alle persoonlijke bestanden (de \"Persoonlijke map-locatie\") verwijderen"
+
+#: modules/usersadmin/usersadmin.glade.h:5
+msgid "Click to edit the full name"
+msgstr "Klik om de volledige naam te bewerken"
+
+#: modules/usersadmin/usersadmin.glade.h:6
+msgid "Groups and permissions"
+msgstr "Groepen en rechten"
+
+#: modules/usersadmin/usersadmin.glade.h:7
+msgid "User Name"
+msgstr "Gebruikersnaam"
+
+#: modules/usersadmin/usersadmin.glade.h:8
+msgid "user"
+msgstr "gebruiker"
+
+#: modules/usersadmin/usersadmin.glade.h:9
+msgid "Click to delete this user"
+msgstr "Klik om deze gebruiker te verwijderen"
+
+#: modules/usersadmin/usersadmin.glade.h:10
+msgid "Administrator"
+msgstr "Beheerder"
+
+#: modules/usersadmin/usersadmin.glade.h:11
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: modules/usersadmin/usersadmin.glade.h:12
+msgid "Autologin"
+msgstr "Automatisch inloggen"
+
+#: modules/usersadmin/usersadmin.glade.h:13
+msgid "Click to change"
+msgstr "Klik om te wijzigen"
+
+#: modules/usersadmin/usersadmin.glade.h:14
+msgid "Unable to load the user list."
+msgstr "Het laden van gebruikerslijst is mislukt."
+
+#: modules/about/about.glade.h:1
+msgid "Semplice"
+msgstr "Semplice"
+
+#: modules/about/about.glade.h:2
+msgid "Device name"
+msgstr "Apparaatnaam"
+
+#: modules/about/about.glade.h:3
+msgid "System memory"
+msgstr "Systeemgeheugen"
+
+#: modules/about/about.glade.h:4
+msgid "CPU"
+msgstr "CPU"
+
+#: modules/about/about.glade.h:5
+msgid "Edition"
+msgstr "Uitgave"
+
+#: modules/about/about.glade.h:6
+msgid "Made with ♥ in Italy, enjoyed everywhere."
+msgstr "Met ♥ gemaakt in Italië, met veel plezier overal ter wereld in gebruik."
+
+#: modules/about/about.glade.h:7
+msgid "Check for updates"
+msgstr "Controleren op updates"

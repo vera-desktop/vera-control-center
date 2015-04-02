@@ -184,7 +184,7 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		super().__init__()
 		
 		# Window properties
-		self.set_title("Select an application")
+		self.set_title(_("Select an application"))
 		self.set_icon_name("applications-other")
 		self.set_resizable(False)
 		self.set_size_request(500, 400)
@@ -198,8 +198,8 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		
 		# Buttons
 		self.add_buttons(
-			"_Cancel", Gtk.ResponseType.CANCEL,
-			"_Select", Gtk.ResponseType.OK
+			_("_Cancel"), Gtk.ResponseType.CANCEL,
+			_("_Select"), Gtk.ResponseType.OK
 		)
 		
 		# Treeview

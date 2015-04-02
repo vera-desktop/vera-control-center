@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Desktop
+Name[nl_NL]=Bureaublad
+Keywords[nl_NL]=Bureaublad
 Name[it]=Scrivania
+Keywords=Desktop
+Comment[hu]=Asztal beállítások
+Name[hu]=Asztal
+Comment[nl_NL]=Bureaubladvoorkeuren
+Icon=preferences-desktop-wallpaper
+Keywords[hu]=Asztal
+X-VeraCC-Section=Personal
 Comment=Desktop preferences
 Comment[it]=Preferenze della scrivania
-Icon=preferences-desktop-wallpaper
-Keywords=Desktop
-X-VeraCC-Section=Personal
+Keywords[it]=Scrivania
+

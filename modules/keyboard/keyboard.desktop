@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Keyboard
+Name[nl_NL]=Toetsenbord
+Keywords[nl_NL]=Toetsenbord
 Name[it]=Tastiera
+Keywords=Keyboard
+Comment[hu]=Billentyűzet beállítások
+Name[hu]=Billentyűzet
+Comment[nl_NL]=Toetsenbordinstellingen
+Icon=preferences-desktop-keyboard
+Keywords[hu]=Billentyűzet
+X-VeraCC-Section=System
 Comment=Keyboard settings
 Comment[it]=Impostazioni della tastiera
-Icon=preferences-desktop-keyboard
-Keywords=Keyboard
-X-VeraCC-Section=System
+Keywords[it]=Tastiera
+

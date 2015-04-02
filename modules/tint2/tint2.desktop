@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Panel
+Name[nl_NL]=Paneel
+Keywords[nl_NL]=Paneel
 Name[it]=Pannello
+Keywords=Panel
+Comment[hu]=Panel beállítása
+Name[hu]=Panel
+Comment[nl_NL]=Het paneel instellen
+Icon=panel
+Keywords[hu]=Panel
+X-VeraCC-Section=Personal
 Comment=Configure the Panel
 Comment[it]=Configura il pannello
-X-VeraCC-Section=Personal
-Keywords=Panel
-Icon=panel
+Keywords[it]=Pannello
+

@@ -1,8 +1,16 @@
 [Desktop Entry]
 Name=Shortcuts
+Name[nl_NL]=Sneltoetsen
+Keywords[nl_NL]=Sneltoetsen;
 Name[it]=Scorciatoie
+Keywords=Shortcuts;
+Comment[hu]=Hivatkozások
+Name[hu]=Hivatkozások
+Comment[nl_NL]=Sneltoetsen
+Icon=preferences-desktop-keyboard-shortcuts
+Keywords[hu]=Hivatkozások;
+X-VeraCC-Section=Personal
 Comment=Shortcuts
 Comment[it]=Scorciatoie
-Icon=preferences-desktop-keyboard-shortcuts
-Keywords=Shortcuts;
-X-VeraCC-Section=Personal
+Keywords[it]=Scorciatoie;
+
