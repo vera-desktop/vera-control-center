@@ -79,6 +79,7 @@ class Scene(quickstart.scenes.BaseScene):
 			[
 				"synaptic-pkexec",
 				"--dist-upgrade-mode",
+				"--non-interactive",
 				"--update-at-startup",
 				"--hide-main-window"
 			]

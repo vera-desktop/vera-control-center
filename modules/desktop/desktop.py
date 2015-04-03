@@ -150,8 +150,9 @@ class Scene(quickstart.scenes.BaseScene):
 				GObject.idle_add(self.objects.about_button.hide)
 		else:
 			# The wallpaper is not in our list, so we need to add it now...
-			self.add_wallpaper_to_list(path)
-			return self.set_selection(path) # Restart
+			if os.path.exists(path):
+				self.add_wallpaper_to_list(path)
+				return self.set_selection(path) # Restart
 	
 	def on_select_entire_directories_toggled(self, checkbutton):
 		"""
