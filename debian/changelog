@@ -1,3 +1,13 @@
+vera-control-center (1.0.0-1) unstable; urgency=medium
+
+  * locale: show decorations on pop-up dialogs
+  * desktop: check for file existence when adding a not listed wallpaper
+  * about: ensure that synaptic is in non-interactive mode.
+  * SectionFrame: increment iconview's item-width to 75.
+  * 1.0.0
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 03 Apr 2015 14:48:27 +0200
+
 vera-control-center (0.35-1) unstable; urgency=medium
 
   * Added usersadmin module.
