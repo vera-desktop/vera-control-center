@@ -120,7 +120,7 @@ class SectionFrame(CommonFrame):
 		# Setup the iconview
 		self.get_alignment().add(self.iconview)
 		self.iconview.set_activate_on_single_click(True)
-		self.iconview.set_item_width(70)
+		self.iconview.set_item_width(75)
 		self.iconview.set_spacing(5)
 		self.iconview.set_margin(2)
 		self.iconview.set_model(self.filter)
