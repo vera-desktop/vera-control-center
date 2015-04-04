@@ -1,3 +1,12 @@
+vera-control-center (1.0.2-1) unstable; urgency=medium
+
+  * autostart: idle_add() every ApplicationRow.
+  * autostart: skip non-existent search paths.
+  * Updated translations.
+  * 1.0.2.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sat, 04 Apr 2015 23:19:47 +0200
+
 vera-control-center (1.0.1-1) unstable; urgency=medium
 
   * SectionFrame: limit iconview columns to 5.
