@@ -354,6 +354,8 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		for path in SEARCH_PATH:
 			
+			if not os.path.exists(path): continue
+			
 			for application in os.listdir(path):
 				
 				# Add the application, if we can
