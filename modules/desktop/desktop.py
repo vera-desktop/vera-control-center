@@ -351,8 +351,8 @@ class Scene(quickstart.scenes.BaseScene):
 			current_wallpapers[self.properties.current_selected_monitor-1] = wall
 		
 		self.properties.set_property("current-wallpapers", current_wallpapers)
-	
-	def add_wallpaper_to_list(self, path):
+
+	def add_wallpaper_to_list(self, path, set=False):
 		"""
 		Appends the given wallpaper to the list.
 		"""
@@ -375,6 +375,9 @@ class Scene(quickstart.scenes.BaseScene):
 				)
 				
 				self.wallpapers[path] = itr
+				
+				if set:
+					self.set_selection(path)
 			except:
 				pass
 	
@@ -402,6 +405,8 @@ class Scene(quickstart.scenes.BaseScene):
 		excluded = self.settings.get_strv("background-exclude")
 		include = self.settings.get_strv("background-include")
 		
+		default = self.settings.get_strv("image-path")[0]
+		
 		for directory in self.settings.get_strv("background-search-paths"):
 			for root, dirs, files in os.walk(directory):
 				for wall in files:
@@ -413,16 +418,16 @@ class Scene(quickstart.scenes.BaseScene):
 						# Load it
 						self.load_wallpaperpack(path)
 					
-					self.add_wallpaper_to_list(path)
+					GObject.idle_add(self.add_wallpaper_to_list, path, (path == default))
 		
 		# Add to the Included wallpapers
 		for wallpaper in include:
 			if not os.path.exists(wallpaper):
 				continue
 
-			self.add_wallpaper_to_list(wallpaper)
+			GObject.idle_add(self.add_wallpaper_to_list, wallpaper, (path == default))
 		
-		GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
+		#GObject.idle_add(self.set_selection, self.settings.get_strv("image-path")[0])
 		GObject.idle_add(self.objects.wallpapers.set_sensitive, True)
 	
 	def on_current_selected_monitor_changed(self, properties, param):
