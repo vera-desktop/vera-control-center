@@ -1,3 +1,10 @@
+vera-control-center (1.0.3-1) unstable; urgency=medium
+
+  * desktop: wrap into idle_add()s every add_wallpaper_to_list() call to make things more reliable.
+  * 1.0.3
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sat, 04 Apr 2015 23:41:09 +0200
+
 vera-control-center (1.0.2-1) unstable; urgency=medium
 
   * autostart: idle_add() every ApplicationRow.
