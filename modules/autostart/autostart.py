@@ -344,7 +344,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Set the new array
 		SETTINGS.set_strv("autostart-ignore", BLACKLIST)
 	
-	@quickstart.threads.on_idle
+	#@quickstart.threads.on_idle
 	@quickstart.threads.thread
 	def add_applications(self):
 		"""
@@ -370,7 +370,7 @@ class Scene(quickstart.scenes.BaseScene):
 						# Connect the changed signal
 						row.connect("changed", self.on_row_changed)
 						
-						self.objects.list.insert(
+						GObject.idle_add(self.objects.list.insert,
 							row,
 							-1
 						)
