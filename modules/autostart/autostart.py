@@ -35,7 +35,7 @@ import random
 
 import quickstart
 
-from gi.repository import Gtk, Gdk, GObject, Gio
+from gi.repository import Gtk, GdkPixbuf, GObject, Gio
 
 from xdg.DesktopEntry import DesktopEntry
 
@@ -130,7 +130,7 @@ class ApplicationRow(Gtk.ListBoxRow):
 			# control of the resulting image size, so we are fallbacking
 			# to a Pixbuf.
 			self.icon.set_from_pixbuf(
-				Gdk.Pixbuf.from_file_at_scale(
+				GdkPixbuf.Pixbuf.new_from_file_at_scale(
 					icon,
 					24,
 					24,
