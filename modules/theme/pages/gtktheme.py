@@ -285,7 +285,7 @@ class CursorThemeFrame(CommonFrame):
 	"""
 
 	SEARCH_PATH = ("/usr/share/icons", os.path.expanduser("~/.icons"))
-
+	
 	@property
 	def available_themes(self):
 		""" Returns the available themes, searching in SEARCH_PATH. """
@@ -332,7 +332,18 @@ class CursorThemeFrame(CommonFrame):
 			lambda x: self.themes[x] if x in self.themes else -1,
 			lambda x: self.combobox.get_active_text()
 		)
-		
+				
+		# Connect changed in order to show the warning when needed
+		self.combobox.connect("changed", self.on_combobox_changed)
+	
+	def on_combobox_changed(self, combobox):
+		"""
+		Fired when the combobox has been changed.
+		"""
+				
+		self.warning.set_visible(
+			not (self.combobox.get_active_text() == self.current_theme)
+		)
 	
 	def __init__(self, settings):
 		"""
@@ -343,6 +354,7 @@ class CursorThemeFrame(CommonFrame):
 		
 		# Settings
 		self.settings = settings
+		self.current_theme = self.settings.get_string("cursor-theme-name")
 		
 		# Container
 		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -358,12 +370,13 @@ class CursorThemeFrame(CommonFrame):
 		
 		# Warning
 		self.warning = Gtk.Label()
-		self.warning.set_markup(_("<i>If you change the cursor theme you need to logout to apply the changes.</i>"))
+		self.warning.set_markup("<i>%s</i>" % _("You need to logout to apply the changes."))
+		self.warning.set_no_show_all(True)
 		self.warning.set_line_wrap(True)
 		
 		# Populate it and bind
 		self.populate_themes()
-				
+		
 		self.main_container.pack_start(self.combobox_container, False, False, 0)
 		self.main_container.pack_start(self.warning, False, False, 15)
 		
