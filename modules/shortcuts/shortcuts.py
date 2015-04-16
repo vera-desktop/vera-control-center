@@ -43,7 +43,7 @@ class Scene(quickstart.scenes.BaseScene):
 	"""
 	
 	events = {
-	
+		"toggled" : ("enable_launcher",)
 	}
 	
 	def convert_exit_action_from_dconf(self, value):
@@ -72,6 +72,15 @@ class Scene(quickstart.scenes.BaseScene):
 			self.settings.set_boolean("lock-last-exit-action", True)
 			return ALLOWED_ACTIONS[value-1]
 	
+	def on_enable_launcher_toggled(self, checkbutton):
+		"""
+		Fired when the "Enable launcher" checkbutton has been toggled.
+		"""
+		
+		self.objects.enable_launcher_notice.set_visible(
+			not self.objects.enable_launcher_notice.get_visible()
+		)
+	
 	def prepare_scene(self):
 		"""
 		Scene set-up.
@@ -80,6 +89,7 @@ class Scene(quickstart.scenes.BaseScene):
 		self.scene_container = self.objects.main
 		
 		self.settings = Settings("org.semplicelinux.vera")
+		self.desktop_settings = Settings("org.semplicelinux.vera.desktop")
 		
 		# Set-up actions combobox
 		renderer = Gtk.CellRendererText()
@@ -112,4 +122,11 @@ class Scene(quickstart.scenes.BaseScene):
 			"active",
 			self.objects.ninja_container,
 			"sensitive"
+		)
+		
+		# Desktop launcher
+		self.desktop_settings.bind(
+			"show-launcher",
+			self.objects.enable_launcher,
+			"active"
 		)
