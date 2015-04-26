@@ -26,7 +26,7 @@ import veracc.module
 
 from veracc.widgets.SectionFrame import SectionFrame
 
-from gi.repository import Gtk, Gio, GObject
+from gi.repository import Gtk, Gdk, Gio, GObject
 from gi.repository.GdkPixbuf import Pixbuf
 
 from collections import OrderedDict
@@ -56,6 +56,9 @@ SECTIONS = OrderedDict([
 	("Network", _("Network")),
 	("Hardware", _("Hardware"))
 ])
+
+WINDOW_WIDTH = 710
+WINDOW_HEIGHT = 600
 
 # While the following is not ideal, is currently needed to make sure
 # we are actually on the main vera-control-center directory.
@@ -212,6 +215,14 @@ class ControlCenter:
 		
 		# Create the scene manager
 		self.scene_manager = quickstart.scenes.initialize(self)
+		
+		# Resize, taking in account eventual lower resolutions
+		current_width = Gdk.Screen.width()
+		current_height = Gdk.Screen.height()
+		self.objects.main.set_size_request(
+			WINDOW_WIDTH if current_width > WINDOW_WIDTH else current_width-10,
+			WINDOW_HEIGHT if current_height > WINDOW_HEIGHT else current_height-70 # should take into account panel and titlebar
+		)
 				
 		# Setup the scene container
 		#self.scene_container.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
