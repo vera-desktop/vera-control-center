@@ -19,31 +19,31 @@ msgstr ""
 
 #: vera-control-center.py:54
 msgid "Personal"
-msgstr ""
+msgstr "Personnel"
 
 #: vera-control-center.py:55
 msgid "System"
-msgstr ""
+msgstr "Système"
 
 #: vera-control-center.py:56
 msgid "Network"
-msgstr ""
+msgstr "Réseau"
 
 #: vera-control-center.py:57
 msgid "Hardware"
-msgstr ""
+msgstr "Matériel"
 
 #: vera-control-center.py:98 controlcenterui.glade.h:1
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: veracc/widgets/UnlockBar.py:113
 msgid "You need additional privileges to modify these settings."
-msgstr ""
+msgstr "Vous devez disposer de privilèges supplémentaires pour modifier ces paramètres."
 
 #: veracc/widgets/UnlockBar.py:118
 msgid "Press the <i>Lock</i> button to lock these settings."
-msgstr ""
+msgstr "Appuyez sur le boutton <i>Lock</i> pour vérouiller ces paramètres."
 
 #: veracc/widgets/UnlockBar.py:122
 msgid "_Unlock"
@@ -825,7 +825,7 @@ msgstr ""
 
 #: modules/usersadmin/usersadmin.glade.h:8
 msgid "user"
-msgstr ""
+msgstr "Utilisateur"
 
 #: modules/usersadmin/usersadmin.glade.h:9
 msgid "Click to delete this user"
@@ -833,11 +833,11 @@ msgstr ""
 
 #: modules/usersadmin/usersadmin.glade.h:10
 msgid "Administrator"
-msgstr ""
+msgstr "Administrateur"
 
 #: modules/usersadmin/usersadmin.glade.h:11
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: modules/usersadmin/usersadmin.glade.h:12
 msgid "Autologin"
@@ -853,7 +853,7 @@ msgstr ""
 
 #: modules/about/about.glade.h:1
 msgid "Semplice"
-msgstr ""
+msgstr "Semplice"
 
 #: modules/about/about.glade.h:2
 msgid "Device name"
@@ -865,7 +865,7 @@ msgstr ""
 
 #: modules/about/about.glade.h:4
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #: modules/about/about.glade.h:5
 msgid "Edition"
@@ -877,4 +877,4 @@ msgstr ""
 
 #: modules/about/about.glade.h:7
 msgid "Check for updates"
-msgstr ""
+msgstr "Vérifier les mises à jour"
