@@ -1,16 +1,22 @@
 [Desktop Entry]
-Name=Desktop
-Name[nl_NL]=Bureaublad
-Keywords[nl_NL]=Bureaublad
-Name[it]=Scrivania
-Keywords=Desktop
-Comment[hu]=Asztal beállítások
-Name[hu]=Asztal
-Comment[nl_NL]=Bureaubladvoorkeuren
 Icon=preferences-desktop-wallpaper
-Keywords[hu]=Asztal
+Keywords[es]=Escritorio
 X-VeraCC-Section=Personal
+Name[nl_NL]=Bureaublad
+Name=Desktop
+Keywords[nl_NL]=Bureaublad
+Name[es]=Escritorio
+Keywords=Desktop
+Name[hu]=Asztal
 Comment=Desktop preferences
-Comment[it]=Preferenze della scrivania
+Name[it]=Scrivania
+Keywords[hu]=Asztal
+Comment[nl_NL]=Bureaubladvoorkeuren
 Keywords[it]=Scrivania
+Name[lt]=Darbastalis
+Comment[lt]=Darbastalio nuostatos
+Keywords[lt]=Darbastalis
+Comment[es]=Preferencias del Escritorio
+Comment[hu]=Asztal beállítások
+Comment[it]=Preferenze della scrivania
 

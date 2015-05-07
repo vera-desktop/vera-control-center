@@ -1,16 +1,22 @@
 [Desktop Entry]
-Name=Panel
-Name[nl_NL]=Paneel
-Keywords[nl_NL]=Paneel
-Name[it]=Pannello
-Keywords=Panel
-Comment[hu]=Panel beállítása
-Name[hu]=Panel
-Comment[nl_NL]=Het paneel instellen
 Icon=panel
-Keywords[hu]=Panel
+Keywords[es]=Panel
 X-VeraCC-Section=Personal
+Name[nl_NL]=Paneel
+Name=Panel
+Keywords[nl_NL]=Paneel
+Name[es]=Panel
+Keywords=Panel
+Name[hu]=Panel
 Comment=Configure the Panel
-Comment[it]=Configura il pannello
+Name[it]=Pannello
+Keywords[hu]=Panel
+Comment[nl_NL]=Het paneel instellen
 Keywords[it]=Pannello
+Name[lt]=Skydelis
+Comment[lt]=Konfigūruoti Skydelį
+Keywords[lt]=Skydelis
+Comment[es]=Configure el Panel
+Comment[hu]=Panel beállítása
+Comment[it]=Configura il pannello
 
