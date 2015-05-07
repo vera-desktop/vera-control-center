@@ -48,7 +48,7 @@ class Scene(quickstart.scenes.BaseScene):
 	""" Desktop preferences. """
 	
 	events = {
-	
+		"value-changed" : ["brightness_scale"],
 	}
 	
 	building = False
@@ -63,6 +63,23 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		obj('(sb)', value, True)
+	
+	def on_brightness_scale_value_changed(self, scale):
+		"""
+		Fired when the brightness level has been changed.
+		"""
+		
+		if not self.building:
+			self.VeraPowerManager.SetBrightness('(i)', int(scale.get_value())+1)
+	
+	def on_brightness_level_changed_external(self):
+		"""
+		Fired when the brightness level has been changed from the outside.
+		"""
+		
+		self.building = True
+		self.objects.brightness_level.set_value(float(self.VeraPowerManager.GetBrightness()))
+		self.building = False
 	
 	def on_combobox_changed(self, combobox):
 		"""
@@ -84,6 +101,11 @@ class Scene(quickstart.scenes.BaseScene):
 		""" Called when doing the scene setup. """
 		
 		self.scene_container = self.objects.main
+		
+		# g-signals
+		self.signal_handlers = {
+			"BrightnessChanged" : self.on_brightness_level_changed_external,
+		}
 		
 		# Create unlockbar
 		self.unlockbar = UnlockBar("org.semplicelinux.vera.powermanager.modify-logind")
@@ -179,6 +201,18 @@ class Scene(quickstart.scenes.BaseScene):
 			BUS_NAME,
 			self.bus_cancellable
 		)
+		# connect signals
+		self.VeraPowerManager.connect(
+			"g-signal",
+			lambda proxy, sender, signal, params: self.signal_handlers[signal]() if signal in self.signal_handlers else None
+		)
+		
+		# Check for backlight support
+		if self.VeraPowerManager.IsBacklightSupported():
+			self.objects.display_frame.show()
+			self.on_brightness_level_changed_external()
+		else:
+			self.objects.display_frame.hide()
 		
 		# Update comboboxes
 		self.building = True
