@@ -1,22 +1,22 @@
 [Desktop Entry]
-Name[hu]=Automatikus indítás
 Icon=preferences-system-session
-Name[nl_NL]=Automatisch opstarten
-Keywords[lt]=Automatinis paleidimas;Seansas
-X-VeraCC-Section=Personal
-Keywords=Autostart;Session
-Keywords[it]=Avvio automatico;Sessione
-Comment[es]=Gestionar las aplicaciones para el inicio automático
 Keywords[es]=Inicio automático;Sesión
+X-VeraCC-Section=Personal
+Name[nl_NL]=Automatisch opstarten
+Name=Autostart
+Keywords[nl_NL]=Automatisch opstarten;Sessie
+Name[es]=Autoinicio
+Keywords=Autostart;Session
+Name[hu]=Automatikus indítás
+Comment=Manage the applications to autostart
 Name[it]=Avvio automatico
 Keywords[hu]=Automatikus indítás;Munkamenet
-Name=Autostart
-Name[es]=Autoinicio
-Keywords[nl_NL]=Automatisch opstarten;Sessie
-Comment[it]=Gestisci le applicazioni da avviare automaticamente
-Comment[lt]=Tvarkyti automatinį programų paleidimą
 Comment[nl_NL]=De applicaties beheren die automatisch worden opgestart
-Comment=Manage the applications to autostart
-Comment[hu]=Automatikusan induló alkalmazások kezelése
+Keywords[it]=Avvio automatico;Sessione
 Name[lt]=Automatinis Paleidimas
+Comment[lt]=Tvarkyti automatinį programų paleidimą
+Keywords[lt]=Automatinis paleidimas;Seansas
+Comment[es]=Gestionar las aplicaciones para el inicio automático
+Comment[hu]=Automatikusan induló alkalmazások kezelése
+Comment[it]=Gestisci le applicazioni da avviare automaticamente
 
