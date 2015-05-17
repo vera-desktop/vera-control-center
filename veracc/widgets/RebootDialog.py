@@ -65,8 +65,7 @@ class RebootDialog(Gtk.MessageDialog):
 			_(
 """In order to apply the changes, a reboot is required.
 
-Please save your work and press "Reboot now" to reboot, or you can
-press "Cancel" and reboot later."""
+Please save your work and press "Reboot now" to reboot or press "Cancel" to reboot later."""
 			)
 		)
 		
