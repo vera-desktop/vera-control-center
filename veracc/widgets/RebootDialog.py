@@ -71,8 +71,8 @@ press "Cancel" and reboot later."""
 		)
 		
 		self.add_buttons(
-			_("Cancel"), Gtk.ResponseType.CANCEL,
-			_("Reboot now"), Gtk.ResponseType.OK
+			_("_Cancel"), Gtk.ResponseType.CANCEL,
+			_("_Reboot now"), Gtk.ResponseType.OK
 		)
 		
 		self.set_default_response(Gtk.ResponseType.OK)
