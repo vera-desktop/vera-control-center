@@ -146,14 +146,6 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		os.system("killall -SIGUSR1 tint2")
 		
-		# FIXME (not here, in tint2): when running tint2 with compton,
-		# when the panel restarts the user will see icons with white
-		# backgrounds and other issues.
-		# To fix this we need to restart compositing		
-		if os.path.exists(os.path.expanduser("~/.config/.composite_enabled")):
-			os.system("pkill compton")
-			os.system("compton -b")
-		
 		# Destroy application_selection_dialog
 		if self.application_selection_dialog:
 			self.application_selection_dialog.destroy()
