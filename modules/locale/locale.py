@@ -23,10 +23,11 @@ import os
 import quickstart
 
 from veracc.widgets.UnlockBar import UnlockBar, ActionResponse
+from veracc.widgets.RebootDialog import RebootDialog
 
 from keeptalking2.Locale import Locale
 
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, Gio, GObject
 
 @quickstart.builder.from_file("./modules/locale/locale.glade")
 class Scene(quickstart.scenes.BaseScene):
@@ -51,6 +52,7 @@ class Scene(quickstart.scenes.BaseScene):
 
 		GObject.idle_add(self.objects.region_spinner.hide)
 		GObject.idle_add(self.scene_container.set_sensitive, True)
+		GObject.idle_add(self.RebootDialog.show)
 	
 	@quickstart.threads.thread
 	def savespace_purge(self, locale):
@@ -200,6 +202,15 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# We are locked
 		self.unlockbar.emit("locked")
+		
+		self.cancellable = Gio.Cancellable()
+		self.RebootDialog = RebootDialog(self.cancellable)
+		self.RebootDialog.bind_property(
+			"visible",
+			self.scene_container,
+			"sensitive",
+			GObject.BindingFlags.INVERT_BOOLEAN
+		)
 
 	def on_scene_asked_to_close(self):
 		"""
@@ -207,5 +218,6 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		
 		self.unlockbar.cancel_authorization()
-				
+		self.cancellable.cancel()
+		
 		return True
