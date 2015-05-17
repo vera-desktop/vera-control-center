@@ -46,7 +46,7 @@ class RebootDialog(Gtk.MessageDialog):
 		
 		self.cancellable = cancellable
 
-		self.bus = Gio.bus_get_sync(Gio.BusType.SESSION, self.cancellable)
+		self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, self.cancellable)
 		self.Logind = Gio.DBusProxy.new_sync(
 			self.bus,
 			0,
