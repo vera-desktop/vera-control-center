@@ -1,3 +1,9 @@
+vera-control-center (1.0.8-2) unstable; urgency=medium
+
+  * Merged debian packaging into main master branch.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Tue, 19 May 2015 22:10:06 +0200
+
 vera-control-center (1.0.8-1) unstable; urgency=medium
 
   * [RebootDialog] Use the SYSTEM DBus bus to search for logind.
