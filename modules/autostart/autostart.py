@@ -77,7 +77,12 @@ class ApplicationRow(Gtk.ListBoxRow):
 			GObject.SIGNAL_RUN_LAST,
 			None,
 			(str, bool)
-		)
+		),
+		"requests-edit" : (
+			GObject.SIGNAL_RUN_LAST,
+			None,
+			(object,)
+		),
 	}
 	
 	def reset_default(self):
@@ -116,9 +121,14 @@ class ApplicationRow(Gtk.ListBoxRow):
 		# Switch
 		self.switch = Gtk.Switch()
 		
+		# Edit button
+		self.edit = Gtk.Button.new_from_icon_name("edit-symbolic", Gtk.IconSize.BUTTON)
+		self.edit.set_always_show_image(True)
+		
 		# Add to container
 		self.main_container.pack_start(self.icon, False, False, 2)
 		self.main_container.pack_start(self.name, True, True, 2)
+		self.main_container.pack_start(self.edit, False, False, 2)
 		self.main_container.pack_start(self.switch, False, False, 2)
 		
 		# Populate using informations from the DesktopEntry
@@ -146,11 +156,24 @@ class ApplicationRow(Gtk.ListBoxRow):
 		# Value
 		self.reset_default()
 		
-		# Connect the switch
+		# Connect the switch and edit button
 		self.switch.connect(
 			"notify::active",
 			lambda x, y: self.emit("changed", self.base_name, x.get_active())
 		)
+		
+		# Check for writeability of the desktop file, and disable the edit
+		# button if the file is not writeable
+		if not os.access(self.application_desktop.filename, os.W_OK):
+			self.edit.set_sensitive(False)
+			self.edit.set_tooltip_text(_("You don't have enough permissions to edit or remove «%s»") % self.application_desktop.getName())
+		else:
+			# Create connection
+			self.edit.connect(
+				"clicked",
+				lambda x: self.emit("requests_edit", self.application_desktop)
+			)
+			self.edit.set_tooltip_text(_("Edit or remove «%s»") % self.application_desktop.getName())
 		
 		# Finally add the container to the row
 		self.add(self.main_container)
@@ -171,6 +194,8 @@ class Scene(quickstart.scenes.BaseScene):
 	application_selection_dialog = None
 	
 	desktop_list = []
+	
+	current_edit_informations = {}
 	
 	def on_custom_entry_changed(self, entry):
 		"""
@@ -219,26 +244,31 @@ class Scene(quickstart.scenes.BaseScene):
 		#
 		# This can be resolved once vera supports a "force-list", see
 		# https://github.com/vera-desktop/vera/issues/2
-		entry = DesktopEntry(desktop_file)
+		
+		# Copy the desktop file to ~/.config/autostart
+		directory = os.path.expanduser("~/.config/autostart")
+		target_file = os.path.join(directory, desktop_basename)
+		if not os.path.exists(directory):
+			os.makedirs(directory)
+		shutil.copy2(
+			desktop_file,
+			target_file
+		)
+
+		entry = DesktopEntry(target_file)
 		
 		row = ApplicationRow(desktop_basename, entry)
 		
 		# Connect the changed signal
 		row.connect("changed", self.on_row_changed)
 		
+		# Connect the requests_edit signal
+		row.connect("requests_edit", self.on_row_requests_edit)
+		
 		# Prepend the row
 		self.objects.list.prepend(row)
 		
 		self.desktop_list.append(desktop_basename)
-		
-		# Finally copy the desktop file to ~/.config/autostart
-		directory = os.path.expanduser("~/.config/autostart")
-		if not os.path.exists(directory):
-			os.makedirs(directory)
-		shutil.copy2(
-			desktop_file,
-			os.path.join(directory, desktop_basename)
-		)
 	
 	def on_add_new_application_activated(self, menuitem, parameter):
 		"""
@@ -267,11 +297,39 @@ class Scene(quickstart.scenes.BaseScene):
 		Fired when the add new custom application item has been selected.
 		"""
 		
+		# Hide the Remove button
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.NO).hide()
+		
 		# Disable the sensitiveness of the Select button
 		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(False)
 		
 		# Grab focus on the custom_name entry
 		self.objects.custom_name.grab_focus()
+		
+		# Show the add_new_custom dialog
+		self.objects.add_new_custom_dialog.show()
+
+	def on_row_requests_edit(self, row, application_desktop):
+		"""
+		Fired when the add new custom application item has been selected.
+		"""
+		
+		# Show the Remove button
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.NO).show()
+		
+		# Disable the sensitiveness of the Select button
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.OK).set_sensitive(False)
+		
+		# Grab focus on the custom_name entry
+		self.objects.custom_name.grab_focus()
+
+		# Preload Name and Exec
+		self.objects.custom_name.set_text(application_desktop.getName())
+		self.objects.custom_command.set_text(application_desktop.getExec())
+		
+		# Populate self.current_edit_informations
+		self.current_edit_informations["row"] = row
+		self.current_edit_informations["desktop"] = application_desktop
 		
 		# Show the add_new_custom dialog
 		self.objects.add_new_custom_dialog.show()
@@ -281,7 +339,10 @@ class Scene(quickstart.scenes.BaseScene):
 		Fired when the user triggered a response on the add_new_custom_dialog.
 		"""
 		
-		if response_id == Gtk.ResponseType.OK:
+		# Clunky way to see if we have edit mode, but it works
+		on_edit = dialog.get_widget_for_response(Gtk.ResponseType.NO).props.visible
+		
+		if not on_edit and response_id == Gtk.ResponseType.OK:
 			# Obtain a working filename
 			directory = os.path.expanduser("~/.config/autostart")
 			if not os.path.exists(directory):
@@ -308,11 +369,36 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			# Connect the changed signal
 			row.connect("changed", self.on_row_changed)
+
+			# Connect the requests_edit signal
+			row.connect("requests_edit", self.on_row_requests_edit)
 			
 			# Prepend the row
 			self.objects.list.prepend(row)
 			
 			self.desktop_list.append(desktop_basename)
+		elif on_edit and response_id == Gtk.ResponseType.OK:
+			# Edit
+			
+			self.current_edit_informations["desktop"].set("Name", self.objects.custom_name.get_text(), locale=True)
+			self.current_edit_informations["desktop"].set("Exec", self.objects.custom_command.get_text())
+			self.current_edit_informations["desktop"].write()
+			
+			self.current_edit_informations["row"].name.set_text(self.objects.custom_name.get_text())
+		elif on_edit and response_id == Gtk.ResponseType.NO:
+			# Remove
+			
+			# Cleanup the entry from the ignore list by ensuring that
+			# it's enabled in its last moments...
+			self.on_row_changed(
+				self.current_edit_informations["row"],
+				os.path.basename(self.current_edit_informations["desktop"].filename),
+				True
+			)
+			
+			# Finally, remove
+			os.remove(self.current_edit_informations["desktop"].filename)
+			self.current_edit_informations["row"].destroy()
 		
 		# Hide
 		dialog.hide()
@@ -320,6 +406,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# Cleanup
 		self.objects.custom_name.set_text("")
 		self.objects.custom_command.set_text("")
+		self.current_edit_informations = {}
 	
 	def on_add_new_custom_dialog_delete_event(self, dialog, event):
 		"""
@@ -334,10 +421,10 @@ class Scene(quickstart.scenes.BaseScene):
 		Fired when the switch of a row has been modified.
 		"""
 		
-		if enabled:
+		if enabled and application in BLACKLIST:
 			# Remove from the blacklist
 			BLACKLIST.remove(application)
-		else:
+		elif not enabled and application not in BLACKLIST:
 			# Add to the blacklist
 			BLACKLIST.append(application)
 		
@@ -371,6 +458,9 @@ class Scene(quickstart.scenes.BaseScene):
 						
 						# Connect the changed signal
 						row.connect("changed", self.on_row_changed)
+						
+						# Connect the requests_edit signal
+						row.connect("requests_edit", self.on_row_requests_edit)
 						
 						GObject.idle_add(self.objects.list.insert,
 							row,
@@ -419,6 +509,7 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Set-up the add_new_custom_dialog
 		self.objects.add_new_custom_dialog.add_buttons(
+			_("_Remove"), Gtk.ResponseType.NO,
 			_("_Cancel"), Gtk.ResponseType.CANCEL,
 			_("_Select"), Gtk.ResponseType.OK
 		)
@@ -433,6 +524,9 @@ class Scene(quickstart.scenes.BaseScene):
 
 		# Make the Select button the default
 		self.objects.add_new_custom_dialog.set_default_response(Gtk.ResponseType.OK)
+		
+		# Set destructive-action to the Remove button
+		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.NO).get_style_context().add_class("destructive-action")
 		
 		self.add_applications()
 	
