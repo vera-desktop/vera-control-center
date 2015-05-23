@@ -1,3 +1,10 @@
+vera-control-center (1.0.9-1) unstable; urgency=medium
+
+  * [autostart] Made existing autostart entries editable.
+  * [autostart] Increase the add_new_custom_dialog width_request to 400px.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sat, 23 May 2015 17:37:57 +0200
+
 vera-control-center (1.0.8-2) unstable; urgency=medium
 
   * Merged debian packaging into main master branch.
