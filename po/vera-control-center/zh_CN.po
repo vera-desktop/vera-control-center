@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 11:42+0200\n"
-"PO-Revision-Date: 2015-05-24 09:43+0000\n"
+"POT-Creation-Date: 2015-05-24 15:30+0200\n"
+"PO-Revision-Date: 2015-05-24 13:31+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/vera-control-center/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,6 @@ msgid "Select an application"
 msgstr ""
 
 #: veracc/widgets/ApplicationSelectionDialog.py:202
-#: modules/autostart/autostart.py:514
 msgid "_Select"
 msgstr ""
 
@@ -114,6 +113,10 @@ msgstr ""
 
 #: modules/autostart/autostart.py:512
 msgid "_Remove"
+msgstr ""
+
+#: modules/autostart/autostart.py:514
+msgid "_Save"
 msgstr ""
 
 #: modules/desktop/desktop.py:481
@@ -342,181 +345,180 @@ msgstr ""
 msgid "Subpixel rendering"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:6
+#: modules/autostart/autostart.desktop:4
 msgid "Manage the applications to autostart"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:13
-msgid "preferences-system-session"
-msgstr ""
-
-#: modules/autostart/autostart.desktop:17
-msgid "Autostart;Session"
-msgstr ""
-
-#: modules/autostart/autostart.desktop:18
+#: modules/autostart/autostart.desktop:7
 msgid "Autostart"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:6
+#: modules/autostart/autostart.desktop:8
+msgid "preferences-system-session"
+msgstr ""
+
+#: modules/autostart/autostart.desktop:22
+msgid "Autostart;Session"
+msgstr ""
+
+#: modules/tint2/tint2.desktop:4
 msgid "Configure the Panel"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:13
-msgid "panel"
-msgstr ""
-
-#: modules/tint2/tint2.desktop:17 modules/tint2/tint2.desktop:18
+#: modules/tint2/tint2.desktop:7 modules/tint2/tint2.desktop:22
 msgid "Panel"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:6
+#: modules/tint2/tint2.desktop:8
+msgid "panel"
+msgstr ""
+
+#: modules/desktop/desktop.desktop:4
 msgid "Desktop preferences"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:13
-msgid "preferences-desktop-wallpaper"
-msgstr ""
-
-#: modules/desktop/desktop.desktop:17 modules/desktop/desktop.desktop:18
+#: modules/desktop/desktop.desktop:7 modules/desktop/desktop.desktop:22
 msgid "Desktop"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:6
-#: modules/shortcuts/shortcuts.desktop:18
+#: modules/desktop/desktop.desktop:8
+msgid "preferences-desktop-wallpaper"
+msgstr ""
+
+#: modules/shortcuts/shortcuts.desktop:4 modules/shortcuts/shortcuts.desktop:7
 msgid "Shortcuts"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:13
+#: modules/shortcuts/shortcuts.desktop:8
 msgid "preferences-desktop-keyboard-shortcuts"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:17
+#: modules/shortcuts/shortcuts.desktop:22
 msgid "Shortcuts;"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:37
-msgid "Network Connections"
-msgstr ""
-
-#: modules/networkmanager/networkmanager.desktop:78
-msgid "preferences-system-network"
-msgstr ""
-
-#: modules/networkmanager/networkmanager.desktop:123
+#: modules/networkmanager/networkmanager.desktop:40
 msgid "Manage and change your network connection settings"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:157
+#: modules/networkmanager/networkmanager.desktop:68
+msgid "preferences-system-network"
+msgstr ""
+
+#: modules/networkmanager/networkmanager.desktop:100
 msgid "Network;Connections;"
 msgstr ""
 
-#: modules/locale/locale.desktop:6
+#: modules/networkmanager/networkmanager.desktop:107
+msgid "Network Connections"
+msgstr ""
+
+#: modules/locale/locale.desktop:4
 msgid "Change the default language and region"
 msgstr ""
 
-#: modules/locale/locale.desktop:13
-msgid "preferences-desktop-locale"
-msgstr ""
-
-#: modules/locale/locale.desktop:17
-msgid "Language"
-msgstr ""
-
-#: modules/locale/locale.desktop:18
+#: modules/locale/locale.desktop:7
 msgid "Region & language"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:6
+#: modules/locale/locale.desktop:8
+msgid "preferences-desktop-locale"
+msgstr ""
+
+#: modules/locale/locale.desktop:22
+msgid "Language"
+msgstr ""
+
+#: modules/keyboard/keyboard.desktop:4
 msgid "Keyboard settings"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:13
-msgid "preferences-desktop-keyboard"
-msgstr ""
-
-#: modules/keyboard/keyboard.desktop:17 modules/keyboard/keyboard.desktop:18
+#: modules/keyboard/keyboard.desktop:7 modules/keyboard/keyboard.desktop:22
 msgid "Keyboard"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:6
+#: modules/keyboard/keyboard.desktop:8
+msgid "preferences-desktop-keyboard"
+msgstr ""
+
+#: modules/timedate/timedate.desktop:4
 msgid "Configures the time and the date"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:13
-msgid "preferences-system-time"
-msgstr ""
-
-#: modules/timedate/timedate.desktop:17
-msgid "Time;Date"
-msgstr ""
-
-#: modules/timedate/timedate.desktop:18
+#: modules/timedate/timedate.desktop:7
 msgid "Time & Date"
 msgstr ""
 
-#: modules/power/power.desktop:6
+#: modules/timedate/timedate.desktop:8
+msgid "preferences-system-time"
+msgstr ""
+
+#: modules/timedate/timedate.desktop:22
+msgid "Time;Date"
+msgstr ""
+
+#: modules/power/power.desktop:4
 msgid "Power settings"
 msgstr ""
 
-#: modules/power/power.desktop:13
-msgid "preferences-system-power"
-msgstr ""
-
-#: modules/power/power.desktop:17
-msgid "Power;Batteries;Battery;"
-msgstr ""
-
-#: modules/power/power.desktop:18
+#: modules/power/power.desktop:7
 msgid "Power"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:6
+#: modules/power/power.desktop:8
+msgid "preferences-system-power"
+msgstr ""
+
+#: modules/power/power.desktop:22
+msgid "Power;Batteries;Battery;"
+msgstr ""
+
+#: modules/usersadmin/usersadmin.desktop:4
 msgid "Add, edit, remove users and groups"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:13
-msgid "system-config-users"
-msgstr ""
-
-#: modules/usersadmin/usersadmin.desktop:17
-msgid "Users;Groups;Face"
-msgstr ""
-
-#: modules/usersadmin/usersadmin.desktop:18
+#: modules/usersadmin/usersadmin.desktop:7
 msgid "Users & Groups"
 msgstr ""
 
-#: modules/theme/theme.desktop:6
+#: modules/usersadmin/usersadmin.desktop:8
+msgid "system-config-users"
+msgstr ""
+
+#: modules/usersadmin/usersadmin.desktop:22
+msgid "Users;Groups;Face"
+msgstr ""
+
+#: modules/theme/theme.desktop:4
 msgid "Themes."
 msgstr ""
 
-#: modules/theme/theme.desktop:13
-msgid "preferences-desktop-theme"
-msgstr ""
-
-#: modules/theme/theme.desktop:17
-msgid "Themes"
-msgstr ""
-
-#: modules/theme/theme.desktop:18
+#: modules/theme/theme.desktop:7
 msgid "Appearance"
 msgstr ""
 
-#: modules/about/about.desktop:6
+#: modules/theme/theme.desktop:8
+msgid "preferences-desktop-theme"
+msgstr ""
+
+#: modules/theme/theme.desktop:22
+msgid "Themes"
+msgstr ""
+
+#: modules/about/about.desktop:4
 msgid "Shows informations on this system"
 msgstr ""
 
-#: modules/about/about.desktop:13
+#: modules/about/about.desktop:7
+msgid "Device details"
+msgstr ""
+
+#: modules/about/about.desktop:8
 msgid "info"
 msgstr ""
 
-#: modules/about/about.desktop:17
+#: modules/about/about.desktop:22
 msgid "Device;Informations;About"
-msgstr ""
-
-#: modules/about/about.desktop:18
-msgid "Device details"
 msgstr ""
 
 #: controlcenterui.glade.h:2
