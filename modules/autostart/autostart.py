@@ -511,7 +511,7 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.add_new_custom_dialog.add_buttons(
 			_("_Remove"), Gtk.ResponseType.NO,
 			_("_Cancel"), Gtk.ResponseType.CANCEL,
-			_("_Select"), Gtk.ResponseType.OK
+			_("_Save"), Gtk.ResponseType.OK
 		)
 
 		# Bind sensitiveness of the parent with the visibility of the new window
