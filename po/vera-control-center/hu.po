@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-17 22:37+0200\n"
-"PO-Revision-Date: 2015-05-17 20:37+0000\n"
+"POT-Creation-Date: 2015-05-24 11:42+0200\n"
+"PO-Revision-Date: 2015-05-24 09:43+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/vera-control-center/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: veracc/widgets/RebootDialog.py:73
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:422 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:513 modules/desktop/desktop.py:549
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr "_Mégsem"
@@ -91,17 +91,31 @@ msgid "Select an application"
 msgstr "Alkalmazás kiválasztása"
 
 #: veracc/widgets/ApplicationSelectionDialog.py:202
-#: modules/autostart/autostart.py:423
+#: modules/autostart/autostart.py:514
 msgid "_Select"
 msgstr "_Kiválsztás"
 
-#: modules/autostart/autostart.py:396
+#: modules/autostart/autostart.py:169
+#, python-format
+msgid "You don't have enough permissions to edit or remove «%s»"
+msgstr ""
+
+#: modules/autostart/autostart.py:176
+#, python-format
+msgid "Edit or remove «%s»"
+msgstr ""
+
+#: modules/autostart/autostart.py:486
 msgid "Select..."
 msgstr "Kiválasztás..."
 
-#: modules/autostart/autostart.py:400
+#: modules/autostart/autostart.py:490
 msgid "Use a custom command"
 msgstr "Egyéni parancs használata"
+
+#: modules/autostart/autostart.py:512
+msgid "_Remove"
+msgstr ""
 
 #: modules/desktop/desktop.py:481
 msgid "All monitors"
@@ -329,182 +343,182 @@ msgstr "Teljes"
 msgid "Subpixel rendering"
 msgstr "Képponton belüli renderelés"
 
-#: modules/autostart/autostart.desktop:3
-msgid "preferences-system-session"
-msgstr "beállítások-rendszer-munkamenet"
-
-#: modules/autostart/autostart.desktop:7
-msgid "Autostart"
-msgstr "Automatikus indítás"
-
-#: modules/autostart/autostart.desktop:10
-msgid "Autostart;Session"
-msgstr "Automatikus indítás;Munkamenet"
-
-#: modules/autostart/autostart.desktop:12
+#: modules/autostart/autostart.desktop:6
 msgid "Manage the applications to autostart"
 msgstr "Automatikusan induló alkalmazások kezelése"
 
-#: modules/tint2/tint2.desktop:3
-msgid "panel"
-msgstr "panel"
+#: modules/autostart/autostart.desktop:13
+msgid "preferences-system-session"
+msgstr "beállítások-rendszer-munkamenet"
 
-#: modules/tint2/tint2.desktop:7 modules/tint2/tint2.desktop:10
-msgid "Panel"
-msgstr "Panel"
+#: modules/autostart/autostart.desktop:17
+msgid "Autostart;Session"
+msgstr "Automatikus indítás;Munkamenet"
 
-#: modules/tint2/tint2.desktop:12
+#: modules/autostart/autostart.desktop:18
+msgid "Autostart"
+msgstr "Automatikus indítás"
+
+#: modules/tint2/tint2.desktop:6
 msgid "Configure the Panel"
 msgstr "Panel beállítása"
 
-#: modules/desktop/desktop.desktop:3
-msgid "preferences-desktop-wallpaper"
-msgstr "beállítások-asztal-háttér"
+#: modules/tint2/tint2.desktop:13
+msgid "panel"
+msgstr "panel"
 
-#: modules/desktop/desktop.desktop:7 modules/desktop/desktop.desktop:10
-msgid "Desktop"
-msgstr "Asztal"
+#: modules/tint2/tint2.desktop:17 modules/tint2/tint2.desktop:18
+msgid "Panel"
+msgstr "Panel"
 
-#: modules/desktop/desktop.desktop:12
+#: modules/desktop/desktop.desktop:6
 msgid "Desktop preferences"
 msgstr "Asztal beállítások"
 
-#: modules/shortcuts/shortcuts.desktop:3
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr "beállítások-asztal-billentyűzet-rövidítések"
+#: modules/desktop/desktop.desktop:13
+msgid "preferences-desktop-wallpaper"
+msgstr "beállítások-asztal-háttér"
 
-#: modules/shortcuts/shortcuts.desktop:7
-#: modules/shortcuts/shortcuts.desktop:12
+#: modules/desktop/desktop.desktop:17 modules/desktop/desktop.desktop:18
+msgid "Desktop"
+msgstr "Asztal"
+
+#: modules/shortcuts/shortcuts.desktop:6
+#: modules/shortcuts/shortcuts.desktop:18
 msgid "Shortcuts"
 msgstr "Rövidítések"
 
-#: modules/shortcuts/shortcuts.desktop:10
+#: modules/shortcuts/shortcuts.desktop:13
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr "beállítások-asztal-billentyűzet-rövidítések"
+
+#: modules/shortcuts/shortcuts.desktop:17
 msgid "Shortcuts;"
 msgstr "Rövidítések;"
 
-#: modules/networkmanager/networkmanager.desktop:14
-msgid "Network;Connections;"
-msgstr "Hálózat;Kapcsolatok;"
-
-#: modules/networkmanager/networkmanager.desktop:44
-msgid "Manage and change your network connection settings"
-msgstr "A hálózati kapcsolatok kezelése és változtatása"
-
-#: modules/networkmanager/networkmanager.desktop:66
-msgid "preferences-system-network"
-msgstr "beállítások-rendszer-hálózat"
-
-#: modules/networkmanager/networkmanager.desktop:74
+#: modules/networkmanager/networkmanager.desktop:37
 msgid "Network Connections"
 msgstr "Hálózati kapcsolatok"
 
-#: modules/locale/locale.desktop:3
-msgid "preferences-desktop-locale"
-msgstr "beállítások-asztal-lokalizálás"
+#: modules/networkmanager/networkmanager.desktop:78
+msgid "preferences-system-network"
+msgstr "beállítások-rendszer-hálózat"
 
-#: modules/locale/locale.desktop:7
-msgid "Region & language"
-msgstr "Régió és nyelv"
+#: modules/networkmanager/networkmanager.desktop:123
+msgid "Manage and change your network connection settings"
+msgstr "A hálózati kapcsolatok kezelése és változtatása"
 
-#: modules/locale/locale.desktop:10
-msgid "Language"
-msgstr "Nyelv"
+#: modules/networkmanager/networkmanager.desktop:157
+msgid "Network;Connections;"
+msgstr "Hálózat;Kapcsolatok;"
 
-#: modules/locale/locale.desktop:12
+#: modules/locale/locale.desktop:6
 msgid "Change the default language and region"
 msgstr "Az alapértelmezett nyelv és régió megváltoztatása"
 
-#: modules/keyboard/keyboard.desktop:3
-msgid "preferences-desktop-keyboard"
-msgstr "beállítások-asztal-billentyűzet"
+#: modules/locale/locale.desktop:13
+msgid "preferences-desktop-locale"
+msgstr "beállítások-asztal-lokalizálás"
 
-#: modules/keyboard/keyboard.desktop:7 modules/keyboard/keyboard.desktop:10
-msgid "Keyboard"
-msgstr "Billentyűzet"
+#: modules/locale/locale.desktop:17
+msgid "Language"
+msgstr "Nyelv"
 
-#: modules/keyboard/keyboard.desktop:12
+#: modules/locale/locale.desktop:18
+msgid "Region & language"
+msgstr "Régió és nyelv"
+
+#: modules/keyboard/keyboard.desktop:6
 msgid "Keyboard settings"
 msgstr "Billentyűzet beállítások"
 
-#: modules/timedate/timedate.desktop:3
-msgid "preferences-system-time"
-msgstr "beállítások-rendszer-idő"
+#: modules/keyboard/keyboard.desktop:13
+msgid "preferences-desktop-keyboard"
+msgstr "beállítások-asztal-billentyűzet"
 
-#: modules/timedate/timedate.desktop:7
-msgid "Time & Date"
-msgstr "Idő és dátum"
+#: modules/keyboard/keyboard.desktop:17 modules/keyboard/keyboard.desktop:18
+msgid "Keyboard"
+msgstr "Billentyűzet"
 
-#: modules/timedate/timedate.desktop:10
-msgid "Time;Date"
-msgstr "Idő;Dátum"
-
-#: modules/timedate/timedate.desktop:12
+#: modules/timedate/timedate.desktop:6
 msgid "Configures the time and the date"
 msgstr "Az idő és a dátum beállítása"
 
-#: modules/power/power.desktop:3
-msgid "preferences-system-power"
-msgstr "beállítások-rendszer-energiakezelés"
+#: modules/timedate/timedate.desktop:13
+msgid "preferences-system-time"
+msgstr "beállítások-rendszer-idő"
 
-#: modules/power/power.desktop:7
-msgid "Power"
-msgstr "Energiakezelés"
+#: modules/timedate/timedate.desktop:17
+msgid "Time;Date"
+msgstr "Idő;Dátum"
 
-#: modules/power/power.desktop:10
-msgid "Power;Batteries;Battery;"
-msgstr "Energiakezelés;Telepek;Telep;"
+#: modules/timedate/timedate.desktop:18
+msgid "Time & Date"
+msgstr "Idő és dátum"
 
-#: modules/power/power.desktop:12
+#: modules/power/power.desktop:6
 msgid "Power settings"
 msgstr "Energiakezelés beállítások"
 
-#: modules/usersadmin/usersadmin.desktop:3
-msgid "system-config-users"
-msgstr "rendszer-beállítás-felhasználók"
+#: modules/power/power.desktop:13
+msgid "preferences-system-power"
+msgstr "beállítások-rendszer-energiakezelés"
 
-#: modules/usersadmin/usersadmin.desktop:7
-msgid "Users & Groups"
-msgstr "Felhasználók és Csoportok"
+#: modules/power/power.desktop:17
+msgid "Power;Batteries;Battery;"
+msgstr "Energiakezelés;Telepek;Telep;"
 
-#: modules/usersadmin/usersadmin.desktop:10
-msgid "Users;Groups;Face"
-msgstr "Felhasználók;Csoportok;Arckép"
+#: modules/power/power.desktop:18
+msgid "Power"
+msgstr "Energiakezelés"
 
-#: modules/usersadmin/usersadmin.desktop:12
+#: modules/usersadmin/usersadmin.desktop:6
 msgid "Add, edit, remove users and groups"
 msgstr "Felhasználók és csoportok hozzáadása, szerkesztése, eltávolítása"
 
-#: modules/theme/theme.desktop:3
-msgid "preferences-desktop-theme"
-msgstr "beállítások-asztal-téma"
+#: modules/usersadmin/usersadmin.desktop:13
+msgid "system-config-users"
+msgstr "rendszer-beállítás-felhasználók"
 
-#: modules/theme/theme.desktop:7
-msgid "Appearance"
-msgstr "Megjelenés"
+#: modules/usersadmin/usersadmin.desktop:17
+msgid "Users;Groups;Face"
+msgstr "Felhasználók;Csoportok;Arckép"
 
-#: modules/theme/theme.desktop:10
-msgid "Themes"
-msgstr "Témák"
+#: modules/usersadmin/usersadmin.desktop:18
+msgid "Users & Groups"
+msgstr "Felhasználók és Csoportok"
 
-#: modules/theme/theme.desktop:12
+#: modules/theme/theme.desktop:6
 msgid "Themes."
 msgstr "Témák."
 
-#: modules/about/about.desktop:3
+#: modules/theme/theme.desktop:13
+msgid "preferences-desktop-theme"
+msgstr "beállítások-asztal-téma"
+
+#: modules/theme/theme.desktop:17
+msgid "Themes"
+msgstr "Témák"
+
+#: modules/theme/theme.desktop:18
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: modules/about/about.desktop:6
+msgid "Shows informations on this system"
+msgstr "Információkat jelenít meg erről a rendszerről"
+
+#: modules/about/about.desktop:13
 msgid "info"
 msgstr "információk"
 
-#: modules/about/about.desktop:7
-msgid "Device details"
-msgstr "Eszköz adatai"
-
-#: modules/about/about.desktop:10
+#: modules/about/about.desktop:17
 msgid "Device;Informations;About"
 msgstr "Eszköz;Információk;Névjegy"
 
-#: modules/about/about.desktop:12
-msgid "Shows informations on this system"
-msgstr "Információkat jelenít meg erről a rendszerről"
+#: modules/about/about.desktop:18
+msgid "Device details"
+msgstr "Eszköz adatai"
 
 #: controlcenterui.glade.h:2
 msgid "Search"

@@ -1,22 +1,22 @@
 [Desktop Entry]
 Comment[es]=Cambiar la región e idioma por defecto
-Keywords[es]=Idioma
-Name[es]=Región e idioma
 Comment=Change the default language and region
-Keywords[it]=Lingua
-X-VeraCC-Section=System
 Keywords[lt]=Kalba
 Keywords[nl_NL]=Taal
-Name[it]=Regione e lingua
-Name[nl_NL]=Regio en taal
+Name=Region & language
 Icon=preferences-desktop-locale
 Comment[lt]=Keisti numatytąją kalbą ir regioną
-Name[lt]=Regionas ir kalba
-Comment[hu]=Az alapértelmezett nyelv és régió megváltoztatása
-Keywords=Language
-Name=Region & language
-Comment[nl_NL]=De standaard taal en -regio wijzigen
-Name[hu]=Régió és nyelv
 Comment[it]=Modifica la lingua e la regione predefinita
+X-VeraCC-Section=System
+Name[es]=Región e idioma
+Comment[hu]=Az alapértelmezett nyelv és régió megváltoztatása
+Name[lt]=Regionas ir kalba
+Name[nl_NL]=Regio en taal
 Keywords[hu]=Nyelv
+Keywords[it]=Lingua
+Comment[nl_NL]=De standaard taal en -regio wijzigen
+Name[it]=Regione e lingua
+Name[hu]=Régió és nyelv
+Keywords[es]=Idioma
+Keywords=Language
 

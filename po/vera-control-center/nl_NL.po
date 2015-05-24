@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-17 22:37+0200\n"
-"PO-Revision-Date: 2015-05-17 20:37+0000\n"
+"POT-Creation-Date: 2015-05-24 11:42+0200\n"
+"PO-Revision-Date: 2015-05-24 09:43+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/vera-control-center/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -45,25 +45,25 @@ msgstr "Herstarten"
 
 #: veracc/widgets/RebootDialog.py:63
 msgid "Reboot required"
-msgstr ""
+msgstr "Herstart vereist"
 
 #: veracc/widgets/RebootDialog.py:66
 msgid ""
 "In order to apply the changes, a reboot is required.\n"
 "\n"
 "Please save your work and press \"Reboot now\" to reboot or press \"Cancel\" to reboot later."
-msgstr ""
+msgstr "Een herstart is vereist om de wijzigingen toe te passen.\n\nSla al uw werk op en klik op \"Nu herstarten\" om te herstarten of op \"Annuleren\" om later te herstarten."
 
 #: veracc/widgets/RebootDialog.py:73
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:422 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:513 modules/desktop/desktop.py:549
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr "_Annuleren"
 
 #: veracc/widgets/RebootDialog.py:74
 msgid "_Reboot now"
-msgstr ""
+msgstr "_Nu herstarten"
 
 #: veracc/widgets/UnlockBar.py:113
 msgid "You need additional privileges to modify these settings."
@@ -91,17 +91,31 @@ msgid "Select an application"
 msgstr "Selecteer een applicatie"
 
 #: veracc/widgets/ApplicationSelectionDialog.py:202
-#: modules/autostart/autostart.py:423
+#: modules/autostart/autostart.py:514
 msgid "_Select"
 msgstr "_Selecteren"
 
-#: modules/autostart/autostart.py:396
+#: modules/autostart/autostart.py:169
+#, python-format
+msgid "You don't have enough permissions to edit or remove «%s»"
+msgstr ""
+
+#: modules/autostart/autostart.py:176
+#, python-format
+msgid "Edit or remove «%s»"
+msgstr ""
+
+#: modules/autostart/autostart.py:486
 msgid "Select..."
 msgstr "Selecteren..."
 
-#: modules/autostart/autostart.py:400
+#: modules/autostart/autostart.py:490
 msgid "Use a custom command"
 msgstr "Een aangepast commando gebruiken"
+
+#: modules/autostart/autostart.py:512
+msgid "_Remove"
+msgstr ""
 
 #: modules/desktop/desktop.py:481
 msgid "All monitors"
@@ -329,182 +343,182 @@ msgstr "Volledig"
 msgid "Subpixel rendering"
 msgstr "Subpixelweergave"
 
-#: modules/autostart/autostart.desktop:3
-msgid "preferences-system-session"
-msgstr "preferences-system-session"
-
-#: modules/autostart/autostart.desktop:7
-msgid "Autostart"
-msgstr "Automatisch opstarten"
-
-#: modules/autostart/autostart.desktop:10
-msgid "Autostart;Session"
-msgstr "Automatisch opstarten;Sessie"
-
-#: modules/autostart/autostart.desktop:12
+#: modules/autostart/autostart.desktop:6
 msgid "Manage the applications to autostart"
 msgstr "De applicaties beheren die automatisch worden opgestart"
 
-#: modules/tint2/tint2.desktop:3
-msgid "panel"
-msgstr "paneel"
+#: modules/autostart/autostart.desktop:13
+msgid "preferences-system-session"
+msgstr "preferences-system-session"
 
-#: modules/tint2/tint2.desktop:7 modules/tint2/tint2.desktop:10
-msgid "Panel"
-msgstr "Paneel"
+#: modules/autostart/autostart.desktop:17
+msgid "Autostart;Session"
+msgstr "Automatisch opstarten;Sessie"
 
-#: modules/tint2/tint2.desktop:12
+#: modules/autostart/autostart.desktop:18
+msgid "Autostart"
+msgstr "Automatisch opstarten"
+
+#: modules/tint2/tint2.desktop:6
 msgid "Configure the Panel"
 msgstr "Het paneel instellen"
 
-#: modules/desktop/desktop.desktop:3
-msgid "preferences-desktop-wallpaper"
-msgstr "preferences-desktop-wallpaper"
+#: modules/tint2/tint2.desktop:13
+msgid "panel"
+msgstr "paneel"
 
-#: modules/desktop/desktop.desktop:7 modules/desktop/desktop.desktop:10
-msgid "Desktop"
-msgstr "Bureaublad"
+#: modules/tint2/tint2.desktop:17 modules/tint2/tint2.desktop:18
+msgid "Panel"
+msgstr "Paneel"
 
-#: modules/desktop/desktop.desktop:12
+#: modules/desktop/desktop.desktop:6
 msgid "Desktop preferences"
 msgstr "Bureaubladvoorkeuren"
 
-#: modules/shortcuts/shortcuts.desktop:3
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr "preferences-desktop-keyboard-shortcuts"
+#: modules/desktop/desktop.desktop:13
+msgid "preferences-desktop-wallpaper"
+msgstr "preferences-desktop-wallpaper"
 
-#: modules/shortcuts/shortcuts.desktop:7
-#: modules/shortcuts/shortcuts.desktop:12
+#: modules/desktop/desktop.desktop:17 modules/desktop/desktop.desktop:18
+msgid "Desktop"
+msgstr "Bureaublad"
+
+#: modules/shortcuts/shortcuts.desktop:6
+#: modules/shortcuts/shortcuts.desktop:18
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#: modules/shortcuts/shortcuts.desktop:10
+#: modules/shortcuts/shortcuts.desktop:13
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr "preferences-desktop-keyboard-shortcuts"
+
+#: modules/shortcuts/shortcuts.desktop:17
 msgid "Shortcuts;"
 msgstr "Sneltoetsen;"
 
-#: modules/networkmanager/networkmanager.desktop:14
-msgid "Network;Connections;"
-msgstr "Netwerk;Verbindingen;"
-
-#: modules/networkmanager/networkmanager.desktop:44
-msgid "Manage and change your network connection settings"
-msgstr "Uw netwerkverbindingsinstellingen beheren en wijzigen"
-
-#: modules/networkmanager/networkmanager.desktop:66
-msgid "preferences-system-network"
-msgstr "preferences-system-network"
-
-#: modules/networkmanager/networkmanager.desktop:74
+#: modules/networkmanager/networkmanager.desktop:37
 msgid "Network Connections"
 msgstr "Netwerkverbindingen"
 
-#: modules/locale/locale.desktop:3
-msgid "preferences-desktop-locale"
-msgstr "preferences-desktop-locale"
+#: modules/networkmanager/networkmanager.desktop:78
+msgid "preferences-system-network"
+msgstr "preferences-system-network"
 
-#: modules/locale/locale.desktop:7
-msgid "Region & language"
-msgstr "Regio en taal"
+#: modules/networkmanager/networkmanager.desktop:123
+msgid "Manage and change your network connection settings"
+msgstr "Uw netwerkverbindingsinstellingen beheren en wijzigen"
 
-#: modules/locale/locale.desktop:10
-msgid "Language"
-msgstr "Taal"
+#: modules/networkmanager/networkmanager.desktop:157
+msgid "Network;Connections;"
+msgstr "Netwerk;Verbindingen;"
 
-#: modules/locale/locale.desktop:12
+#: modules/locale/locale.desktop:6
 msgid "Change the default language and region"
 msgstr "De standaard taal en -regio wijzigen"
 
-#: modules/keyboard/keyboard.desktop:3
-msgid "preferences-desktop-keyboard"
-msgstr "preferences-desktop-keyboard"
+#: modules/locale/locale.desktop:13
+msgid "preferences-desktop-locale"
+msgstr "preferences-desktop-locale"
 
-#: modules/keyboard/keyboard.desktop:7 modules/keyboard/keyboard.desktop:10
-msgid "Keyboard"
-msgstr "Toetsenbord"
+#: modules/locale/locale.desktop:17
+msgid "Language"
+msgstr "Taal"
 
-#: modules/keyboard/keyboard.desktop:12
+#: modules/locale/locale.desktop:18
+msgid "Region & language"
+msgstr "Regio en taal"
+
+#: modules/keyboard/keyboard.desktop:6
 msgid "Keyboard settings"
 msgstr "Toetsenbordinstellingen"
 
-#: modules/timedate/timedate.desktop:3
-msgid "preferences-system-time"
-msgstr "preferences-system-time"
+#: modules/keyboard/keyboard.desktop:13
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
 
-#: modules/timedate/timedate.desktop:7
-msgid "Time & Date"
-msgstr "Datum en tijd"
+#: modules/keyboard/keyboard.desktop:17 modules/keyboard/keyboard.desktop:18
+msgid "Keyboard"
+msgstr "Toetsenbord"
 
-#: modules/timedate/timedate.desktop:10
-msgid "Time;Date"
-msgstr "Tijd;Datum"
-
-#: modules/timedate/timedate.desktop:12
+#: modules/timedate/timedate.desktop:6
 msgid "Configures the time and the date"
 msgstr "De datum en tijd instellen"
 
-#: modules/power/power.desktop:3
-msgid "preferences-system-power"
-msgstr "preferences-system-power"
+#: modules/timedate/timedate.desktop:13
+msgid "preferences-system-time"
+msgstr "preferences-system-time"
 
-#: modules/power/power.desktop:7
-msgid "Power"
-msgstr "Energie"
+#: modules/timedate/timedate.desktop:17
+msgid "Time;Date"
+msgstr "Tijd;Datum"
 
-#: modules/power/power.desktop:10
-msgid "Power;Batteries;Battery;"
-msgstr "Energie;Accu's;Accu;"
+#: modules/timedate/timedate.desktop:18
+msgid "Time & Date"
+msgstr "Datum en tijd"
 
-#: modules/power/power.desktop:12
+#: modules/power/power.desktop:6
 msgid "Power settings"
 msgstr "Energie-instellingen"
 
-#: modules/usersadmin/usersadmin.desktop:3
-msgid "system-config-users"
-msgstr "system-config-users"
+#: modules/power/power.desktop:13
+msgid "preferences-system-power"
+msgstr "preferences-system-power"
 
-#: modules/usersadmin/usersadmin.desktop:7
-msgid "Users & Groups"
-msgstr "Gebruikers en groepen"
+#: modules/power/power.desktop:17
+msgid "Power;Batteries;Battery;"
+msgstr "Energie;Accu's;Accu;"
 
-#: modules/usersadmin/usersadmin.desktop:10
-msgid "Users;Groups;Face"
-msgstr "Gebruikers;Groepen;Gezicht"
+#: modules/power/power.desktop:18
+msgid "Power"
+msgstr "Energie"
 
-#: modules/usersadmin/usersadmin.desktop:12
+#: modules/usersadmin/usersadmin.desktop:6
 msgid "Add, edit, remove users and groups"
 msgstr "Gebruikers en groepen toevoegen, bewerken en/of verwijderen"
 
-#: modules/theme/theme.desktop:3
-msgid "preferences-desktop-theme"
-msgstr "preferences-desktop-theme"
+#: modules/usersadmin/usersadmin.desktop:13
+msgid "system-config-users"
+msgstr "system-config-users"
 
-#: modules/theme/theme.desktop:7
-msgid "Appearance"
-msgstr "Uiterlijk"
+#: modules/usersadmin/usersadmin.desktop:17
+msgid "Users;Groups;Face"
+msgstr "Gebruikers;Groepen;Gezicht"
 
-#: modules/theme/theme.desktop:10
-msgid "Themes"
-msgstr "Thema's"
+#: modules/usersadmin/usersadmin.desktop:18
+msgid "Users & Groups"
+msgstr "Gebruikers en groepen"
 
-#: modules/theme/theme.desktop:12
+#: modules/theme/theme.desktop:6
 msgid "Themes."
 msgstr "Thema's"
 
-#: modules/about/about.desktop:3
+#: modules/theme/theme.desktop:13
+msgid "preferences-desktop-theme"
+msgstr "preferences-desktop-theme"
+
+#: modules/theme/theme.desktop:17
+msgid "Themes"
+msgstr "Thema's"
+
+#: modules/theme/theme.desktop:18
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+#: modules/about/about.desktop:6
+msgid "Shows informations on this system"
+msgstr "Weergeeft informative over dit systeem"
+
+#: modules/about/about.desktop:13
 msgid "info"
 msgstr "informatie"
 
-#: modules/about/about.desktop:7
-msgid "Device details"
-msgstr "Apparaatdetails"
-
-#: modules/about/about.desktop:10
+#: modules/about/about.desktop:17
 msgid "Device;Informations;About"
 msgstr "Apparaat;Informatie;Over"
 
-#: modules/about/about.desktop:12
-msgid "Shows informations on this system"
-msgstr "Weergeeft informative over dit systeem"
+#: modules/about/about.desktop:18
+msgid "Device details"
+msgstr "Apparaatdetails"
 
 #: controlcenterui.glade.h:2
 msgid "Search"

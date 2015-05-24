@@ -1,22 +1,22 @@
 [Desktop Entry]
 Comment[es]=Configuración del teclado
-Keywords[es]=Teclado
-Name[es]=Teclado
 Comment=Keyboard settings
-Keywords[it]=Tastiera
-X-VeraCC-Section=System
 Keywords[lt]=Klaviatūra
 Keywords[nl_NL]=Toetsenbord
-Name[it]=Tastiera
-Name[nl_NL]=Toetsenbord
+Name=Keyboard
 Icon=preferences-desktop-keyboard
 Comment[lt]=Klaviatūros nustatymai
-Name[lt]=Klaviatūra
-Comment[hu]=Billentyűzet beállítások
-Keywords=Keyboard
-Name=Keyboard
-Comment[nl_NL]=Toetsenbordinstellingen
-Name[hu]=Billentyűzet
 Comment[it]=Impostazioni della tastiera
+X-VeraCC-Section=System
+Name[es]=Teclado
+Comment[hu]=Billentyűzet beállítások
+Name[lt]=Klaviatūra
+Name[nl_NL]=Toetsenbord
 Keywords[hu]=Billentyűzet
+Keywords[it]=Tastiera
+Comment[nl_NL]=Toetsenbordinstellingen
+Name[it]=Tastiera
+Name[hu]=Billentyűzet
+Keywords[es]=Teclado
+Keywords=Keyboard
 

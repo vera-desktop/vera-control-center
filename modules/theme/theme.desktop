@@ -1,22 +1,22 @@
 [Desktop Entry]
 Comment[es]=Temas.
-Keywords[es]=Temas
-Name[es]=Apariencia
 Comment=Themes.
-Keywords[it]=Temi
-X-VeraCC-Section=Personal
 Keywords[lt]=Temos
 Keywords[nl_NL]=Thema's
-Name[it]=Aspetto
-Name[nl_NL]=Uiterlijk
+Name=Appearance
 Icon=preferences-desktop-theme
 Comment[lt]=Temos.
-Name[lt]=Išvaizda
-Comment[hu]=Témák.
-Keywords=Themes
-Name=Appearance
-Comment[nl_NL]=Thema's
-Name[hu]=Megjelenés
 Comment[it]=Temi.
+X-VeraCC-Section=Personal
+Name[es]=Apariencia
+Comment[hu]=Témák.
+Name[lt]=Išvaizda
+Name[nl_NL]=Uiterlijk
 Keywords[hu]=Témák
+Keywords[it]=Temi
+Comment[nl_NL]=Thema's
+Name[it]=Aspetto
+Name[hu]=Megjelenés
+Keywords[es]=Temas
+Keywords=Themes
 
