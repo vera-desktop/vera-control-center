@@ -72,13 +72,15 @@ class Scene(quickstart.scenes.BaseScene):
 		if not self.building:
 			self.VeraPowerManager.SetBrightness('(i)', int(scale.get_value())+1)
 	
-	def on_brightness_level_changed_external(self):
+	def on_brightness_level_changed_external(self, params=None):
 		"""
 		Fired when the brightness level has been changed from the outside.
 		"""
 		
+		if not params: params = (self.VeraPowerManager.GetBrightness(),)
+		
 		self.building = True
-		self.objects.brightness_level.set_value(float(self.VeraPowerManager.GetBrightness()))
+		self.objects.brightness_level.set_value(float(params[0]))
 		self.building = False
 	
 	def on_combobox_changed(self, combobox):
@@ -204,7 +206,7 @@ class Scene(quickstart.scenes.BaseScene):
 		# connect signals
 		self.VeraPowerManager.connect(
 			"g-signal",
-			lambda proxy, sender, signal, params: self.signal_handlers[signal]() if signal in self.signal_handlers else None
+			lambda proxy, sender, signal, params: self.signal_handlers[signal](params) if signal in self.signal_handlers else None
 		)
 		
 		# Check for backlight support
