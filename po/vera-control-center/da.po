@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 15:30+0200\n"
-"PO-Revision-Date: 2015-05-24 13:31+0000\n"
+"POT-Creation-Date: 2015-06-14 19:08+0200\n"
+"PO-Revision-Date: 2015-06-14 17:08+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/vera-control-center/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -37,31 +37,32 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: veracc/widgets/RebootDialog.py:60 modules/shortcuts/shortcuts.glade.h:3
+#: veracc/widgets/RebootDialog.py:31
+#, python-format
+msgid "_Reboot now (in %ds)"
+msgstr ""
+
+#: veracc/widgets/RebootDialog.py:98 modules/shortcuts/shortcuts.glade.h:3
 #: modules/power/power.glade.h:3
 msgid "Reboot"
 msgstr ""
 
-#: veracc/widgets/RebootDialog.py:63
+#: veracc/widgets/RebootDialog.py:101
 msgid "Reboot required"
 msgstr ""
 
-#: veracc/widgets/RebootDialog.py:66
+#: veracc/widgets/RebootDialog.py:104
 msgid ""
 "In order to apply the changes, a reboot is required.\n"
 "\n"
 "Please save your work and press \"Reboot now\" to reboot or press \"Cancel\" to reboot later."
 msgstr ""
 
-#: veracc/widgets/RebootDialog.py:73
+#: veracc/widgets/RebootDialog.py:111
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:513 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:519 modules/desktop/desktop.py:549
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
-msgstr ""
-
-#: veracc/widgets/RebootDialog.py:74
-msgid "_Reboot now"
 msgstr ""
 
 #: veracc/widgets/UnlockBar.py:113
@@ -103,19 +104,27 @@ msgstr ""
 msgid "Edit or remove «%s»"
 msgstr ""
 
-#: modules/autostart/autostart.py:486
+#: modules/autostart/autostart.py:301
+msgid "Add a new custom command"
+msgstr ""
+
+#: modules/autostart/autostart.py:321
+msgid "Edit application"
+msgstr ""
+
+#: modules/autostart/autostart.py:492
 msgid "Select..."
 msgstr ""
 
-#: modules/autostart/autostart.py:490
+#: modules/autostart/autostart.py:496
 msgid "Use a custom command"
 msgstr ""
 
-#: modules/autostart/autostart.py:512
+#: modules/autostart/autostart.py:518
 msgid "_Remove"
 msgstr ""
 
-#: modules/autostart/autostart.py:514
+#: modules/autostart/autostart.py:520
 msgid "_Save"
 msgstr ""
 
@@ -525,23 +534,19 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: modules/autostart/autostart.glade.h:1
-msgid "Add a new custom command"
-msgstr ""
-
-#: modules/autostart/autostart.glade.h:2 modules/desktop/desktop.glade.h:2
+#: modules/autostart/autostart.glade.h:1 modules/desktop/desktop.glade.h:2
 msgid "Name"
 msgstr ""
 
-#: modules/autostart/autostart.glade.h:3
+#: modules/autostart/autostart.glade.h:2
 msgid "Command"
 msgstr ""
 
-#: modules/autostart/autostart.glade.h:4
+#: modules/autostart/autostart.glade.h:3
 msgid "<b>Autostart applications</b>"
 msgstr ""
 
-#: modules/autostart/autostart.glade.h:5
+#: modules/autostart/autostart.glade.h:4
 msgid "Add new"
 msgstr ""
 

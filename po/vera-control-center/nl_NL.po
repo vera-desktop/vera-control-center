@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 15:30+0200\n"
-"PO-Revision-Date: 2015-05-24 13:31+0000\n"
+"POT-Creation-Date: 2015-06-14 19:08+0200\n"
+"PO-Revision-Date: 2015-06-14 17:09+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/vera-control-center/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -38,32 +38,33 @@ msgstr "Hardware"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: veracc/widgets/RebootDialog.py:60 modules/shortcuts/shortcuts.glade.h:3
+#: veracc/widgets/RebootDialog.py:31
+#, python-format
+msgid "_Reboot now (in %ds)"
+msgstr ""
+
+#: veracc/widgets/RebootDialog.py:98 modules/shortcuts/shortcuts.glade.h:3
 #: modules/power/power.glade.h:3
 msgid "Reboot"
 msgstr "Herstarten"
 
-#: veracc/widgets/RebootDialog.py:63
+#: veracc/widgets/RebootDialog.py:101
 msgid "Reboot required"
 msgstr "Herstart vereist"
 
-#: veracc/widgets/RebootDialog.py:66
+#: veracc/widgets/RebootDialog.py:104
 msgid ""
 "In order to apply the changes, a reboot is required.\n"
 "\n"
 "Please save your work and press \"Reboot now\" to reboot or press \"Cancel\" to reboot later."
 msgstr "Een herstart is vereist om de wijzigingen toe te passen.\n\nSla al uw werk op en klik op \"Nu herstarten\" om te herstarten of op \"Annuleren\" om later te herstarten."
 
-#: veracc/widgets/RebootDialog.py:73
+#: veracc/widgets/RebootDialog.py:111
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:513 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:519 modules/desktop/desktop.py:549
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr "_Annuleren"
-
-#: veracc/widgets/RebootDialog.py:74
-msgid "_Reboot now"
-msgstr "_Nu herstarten"
 
 #: veracc/widgets/UnlockBar.py:113
 msgid "You need additional privileges to modify these settings."
@@ -97,28 +98,36 @@ msgstr "_Selecteren"
 #: modules/autostart/autostart.py:169
 #, python-format
 msgid "You don't have enough permissions to edit or remove «%s»"
-msgstr ""
+msgstr "U beschikt niet over voldoende rechten om «%s» te bewerken of te verwijderen"
 
 #: modules/autostart/autostart.py:176
 #, python-format
 msgid "Edit or remove «%s»"
+msgstr "«%s» bewerken of verwijderen"
+
+#: modules/autostart/autostart.py:301
+msgid "Add a new custom command"
+msgstr "Een nieuw aangepast commando toevoegen"
+
+#: modules/autostart/autostart.py:321
+msgid "Edit application"
 msgstr ""
 
-#: modules/autostart/autostart.py:486
+#: modules/autostart/autostart.py:492
 msgid "Select..."
 msgstr "Selecteren..."
 
-#: modules/autostart/autostart.py:490
+#: modules/autostart/autostart.py:496
 msgid "Use a custom command"
 msgstr "Een aangepast commando gebruiken"
 
-#: modules/autostart/autostart.py:512
+#: modules/autostart/autostart.py:518
 msgid "_Remove"
-msgstr ""
+msgstr "_Verwijderen"
 
-#: modules/autostart/autostart.py:514
+#: modules/autostart/autostart.py:520
 msgid "_Save"
-msgstr ""
+msgstr "_Opslaan"
 
 #: modules/desktop/desktop.py:481
 msgid "All monitors"
@@ -526,23 +535,19 @@ msgstr "Apparaat;Informatie;Over"
 msgid "Search"
 msgstr "Zoeken"
 
-#: modules/autostart/autostart.glade.h:1
-msgid "Add a new custom command"
-msgstr "Een nieuw aangepast commando toevoegen"
-
-#: modules/autostart/autostart.glade.h:2 modules/desktop/desktop.glade.h:2
+#: modules/autostart/autostart.glade.h:1 modules/desktop/desktop.glade.h:2
 msgid "Name"
 msgstr "Naam"
 
-#: modules/autostart/autostart.glade.h:3
+#: modules/autostart/autostart.glade.h:2
 msgid "Command"
 msgstr "Commando"
 
-#: modules/autostart/autostart.glade.h:4
+#: modules/autostart/autostart.glade.h:3
 msgid "<b>Autostart applications</b>"
 msgstr "<b>Applicaties automatisch opstarten</b>"
 
-#: modules/autostart/autostart.glade.h:5
+#: modules/autostart/autostart.glade.h:4
 msgid "Add new"
 msgstr "Nieuwe toevoegen"
 

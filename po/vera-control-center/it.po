@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 15:30+0200\n"
-"PO-Revision-Date: 2015-05-24 13:31+0000\n"
+"POT-Creation-Date: 2015-06-14 19:08+0200\n"
+"PO-Revision-Date: 2015-06-14 17:10+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/vera-control-center/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -39,32 +39,33 @@ msgstr "Hardware"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: veracc/widgets/RebootDialog.py:60 modules/shortcuts/shortcuts.glade.h:3
+#: veracc/widgets/RebootDialog.py:31
+#, python-format
+msgid "_Reboot now (in %ds)"
+msgstr "_Riavvia ora (in %ds)"
+
+#: veracc/widgets/RebootDialog.py:98 modules/shortcuts/shortcuts.glade.h:3
 #: modules/power/power.glade.h:3
 msgid "Reboot"
 msgstr "Riavvia"
 
-#: veracc/widgets/RebootDialog.py:63
+#: veracc/widgets/RebootDialog.py:101
 msgid "Reboot required"
 msgstr "Riavvio richiesto"
 
-#: veracc/widgets/RebootDialog.py:66
+#: veracc/widgets/RebootDialog.py:104
 msgid ""
 "In order to apply the changes, a reboot is required.\n"
 "\n"
 "Please save your work and press \"Reboot now\" to reboot or press \"Cancel\" to reboot later."
 msgstr "Per applicare i cambiamenti è necessario riavviare.\n\nSi prega di salvare il proprio lavoro e di premere \"Riavvia ora\" per riavviare oppure \"Annulla\" per riavviare successivamente."
 
-#: veracc/widgets/RebootDialog.py:73
+#: veracc/widgets/RebootDialog.py:111
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:513 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:519 modules/desktop/desktop.py:549
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr "_Annulla"
-
-#: veracc/widgets/RebootDialog.py:74
-msgid "_Reboot now"
-msgstr "_Riavvia ora"
 
 #: veracc/widgets/UnlockBar.py:113
 msgid "You need additional privileges to modify these settings."
@@ -105,19 +106,27 @@ msgstr "Non si dispone di abbastanza permessi per modificare o rimuovere «%s»"
 msgid "Edit or remove «%s»"
 msgstr "Modifica o rimuovi «%s»"
 
-#: modules/autostart/autostart.py:486
+#: modules/autostart/autostart.py:301
+msgid "Add a new custom command"
+msgstr "Aggiungi un comando personalizzato"
+
+#: modules/autostart/autostart.py:321
+msgid "Edit application"
+msgstr "Modifica applicazione"
+
+#: modules/autostart/autostart.py:492
 msgid "Select..."
 msgstr "Seleziona..."
 
-#: modules/autostart/autostart.py:490
+#: modules/autostart/autostart.py:496
 msgid "Use a custom command"
 msgstr "Utilizza un comando personalizzato "
 
-#: modules/autostart/autostart.py:512
+#: modules/autostart/autostart.py:518
 msgid "_Remove"
 msgstr "_Rimuovi"
 
-#: modules/autostart/autostart.py:514
+#: modules/autostart/autostart.py:520
 msgid "_Save"
 msgstr "_Salva"
 
@@ -527,23 +536,19 @@ msgstr "Dispositivo;Informazioni"
 msgid "Search"
 msgstr "Cerca"
 
-#: modules/autostart/autostart.glade.h:1
-msgid "Add a new custom command"
-msgstr "Aggiungi un comando personalizzato"
-
-#: modules/autostart/autostart.glade.h:2 modules/desktop/desktop.glade.h:2
+#: modules/autostart/autostart.glade.h:1 modules/desktop/desktop.glade.h:2
 msgid "Name"
 msgstr "Nome"
 
-#: modules/autostart/autostart.glade.h:3
+#: modules/autostart/autostart.glade.h:2
 msgid "Command"
 msgstr "Comando"
 
-#: modules/autostart/autostart.glade.h:4
+#: modules/autostart/autostart.glade.h:3
 msgid "<b>Autostart applications</b>"
 msgstr "<b>Applicazioni da avviare automaticamente</b>"
 
-#: modules/autostart/autostart.glade.h:5
+#: modules/autostart/autostart.glade.h:4
 msgid "Add new"
 msgstr "Aggiungi nuova"
 
