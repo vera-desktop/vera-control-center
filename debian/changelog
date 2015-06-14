@@ -1,3 +1,9 @@
+vera-control-center (1.0.13-2) unstable; urgency=medium
+
+  * [packaging] Depend on vera-desktop >= 1.0.4.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sun, 14 Jun 2015 19:15:34 +0200
+
 vera-control-center (1.0.13-1) unstable; urgency=medium
 
   * [autostart] Set an appropriate window title when in add_new_custom_dialog's edit mode.
