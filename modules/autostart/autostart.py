@@ -297,6 +297,9 @@ class Scene(quickstart.scenes.BaseScene):
 		Fired when the add new custom application item has been selected.
 		"""
 		
+		# Set the proper title
+		self.objects.add_new_custom_dialog.set_title(_("Add a new custom command"))
+		
 		# Hide the Remove button
 		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.NO).hide()
 		
@@ -313,6 +316,9 @@ class Scene(quickstart.scenes.BaseScene):
 		"""
 		Fired when the add new custom application item has been selected.
 		"""
+		
+		# Set the proper title
+		self.objects.add_new_custom_dialog.set_title(_("Edit application"))
 		
 		# Show the Remove button
 		self.objects.add_new_custom_dialog.get_widget_for_response(Gtk.ResponseType.NO).show()
