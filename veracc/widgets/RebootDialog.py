@@ -19,7 +19,7 @@
 #    Eugenio "g7" Paolantonio <me@medesimo.eu>
 #
 
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, GObject
 
 class RebootDialog(Gtk.MessageDialog):
 	"""
@@ -27,15 +27,49 @@ class RebootDialog(Gtk.MessageDialog):
 	to the user.
 	"""
 	
+	COUNTDOWN = 60
+	REBOOT_NOW_STRING = _("_Reboot now (in %ds)")
+	
 	def on_dialog_response(self, dialog, response):
 		"""
 		Fired when the dialog generated a response.
 		"""
 		
+		# Reset the countdown
+		self.countdown = self.COUNTDOWN
+		
+		# Stop the timeout
+		GObject.source_remove(self.timeout_id)
+		
 		if response == Gtk.ResponseType.OK:
 			self.Vera.Reboot()
 		
 		self.hide()
+	
+	def process_countdown(self):
+		"""
+		Processes the countdown.
+		"""
+		
+		self.countdown -= 1
+		
+		if self.countdown == 0:
+			# Assume we're OK
+			self.emit("response", Gtk.ResponseType.OK)
+			
+			return False
+		else:
+			self.get_widget_for_response(Gtk.ResponseType.OK).set_label(self.REBOOT_NOW_STRING % self.countdown)
+			
+			return True
+	
+	def on_dialog_shown(self, dialog):
+		"""
+		Fired when the dialog has been shown.
+		"""
+		
+		# Start the timeout
+		self.timeout_id = GObject.timeout_add_seconds(1, self.process_countdown)
 	
 	def __init__(self, cancellable):
 		"""
@@ -44,9 +78,13 @@ class RebootDialog(Gtk.MessageDialog):
 		
 		super().__init__()
 		
+		self.timeout_id = -1
+		
+		self.countdown = self.COUNTDOWN
+		
 		self.cancellable = cancellable
 
-		self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, self.cancellable)
+		self.bus = Gio.bus_get_sync(Gio.BusType.SESSION, self.cancellable)
 		self.Vera = Gio.DBusProxy.new_sync(
 			self.bus,
 			0,
@@ -71,9 +109,10 @@ Please save your work and press "Reboot now" to reboot or press "Cancel" to rebo
 		
 		self.add_buttons(
 			_("_Cancel"), Gtk.ResponseType.CANCEL,
-			_("_Reboot now"), Gtk.ResponseType.OK
+			self.REBOOT_NOW_STRING % self.countdown, Gtk.ResponseType.OK
 		)
 		
 		self.set_default_response(Gtk.ResponseType.OK)
 		
+		self.connect("show", self.on_dialog_shown)
 		self.connect("response", self.on_dialog_response)
