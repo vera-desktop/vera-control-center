@@ -33,7 +33,7 @@ class RebootDialog(Gtk.MessageDialog):
 		"""
 		
 		if response == Gtk.ResponseType.OK:
-			self.Logind.Reboot('(b)', True)
+			self.Vera.Reboot()
 		
 		self.hide()
 	
@@ -47,13 +47,13 @@ class RebootDialog(Gtk.MessageDialog):
 		self.cancellable = cancellable
 
 		self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, self.cancellable)
-		self.Logind = Gio.DBusProxy.new_sync(
+		self.Vera = Gio.DBusProxy.new_sync(
 			self.bus,
 			0,
 			None,
-			"org.freedesktop.login1",
-			"/org/freedesktop/login1",
-			"org.freedesktop.login1.Manager",
+			"org.semplicelinux.vera",
+			"/org/semplicelinux/vera",
+			"org.semplicelinux.vera",
 			self.cancellable
 		)
 		
