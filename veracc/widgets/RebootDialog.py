@@ -21,13 +21,14 @@
 
 from gi.repository import Gtk, Gio, GObject
 
+from veracc.utils import Settings
+
 class RebootDialog(Gtk.MessageDialog):
 	"""
 	A RebootDialog() is a dialog that displays a "Reboot now" request
 	to the user.
 	"""
 	
-	COUNTDOWN = 60
 	REBOOT_NOW_STRING = _("_Reboot now (in %ds)")
 	
 	def on_dialog_response(self, dialog, response):
@@ -36,10 +37,11 @@ class RebootDialog(Gtk.MessageDialog):
 		"""
 		
 		# Reset the countdown
-		self.countdown = self.COUNTDOWN
+		self.countdown = self.settings.get_int("exit-window-countdown")
 		
 		# Stop the timeout
-		GObject.source_remove(self.timeout_id)
+		if self.timeout_id > -1:
+			GObject.source_remove(self.timeout_id)
 		
 		if response == Gtk.ResponseType.OK:
 			self.Vera.Reboot()
@@ -50,7 +52,7 @@ class RebootDialog(Gtk.MessageDialog):
 		"""
 		Processes the countdown.
 		"""
-		
+				
 		self.countdown -= 1
 		
 		if self.countdown == 0:
@@ -69,7 +71,8 @@ class RebootDialog(Gtk.MessageDialog):
 		"""
 		
 		# Start the timeout
-		self.timeout_id = GObject.timeout_add_seconds(1, self.process_countdown)
+		if self.countdown > 0:
+			self.timeout_id = GObject.timeout_add_seconds(1, self.process_countdown)
 	
 	def __init__(self, cancellable):
 		"""
@@ -78,9 +81,16 @@ class RebootDialog(Gtk.MessageDialog):
 		
 		super().__init__()
 		
+		self.settings = Settings("org.semplicelinux.vera")
+		
 		self.timeout_id = -1
 		
-		self.countdown = self.COUNTDOWN
+		self.countdown = self.settings.get_int("exit-window-countdown")
+		
+		# The dialog may be unexpected, so if the countdown setting is < 10,
+		# default to 10 to be on the safe side
+		if self.countdown > 0 and self.countdown < 10:
+			self.countdown = 10
 		
 		self.cancellable = cancellable
 
@@ -108,8 +118,13 @@ Please save your work and press "Reboot now" to reboot or press "Cancel" to rebo
 		)
 		
 		self.add_buttons(
-			_("_Cancel"), Gtk.ResponseType.CANCEL,
-			self.REBOOT_NOW_STRING % self.countdown, Gtk.ResponseType.OK
+			_("_Cancel"),
+			Gtk.ResponseType.CANCEL,
+			
+			self.REBOOT_NOW_STRING % self.countdown
+			if self.countdown > 0 else
+			_("_Reboot now"),
+			Gtk.ResponseType.OK
 		)
 		
 		self.set_default_response(Gtk.ResponseType.OK)
