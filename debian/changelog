@@ -1,3 +1,11 @@
+vera-control-center (1.0.14-1) unstable; urgency=medium
+
+  * [RebootDialog] Follow org.semplicelinux.vera's exit-window-countdown to set the countdown.
+  * Updated translations.
+  * [packaging] Depend on vera-desktop >= 1.0.5.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Tue, 16 Jun 2015 12:09:28 +0200
+
 vera-control-center (1.0.13-2) unstable; urgency=medium
 
   * [packaging] Depend on vera-desktop >= 1.0.4.
