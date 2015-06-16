@@ -1,22 +1,22 @@
 [Desktop Entry]
-Keywords[hu]=Idő;Dátum
 Name[es]=Fecha y hora
-X-VeraCC-Section=System
-Name=Time & Date
 Comment[lt]=Konfigūruoja laiką ir datą
-Comment[es]=Configura la fecha y la hora
-Keywords[lt]=Laikas;Data
-Comment[it]=Configura l'ora e la data
-Icon=preferences-system-time
-Name[nl_NL]=Datum en tijd
-Keywords[it]=Ora;Data
-Keywords=Time;Date
-Comment[nl_NL]=De datum en tijd instellen
 Keywords[nl_NL]=Tijd;Datum
-Name[lt]=Laikas ir Data
-Name[hu]=Idő és dátum
-Name[it]=Ora e data
-Comment=Configures the time and the date
+Keywords[hu]=Idő;Dátum
+X-VeraCC-Section=System
+Icon=preferences-system-time
 Comment[hu]=Az idő és a dátum beállítása
+Comment[it]=Configura l'ora e la data
+Name[nl_NL]=Datum en tijd
+Name[hu]=Idő és dátum
+Keywords[it]=Ora;Data
+Name[lt]=Laikas ir Data
+Comment=Configures the time and the date
+Name[it]=Ora e data
+Keywords[lt]=Laikas;Data
 Keywords[es]=Hora; Fecha
+Comment[nl_NL]=De datum en tijd instellen
+Keywords=Time;Date
+Comment[es]=Configura la fecha y la hora
+Name=Time & Date
 

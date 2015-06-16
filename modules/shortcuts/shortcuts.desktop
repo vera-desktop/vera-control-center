@@ -1,22 +1,22 @@
 [Desktop Entry]
-Keywords[hu]=Rövidítések;
 Name[es]=Atajos de teclado
-X-VeraCC-Section=Personal
-Name=Shortcuts
 Comment[lt]=Spartieji klavišai
-Comment[es]=Atajos de teclado
-Keywords[lt]=Spartieji klavišai;
-Comment[it]=Scorciatoie
-Icon=preferences-desktop-keyboard-shortcuts
-Name[nl_NL]=Sneltoetsen
-Keywords[it]=Scorciatoie;
-Keywords=Shortcuts;
-Comment[nl_NL]=Sneltoetsen
 Keywords[nl_NL]=Sneltoetsen;
-Name[lt]=Spartieji klavišai
-Name[hu]=Rövidítések
-Name[it]=Scorciatoie
-Comment=Shortcuts
+Keywords[hu]=Rövidítések;
+X-VeraCC-Section=Personal
+Icon=preferences-desktop-keyboard-shortcuts
 Comment[hu]=Rövidítések
+Comment[it]=Scorciatoie
+Name[nl_NL]=Sneltoetsen
+Name[hu]=Rövidítések
+Keywords[it]=Scorciatoie;
+Name[lt]=Spartieji klavišai
+Comment=Shortcuts
+Name[it]=Scorciatoie
+Keywords[lt]=Spartieji klavišai;
 Keywords[es]=Atajos de teclado;
+Comment[nl_NL]=Sneltoetsen
+Keywords=Shortcuts;
+Comment[es]=Atajos de teclado
+Name=Shortcuts
 
