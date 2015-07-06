@@ -100,6 +100,10 @@ class ControlCenter:
 		
 		self.objects.main.set_title(_("Settings"))
 		self.objects.main.set_icon_name("preferences-system")
+		
+		# An external module may have changed the translations binding,
+		# so restore ours
+		TRANSLATION.bind_also_locale()
 	
 	def change_window_details(self, liststore, giter):
 		"""
