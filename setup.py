@@ -209,7 +209,7 @@ setup(
 		"install": CustomInstall
 	},
 	name='vera-control-center',
-	version='1.0.14',
+	version='1.0.15',
 	description='Simple, fast and modular control center for the Vera Desktop Environment',
 	author='Eugenio Paolantonio',
 	author_email='me@medesimo.eu',
