@@ -112,7 +112,7 @@ class Scene(quickstart.scenes.BaseScene):
 		with open("/etc/os-release", "r") as f:
 			for line in f:
 				line = line.strip().split("=")
-				if line[0] == "NAME" and line[1].replace("\"","") != "Semplice":
+				if line[0] == "NAME" and not line[1].replace("\"","").startswith("Semplice"):
 					# As we will read the PRETTY_NAME, we can't expect
 					# every distributor to write the full codename as we
 					# do, so it's better not obtain it at all
@@ -124,7 +124,12 @@ class Scene(quickstart.scenes.BaseScene):
 						# We are splitting the PRETTY_NAME and then join
 						# only from the third item in the newly created
 						# list (and so ideally we have the full codename)
-						name = " ".join(line[1].replace("\"","").split(" ")[2:]).replace("(","").replace(")","")
+						name = []
+						for line_ in reversed(line[1].replace("\"","").split(" ")):
+							name.append(line_.replace("(","").replace(")",""))
+							if line_.startswith("("):
+								break
+						name = " ".join(reversed(name))
 						self.objects.codename.set_text(name)
 					except:
 						# No worries
