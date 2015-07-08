@@ -1,3 +1,10 @@
+vera-control-center (1.0.15+jethro-1) jessie; urgency=medium
+
+  * [about] Fix codename retrieval on Semplice for Workstations.
+  * [about] Do not specify the processor_count if it's 1.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Wed, 08 Jul 2015 16:53:44 +0200
+
 vera-control-center (1.0.15-1) unstable; urgency=medium
 
   * [vera-control-center] Restore translation binding when returning to home.
