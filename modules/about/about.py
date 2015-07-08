@@ -171,7 +171,10 @@ class Scene(quickstart.scenes.BaseScene):
 				elif not model_name and line[0] == "model name":
 					model_name = line[-1].replace("\n","").replace(": ","")
 		
-		self.objects.cpu.set_text("%s x %d" % (model_name, processor_count))
+		self.objects.cpu.set_text(
+			"%s x %d" % (model_name, processor_count)
+			if processor_count > 1 else model_name
+		)
 	
 	def get_hostname(self):
 		"""
