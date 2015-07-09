@@ -1,3 +1,10 @@
+vera-control-center (1.0.15+jethro1-1) jessie; urgency=medium
+
+  * [about] Do not use --dist-upgrade-mode if the sid channel is not enabled.
+  * [packaging] Depend on channels.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 10 Jul 2015 01:16:38 +0200
+
 vera-control-center (1.0.15+jethro-1) jessie; urgency=medium
 
   * [about] Fix codename retrieval on Semplice for Workstations.
