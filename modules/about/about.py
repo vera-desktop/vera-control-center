@@ -78,7 +78,7 @@ class Scene(quickstart.scenes.BaseScene):
 		subprocess.Popen(
 			[
 				"synaptic-pkexec",
-				"--dist-upgrade-mode",
+				"--dist-upgrade-mode" if self.Channels.GetEnabled("(s)", "sid") else "--upgrade-mode",
 				"--non-interactive",
 				"--update-at-startup",
 				"--hide-main-window"
@@ -236,6 +236,15 @@ class Scene(quickstart.scenes.BaseScene):
 		# Enter in the bus
 		self.bus_cancellable = Gio.Cancellable()
 		self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, self.bus_cancellable)
+		self.Channels = Gio.DBusProxy.new_sync(
+			self.bus,
+			Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION,
+			None,
+			"org.semplicelinux.channels",
+			"/org/semplicelinux/channels/channels",
+			"org.semplicelinux.channels.channels",
+			self.bus_cancellable
+		)
 		self.Hostname = Gio.DBusProxy.new_sync(
 			self.bus,
 			0,
