@@ -1,3 +1,11 @@
+vera-control-center (1.0.17-1) unstable; urgency=medium
+
+  * [locale] Create locale-changed stamp for alan2
+  * [packaging] Depend on python3-keeptalking >= 7.0.0.
+  * [locale] Show RebootDialog only if the locale change action succeeded.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 10 Jul 2015 23:49:36 +0200
+
 vera-control-center (1.0.16-1) unstable; urgency=medium
 
   * [about] Fix codename retrieval on Semplice for Workstations.
