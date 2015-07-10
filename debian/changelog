@@ -1,3 +1,11 @@
+vera-control-center (1.0.15+jethro2-1) jessie; urgency=medium
+
+  * [timedate] Programmatically set font description attributes
+  * [about] Programmatically set font description attributes
+  * [translations] Updated.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 10 Jul 2015 15:48:31 +0200
+
 vera-control-center (1.0.15+jethro1-1) jessie; urgency=medium
 
   * [about] Do not use --dist-upgrade-mode if the sid channel is not enabled.
