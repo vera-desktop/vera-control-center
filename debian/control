@@ -13,7 +13,7 @@ Package: vera-control-center
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}, python3-quickstart,
  python3-gi, gir1.2-gtk-3.0, gir1.2-glib-2.0, gir1.2-polkit-1.0,
- systemd, python3-xdg, python3-keeptalking2, gir1.2-upowerglib-1.0,
+ systemd, python3-xdg, python3-keeptalking2 (>= 7.0.0), gir1.2-upowerglib-1.0,
  vera-power-manager (>= 1.0.4), vera-desktop (>= 1.0.5), usersd,
  channels
 Description: Tool to configure the vera desktop environment.
