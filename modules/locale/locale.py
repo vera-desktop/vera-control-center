@@ -50,12 +50,13 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			# Create stamp
 			self.Locale.create_stamp([".alan2-locale-changed"])
+			
+			GObject.idle_add(self.RebootDialog.show)
 		except:
 			sel.select_iter(self.default)
 
 		GObject.idle_add(self.objects.region_spinner.hide)
 		GObject.idle_add(self.scene_container.set_sensitive, True)
-		GObject.idle_add(self.RebootDialog.show)
 	
 	@quickstart.threads.thread
 	def savespace_purge(self, locale):
