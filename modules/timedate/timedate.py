@@ -19,7 +19,7 @@
 #    Eugenio "g7" Paolantonio <me@medesimo.eu>
 #
 
-from gi.repository import GLib, Gtk, Gdk, Gio, GObject
+from gi.repository import GLib, Gtk, Gdk, Gio, GObject, Pango
 
 from veracc.widgets.UnlockBar import UnlockBar, ActionResponse
 
@@ -430,11 +430,17 @@ class Scene(quickstart.scenes.BaseScene):
 		self.calendar_popover.connect("closed", lambda x: self.objects.calendar_button.set_active(False))
 		self.calendar_popover.add(self.calendar)
 		
-		# Ensure we have the same label attributes on the spinbuttons...
-		attrs = self.objects.time.get_attributes()
-		self.objects.hours.set_attributes(attrs)
-		self.objects.minutes.set_attributes(attrs)
-		self.objects.seconds.set_attributes(attrs)
+		# Set appropriate font size and weight
+		context = self.objects.time.create_pango_context()
+		desc = context.get_font_description()
+		desc.set_weight(Pango.Weight.LIGHT) # Weight
+		desc.set_size(Pango.SCALE*80) # Size
+		
+		self.objects.time.override_font(desc)
+		self.objects.hours.override_font(desc)
+		self.objects.minutes.override_font(desc)
+		self.objects.seconds.override_font(desc)
+		self.objects.timezone12_edit.override_font(desc)
 		
 		# Set mask on the main eventbox
 		self.objects.main.set_events(Gdk.EventMask.BUTTON_PRESS_MASK)
