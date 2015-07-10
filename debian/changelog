@@ -1,3 +1,11 @@
+vera-control-center (1.0.15+jethro3-1) jessie; urgency=medium
+
+  * [locale] Create locale-changed stamp for alan2
+  * [packaging] Depend on python3-keeptalking >= 7.0.0.
+  * [locale] Show RebootDialog only if the locale change action succeeded.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 10 Jul 2015 23:50:49 +0200
+
 vera-control-center (1.0.15+jethro2-1) jessie; urgency=medium
 
   * [timedate] Programmatically set font description attributes
