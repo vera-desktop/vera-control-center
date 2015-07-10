@@ -1,3 +1,15 @@
+vera-control-center (1.0.16-1) unstable; urgency=medium
+
+  * [about] Fix codename retrieval on Semplice for Workstations.
+  * [about] Do not specify the processor_count if it's 1.
+  * [about] Do not use --dist-upgrade-mode if the sid channel is not enabled.
+  * [packaging] Depend on channels.
+  * [timedate] Programmatically set font description attributes
+  * [about] Programmatically set font description attributes
+  * [translations] Updated.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 10 Jul 2015 15:45:51 +0200
+
 vera-control-center (1.0.15-1) unstable; urgency=medium
 
   * [vera-control-center] Restore translation binding when returning to home.
