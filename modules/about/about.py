@@ -19,7 +19,9 @@
 #    Eugenio "g7" Paolantonio <me@medesimo.eu>
 #
 
-from gi.repository import Gio
+# 18 10
+
+from gi.repository import Gio, Pango
 
 import subprocess
 
@@ -227,6 +229,16 @@ class Scene(quickstart.scenes.BaseScene):
 		self.on_edit_mode = False
 		
 		self.scene_container = self.objects.main
+
+		# Set appropriate font size and weight
+		context = self.objects.distro.create_pango_context()
+		desc = context.get_font_description()
+		desc.set_weight(Pango.Weight.LIGHT) # Weight
+		desc.set_size(Pango.SCALE*18) # Size
+		self.objects.distro.override_font(desc)
+		
+		desc.set_size(Pango.SCALE*10)
+		self.objects.codename.override_font(desc)
 
 	def on_scene_called(self):
 		"""
