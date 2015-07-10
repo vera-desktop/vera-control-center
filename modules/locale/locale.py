@@ -47,6 +47,9 @@ class Scene(quickstart.scenes.BaseScene):
 		try:
 			self.Locale.set(locale)
 			self.default = itr
+			
+			# Create stamp
+			self.Locale.create_stamp([".alan2-locale-changed"])
 		except:
 			sel.select_iter(self.default)
 
