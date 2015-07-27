@@ -457,6 +457,7 @@ class Scene(quickstart.scenes.BaseScene):
 		self.objects.wallpapers.set_pixbuf_column(1)
 		
 		self.settings = Settings("org.semplicelinux.vera.desktop")
+		self.openbox_settings = Settings("org.semplicelinux.vera.openbox")
 		
 		# Build monitor list
 		self.monitor_number = Gdk.Screen.get_default().get_n_monitors()
@@ -542,6 +543,13 @@ class Scene(quickstart.scenes.BaseScene):
 			self.objects.background_random_timeout_spin,
 			"sensitive",
 			GObject.BindingFlags.SYNC_CREATE
+		)
+		
+		# Virtual desktops
+		self.openbox_settings.bind(
+			"desktops-number",
+			self.objects.virtual_desktops_spin,
+			"value"
 		)
 		
 		# Prepare the "Add background" dialog...
