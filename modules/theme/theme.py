@@ -36,6 +36,7 @@ class Scene(quickstart.scenes.BaseScene):
 		
 		# Settings
 		self.settings = Settings("org.semplicelinux.vera.settings")
+		self.openboxsettings = Settings("org.semplicelinux.vera.openbox")
 		
 		self.scene_container = Gtk.Alignment()
 		self.scene_container.set_padding(10, 10, 10, 10)
@@ -53,9 +54,9 @@ class Scene(quickstart.scenes.BaseScene):
 		self.container.pack_start(self.stack, True, True, 0)
 		
 		# Gtk theme page
-		self.stack.add_titled(GtkTheme(self.settings), "gtktheme", _("Theme"))
+		self.stack.add_titled(GtkTheme(self.settings, self.openboxsettings), "gtktheme", _("Theme"))
 		self.stack.add_titled(Paranoid(self.settings), "paranoid", _("Effects"))
-		self.stack.add_titled(Fonts(self.settings), "font", _("Fonts"))
+		self.stack.add_titled(Fonts(self.settings, self.openboxsettings), "font", _("Fonts"))
 		
 		self.scene_container.add(self.container)
 		self.scene_container.show_all()
