@@ -187,6 +187,113 @@ class GtkThemeFrame(CommonFrame):
 		
 		self.get_alignment().add(self.main_container)
 
+class OpenboxThemeFrame(CommonFrame):
+	"""
+	This is the Frame with controls to change the Openbox theme.
+	"""
+
+	SEARCH_PATH = ("/usr/share/themes", os.path.expanduser("~/.themes"))
+
+	@property
+	def available_themes(self):
+		""" Returns the available themes, searching in SEARCH_PATH. """
+		
+		themes = []
+		
+		for directory in self.SEARCH_PATH:
+			if not os.path.exists(directory):
+				continue
+			
+			for theme in os.listdir(directory):
+				
+				path = os.path.join(directory, theme)
+				
+				if theme not in themes and (
+					os.path.isdir(path) and os.path.exists(os.path.join(path, "openbox-3"))
+				):
+					themes.append(theme)
+		
+		themes.sort()
+		return themes
+
+	@quickstart.threads.on_idle
+	def populate_themes(self):
+		""" Populates the theme list. """
+		
+		self.themes = {}
+		
+		count = -1
+		for theme in self.available_themes:
+			count += 1
+			
+			self.combobox.append_text(theme)
+			
+			# Add to self.themes
+			self.themes[theme] = count
+		
+		# Bind
+		self.openboxsettings.bind_with_convert(
+			"theme-name",
+			self.combobox,
+			"active",
+			lambda x: self.themes[x] if x in self.themes else -1,
+			lambda x: self.combobox.get_active_text()
+		)
+	
+	def on_gtk_theme_changed(self, settings, key):
+		"""
+		Fired when the gtk theme has been changed.
+		"""
+		
+		theme = settings.get_string(key)
+		
+		if theme in self.available_themes:
+			self.openboxsettings.set_string("theme-name", theme)
+
+	def __init__(self, settings, openboxsettings):
+		"""
+		Initializes the frame.
+		"""
+		
+		super().__init__(name=_("Windows"))
+		
+		# Settings
+		self.settings = settings
+		self.openboxsettings = openboxsettings
+		
+		# Change openbox theme when the main theme changes
+		self.settings.connect("changed::theme-name", self.on_gtk_theme_changed)
+		
+		# Container
+		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+		
+		# Combobox
+		self.combobox_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.combobox = Gtk.ComboBoxText()
+		self.combobox_label = Gtk.Label(_("Theme"))
+		self.combobox_label.set_alignment(0, 0.50)
+		
+		self.combobox_container.pack_start(self.combobox_label, True, True, 0)
+		self.combobox_container.pack_start(self.combobox, False, False, 0)
+
+		# Window icon
+		self.window_icon = Gtk.CheckButton(_("Show the window icon"))
+		self.openboxsettings.bind_with_convert(
+			"title-layout",
+			self.window_icon,
+			"active",
+			lambda x: True if "N" in x else False,
+			lambda x: self.openboxsettings.get_string("title-layout").replace("N","") if not x else "N%s" % self.openboxsettings.get_string("title-layout")
+		)
+
+		# Populate it and bind
+		self.populate_themes()
+
+		self.main_container.pack_start(self.combobox_container, False, False, 0)
+		self.main_container.pack_start(self.window_icon, False, False, 2)
+
+		self.get_alignment().add(self.main_container)
+
 class IconThemeFrame(CommonFrame):
 	"""
 	This is the Frame with controls to change the Icon Theme.
@@ -385,7 +492,7 @@ class CursorThemeFrame(CommonFrame):
 class GtkTheme(Gtk.Box):
 	""" The 'Theme' page. """
 	
-	def __init__(self, settings):
+	def __init__(self, settings, openboxsettings):
 		"""
 		Initializes the page.
 		"""
@@ -393,6 +500,7 @@ class GtkTheme(Gtk.Box):
 		super().__init__(orientation=Gtk.Orientation.VERTICAL)
 		
 		self.pack_start(GtkThemeFrame(settings), False, False, 2)
+		self.pack_start(OpenboxThemeFrame(settings, openboxsettings), False, False, 2)
 		self.pack_start(IconThemeFrame(settings), False, False, 2)
 		self.pack_start(CursorThemeFrame(settings), False, False, 2)
 		
