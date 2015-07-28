@@ -1,3 +1,13 @@
+vera-control-center (1.0.18-1) unstable; urgency=medium
+
+  * [desktop] Made the virtual desktops number configurable (requires devel vera-plugin-openbox)
+  * [theme] Supply the openbox Settings object to GtkTheme and Fonts.
+  * [theme] gtktheme: handle Openbox themes.
+  * [theme] font: handle fonts for {Active,Inactive}Windows, OSD and Menu.
+  * [packaging] Depend on vera-plugin-desktop and vera-plugin-openbox (>= 1.10.0).
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Tue, 28 Jul 2015 22:46:17 +0200
+
 vera-control-center (1.0.17-1) unstable; urgency=medium
 
   * [locale] Create locale-changed stamp for alan2
