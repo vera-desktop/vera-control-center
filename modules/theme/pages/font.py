@@ -28,7 +28,7 @@ from veracc.utils import Settings
 from gi.repository import Gtk, Gdk
 import quickstart
 
-class FontsFrame(CommonFrame):
+class WidgetsFontsFrame(CommonFrame):
 	""" The Fonts frame. """
 	
 	def string_to_id(self, model, string):
@@ -50,7 +50,7 @@ class FontsFrame(CommonFrame):
 		Initializes the frame.
 		"""
 				
-		super().__init__(name=_("Fonts"))
+		super().__init__(name=_("Widgets"))
 		
 		# Settings
 		self.settings = settings
@@ -150,17 +150,130 @@ class FontsFrame(CommonFrame):
 		self.main_container.pack_start(self.subpixel_container, True, True, 2)
 		
 		self.get_alignment().add(self.main_container)
+
+class WindowsFontsFrame(CommonFrame):
+	""" The Windows Fonts frame. """
+	
+	def on_gtk_fontname_changed(self, settings, key):
+		"""
+		Updates every openbox font name by looking at the newly changed GTK+ one.
+		"""
 		
+		font_without_size = " ".join(settings.get_string(key).split(" ")[:-1])
+		
+		for place in ["activewindow", "inactivewindow", "menuitem", "onscreendisplay"]:
+			place = "font-%s" % place
+			self.openboxsettings.set_string(
+				place,
+				"%s %s" % (font_without_size, self.openboxsettings.get_string(place).split(" ")[-1])
+			)
+	
+	def update_menuheader(self, openboxsettings, key):
+		"""
+		Updates the menu header setting.
+		"""
+		
+		openboxsettings.set_string("font-menuheader", openboxsettings.get_string(key))
+	
+	def update_onscreendisplay(self, openboxsettings, key):
+		"""
+		Updates the (active,inactive)onscreendisplay settings.
+		"""
+				
+		for place in ["activeonscreendisplay", "inactiveonscreendisplay"]:
+			openboxsettings.set_string("font-%s" % place, openboxsettings.get_string(key))
+		
+	def __init__(self, settings, openboxsettings):
+		"""
+		Initializes the frame.
+		"""
+				
+		super().__init__(name=_("Windows"))
+		
+		# Settings
+		self.settings = settings
+		self.openboxsettings = openboxsettings
+		
+		# Change Font when it changes on the GTK+ side
+		self.settings.connect("changed::font-name", self.on_gtk_fontname_changed)
+		
+		# Container
+		self.main_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+		
+		# Window fonts
+		self.active_window_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.active_window_label = Gtk.Label(_("Active window font"))
+		self.active_window_label.set_alignment(0, 0.50)
+		self.active_window_chooser = Gtk.FontButton()
+		self.openboxsettings.bind(
+			"font-activewindow",
+			self.active_window_chooser,
+			"font_name"
+		)
+		self.active_window_container.pack_start(self.active_window_label, True, True, 0)
+		self.active_window_container.pack_start(self.active_window_chooser, False, False, 0)
+
+		# Inactive window fonts
+		self.inactive_window_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.inactive_window_label = Gtk.Label(_("Inactive window font"))
+		self.inactive_window_label.set_alignment(0, 0.50)
+		self.inactive_window_chooser = Gtk.FontButton()
+		self.openboxsettings.bind(
+			"font-inactivewindow",
+			self.inactive_window_chooser,
+			"font_name"
+		)
+		self.inactive_window_container.pack_start(self.inactive_window_label, True, True, 0)
+		self.inactive_window_container.pack_start(self.inactive_window_chooser, False, False, 0)
+
+		# Menu item fonts
+		self.menu_item_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.menu_item_label = Gtk.Label(_("Main menu font"))
+		self.menu_item_label.set_alignment(0, 0.50)
+		self.menu_item_chooser = Gtk.FontButton()
+		self.openboxsettings.bind(
+			"font-menuitem",
+			self.menu_item_chooser,
+			"font_name"
+		)
+		# Change also menu header
+		self.openboxsettings.connect("changed::font-menuitem", self.update_menuheader)
+		self.menu_item_container.pack_start(self.menu_item_label, True, True, 0)
+		self.menu_item_container.pack_start(self.menu_item_chooser, False, False, 0)
+
+		# On screen display fonts
+		self.osd_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+		self.osd_label = Gtk.Label(_("On-screen display font"))
+		self.osd_label.set_alignment(0, 0.50)
+		self.osd_chooser = Gtk.FontButton()
+		self.openboxsettings.bind(
+			"font-onscreendisplay",
+			self.osd_chooser,
+			"font_name"
+		)
+		# Change also (active,inactive)onscreendisplay
+		self.openboxsettings.connect("changed::font-onscreendisplay", self.update_onscreendisplay)
+		self.osd_container.pack_start(self.osd_label, True, True, 0)
+		self.osd_container.pack_start(self.osd_chooser, False, False, 0)
+		
+		self.main_container.pack_start(self.active_window_container, True, True, 2)
+		self.main_container.pack_start(self.inactive_window_container, True, True, 2)
+		self.main_container.pack_start(self.menu_item_container, True, True, 2)
+		self.main_container.pack_start(self.osd_container, True, True, 2)
+		
+		self.get_alignment().add(self.main_container)
+
 class Fonts(Gtk.Box):
 	""" The 'Fonts' page. """
 	
-	def __init__(self, settings):
+	def __init__(self, settings, openboxsettings):
 		"""
 		Initializes the page.
 		"""
 		
 		super().__init__(orientation=Gtk.Orientation.VERTICAL)
 		
-		self.pack_start(FontsFrame(settings), False, False, 2)
+		self.pack_start(WidgetsFontsFrame(settings), False, False, 2)
+		self.pack_start(WindowsFontsFrame(settings, openboxsettings), False, False, 2)
 		
 		self.show_all()
