@@ -128,6 +128,10 @@ class Scene(quickstart.scenes.BaseScene):
 				# This avoids messing up with the panel position for those
 				# who already modified it in the *primary* config.
 				f.write("panel_position = %s left horizontal\n" % self.objects["combostore"][self.objects["position_combo"].get_active_iter()][1])
+				
+				# Ensure that windows can be on top of the panel if the position is top
+				if self.objects["position_combo"].get_active() == position_dict["top"]:
+					f.write("panel_layer = bottom\n")
 			if self.objects["Hide_checkbox"].get_active():
 				f.write("autohide = 1\n")
 				
