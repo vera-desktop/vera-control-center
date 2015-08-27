@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[vera-control-center.main]
+[vera-control-center.release-7]
 file_filter = po/vera-control-center/<lang>.po
 source_file = po/vera-control-center/vera-control-center.pot
 source_lang = en
