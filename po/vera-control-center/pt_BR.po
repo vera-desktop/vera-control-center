@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vera-control-center\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 12:06+0200\n"
-"PO-Revision-Date: 2015-06-16 10:06+0000\n"
+"POT-Creation-Date: 2015-08-27 13:58+0200\n"
+"PO-Revision-Date: 2015-08-27 11:58+0000\n"
 "Last-Translator: g7 <me@medesimo.eu>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/vera-control-center/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/semplice/vera-control-center/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: veracc/widgets/RebootDialog.py:121
 #: veracc/widgets/ApplicationSelectionDialog.py:201
-#: modules/autostart/autostart.py:519 modules/desktop/desktop.py:549
+#: modules/autostart/autostart.py:519 modules/desktop/desktop.py:557
 #: modules/usersadmin/usersadmin.py:397
 msgid "_Cancel"
 msgstr ""
@@ -132,28 +132,28 @@ msgstr ""
 msgid "_Save"
 msgstr ""
 
-#: modules/desktop/desktop.py:481
+#: modules/desktop/desktop.py:482
 msgid "All monitors"
 msgstr ""
 
-#: modules/desktop/desktop.py:483
+#: modules/desktop/desktop.py:484
 #, python-format
 msgid "Monitor %d"
 msgstr ""
 
-#: modules/desktop/desktop.py:551
+#: modules/desktop/desktop.py:559
 msgid "_Open"
 msgstr ""
 
-#: modules/desktop/desktop.py:554
+#: modules/desktop/desktop.py:562
 msgid "All Files"
 msgstr ""
 
-#: modules/desktop/desktop.py:555
+#: modules/desktop/desktop.py:563
 msgid "Images"
 msgstr ""
 
-#: modules/desktop/desktop.py:561 modules/usersadmin/usersadmin.py:412
+#: modules/desktop/desktop.py:569 modules/usersadmin/usersadmin.py:412
 msgid "_Close"
 msgstr ""
 
@@ -201,15 +201,16 @@ msgstr ""
 msgid "_Delete user"
 msgstr ""
 
-#: modules/theme/theme.py:56 modules/theme/pages/gtktheme.py:111
+#: modules/theme/theme.py:57 modules/theme/pages/gtktheme.py:111
+#: modules/theme/pages/gtktheme.py:273
 msgid "Theme"
 msgstr ""
 
-#: modules/theme/theme.py:57
+#: modules/theme/theme.py:58
 msgid "Effects"
 msgstr ""
 
-#: modules/theme/theme.py:58 modules/theme/pages/font.py:53
+#: modules/theme/theme.py:59
 msgid "Fonts"
 msgstr ""
 
@@ -282,7 +283,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:99
+#: modules/theme/pages/gtktheme.py:99 modules/theme/pages/font.py:53
 msgid "Widgets"
 msgstr ""
 
@@ -306,23 +307,31 @@ msgstr ""
 msgid "Use this color"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:251
+#: modules/theme/pages/gtktheme.py:258 modules/theme/pages/font.py:191
+msgid "Windows"
+msgstr ""
+
+#: modules/theme/pages/gtktheme.py:280
+msgid "Show the window icon"
+msgstr ""
+
+#: modules/theme/pages/gtktheme.py:358
 msgid "Icons"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:262
+#: modules/theme/pages/gtktheme.py:369
 msgid "Icon theme"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:353
+#: modules/theme/pages/gtktheme.py:460
 msgid "Cursor"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:365
+#: modules/theme/pages/gtktheme.py:472
 msgid "Cursor theme"
 msgstr ""
 
-#: modules/theme/pages/gtktheme.py:373 modules/shortcuts/shortcuts.glade.h:14
+#: modules/theme/pages/gtktheme.py:480 modules/shortcuts/shortcuts.glade.h:14
 msgid "You need to logout to apply the changes."
 msgstr ""
 
@@ -358,181 +367,197 @@ msgstr ""
 msgid "Subpixel rendering"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:6
-msgid "Autostart"
+#: modules/theme/pages/font.py:205
+msgid "Active window font"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:11
-msgid "preferences-system-session"
+#: modules/theme/pages/font.py:218
+msgid "Inactive window font"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:14
+#: modules/theme/pages/font.py:231
+msgid "Main menu font"
+msgstr ""
+
+#: modules/theme/pages/font.py:246
+msgid "On-screen display font"
+msgstr ""
+
+#: modules/autostart/autostart.desktop:3
 msgid "Autostart;Session"
 msgstr ""
 
-#: modules/autostart/autostart.desktop:20
+#: modules/autostart/autostart.desktop:4
+msgid "preferences-system-session"
+msgstr ""
+
+#: modules/autostart/autostart.desktop:10
 msgid "Manage the applications to autostart"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:6 modules/tint2/tint2.desktop:14
+#: modules/autostart/autostart.desktop:16
+msgid "Autostart"
+msgstr ""
+
+#: modules/tint2/tint2.desktop:3 modules/tint2/tint2.desktop:16
 msgid "Panel"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:11
+#: modules/tint2/tint2.desktop:4
 msgid "panel"
 msgstr ""
 
-#: modules/tint2/tint2.desktop:20
+#: modules/tint2/tint2.desktop:10
 msgid "Configure the Panel"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:6 modules/desktop/desktop.desktop:14
+#: modules/desktop/desktop.desktop:3 modules/desktop/desktop.desktop:16
 msgid "Desktop"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:11
+#: modules/desktop/desktop.desktop:4
 msgid "preferences-desktop-wallpaper"
 msgstr ""
 
-#: modules/desktop/desktop.desktop:20
+#: modules/desktop/desktop.desktop:10
 msgid "Desktop preferences"
 msgstr ""
 
-#: modules/shortcuts/shortcuts.desktop:6
-#: modules/shortcuts/shortcuts.desktop:20
-msgid "Shortcuts"
-msgstr ""
-
-#: modules/shortcuts/shortcuts.desktop:11
-msgid "preferences-desktop-keyboard-shortcuts"
-msgstr ""
-
-#: modules/shortcuts/shortcuts.desktop:14
+#: modules/shortcuts/shortcuts.desktop:3
 msgid "Shortcuts;"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:13
+#: modules/shortcuts/shortcuts.desktop:4
+msgid "preferences-desktop-keyboard-shortcuts"
+msgstr ""
+
+#: modules/shortcuts/shortcuts.desktop:10
+#: modules/shortcuts/shortcuts.desktop:16
+msgid "Shortcuts"
+msgstr ""
+
+#: modules/networkmanager/networkmanager.desktop:12
 msgid "Manage and change your network connection settings"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:56
+#: modules/networkmanager/networkmanager.desktop:89
 msgid "preferences-system-network"
 msgstr ""
 
-#: modules/networkmanager/networkmanager.desktop:144
-msgid "Network;Connections;"
-msgstr ""
-
-#: modules/networkmanager/networkmanager.desktop:153
+#: modules/networkmanager/networkmanager.desktop:103
 msgid "Network Connections"
 msgstr ""
 
-#: modules/locale/locale.desktop:6
-msgid "Region & language"
+#: modules/networkmanager/networkmanager.desktop:127
+msgid "Network;Connections;"
 msgstr ""
 
-#: modules/locale/locale.desktop:11
-msgid "preferences-desktop-locale"
-msgstr ""
-
-#: modules/locale/locale.desktop:14
+#: modules/locale/locale.desktop:3
 msgid "Language"
 msgstr ""
 
-#: modules/locale/locale.desktop:20
+#: modules/locale/locale.desktop:4
+msgid "preferences-desktop-locale"
+msgstr ""
+
+#: modules/locale/locale.desktop:10
 msgid "Change the default language and region"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:6 modules/keyboard/keyboard.desktop:14
+#: modules/locale/locale.desktop:16
+msgid "Region & language"
+msgstr ""
+
+#: modules/keyboard/keyboard.desktop:3 modules/keyboard/keyboard.desktop:16
 msgid "Keyboard"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:11
+#: modules/keyboard/keyboard.desktop:4
 msgid "preferences-desktop-keyboard"
 msgstr ""
 
-#: modules/keyboard/keyboard.desktop:20
+#: modules/keyboard/keyboard.desktop:10
 msgid "Keyboard settings"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:6
-msgid "Time & Date"
-msgstr ""
-
-#: modules/timedate/timedate.desktop:11
-msgid "preferences-system-time"
-msgstr ""
-
-#: modules/timedate/timedate.desktop:14
+#: modules/timedate/timedate.desktop:3
 msgid "Time;Date"
 msgstr ""
 
-#: modules/timedate/timedate.desktop:20
+#: modules/timedate/timedate.desktop:4
+msgid "preferences-system-time"
+msgstr ""
+
+#: modules/timedate/timedate.desktop:10
 msgid "Configures the time and the date"
 msgstr ""
 
-#: modules/power/power.desktop:6
-msgid "Power"
+#: modules/timedate/timedate.desktop:16
+msgid "Time & Date"
 msgstr ""
 
-#: modules/power/power.desktop:11
-msgid "preferences-system-power"
-msgstr ""
-
-#: modules/power/power.desktop:14
+#: modules/power/power.desktop:3
 msgid "Power;Batteries;Battery;"
 msgstr ""
 
-#: modules/power/power.desktop:20
+#: modules/power/power.desktop:4
+msgid "preferences-system-power"
+msgstr ""
+
+#: modules/power/power.desktop:10
 msgid "Power settings"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:6
-msgid "Users & Groups"
+#: modules/power/power.desktop:16
+msgid "Power"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:11
-msgid "system-config-users"
-msgstr ""
-
-#: modules/usersadmin/usersadmin.desktop:14
+#: modules/usersadmin/usersadmin.desktop:3
 msgid "Users;Groups;Face"
 msgstr ""
 
-#: modules/usersadmin/usersadmin.desktop:20
+#: modules/usersadmin/usersadmin.desktop:4
+msgid "system-config-users"
+msgstr ""
+
+#: modules/usersadmin/usersadmin.desktop:10
 msgid "Add, edit, remove users and groups"
 msgstr ""
 
-#: modules/theme/theme.desktop:6
-msgid "Appearance"
+#: modules/usersadmin/usersadmin.desktop:16
+msgid "Users & Groups"
 msgstr ""
 
-#: modules/theme/theme.desktop:11
-msgid "preferences-desktop-theme"
-msgstr ""
-
-#: modules/theme/theme.desktop:14
+#: modules/theme/theme.desktop:3
 msgid "Themes"
 msgstr ""
 
-#: modules/theme/theme.desktop:20
+#: modules/theme/theme.desktop:4
+msgid "preferences-desktop-theme"
+msgstr ""
+
+#: modules/theme/theme.desktop:10
 msgid "Themes."
 msgstr ""
 
-#: modules/about/about.desktop:6
-msgid "Device details"
+#: modules/theme/theme.desktop:16
+msgid "Appearance"
 msgstr ""
 
-#: modules/about/about.desktop:11
-msgid "info"
-msgstr ""
-
-#: modules/about/about.desktop:14
+#: modules/about/about.desktop:3
 msgid "Device;Informations;About"
 msgstr ""
 
-#: modules/about/about.desktop:20
+#: modules/about/about.desktop:4
+msgid "info"
+msgstr ""
+
+#: modules/about/about.desktop:10
 msgid "Shows informations on this system"
+msgstr ""
+
+#: modules/about/about.desktop:16
+msgid "Device details"
 msgstr ""
 
 #: controlcenterui.glade.h:2
@@ -588,10 +613,14 @@ msgid "Auto-hide panel"
 msgstr ""
 
 #: modules/tint2/tint2.glade.h:9
+msgid "Invert mouse scroll actions"
+msgstr ""
+
+#: modules/tint2/tint2.glade.h:10
 msgid "Panel position"
 msgstr ""
 
-#: modules/tint2/tint2.glade.h:10 modules/desktop/desktop.glade.h:22
+#: modules/tint2/tint2.glade.h:11 modules/desktop/desktop.glade.h:24
 #: modules/locale/locale.glade.h:4
 msgid "<b>Other</b>"
 msgstr ""
@@ -669,10 +698,18 @@ msgid "Change background every"
 msgstr ""
 
 #: modules/desktop/desktop.glade.h:21
+msgid "1"
+msgstr ""
+
+#: modules/desktop/desktop.glade.h:22
 msgid "minutes"
 msgstr ""
 
 #: modules/desktop/desktop.glade.h:23
+msgid "Number of virtual desktops"
+msgstr ""
+
+#: modules/desktop/desktop.glade.h:25
 msgid "Add a new background"
 msgstr ""
 
