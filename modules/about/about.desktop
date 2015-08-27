@@ -1,22 +1,22 @@
 [Desktop Entry]
-Keywords=Device;Informations;About
-Icon=info
-Name[it]=Informazioni sul dispositivo
-Keywords[it]=Dispositivo;Informazioni
-Name[lt]=Apie
-Keywords[es]=Dispositivo;Información;Acerca
 Comment[lt]=Rodo šios sistemos informaciją
-Comment=Shows informations on this system
+Name[lt]=Apie
+Name[it]=Informazioni sul dispositivo
+Name[nl_NL]=Apparaatdetails
+Keywords[es]=Dispositivo;Información;Acerca
 Comment[hu]=Információkat jelenít meg erről a rendszerről
+Name[hu]=Eszköz adatai
+Name[es]=Detalles del dispositivo
+Comment=Shows informations on this system
 Comment[it]=Mostra informazioni su questo sistema
 Comment[nl_NL]=Weergeeft informative over dit systeem
-Name[es]=Detalles del dispositivo
-Keywords[nl_NL]=Apparaat;Informatie;Over
-Name=Device details
-Keywords[hu]=Eszköz;Információk;Névjegy
-X-VeraCC-Section=System
 Comment[es]=Muestra información sobre este sistema
+Keywords=Device;Informations;About
+Name=Device details
+Keywords[it]=Dispositivo;Informazioni
+Keywords[hu]=Eszköz;Információk;Névjegy
+Keywords[nl_NL]=Apparaat;Informatie;Over
+X-VeraCC-Section=System
 Keywords[lt]=Įrenginys;Informacija;Apie
-Name[nl_NL]=Apparaatdetails
-Name[hu]=Eszköz adatai
+Icon=info
 

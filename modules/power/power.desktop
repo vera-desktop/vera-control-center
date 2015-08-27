@@ -1,22 +1,22 @@
 [Desktop Entry]
-Keywords=Power;Batteries;Battery;
-Icon=preferences-system-power
-Name[it]=Alimentazione
-Keywords[it]=Alimentazione;Batterie;Batteria;
-Name[lt]=Maitinimas
-Keywords[es]=Energía;Baterías;Batería;
 Comment[lt]=Maitinimo nustatymai
-Comment=Power settings
+Name[lt]=Maitinimas
+Name[it]=Alimentazione
+Name[nl_NL]=Energie
+Keywords[es]=Energía;Baterías;Batería;
 Comment[hu]=Energiakezelés beállítások
+Name[hu]=Energiakezelés
+Name[es]=Energía
+Comment=Power settings
 Comment[it]=Impostazioni dell'alimentazione
 Comment[nl_NL]=Energie-instellingen
-Name[es]=Energía
-Keywords[nl_NL]=Energie;Accu's;Accu;
-Name=Power
-Keywords[hu]=Energiakezelés;Telepek;Telep;
-X-VeraCC-Section=Hardware
 Comment[es]=Configuración de energía
+Keywords=Power;Batteries;Battery;
+Name=Power
+Keywords[it]=Alimentazione;Batterie;Batteria;
+Keywords[hu]=Energiakezelés;Telepek;Telep;
+Keywords[nl_NL]=Energie;Accu's;Accu;
+X-VeraCC-Section=Hardware
 Keywords[lt]=Maitinimas;Akumuliatoriai;Akumuliatorius;
-Name[nl_NL]=Energie
-Name[hu]=Energiakezelés
+Icon=preferences-system-power
 
