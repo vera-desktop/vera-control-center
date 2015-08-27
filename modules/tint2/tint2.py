@@ -56,6 +56,9 @@ class Scene(quickstart.scenes.BaseScene):
 		),
 		"cursor-changed" : (
 			"enabled_treeview",
+		),
+		"changed" : (
+			"position_combo",
 		)
 	}
 
@@ -169,6 +172,16 @@ class Scene(quickstart.scenes.BaseScene):
 			GObject.idle_add(self.objects["add_button"].set_sensitive, True)
 		else:
 			GObject.idle_add(self.objects["enabled_box"].set_sensitive, False)
+	
+	def on_position_combo_changed(self, combo):
+		""" Fired when the position combobox has been changed. """
+		
+		# Pre-set "Invert mouse scroll actions" if the newly selected
+		# position is Top.
+		if self.objects["position_combo"].get_active() == position_dict["top"]:
+			self.objects["inverted_scroll_actions"].set_active(True)
+		else:
+			self.objects["inverted_scroll_actions"].set_active(False)
 	
 	@quickstart.threads.thread
 	def initialize(self):
