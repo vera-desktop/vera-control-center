@@ -1,3 +1,13 @@
+vera-control-center (1.0.15+jethro4-1) jessie; urgency=medium
+
+  * [tx] Use release-7 as resource slug.
+  * [tint2] Added new "Invert mouse scroll actions" checkbutton.
+  * [tint2] Pre-set inverted_scroll_actions if the newly selected position is Top.
+  * [tint2] Ensure that the windows can be on top of the panel if the position is Top.
+  * [translations] Updated.
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Thu, 27 Aug 2015 15:06:57 +0200
+
 vera-control-center (1.0.15+jethro3-1) jessie; urgency=medium
 
   * [locale] Create locale-changed stamp for alan2
