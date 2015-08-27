@@ -1,22 +1,22 @@
 [Desktop Entry]
-Keywords=Users;Groups;Face
-Icon=system-config-users
-Name[it]=Utenti e gruppi
 Keywords[it]=Utenti;Gruppi;Face
-Name[lt]=Naudotojai ir Grupės
-Keywords[es]=Usuarios;Grupos;Face
-Comment[lt]=Pridėti, keisti, šalinti naudotojus ir grupes
-Comment=Add, edit, remove users and groups
-Comment[hu]=Felhasználók és csoportok hozzáadása, szerkesztése, eltávolítása
-Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
+Keywords[lt]=Naudotojai;Grupės;Veidas
 Comment[nl_NL]=Gebruikers en groepen toevoegen, bewerken en/of verwijderen
-Name[es]=Usuarios & Grupos
 Keywords[nl_NL]=Gebruikers;Groepen;Gezicht
 Name=Users & Groups
-Keywords[hu]=Felhasználók;Csoportok;Arckép
+Keywords=Users;Groups;Face
 X-VeraCC-Section=System
-Comment[es]=Agregar, editar y eliminar usuarios y grupos
-Keywords[lt]=Naudotojai;Grupės;Veidas
-Name[nl_NL]=Gebruikers en groepen
 Name[hu]=Felhasználók és Csoportok
+Name[nl_NL]=Gebruikers en groepen
+Icon=system-config-users
+Name[lt]=Naudotojai ir Grupės
+Comment[hu]=Felhasználók és csoportok hozzáadása, szerkesztése, eltávolítása
+Comment[lt]=Pridėti, keisti, šalinti naudotojus ir grupes
+Comment[it]=Aggiungi, modifica e rimuovi utenti e gruppi
+Keywords[es]=Usuarios;Grupos;Face
+Name[es]=Usuarios & Grupos
+Comment[es]=Agregar, editar y eliminar usuarios y grupos
+Name[it]=Utenti e gruppi
+Comment=Add, edit, remove users and groups
+Keywords[hu]=Felhasználók;Csoportok;Arckép
 
