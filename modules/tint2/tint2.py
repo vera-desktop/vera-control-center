@@ -143,6 +143,9 @@ class Scene(quickstart.scenes.BaseScene):
 			
 			for treeiter in self.enabled_model:
 				f.write("launcher_item_app = %s\n" % treeiter[1])				
+			
+			if self.objects["inverted_scroll_actions"].get_active():
+				f.write("mouse_scroll_down = toggle\nmouse_scroll_up = iconify\n")
 		
 		os.system("killall -SIGUSR1 tint2")
 		
@@ -202,6 +205,10 @@ class Scene(quickstart.scenes.BaseScene):
 
 		# Open config
 		if os.path.exists(CONFIG):
+			
+			up_inverted = False
+			down_inverted = False
+			
 			with open(CONFIG) as f:
 				for line in f.readlines():
 					try:
@@ -249,8 +256,19 @@ class Scene(quickstart.scenes.BaseScene):
 							while splt.count(""):
 								splt.remove("")
 							self.objects["position_combo"].set_active(position_dict[splt[0]])
+						elif line[0].startswith("mouse_scroll_"):
+							# Mouse scroll (up/down) actions.
+							# Usually if they are on the secondary_config
+							# it's because they're inverted, but let's check
+							# anyways...
+							if "down" in line[0] and "toggle" in line[1]:
+								down_inverted = True
+							elif "up" in line[0] and "iconify" in line[1]:
+								up_inverted = True
 					except Exception:
 						print("Error while loading configuration.")
+			
+			self.objects["inverted_scroll_actions"].set_active(down_inverted and up_inverted)
 
 		else:
 			# Ensure the enabled_checkbox is not active.
