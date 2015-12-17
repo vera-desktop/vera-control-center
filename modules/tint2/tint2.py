@@ -238,8 +238,7 @@ class Scene(quickstart.scenes.BaseScene):
 							if iconpath and iconpath.startswith("/"):
 								icon = Gio.Icon.new_for_string(iconpath)
 							elif iconpath:
-								icon = Gio.ThemedIcon()
-								icon.append_name(iconpath.replace(".png",""))
+								icon = Gio.ThemedIcon.new(iconpath.replace(".png",""))
 							else:
 								icon = None
 							self.enabled_model.append((desktopentry.getName(), path, icon))
