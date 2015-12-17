@@ -99,7 +99,7 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 					)
 				)
 
-	@quickstart.threads.thread
+	#@quickstart.threads.thread
 	def build_application_list(self):
 		""" Builds the application list. """
 		
@@ -152,29 +152,24 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		self.hide()
 		return True
 	
-	def show(self):
+	def on_hide(self, window):
 		"""
-		Overrides stock show() to do some cleanup before showing the
-		dialog to the user.
+		Does some cleanup before hiding the dialog.
 		"""
-		
+				
 		# Default response
 		self.set_default_response(Gtk.ResponseType.OK)
 		
 		# Unselect all
-		self.treeview.get_selection().unselect_all()
+		GObject.idle_add(self.treeview.get_selection().unselect_all)
 		# Emit cursor-changed on the treeview so that we'll disable the Select button
 		self.treeview.emit("cursor-changed")
 		
 		# Scroll to top
-		self.scrolledwindow.get_vadjustment().set_value(0.0)
+		GObject.idle_add(self.scrolledwindow.get_vadjustment().set_value, 0.0)
 		
 		# Grab focus on the treeview
 		self.treeview.grab_focus()
-				
-		# Finally show
-		return super().show()
-
 	
 	def __init__(self):
 		"""
@@ -236,6 +231,9 @@ class ApplicationSelectionDialog(Gtk.Dialog):
 		# Add the widgets to the main dialog
 		self.scrolledwindow.add_with_viewport(self.treeview)
 		box.pack_start(self.scrolledwindow, True, True, 0)
+		
+		# Handle hide
+		self.connect("hide", self.on_hide)
 		
 		# Handle delete event
 		self.connect("delete-event", self.handle_delete_event)
