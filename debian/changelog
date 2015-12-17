@@ -1,3 +1,12 @@
+vera-control-center (1.0.20-1) unstable; urgency=medium
+
+  * [ApplicationSelectionDialog] Do the cleanup when hiding
+  * [tint2] Construct the ThemedIcon using Gio.ThemedIcon.new()
+  * [about] Remove 'Check for updates' button
+  * [packaging] Removed the channels dependency
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Fri, 18 Dec 2015 00:18:30 +0100
+
 vera-control-center (1.0.19-1) unstable; urgency=medium
 
   * [tint2] Added new "Invert mouse scroll actions" checkbutton.
