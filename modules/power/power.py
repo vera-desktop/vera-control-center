@@ -53,7 +53,7 @@ class Scene(quickstart.scenes.BaseScene):
 	
 	building = False
 	
-	client = Up.Client()
+	client = Up.Client.new()
 	with_battery = False
 	
 	@quickstart.threads.thread
