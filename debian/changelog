@@ -1,3 +1,9 @@
+vera-control-center (1.0.18-1) unstable; urgency=medium
+
+  * [power] Switch to the un-pythonic Up.Client.new() when creating the Client object
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Sat, 18 Jun 2016 11:38:36 +0200
+
 vera-control-center (1.0.17+numb1-1) unstable; urgency=medium
 
   * [ApplicationSelectionDialog] Do the cleanup when hiding
